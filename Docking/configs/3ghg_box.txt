@@ -1,0 +1,13 @@
+center_x = 73.778
+center_y = -31.618
+center_z = -75.127
+
+size_x = 472.230
+size_y = 139.646
+size_z = 217.590
+
+exhaustiveness = 8
+num_modes = 10
+energy_range = 4
+cpu = 6
+seed = 12345
