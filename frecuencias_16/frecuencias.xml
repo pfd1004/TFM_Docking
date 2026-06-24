@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : jobTemplate.xml
+    Created on : 16. Mai 2008, 16:43
+    Author     : Claudia
+    Modified   : Claudia 14.05.2019
+    Description:
+        Purpose of the document follows.
+-->
+<templatelist>
+<jobtemplate>
+    <symmetry check="no" deviation="0.001"/>
+    <basis>def-TZVP</basis>
+    <molecularCharge/>
+    <multiplicity>Automatic (RHF/UHF)</multiplicity>
+    <freezingPoint>-9.99999999E8</freezingPoint>
+    <fermi/>
+    <periodic dim=""/>
+    <levelOfTheory>DFT+Disp</levelOfTheory>
+    <ri>on</ri>    
+    <dftSettings>
+	<functional>b3-lyp</functional>
+	<gridsize>m3</gridsize>
+	<disp>4</disp>
+    </dftSettings>
+    <semiEmpiricSettings/>
+	<scfConvergenceParameter>
+        <maxIterations>100</maxIterations>
+        <energy>6</energy>
+        <density/>
+    </scfConvergenceParameter>
+	<scfDamp>
+         <start>0.700</start>
+         <min>0.100</min>
+         <step>0.050</step>
+      </scfDamp>
+	<scfDynpol/>
+	<plotOrbitals/>
+    <cosmo filename="" filetype="">off</cosmo>
+    <jobType type="sp" writeGasGeo="no">FREQ</jobType>
+    <jobTypeIdentifier>FREQ</jobTypeIdentifier>
+</jobtemplate>
+</templatelist>

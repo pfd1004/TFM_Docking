@@ -1,0 +1,214 @@
+ operating system is UNIX !
+
+ force (login1) : TURBOMOLE rev. V7-8-1 compiled 26 Feb 2024 at 17:12:58
+ Copyright (C) 2024 TURBOMOLE GmbH, Karlsruhe
+
+
+    2026-04-20 20:23:13.133 
+
+
+
+                             T U R B O M O L E   
+
+                          a o f o r c e - program
+
+                        using direct algorithms for
+
+                       SCF level calculations of
+                         * harmonic force constants
+                         * hyperpolarizabilities
+                         * IR and RAMAN intensities
+                         * VCD intensities
+
+                       DFT level calculations of
+                         * harmonic force constants
+                         * IR intensities
+                                                   
+       Stephan Boecker, Peter Deglmann, Filipp Furche and Marco Haeser
+                          Quantum Chemistry Group
+                          Universitaet  Karlsruhe
+                                   Germany
+
+ 
+ 
+ 
+ 
+     References :
+ 
+       RI-J implementation:
+         Peter Deglmann, Klaus May, Filipp Furche, Reinhart Ahlrichs
+                 Chem. Phys. Lett. 384:103 (2004)
+ 
+       Efficiency, technical details:
+         Peter Deglmann, Filipp Furche, Reinhart Ahlrichs
+                 Chem. Phys. Lett. 362:511 (2002)
+ 
+       Search of lowest eigenvalues by iterative diagonalization:
+         Peter Deglmann, Filipp Furche
+                 J. Chem. Phys. 117:9535 (2002)
+ 
+       Vibrational circular dichroism implementation:
+        Kevin Reiter, Michael Kuehn, Florian Weigend
+                 J. Chem. Phys. 146:054102 (2017)  
+ 
+ 
+
+
+              +--------------------------------------------------+
+              | Atomic coordinate, charge and isotop information |
+              +--------------------------------------------------+
+
+                    atomic coordinates            atom    charge  isotop
+         11.18925033   -3.89459577    1.13672697    c      6.000     0
+          9.85648955   -1.34814158    0.86237227    c      6.000     0
+          7.13495262   -1.36995015    1.83057901    c      6.000     0
+          5.72282329    1.13078763    1.45992732    c      6.000     0
+          5.17669632    1.85061808   -1.29815780    c      6.000     0
+          3.54108353   -0.05251624   -2.75347629    c      6.000     0
+          0.97792938   -0.66285775   -1.54924338    c      6.000     0
+         -0.76402836    1.62729211   -1.26349765    c      6.000     0
+         -3.31788734    1.03760916   -0.03163999    c      6.000     0
+         -4.99828021   -0.74550248   -1.57402283    c      6.000     0
+         -7.60058523   -1.22899459   -0.39431230    c      6.000     0
+         -9.32295954    1.06403840   -0.52682876    c      6.000     0
+        -11.83240650    0.46838430    0.42577423    o      8.000     0
+        -12.49341366    1.39107611    3.36322384    s     16.000     0
+        -12.40479308    4.21206819    3.32453160    o      8.000     0
+        -10.52858463    0.24436529    5.02736924    o      8.000     0
+        -15.07397783    0.31910260    3.69228724    o      8.000     0
+         13.13781195   -3.79824929    0.46412863    h      1.000     0
+         11.22582872   -4.49786429    3.11227309    h      1.000     0
+         10.21151972   -5.35309401    0.04835174    h      1.000     0
+         10.93195859    0.07025890    1.93142337    h      1.000     0
+          9.89624124   -0.79396041   -1.13259817    h      1.000     0
+          7.15688244   -1.83103211    3.84671103    h      1.000     0
+          6.09870791   -2.90007059    0.90268490    h      1.000     0
+          3.93647339    1.05093139    2.49221529    h      1.000     0
+          6.79180874    2.65537466    2.37598519    h      1.000     0
+          4.28004996    3.71118977   -1.32667961    h      1.000     0
+          6.93847836    2.05895570   -2.36922118    h      1.000     0
+          4.59679171   -1.81323412   -2.99775865    h      1.000     0
+          3.22726913    0.69094360   -4.65943822    h      1.000     0
+          1.25698555   -1.53606576    0.30726228    h      1.000     0
+          0.05527620   -2.09671436   -2.71596959    h      1.000     0
+          0.18311456    3.07383007   -0.13098966    h      1.000     0
+         -1.08458813    2.47335123   -3.12882421    h      1.000     0
+         -4.31013252    2.82289513    0.28883207    h      1.000     0
+         -3.00001005    0.20969631    1.84165548    h      1.000     0
+         -4.04859690   -2.56442311   -1.80069408    h      1.000     0
+         -5.23781922    0.02270171   -3.48444602    h      1.000     0
+         -7.38974072   -1.79946643    1.57922553    h      1.000     0
+         -8.52933152   -2.78499539   -1.38814293    h      1.000     0
+         -8.56290127    2.67365537    0.50983033    h      1.000     0
+         -9.61394721    1.64745762   -2.48323448    h      1.000     0
+         10.81559274    4.56514507   -0.37622500    na    11.000     0
+ 
+       center of nuclear mass  :   -2.39081170    0.67147456    0.83727071
+       center of nuclear charge:   -2.08923178    0.57861519    0.74939709
+
+   *************************************************************************
+   opt_final_SDS_sodium_dodecyl_sulfate_4                                   
+   *************************************************************************
+
+
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    s        1     46     22   def-TZVP   [5s4p1d|14s9p1d]
+    na       1     35     14   def-TZVP   [5s3p|14s7p]
+    o        4     34     19   def-TZVP   [5s3p1d|11s6p1d]
+    h       25      8      6   def-TZVP   [3s1p|5s1p]
+    c       12     34     19   def-TZVP   [5s3p1d|11s6p1d]
+   ---------------------------------------------------------------------------
+   total:   43    825    490
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   87
+   total number of contracted shells         :  262
+   total number of cartesian basis functions :  507
+   total number of SCF-basis functions       :  490
+
+ 
+             FOUND RI-J FLAG !
+ 
+
+ NOTE: THIS IS A PRELIMINARY IMPLEMENTATION. THE RI APPROXIMATION IS
+       PRESENTLY USED FOR CPKS CONTRIBUTIONS TO THE HESSIAN ONLY! SEE
+       MANUAL FOR FURTHER DETAILS.
+
+  
+ AUXILIARY BASIS SET information:
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    s        1     71     40   def-TZVP   [5s3p2d1f1g|12s6p5d1f1g]
+    na       1     51     28   def-TZVP   [5s2p2d1f|12s4p4d1f]
+    o        4     40     38   def-TZVP   [7s3p3d1f|9s3p3d1f]
+    h       25     10      9   def-TZVP   [3s2p|4s2p]
+    c       12     40     38   def-TZVP   [7s3p3d1f|9s3p3d1f]
+   ---------------------------------------------------------------------------
+   total:   43   1012    901
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   84
+   total number of contracted shells         :  371
+   total number of cartesian basis functions : 1013
+   total number of SCF-basis functions       :  901
+
+
+ symmetry group of the molecule :   c1 
+
+ the group has the following generators :
+   c1(z)
+
+    1 symmetry operations found
+
+ there are 1 real representations :   a   
+
+ maximum number of shells which are related by symmetry :  1
+
+
+ determining totally symmetric integral contributions 
+    - equivalent to irreducible tensor elements - 
+ which can be formed within each triple of representations :
+
+             representation triple      contributions
+
+              a     a     a               1
+  MOs are in ASCII format !
+
+  MOs are in ASCII format !
+
+
+    mo occupation :
+   irrep   mo's   occupied
+    a      490       78
+ 
+ number of basis functions   :   490
+ number of occupied orbitals :    78
+ 
+
+ reading orbital data $scfmo  from file mos
+ orbital characterization : scfdump=100
+
+ self consistent orbitals required 
+
+
+========================
+ internal module stack: 
+------------------------
+    force
+========================
+
+  missing or faulty SCF orbitals 
+ force ended abnormally

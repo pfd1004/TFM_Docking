@@ -1,0 +1,99 @@
+$lastdiag
+$rij
+$ricore    100
+$maxcor    400 MiB  per_core
+$dft
+ functional b3-lyp
+ gridsize m3
+ weight derivatives
+$subtitle
+SP,DFT+Disp/RI,charge 0,c1,def-TZVP,FREQ
+$scfiterlimit    100
+$coord    file=coord
+$jbas    file=auxbasis
+$disp4
+$scfconv    6
+$grad    file=gradient
+$optimize
+ internal off
+ redundant off
+ cartesian on
+ global off
+$symmetry    c1
+$tmole
+$basis    file=basis
+$scfmo   file=mos
+$title    opt_final_Thioacetic_acid_12
+$atoms
+s 4 \
+   jbas = s def-TZVP                     \
+   basis = s def-TZVP
+o 3 \
+   jbas = o def-TZVP                     \
+   basis = o def-TZVP
+h 5-8 \
+   jbas = h def-TZVP                     \
+   basis = h def-TZVP
+c 1-2 \
+   jbas = c def-TZVP                     \
+   basis = c def-TZVP
+$marij
+$scfdamp     start=0.700 step=0.050 min=0.100
+$operating system    unix
+$closed shells
+ a       1-20                                   ( 2 )
+$thize     0.10000000E-04
+$thime        5
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$scforbitalshift  automatic=.1
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=0  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit on
+   diag=default
+$energy    file=energy
+$forceapprox    file=forceapprox
+$rundimensions
+   natoms=8
+   nbf(CAO)=107
+   nbf(AO)=103
+$last step     force
+$xctype hybrid-GGA X= 0.20000 (not to be modified here)
+$orbital_max_rnorm 0.61763164031763E-03
+$last SCF energy change = -551.97816
+$subenergy  Etot         E1                  Ej                Ex                 Ec                 En                 Disp
+-551.9781644370    -1061.733342539     394.3645393575    -35.74288000242    -1.719973552591     152.8622729891    -.8780689420566E-02
+$charge from ridft
+         -0.000 (not to be modified here)
+$dipole from force
+  x    -0.59915828681645    y    -1.17121694278146    z     0.60710237229067    a.u.
+   | dipole | =    3.6827659254  debye
+$dipgrad    file=dipgrad
+$hessian (projected)    file=hessian
+$vibrational normal modes    file=vib_normal_modes
+$vibrational reduced masses
+   5.3063946379  10.6378837209  14.3026557313   9.5869088465   4.9211425645
+   4.1417885008   1.0486487291   1.1159313664   3.1422876745  11.7226745148
+   2.7352027030   3.6428557860   1.3363665628   1.6791207583   1.6111753534
+   2.5677683014   1.2584080178   1.0538316100   1.0453039668  10.7224803236
+   1.0386946030   1.0346182624   1.1003385523   1.1044021152
+$nvibro       24
+$vibrational spectrum    file=vibspectrum
+$end

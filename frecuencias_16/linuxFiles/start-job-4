@@ -1,0 +1,129 @@
+#!/bin/sh
+
+rm -f Multi-Job-Ended-4
+touch Multi-Job-Started
+export TURBODIR=/lustre/lusitania_homes/ubu-iccram/ubu-iccram01/MASTER_SALUD_2026/TmoleX2024/TURBOMOLE
+export PATH=$TURBODIR/scripts:$PATH
+ulimit -s unlimited &> /dev/null
+if [ $? -ne 0 ]; then
+ulimit -s 1048576 &> /dev/null
+if [ $? -ne 0 ]; then
+echo "WARNING: Could not set stack size!"
+echo "         Some jobs might fail to run, please check size limit."
+echo "         Output of ulimit -s is:"ulimit -s
+fi
+fi
+export PATH=$TURBODIR/bin/`sysname`:$PATH
+export PERL_BADLANG=0
+cd "opt_final_6-Mercaptohexanoic_acid_19"
+if [ $? -eq 0 ]; then
+touch "opt_final_6-Mercaptohexanoic_acid_19_Job_Started"
+touch SP_Job_Start
+ridft >ridft.out
+aoforce >aoforce.out
+rm -f SP_Job_Start
+touch SP_Job_End
+replacequote.sh
+if [ "$PWD" = "$HOME" ]; then
+echo "I'm sorry, Dave. I'm afraid I can't do that. (not in this directory)"
+else
+ if [ -e control ]; then
+ls * > tmp1
+for i in `grep -E -v "" tmp1`
+do
+ rm -f $i
+done
+rm -f tmp1
+rm -rf MPI-TEMPDIR*
+fi
+fi
+rm -f "opt_final_6-Mercaptohexanoic_acid_19_Job_Started.gz"
+rm -f "opt_final_6-Mercaptohexanoic_acid_19_Job_Started"
+touch "opt_final_6-Mercaptohexanoic_acid_19_Job_Ended"
+cd ..
+fi
+cd "opt_final_1-Butanethiol_20"
+if [ $? -eq 0 ]; then
+touch "opt_final_1-Butanethiol_20_Job_Started"
+touch SP_Job_Start
+ridft >ridft.out
+aoforce >aoforce.out
+rm -f SP_Job_Start
+touch SP_Job_End
+replacequote.sh
+if [ "$PWD" = "$HOME" ]; then
+echo "I'm sorry, Dave. I'm afraid I can't do that. (not in this directory)"
+else
+ if [ -e control ]; then
+ls * > tmp1
+for i in `grep -E -v "" tmp1`
+do
+ rm -f $i
+done
+rm -f tmp1
+rm -rf MPI-TEMPDIR*
+fi
+fi
+rm -f "opt_final_1-Butanethiol_20_Job_Started.gz"
+rm -f "opt_final_1-Butanethiol_20_Job_Started"
+touch "opt_final_1-Butanethiol_20_Job_Ended"
+cd ..
+fi
+cd "opt_final_1-Hexanethiol_21"
+if [ $? -eq 0 ]; then
+touch "opt_final_1-Hexanethiol_21_Job_Started"
+touch SP_Job_Start
+ridft >ridft.out
+aoforce >aoforce.out
+rm -f SP_Job_Start
+touch SP_Job_End
+replacequote.sh
+if [ "$PWD" = "$HOME" ]; then
+echo "I'm sorry, Dave. I'm afraid I can't do that. (not in this directory)"
+else
+ if [ -e control ]; then
+ls * > tmp1
+for i in `grep -E -v "" tmp1`
+do
+ rm -f $i
+done
+rm -f tmp1
+rm -rf MPI-TEMPDIR*
+fi
+fi
+rm -f "opt_final_1-Hexanethiol_21_Job_Started.gz"
+rm -f "opt_final_1-Hexanethiol_21_Job_Started"
+touch "opt_final_1-Hexanethiol_21_Job_Ended"
+cd ..
+fi
+cd "opt_final_1-Dodecanethiol_22"
+if [ $? -eq 0 ]; then
+touch "opt_final_1-Dodecanethiol_22_Job_Started"
+touch SP_Job_Start
+ridft >ridft.out
+aoforce >aoforce.out
+rm -f SP_Job_Start
+touch SP_Job_End
+replacequote.sh
+if [ "$PWD" = "$HOME" ]; then
+echo "I'm sorry, Dave. I'm afraid I can't do that. (not in this directory)"
+else
+ if [ -e control ]; then
+ls * > tmp1
+for i in `grep -E -v "" tmp1`
+do
+ rm -f $i
+done
+rm -f tmp1
+rm -rf MPI-TEMPDIR*
+fi
+fi
+rm -f "opt_final_1-Dodecanethiol_22_Job_Started.gz"
+rm -f "opt_final_1-Dodecanethiol_22_Job_Started"
+touch "opt_final_1-Dodecanethiol_22_Job_Ended"
+cd ..
+fi
+
+rm -f Multi-Job-Started.gz
+rm -f Multi-Job-Started
+touch Multi-Job-Ended-4

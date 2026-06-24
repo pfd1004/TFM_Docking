@@ -1,0 +1,28 @@
+#!/bin/sh
+# kill all jobs in sub-directories in case of scan and multi-template jobs
+iam=`whoami`
+here=`pwd -P`
+
+for i in ` ps -ef | grep $iam | awk '{print $2}' `
+do
+  touchee=`ls -l /proc/$i/ 2>/dev/null | grep $here | wc -l `
+  if [ $touchee -eq 1 ] ; then
+# kill all jobs that run in the directory of start-job except the kill-job script itself:
+    if [ $i -ne $$ ] ; then
+       kill -9 $i 2>/dev/null
+    fi
+  fi
+done
+
+# now remove scratch files to avoid exhaustive network traffic:
+
+# RICC2:
+rm -f */job_*/CC* */job_*/CP* */job_*/gsden* */job_*/xsden* */job_*/*.cao 
+rm -f */job_*/alles.cc */job_*/syminfo */job_*/restart.cc
+# HF/DFT:
+rm -f */job_*/dens */job_*/ddens */job_*/fock */job_*/errvec */job_*/oldfock 
+rm -f */job_*/diff* */job_*/diis* */job_*/statistics* */job_*/hessapprox
+# aoforce:
+rm -f */job_*/dS */job_*/dH */job_*/dF
+
+

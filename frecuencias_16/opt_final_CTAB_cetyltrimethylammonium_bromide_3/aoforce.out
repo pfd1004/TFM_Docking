@@ -1,0 +1,232 @@
+ operating system is UNIX !
+
+ force (login1) : TURBOMOLE rev. V7-8-1 compiled 26 Feb 2024 at 17:12:58
+ Copyright (C) 2024 TURBOMOLE GmbH, Karlsruhe
+
+
+    2026-04-20 19:23:44.158 
+
+
+
+                             T U R B O M O L E   
+
+                          a o f o r c e - program
+
+                        using direct algorithms for
+
+                       SCF level calculations of
+                         * harmonic force constants
+                         * hyperpolarizabilities
+                         * IR and RAMAN intensities
+                         * VCD intensities
+
+                       DFT level calculations of
+                         * harmonic force constants
+                         * IR intensities
+                                                   
+       Stephan Boecker, Peter Deglmann, Filipp Furche and Marco Haeser
+                          Quantum Chemistry Group
+                          Universitaet  Karlsruhe
+                                   Germany
+
+ 
+ 
+ 
+ 
+     References :
+ 
+       RI-J implementation:
+         Peter Deglmann, Klaus May, Filipp Furche, Reinhart Ahlrichs
+                 Chem. Phys. Lett. 384:103 (2004)
+ 
+       Efficiency, technical details:
+         Peter Deglmann, Filipp Furche, Reinhart Ahlrichs
+                 Chem. Phys. Lett. 362:511 (2002)
+ 
+       Search of lowest eigenvalues by iterative diagonalization:
+         Peter Deglmann, Filipp Furche
+                 J. Chem. Phys. 117:9535 (2002)
+ 
+       Vibrational circular dichroism implementation:
+        Kevin Reiter, Michael Kuehn, Florian Weigend
+                 J. Chem. Phys. 146:054102 (2017)  
+ 
+ 
+
+
+              +--------------------------------------------------+
+              | Atomic coordinate, charge and isotop information |
+              +--------------------------------------------------+
+
+                    atomic coordinates            atom    charge  isotop
+         13.65400127   -5.66448233    2.16445510    c      6.000     0
+         15.12547952   -3.21016766    1.74675405    c      6.000     0
+         13.49190717   -0.98089028    0.88194557    c      6.000     0
+         12.23364950   -1.36357373   -1.69697758    c      6.000     0
+         10.96270593    1.01975792   -2.74078708    c      6.000     0
+          8.72832000    1.96982978   -1.16953054    c      6.000     0
+          7.41446626    4.24925691   -2.36498521    c      6.000     0
+          5.31270780    5.41078549   -0.74064597    c      6.000     0
+          3.12793518    3.63120889   -0.05658906    c      6.000     0
+          1.71543736    2.55965242   -2.34190452    c      6.000     0
+         -0.52911581    0.85910925   -1.66290659    c      6.000     0
+         -2.72848911    2.23178434   -0.38235031    c      6.000     0
+         -5.00179096    0.51863097    0.11266664    c      6.000     0
+         -7.19347271    1.91230642    1.38398236    c      6.000     0
+         -9.42936137    0.22273510    2.13735415    c      6.000     0
+        -10.71499817   -0.87906360   -0.18485146    c      6.000     0
+        -13.09591383   -2.41100517    0.32722416    n      7.000     0
+        -14.02872332   -3.41215930   -2.16061901    c      6.000     0
+        -15.12393452   -0.79292933    1.47227434    c      6.000     0
+        -12.54291785   -4.59862840    2.04339502    c      6.000     0
+         14.88031338   -7.15308923    2.90332568    h      1.000     0
+         12.11984705   -5.37959853    3.52161348    h      1.000     0
+         12.81635337   -6.36101742    0.41147978    h      1.000     0
+         16.61996902   -3.53562622    0.34997135    h      1.000     0
+         16.08235979   -2.69197224    3.50713452    h      1.000     0
+         14.66643292    0.71905095    0.77294088    h      1.000     0
+         12.05054815   -0.61517256    2.32167679    h      1.000     0
+         13.67866277   -1.99072362   -3.04323303    h      1.000     0
+         10.83809673   -2.88945742   -1.59254578    h      1.000     0
+         12.38003131    2.52205829   -2.87988054    h      1.000     0
+         10.30142088    0.63890245   -4.66722800    h      1.000     0
+          9.37284727    2.48864605    0.72718271    h      1.000     0
+          7.37229068    0.42551885   -0.91822306    h      1.000     0
+          8.83243220    5.71056262   -2.73869114    h      1.000     0
+          6.65968326    3.70665975   -4.21410744    h      1.000     0
+          4.54035174    7.05762084   -1.73074207    h      1.000     0
+          6.15058358    6.13066637    1.01130402    h      1.000     0
+          1.80820824    4.67244267    1.14621588    h      1.000     0
+          3.83184290    2.06118610    1.09475090    h      1.000     0
+          3.03144212    1.47324866   -3.50864606    h      1.000     0
+          1.04943945    4.12484959   -3.52748921    h      1.000     0
+         -1.23019456   -0.04051876   -3.39074919    h      1.000     0
+          0.12623092   -0.67715070   -0.43550155    h      1.000     0
+         -2.10615817    3.05072562    1.41179382    h      1.000     0
+         -3.31995871    3.82024702   -1.57518111    h      1.000     0
+         -5.61911712   -0.30292731   -1.68326773    h      1.000     0
+         -4.41821405   -1.06671300    1.31258582    h      1.000     0
+         -6.49731532    2.83033167    3.09971267    h      1.000     0
+         -7.86758312    3.42671660    0.14430524    h      1.000     0
+         -8.74682988   -1.28319459    3.37242059    h      1.000     0
+        -10.76663189    1.35483571    3.22372300    h      1.000     0
+         -9.46113709   -2.15584808   -1.19680875    h      1.000     0
+        -11.28998407    0.61928778   -1.47404078    h      1.000     0
+        -12.57468774   -4.61476484   -2.97109321    h      1.000     0
+        -14.41532726   -1.82379123   -3.40354692    h      1.000     0
+        -15.74367444   -4.49231137   -1.83002806    h      1.000     0
+        -16.82672654   -1.92674614    1.65049655    h      1.000     0
+        -14.52041433   -0.15121008    3.32317063    h      1.000     0
+        -15.46210593    0.80834472    0.23162773    h      1.000     0
+        -14.24034360   -5.74502796    2.19294516    h      1.000     0
+        -11.01112288   -5.70011861    1.23034522    h      1.000     0
+        -12.01357460   -3.89323732    3.89407228    h      1.000     0
+         17.22190732    5.57615723   -1.56748220    br    35.000     0
+ 
+       center of nuclear mass  :    3.75262086    1.23236631   -0.45925638
+       center of nuclear charge:    3.02533577    0.97747035   -0.39319918
+
+   *************************************************************************
+   opt_final_CTAB_cetyltrimethylammonium_bromide_3                          
+   *************************************************************************
+
+
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    n        1     34     19   def-TZVP   [5s3p1d|11s6p1d]
+    h       42      8      6   def-TZVP   [3s1p|5s1p]
+    br       1     91     36   def-TZVP   [6s5p3d|17s13p7d]
+    c       19     34     19   def-TZVP   [5s3p1d|11s6p1d]
+   ---------------------------------------------------------------------------
+   total:   63   1107    668
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   79
+   total number of contracted shells         :  362
+   total number of cartesian basis functions :  691
+   total number of SCF-basis functions       :  668
+
+ 
+             FOUND RI-J FLAG !
+ 
+
+ NOTE: THIS IS A PRELIMINARY IMPLEMENTATION. THE RI APPROXIMATION IS
+       PRESENTLY USED FOR CPKS CONTRIBUTIONS TO THE HESSIAN ONLY! SEE
+       MANUAL FOR FURTHER DETAILS.
+
+  
+ AUXILIARY BASIS SET information:
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    n        1     40     38   def-TZVP   [7s3p3d1f|9s3p3d1f]
+    h       42     10      9   def-TZVP   [3s2p|4s2p]
+    br       1     69     44   def-TZVP   [6s4p2d1f1g|16s4p5d1f1g]
+    c       19     40     38   def-TZVP   [7s3p3d1f|9s3p3d1f]
+   ---------------------------------------------------------------------------
+   total:   63   1289   1182
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   65
+   total number of contracted shells         :  504
+   total number of cartesian basis functions : 1313
+   total number of SCF-basis functions       : 1182
+
+
+ symmetry group of the molecule :   c1 
+
+ the group has the following generators :
+   c1(z)
+
+    1 symmetry operations found
+
+ there are 1 real representations :   a   
+
+ maximum number of shells which are related by symmetry :  1
+
+
+ determining totally symmetric integral contributions 
+    - equivalent to irreducible tensor elements - 
+ which can be formed within each triple of representations :
+
+             representation triple      contributions
+
+              a     a     a               1
+  MOs are in ASCII format !
+
+  MOs are in ASCII format !
+
+
+    mo occupation :
+   irrep   mo's   occupied
+    a      668       99
+ 
+ number of basis functions   :   668
+ number of occupied orbitals :    99
+ 
+
+ reading orbital data $scfmo  from file mos
+ orbital characterization : scfdump=100
+
+ self consistent orbitals required 
+
+
+========================
+ internal module stack: 
+------------------------
+    force
+========================
+
+  missing or faulty SCF orbitals 
+ force ended abnormally
