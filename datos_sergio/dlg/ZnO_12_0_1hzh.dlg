@@ -1,0 +1,1822 @@
+          AutoDock 4.2 Release 4.2.6   
+         (C) 1989-2012 The Scripps Research Institute
+        AutoDock comes with ABSOLUTELY NO WARRANTY.
+        AutoDock is free software, and you are welcome
+        to redistribute it under certain conditions;
+        for details type 'autodock4 -C'
+
+                     main.cc  $Revision: 1.213 $
+
+                   Compiled on Jul 18 2014 at 15:34:58
+
+
+This file was created at:			1:12 07" p.m., 06/25/2026
+                   on host:		"CIE-QF-254-P1"
+Current Working Directory = "C:\Users\shuerta\Documents\TFM_Pablo\Docking"
+
+      ________________________________________________________________
+
+                   SETTING UP DEFAULT PARAMETER LIBRARY
+      ________________________________________________________________
+
+
+Random number generator was seeded with values 24284, 1782385927.
+Docking parameter file (DPF) used for this docking:		Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DPF> autodock_parameter_version 4.2       # used by autodock to validate parameter set
+
+	Autodock parameter version 4.2.
+DPF> parameter_file AD4_new.dat           # parameter library filename 
+
+Using read_parameter_library() to try to open and read "AD4_new.dat".
+
+DPF> intelec                              # calculate internal electrostatics
+
+Electrostatic energies will be calculated for all non-bonds between moving atoms.
+DPF> seed pid time                        # seeds for random generator
+
+Random number generator was seeded with values 24284, 1782385927.
+DPF> ligand_types OA Zn                 # atoms types in ligand
+
+DPF> fld Results/ZnO_12_0_1hzh/1hzh.maps.fld                    # grid_data_file
+
+Opening Grid Map Dimensions file:		Results/ZnO_12_0_1hzh/1hzh.maps.fld
+Grid Point Spacing =				1.000 Angstroms
+
+Even Number of User-specified Grid Points =	100 x-points
+						100 y-points
+						100 z-points
+
+Coordinates of Central Grid Point of Maps =	(77.013, 111.725, 137.392)
+Macromolecule file used to create Grid Maps =	Proteins/1hzh.pdbqt
+Grid Parameter file used to create Grid Maps =	Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.gpf
+Minimum coordinates in grid = (27.013, 61.725, 87.392)
+Maximum coordinates in grid = (127.013, 161.725, 187.392)
+
+DPF> map Results/ZnO_12_0_1hzh/1hzh.OA.map                       # atom-specific affinity map
+
+DPF> map Results/ZnO_12_0_1hzh/1hzh.Zn.map                       # atom-specific affinity map
+
+DPF> elecmap Results/ZnO_12_0_1hzh/1hzh.e.map                   # electrostatics map
+
+DPF> desolvmap Results/ZnO_12_0_1hzh/1hzh.d.map                 # desolvation map
+
+DPF> move Ligands/ZnO_12_0.pdbqt                     # small molecule
+
+1,4-interactions will be _ignored_ in the non-bonded internal energy calculation.
+
+Ligand PDBQT file = "Ligands/ZnO_12_0.pdbqt"
+
+INPUT LIGAND PDBQT FILE:
+________________________
+
+INPUT-LIGAND-PDBQT: REMARK  Name = 
+INPUT-LIGAND-PDBQT: REMARK                            x       y       z     vdW  Elec       q    Type
+INPUT-LIGAND-PDBQT: REMARK                         _______ _______ _______ _____ _____    ______ ____
+INPUT-LIGAND-PDBQT: ROOT
+INPUT-LIGAND-PDBQT: ATOM      1 ZN   UNL     1       0.407  -1.551   2.397  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      2 ZN   UNL     1       0.844   1.555   2.278  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      3 ZN   UNL     2      -1.419  -2.416   0.685  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      4 ZN   UNL     3       1.419   2.416  -0.685  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      5 ZN   UNL     2       1.524  -2.415  -0.406  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      6 ZN   UNL     4      -1.524   2.415   0.406  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      7 ZN   UNL     4      -2.690  -0.118  -1.035  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      8 ZN   UNL     3       2.690   0.118   1.035  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM      9 ZN   UNL     4      -0.407   1.551  -2.397  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM     10 ZN   UNL     1      -2.047   0.365   1.999  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM     11 ZN   UNL     3       2.047  -0.365  -1.999  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM     12 ZN   UNL     2      -0.844  -1.555  -2.278  0.00  0.00    +0.000 Zn
+INPUT-LIGAND-PDBQT: ATOM     13  O   UNL     4      -1.506   0.188  -2.453  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     14  O   UNL     1       1.506  -0.188   2.453  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     15  O   UNL     1      -1.429  -1.265   2.163  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     16  O   UNL     3       1.429   1.265  -2.163  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     17  O   UNL     4      -0.417   2.702  -0.920  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     18  O   UNL     2       0.417  -2.702   0.920  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     19  O   UNL     1      -0.873   1.822   2.058  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     20  O   UNL     3       2.699  -0.958  -0.347  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     21  O   UNL     2       0.873  -1.822  -2.058  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     22  O   UNL     4      -2.699   0.958   0.347  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     23  O   UNL     2      -2.028  -1.861  -0.860  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ATOM     24  O   UNL     3       2.028   1.861   0.860  0.00  0.00    +0.000 OA
+INPUT-LIGAND-PDBQT: ENDROOT
+INPUT-LIGAND-PDBQT: TORSDOF 0
+________________________________________________________________________________
+
+Total charge on ligand                               =	+0.000 e
+REMARK  Name = 
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+
+*** No Rotatable Bonds detected in Small Molecule. ***
+
+Number of atoms in ligand:  24
+
+Number of non-hydrogen atoms in ligand:  24
+
+Number of vibrational degrees of freedom of ligand:  66
+
+
+Number of torsional degrees of freedom = 0
+Estimated loss of torsional free energy upon binding = +0.0000 kcal/mol
+
+
+DPF> about 0.069 0.032 0.0           # small molecule center
+
+Small molecule center of rotation =	(+0.069, +0.032, +0.000)
+
+DPF> tran0 0.069 0.032 0.0            # initial coordinates/A or random
+
+Initial translation =			(0.069, 0.032, 0.000) Angstroms
+DPF> quaternion0 0 0 0 1                  # initial orientation
+
+Initial quaternion,  (x,y,z,w) =	( 0.000, 0.000, 0.000, 1.000 ),
+DPF> dihe0 random                         # initial dihedrals (relative) or random
+
+DPF> torsdof 0                            # torsional degrees of freedom
+
+Number of torsional degrees of freedom = 0
+Free energy coefficient for torsional degrees of freedom = 0.2983 as specified in parameter library "AD4_new.dat".
+
+Estimated loss of torsional free energy upon binding = +0.0000 kcal/mol
+
+DPF> rmstol 2.0                           # cluster_tolerance/A
+
+Maximum RMS tolerance for conformational cluster analysis = 2.00 Angstroms
+DPF> extnrg 1000.0                        # external grid energy
+
+External grid energy (beyond grid map walls) = 1000.00
+
+DPF> e0max 0.0 10000                      # max initial energy; max number of retries
+
+Using user-specified maximum number of retries for simanneal initialization, 10000 retries.
+If the simanneal initial energy is greater than e0max, 0.000,
+then a new, random initial state will be created.
+
+DPF> ga_pop_size 150                      # number of individuals in population
+
+A population of 150 individuals will be used
+DPF> ga_num_evals 2500000                 # maximum number of energy evaluations
+
+There will be at most 2500000 function evaluations used.
+DPF> ga_num_generations 27000             # maximum number of generations
+
+The GA will run for at most 27000 generations.
+DPF> ga_elitism 1                         # number of top individuals to survive to next generation
+
+The 1 best will be preserved each GA generation.
+DPF> ga_mutation_rate 0.02                # rate of gene mutation
+
+The mutation rate is 0.020000.
+DPF> ga_crossover_rate 0.8                # rate of crossover
+
+The crossover rate is 0.800000.
+DPF> ga_window_size 10                    # 
+
+The GA's selection window is 10 generations.
+DPF> ga_cauchy_alpha 0.0                  # Alpha parameter of Cauchy distribution
+
+The alpha parameter (for the Cauchy distribution) is being set to 0.000000.
+DPF> ga_cauchy_beta 1.0                   # Beta parameter Cauchy distribution
+
+The beta parameter (for the Cauchy distribution) is being set to 1.000000.
+DPF> set_ga                               # set the above parameters for GA or LGA
+
+DPF> sw_max_its 300                       # iterations of Solis & Wets local search
+
+Solis & Wets algorithms will perform at most 300 iterations.
+DPF> sw_max_succ 4                        # consecutive successes before changing rho
+
+Solis & Wets algorithms expand rho every 4 in a row successes.
+DPF> sw_max_fail 4                        # consecutive failures before changing rho
+
+Solis & Wets algorithms contract rho every 4 in a row failures.
+DPF> sw_rho 1.0                           # size of local search space to sample
+
+rho is set to 1.000000.
+DPF> sw_lb_rho 0.01                       # lower bound on rho
+
+rho will never get smaller than 0.010000.
+DPF> ls_search_freq 0.06                  # probability of performing local search on individual
+
+Local search will be performed with frequency 0.060000.
+DPF> set_psw1                             # set the above pseudo-Solis & Wets parameters
+
+Creating a new Local Search object using the pseudo-Solis-Wets algorithm (pSW1) with the current settings.
+
+DPF> unbound_model bound                  # state of unbound ligand
+
+DPF> ga_run 15                            # do this many hybrid GA-LS runs
+
+centering ligand on specified point: 0.069 0.032 0.000
+Furthest true ligand atom from "about" center is 2.953 Angstroms (maxrad).
+Number of requested GA dockings = 15 runs
+Unbound model to be used is 'same as bound' [AutoDock 4.2 default].
+
+	BEGINNING GENETIC ALGORITHM DOCKING 1 of 15
+Run: 1 Seed: 24284 1782385927 [ Run 1 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.999
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 56.329 101.021 102.645 quatxyzw 0.568710 0.543209 0.068251 0.613869 center 0.069 0.032 0.000 ntor 0
+State:	 56.329 101.021 102.645   0.720  0.688  0.086 104.260  
+
+DOCKED: MODEL        1
+DOCKED: USER    Run = 1
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -7.00 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    7.41 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -7.00 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -7.00 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 56.328920 101.020989 102.645265
+DOCKED: USER    NEWDPF quaternion0 0.568710 0.543209 0.068251 0.613869
+DOCKED: USER    NEWDPF axisangle0 0.720426 0.688122 0.086459 104.260381
+DOCKED: USER    NEWDPF quat0 0.720426 0.688122 0.086459 104.260381
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      53.941 102.509 103.317 -0.32 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      56.366 103.718 101.732 -0.38 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      53.612  99.914 102.903 -0.08 +0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      58.946 102.033 102.325 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      55.434 100.643 105.352 -0.17 -0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      57.124 101.303  99.876 -0.16 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      55.729  98.697 100.930 -0.02 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      56.829 103.250 104.298 -0.30 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      58.617  99.438 101.911 -0.11 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      54.537 101.549 100.388 -0.16 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      58.021 100.397 104.840 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      56.192  98.228 103.496 -0.03 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      57.253  98.339 101.957 -0.08 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      55.305 103.607 103.271 -0.60 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      53.544 101.446 101.827 -0.42 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      59.013 100.501 103.401 -0.43 -0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      58.550 100.969 100.835 -0.35 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      54.008 100.977 104.393 -0.25 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      55.995 102.723 100.339 -0.79 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      56.892 101.817 105.304 -0.72 -0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      56.563  99.223 104.889 -0.35 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      55.665 100.129  99.924 -0.12 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      54.668  98.586 102.469 -0.06 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      57.890 103.360 102.759 -0.53 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 2 of 15
+Run: 2 Seed: 1227876481 1856221630 [ Run 2 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.833
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 79.365 91.730 113.448 quatxyzw 0.549782 0.409510 -0.226146 0.692026 center 0.069 0.032 0.000 ntor 0
+State:	 79.365  91.730 113.448   0.762  0.567 -0.313 92.419  
+
+DOCKED: MODEL        2
+DOCKED: USER    Run = 2
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.83 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    9.81 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.83 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.83 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 79.364864 91.730241 113.447971
+DOCKED: USER    NEWDPF quaternion0 0.549782 0.409510 -0.226146 0.692026
+DOCKED: USER    NEWDPF axisangle0 0.761605 0.567288 -0.313277 92.418679
+DOCKED: USER    NEWDPF quat0 0.761605 0.567288 -0.313277 92.418679
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      77.383  92.904 115.197 -0.20 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      78.152  94.080 112.390 -0.38 -0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      77.633  90.271 115.332 -0.07 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      81.010  93.065 111.581 -0.41 -0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      80.178  91.890 116.202 -0.36 -0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      78.465  91.447 110.711 -0.16 -0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      78.637  88.985 112.650 -0.02 -0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      80.007  94.352 114.263 -0.34 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      81.260  90.432 111.715 -0.10 -0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      76.591  91.364 112.580 -0.15 -0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      82.053  91.973 114.333 -0.25 -0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      80.491  89.257 114.522 -0.06 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      80.501  89.162 112.652 -0.09 -0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      78.142  94.175 114.261 -0.40 -0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      76.581  91.452 114.329 -0.20 -0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      82.063  91.885 112.584 -0.59 -0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      80.208  91.612 110.712 -0.41 -0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      78.435  91.724 116.201 -0.29 -0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      77.403  92.721 111.578 -0.50 -0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      80.991  93.248 115.200 -0.52 -0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      81.241  90.616 115.334 -0.49 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      77.653  90.089 111.712 -0.14 -0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      78.627  89.080 114.520 -0.07 -0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      80.016  94.257 112.392 -0.62 -0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 3 of 15
+Run: 3 Seed: 1883513803 694246578 [ Run 3 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.310
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 72.654 102.740 138.411 quatxyzw 0.028423 -0.127202 -0.243170 -0.961187 center 0.069 0.032 0.000 ntor 0
+State:	 72.654 102.740 138.411   0.103 -0.461 -0.881 -32.031  
+
+DOCKED: MODEL        3
+DOCKED: USER    Run = 3
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.31 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =   23.69 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.31 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.31 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 72.654308 102.739708 138.410844
+DOCKED: USER    NEWDPF quaternion0 0.028423 -0.127202 -0.243170 -0.961187
+DOCKED: USER    NEWDPF axisangle0 0.103018 -0.461046 -0.881376 -32.031097
+DOCKED: USER    NEWDPF quat0 0.103018 -0.461046 -0.881376 -32.031097
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      71.594 101.203 140.620 -0.05 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      73.425 103.729 140.968 -0.24 -0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      70.087 101.296 138.444 -0.07 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      75.075 104.192 138.338 -0.11 -0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      72.869  99.892 138.069 -0.25 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      72.293 105.596 138.713 -0.14 -0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      70.509 103.910 136.757 -0.07 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      74.653 101.579 140.025 -0.15 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      73.568 104.285 136.162 -0.11 -0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      70.494 104.052 139.893 -0.12 -0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      74.668 101.437 136.890 -0.30 -0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      71.737 101.760 135.815 -0.30 +0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      72.022 103.607 135.696 -0.28 -0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      73.140 101.882 141.086 -0.25 -0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      70.226 102.325 140.004 -0.11 -0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      74.936 103.164 136.779 -0.28 -0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      73.708 105.314 137.721 -0.25 -0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      71.454 100.175 139.061 -0.24 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      72.146 104.777 140.390 -0.75 -0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      74.522 100.617 138.567 -0.50 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      73.016 100.711 136.392 -0.80 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      70.640 104.871 138.215 -0.36 -0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      70.224 102.063 136.876 -0.24 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      74.938 103.426 139.907 -0.33 -0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 4 of 15
+Run: 4 Seed: 847156839 1225648098 [ Run 4 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.882
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 56.303 100.817 102.816 quatxyzw -0.898010 -0.161848 0.381622 -0.147475 center 0.069 0.032 0.000 ntor 0
+State:	 56.303 100.817 102.816  -0.908 -0.164  0.386 -163.039  
+
+DOCKED: MODEL        4
+DOCKED: USER    Run = 4
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.88 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    9.02 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.88 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.88 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 56.302948 100.817352 102.816459
+DOCKED: USER    NEWDPF quaternion0 -0.898010 -0.161848 0.381622 -0.147475
+DOCKED: USER    NEWDPF axisangle0 -0.907937 -0.163637 0.385841 -163.038736
+DOCKED: USER    NEWDPF quat0 -0.907937 -0.163637 0.385841 -163.038736
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      54.485 102.724 101.621 -0.37 +0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      55.413 100.075 100.215 -0.05 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      54.388 102.527 104.260 -0.30 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      58.116  99.110 101.485 -0.06 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      57.120 103.559 103.109 -0.33 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      55.384  98.078 102.637 -0.02 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      55.224  99.694 105.323 -0.11 -0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      57.280 101.943 100.423 -0.21 +0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      58.018  98.913 104.125 -0.14 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      53.508  99.946 102.707 -0.08 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      58.996 101.691 103.039 -0.34 -0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      57.091 101.562 105.530 -0.33 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      57.095  99.695 105.392 -0.86 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      55.409 101.942 100.354 -0.55 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      53.503 101.692 102.837 -0.45 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      59.001  99.945 102.909 -0.38 -0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      57.134  98.077 102.701 -0.09 -0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      55.370 103.560 103.044 -0.58 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      54.495  99.110 101.353 -0.08 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      58.107 102.724 101.755 -0.19 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      58.009 102.527 104.393 -0.66 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      54.397  98.913 103.991 -0.12 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      55.220 101.562 105.461 -0.45 -0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      57.284 100.075 100.285 -0.16 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 5 of 15
+Run: 5 Seed: 273168182 1283200589 [ Run 5 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -7.335
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 78.702 142.703 121.351 quatxyzw 0.453389 -0.860279 -0.166376 -0.163330 center 0.069 0.032 0.000 ntor 0
+State:	 78.702 142.703 121.351   0.460 -0.872 -0.169 -161.200  
+
+DOCKED: MODEL        5
+DOCKED: USER    Run = 5
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -7.33 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    4.20 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -7.33 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -7.33 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 78.702420 142.702649 121.350795
+DOCKED: USER    NEWDPF quaternion0 0.453389 -0.860279 -0.166376 -0.163330
+DOCKED: USER    NEWDPF axisangle0 0.459560 -0.871989 -0.168641 -161.199551
+DOCKED: USER    NEWDPF quat0 0.459560 -0.871989 -0.168641 -161.199551
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      78.635 141.907 118.571 -0.30 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      76.198 143.183 120.083 -0.33 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      80.980 142.733 119.483 -0.10 +0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      76.545 142.753 123.173 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      79.874 140.127 120.839 -0.30 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      77.651 145.359 121.817 -0.21 -0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      80.736 144.782 121.849 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      76.789 140.704 120.807 -0.38 +0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      78.890 143.579 124.085 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      78.731 144.922 119.438 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      78.795 140.564 123.217 -0.12 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      81.327 142.303 122.573 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      80.492 143.761 123.400 -0.04 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      77.033 141.725 119.256 -0.69 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      79.512 143.559 118.665 -0.36 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      78.013 141.927 123.991 -0.63 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      77.422 144.406 123.267 -0.31 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      80.103 141.081 119.389 -0.02 -0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      77.019 144.728 120.171 -0.78 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      78.162 139.932 121.572 -0.97 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      80.506 140.758 122.484 -0.21 +0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      79.363 145.554 121.083 -0.26 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      81.571 143.324 121.022 -0.11 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      75.955 142.163 121.634 -0.51 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 6 of 15
+Run: 6 Seed: 1198225676 137258645 [ Run 6 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -7.376
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 78.755 142.718 121.311 quatxyzw 0.584619 -0.412943 0.693009 0.086236 center 0.069 0.032 0.000 ntor 0
+State:	 78.755 142.718 121.311   0.587 -0.414  0.696 170.106  
+
+DOCKED: MODEL        6
+DOCKED: USER    Run = 6
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -7.38 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    3.92 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -7.38 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -7.38 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 78.755065 142.718190 121.310540
+DOCKED: USER    NEWDPF quaternion0 0.584619 -0.412943 0.693009 0.086236
+DOCKED: USER    NEWDPF axisangle0 0.586805 -0.414487 0.695600 170.105769
+DOCKED: USER    NEWDPF quat0 0.586805 -0.414487 0.695600 170.105769
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      81.341 142.404 122.567 -0.03 +0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      79.976 140.196 120.802 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      80.697 144.868 121.842 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      76.878 140.693 120.720 -0.38 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      78.847 143.609 124.043 -0.05 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      78.728 141.951 118.519 -0.29 -0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      78.729 144.965 119.398 -0.30 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      78.846 140.596 123.164 -0.12 +0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      76.234 143.157 119.995 -0.33 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      81.034 142.836 119.473 -0.11 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      76.541 142.725 123.089 -0.28 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      77.599 145.364 121.760 -0.22 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      77.011 144.723 120.102 -0.78 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      80.564 140.838 122.460 -0.20 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      81.585 143.436 121.023 -0.11 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      75.990 142.125 121.539 -0.57 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      77.121 141.725 119.177 -0.65 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      80.454 143.836 123.386 -0.05 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      80.203 141.162 119.359 -0.02 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      78.016 141.935 123.929 -0.64 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      77.372 144.398 123.203 -0.32 +0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      79.559 143.625 118.633 -0.35 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      79.317 145.606 121.056 -0.26 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      78.258 139.955 121.506 -0.97 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 7 of 15
+Run: 7 Seed: 162782085 358167261 [ Run 7 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.845
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 79.320 91.625 113.533 quatxyzw 0.647015 0.204713 0.665462 0.310843 center 0.069 0.032 0.000 ntor 0
+State:	 79.320  91.625 113.533   0.681  0.215  0.700 143.780  
+
+DOCKED: MODEL        7
+DOCKED: USER    Run = 7
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.84 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    9.61 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.84 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.84 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 79.319621 91.624739 113.533492
+DOCKED: USER    NEWDPF quaternion0 0.647015 0.204713 0.665462 0.310843
+DOCKED: USER    NEWDPF axisangle0 0.680738 0.215383 0.700147 143.779899
+DOCKED: USER    NEWDPF quat0 0.680738 0.215383 0.700147 143.779899
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      80.015  94.336 114.262 -0.34 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      82.049  91.945 114.282 -0.25 -0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      78.116  94.078 112.435 -0.38 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      80.476  89.238 114.504 -0.06 -0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      77.405  92.903 115.257 -0.20 -0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      81.186  90.413 111.682 -0.09 -0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      78.374  91.445 110.744 -0.16 -0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      80.217  91.871 116.195 -0.36 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      78.577  88.980 112.677 -0.02 -0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      80.948  93.048 111.557 -0.40 -0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      77.644  90.269 115.382 -0.07 -0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      76.543  91.371 112.657 -0.15 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      77.577  90.091 111.763 -0.15 -0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      81.014  93.225 115.176 -0.53 -0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      79.981  94.245 112.392 -0.62 -0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      78.610  89.072 114.547 -0.08 -0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      80.442  89.146 112.634 -0.08 -0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      78.150  94.170 114.305 -0.40 -0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      82.016  91.859 112.533 -0.65 -0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      78.473  91.715 116.234 -0.30 -0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      76.576  91.457 114.406 -0.20 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      80.118  91.601 110.705 -0.39 -0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      77.340  92.725 111.639 -0.48 -0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      81.252  90.591 115.300 -0.48 -0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 8 of 15
+Run: 8 Seed: 1414197710 1493099274 [ Run 8 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.965
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 78.338 142.798 121.402 quatxyzw 0.142664 0.857069 0.392498 -0.301705 center 0.069 0.032 0.000 ntor 0
+State:	 78.338 142.798 121.402   0.150  0.899  0.412 -144.880  
+
+DOCKED: MODEL        8
+DOCKED: USER    Run = 8
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.96 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    7.85 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.96 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.96 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 78.337636 142.798087 121.402311
+DOCKED: USER    NEWDPF quaternion0 0.142664 0.857069 0.392498 -0.301705
+DOCKED: USER    NEWDPF axisangle0 0.149637 0.898959 0.411681 -144.879878
+DOCKED: USER    NEWDPF quat0 0.149637 0.898959 0.411681 -144.879878
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      79.571 143.336 118.842 -0.18 +0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      79.180 145.499 121.083 -0.15 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      79.906 140.890 119.798 -0.25 +0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      76.876 144.598 123.014 -0.22 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      76.932 141.667 119.163 -0.40 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      79.850 143.821 123.649 -0.03 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      79.830 140.765 122.934 -0.08 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      76.952 144.723 119.878 -0.37 +0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      77.211 142.152 123.970 -0.14 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      81.243 143.169 121.493 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      75.540 142.319 121.319 -0.38 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      77.602 139.989 121.729 -0.35 +0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      78.020 140.702 123.409 -0.51 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      78.762 144.786 119.402 -0.31 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      80.853 142.501 119.922 -0.23 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      75.929 142.987 122.890 -0.41 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      78.157 143.763 124.094 -0.18 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      78.625 141.725 118.717 -0.03 -0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      80.378 144.718 122.093 -0.10 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      76.068 143.216 119.762 -0.32 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      76.404 140.770 120.719 -0.91 +0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      80.714 142.272 123.050 -0.08 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      79.412 140.051 121.254 -0.71 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      77.370 145.437 121.558 -0.58 -0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 9 of 15
+Run: 9 Seed: 884054294 75697495 [ Run 9 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -7.312
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 78.758 142.766 121.397 quatxyzw -0.157485 0.428239 -0.406155 0.791738 center 0.069 0.032 0.000 ntor 0
+State:	 78.758 142.766 121.397  -0.258  0.701 -0.665 75.304  
+
+DOCKED: MODEL        9
+DOCKED: USER    Run = 9
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -7.31 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    4.37 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -7.31 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -7.31 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 78.758456 142.766207 121.396769
+DOCKED: USER    NEWDPF quaternion0 -0.157485 0.428239 -0.406155 0.791738
+DOCKED: USER    NEWDPF axisangle0 -0.257809 0.701041 -0.664889 75.303601
+DOCKED: USER    NEWDPF quat0 -0.257809 0.701041 -0.664889 75.303601
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      78.774 140.524 123.224 -0.13 +0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      76.555 142.745 123.201 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      79.835 140.082 120.838 -0.31 +0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      77.690 145.341 121.850 -0.20 -0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      81.327 142.230 122.574 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      76.198 143.193 120.115 -0.33 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      78.608 141.889 118.584 -0.30 -0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      78.917 143.534 124.105 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      78.751 144.898 119.465 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      76.758 140.703 120.825 -0.38 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      80.767 144.719 121.864 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      80.970 142.678 119.488 -0.11 +0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      79.509 143.528 118.680 -0.36 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      78.016 141.895 124.008 -0.63 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      78.123 139.908 121.579 -0.98 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      79.402 145.514 121.109 -0.25 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      77.040 144.725 120.205 -0.78 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      80.485 140.697 122.483 -0.21 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      75.948 142.169 121.662 -0.49 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      80.517 143.696 123.412 -0.04 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      81.577 143.254 121.026 -0.12 +0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      77.008 141.727 119.277 -0.70 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      80.068 141.039 119.391 -0.01 -0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      77.456 144.383 123.298 -0.30 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 10 of 15
+Run: 10 Seed: 1841451050 437417620 [ Run 10 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.500
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 94.658 120.193 180.114 quatxyzw -0.246740 0.019020 0.538285 0.805610 center 0.069 0.032 0.000 ntor 0
+State:	 94.658 120.193 180.114  -0.416  0.032  0.909 72.662  
+
+DOCKED: MODEL       10
+DOCKED: USER    Run = 10
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.50 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =   17.20 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.50 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.50 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 94.657882 120.193321 180.114280
+DOCKED: USER    NEWDPF quaternion0 -0.246740 0.019020 0.538285 0.805610
+DOCKED: USER    NEWDPF axisangle0 -0.416477 0.032103 0.908579 72.661614
+DOCKED: USER    NEWDPF quat0 -0.416477 0.032103 0.908579 72.661614
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      92.732 118.520 181.477 -0.27 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      95.615 119.110 182.568 -0.06 -0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      91.730 120.508 180.042 -0.19 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      97.473 119.980 180.193 -0.17 -0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      93.290 118.340 178.393 -0.28 -0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      95.913 122.149 181.841 -0.03 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      93.678 122.958 179.792 -0.05 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      95.525 117.531 180.443 -0.25 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      96.471 121.968 178.758 -0.24 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      93.463 121.394 182.505 -0.03 -0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      95.740 119.094 177.729 -0.38 -0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      93.588 121.379 177.666 -0.23 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      94.857 122.546 178.397 -0.29 -0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      94.346 117.943 181.837 -0.49 -0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      92.276 120.304 181.822 -0.22 -0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      96.927 120.185 178.412 -0.77 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      97.017 121.764 180.537 -0.19 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      92.186 118.725 179.697 -0.60 -0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      95.188 120.778 182.890 -0.06 -0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      95.015 117.723 178.778 -0.54 -0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      94.015 119.711 177.344 -0.57 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      94.188 122.766 181.456 -0.05 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      92.408 121.790 179.061 -0.27 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      96.795 118.698 181.173 -0.28 -0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 11 of 15
+Run: 11 Seed: 889990715 1528090203 [ Run 11 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.729
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 47.861 141.036 119.635 quatxyzw -0.315531 0.121259 -0.006319 0.941115 center 0.069 0.032 0.000 ntor 0
+State:	 47.861 141.036 119.635  -0.933  0.359 -0.019 39.521  
+
+DOCKED: MODEL       11
+DOCKED: USER    Run = 11
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.73 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =   11.68 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.73 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.73 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 47.860927 141.036067 119.635478
+DOCKED: USER    NEWDPF quaternion0 -0.315531 0.121259 -0.006319 0.941115
+DOCKED: USER    NEWDPF axisangle0 -0.933281 0.358662 -0.018690 39.520818
+DOCKED: USER    NEWDPF quat0 -0.933281 0.358662 -0.018690 39.520818
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      47.791 138.319 120.625 -0.06 +0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      47.968 140.849 122.475 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      46.480 138.764 118.368 -0.21 +0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      49.114 143.266 120.833 -0.09 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      49.580 139.224 118.211 -0.06 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      46.013 142.806 120.990 -0.26 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      45.429 141.711 118.107 -0.35 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      50.165 140.319 121.094 -0.03 +0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      47.802 143.711 118.576 -0.40 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      45.330 140.249 120.884 -0.26 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      50.264 141.781 118.317 -0.17 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      47.626 141.181 116.726 -0.27 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      46.869 142.723 117.470 -0.59 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      48.725 139.306 121.731 -0.06 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      46.037 138.806 120.188 -0.42 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      49.557 143.223 119.013 -0.41 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      47.359 143.753 120.394 -0.92 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      48.234 138.276 118.807 -0.18 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      46.327 141.305 122.065 -0.38 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      50.579 140.280 119.392 -0.14 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      49.267 140.725 117.136 -0.36 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      45.015 141.750 119.809 -0.46 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      46.186 140.168 117.364 -0.51 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      49.408 141.862 121.837 -0.09 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 12 of 15
+Run: 12 Seed: 425011247 2091928687 [ Run 12 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.364
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 74.196 103.194 138.661 quatxyzw 0.335514 -0.568894 -0.280467 -0.696512 center 0.069 0.032 0.000 ntor 0
+State:	 74.196 103.194 138.661   0.468 -0.793 -0.391 -91.704  
+
+DOCKED: MODEL       12
+DOCKED: USER    Run = 12
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.36 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =   21.65 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.36 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.36 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 74.195787 103.194021 138.660753
+DOCKED: USER    NEWDPF quaternion0 0.335514 -0.568894 -0.280467 -0.696512
+DOCKED: USER    NEWDPF axisangle0 0.467586 -0.792833 -0.390871 -91.704426
+DOCKED: USER    NEWDPF quat0 0.467586 -0.792833 -0.390871 -91.704426
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      71.897 101.600 137.926 -0.11 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      72.127 103.198 140.618 -0.12 -0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      73.211 102.730 135.924 -0.24 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      75.153 103.725 141.264 -0.34 -0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      74.856 100.619 137.564 -0.32 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      73.508 105.836 139.624 -0.27 -0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      74.670 105.386 136.744 -0.13 -0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      73.694 101.069 140.444 -0.11 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      76.467 104.855 139.262 -0.18 -0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      71.825 104.738 137.899 -0.08 -0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      76.539 101.717 139.289 -0.15 -0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      76.237 103.257 136.570 -0.14 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      76.295 104.871 137.519 -0.26 -0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      72.069 101.584 139.669 -0.15 -0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      71.770 103.229 137.011 -0.22 -0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      76.594 103.226 140.176 -0.34 -0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      75.027 105.355 140.350 -0.53 -0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      73.337 101.100 136.838 -0.52 -0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      72.010 104.722 139.762 -0.70 -0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      75.041 100.603 139.427 -0.41 -0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      76.355 101.733 137.426 -0.21 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      73.323 105.853 137.761 -0.24 -0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      74.612 103.772 135.795 -0.31 -0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      73.752 102.683 141.393 -0.28 -0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 13 of 15
+Run: 13 Seed: 570373585 536368884 [ Run 13 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -7.373
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 78.845 142.743 121.246 quatxyzw 0.975784 -0.052815 -0.151647 0.148524 center 0.069 0.032 0.000 ntor 0
+State:	 78.845 142.743 121.246   0.987 -0.053 -0.153 162.917  
+
+DOCKED: MODEL       13
+DOCKED: USER    Run = 13
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -7.37 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    3.94 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -7.37 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -7.37 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 78.844830 142.743156 121.245857
+DOCKED: USER    NEWDPF quaternion0 0.975784 -0.052815 -0.151647 0.148524
+DOCKED: USER    NEWDPF axisangle0 0.986728 -0.053408 -0.153347 162.917223
+DOCKED: USER    NEWDPF quat0 0.986728 -0.053408 -0.153347 162.917223
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      78.728 144.961 119.393 -0.30 +0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      78.716 141.948 118.515 -0.29 -0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      77.604 145.365 121.757 -0.22 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      79.964 140.190 120.796 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      80.701 144.860 121.832 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      76.867 140.695 120.720 -0.38 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      76.540 142.729 123.088 -0.28 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      81.028 142.826 119.464 -0.11 +0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      78.840 140.594 123.159 -0.12 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      76.228 143.161 119.995 -0.34 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      81.340 142.394 122.557 -0.03 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      78.852 143.607 124.038 -0.05 +0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      78.015 141.936 123.926 -0.64 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      79.553 143.619 118.626 -0.35 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      77.010 144.724 120.100 -0.78 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      80.558 140.831 122.452 -0.20 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      78.246 139.953 121.503 -0.97 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      79.322 145.602 121.049 -0.26 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      77.110 141.726 119.177 -0.66 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      81.583 143.425 121.013 -0.11 +0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      80.459 143.829 123.376 -0.05 +0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      75.985 142.130 121.539 -0.57 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      77.377 144.401 123.200 -0.32 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      80.191 141.154 119.352 -0.01 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 14 of 15
+Run: 14 Seed: 205583184 1245126971 [ Run 14 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -6.989
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 37.313 123.793 113.438 quatxyzw 0.664180 0.268122 -0.597625 0.360305 center 0.069 0.032 0.000 ntor 0
+State:	 37.313 123.793 113.438   0.712  0.287 -0.641 137.762  
+
+DOCKED: MODEL       14
+DOCKED: USER    Run = 14
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -6.99 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    7.54 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -6.99 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -6.99 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 37.312624 123.792783 113.438052
+DOCKED: USER    NEWDPF quaternion0 0.664180 0.268122 -0.597625 0.360305
+DOCKED: USER    NEWDPF axisangle0 0.712002 0.287428 -0.640655 137.762137
+DOCKED: USER    NEWDPF quat0 0.712002 0.287428 -0.640655 137.762137
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      35.112 125.382 114.438 -0.37 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      35.061 123.854 111.696 -0.15 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      36.608 124.191 116.270 -0.34 -0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      38.003 123.324 110.740 -0.03 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      38.102 126.333 114.530 -0.34 -0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      36.508 121.182 112.480 -0.12 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      37.954 121.548 115.242 -0.23 -0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      36.657 125.967 111.768 -0.19 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      39.498 122.133 112.573 -0.04 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      35.014 122.245 114.391 -0.43 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      39.596 125.270 112.619 -0.09 -0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      39.550 123.661 115.314 -0.12 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      39.499 122.073 114.323 -0.20 -0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      35.112 125.443 112.687 -0.55 -0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      35.062 123.730 115.318 -0.63 -0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      39.549 123.785 111.692 -0.07 +0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      37.953 121.672 111.620 -0.13 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      36.658 125.843 115.390 -0.58 -0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      35.014 122.309 112.520 -0.52 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      38.102 126.398 112.658 -0.43 -0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      39.596 125.206 114.490 -0.37 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      36.508 121.117 114.352 -0.35 -0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      38.005 123.136 116.233 -0.54 -0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      36.605 124.379 110.777 -0.18 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+
+	BEGINNING GENETIC ALGORITHM DOCKING 15 of 15
+Run: 15 Seed: 1067379351 2129245911 [ Run 15 of 15 GA/GALS ]
+Beginning LAMARCKIAN GENETIC ALGORITHM (LGA), with a maximum of 2500000 energy evaluations.
+
+Final-Value: -7.010
+
+
+	FINAL GENETIC ALGORITHM DOCKED STATE
+	_______________________________________________
+
+
+Detailed state:  trans 56.328 101.014 102.644 quatxyzw 0.571402 0.539382 0.072246 0.614286 center 0.069 0.032 0.000 ntor 0
+State:	 56.328 101.014 102.644   0.724  0.684  0.092 104.200  
+
+DOCKED: MODEL       15
+DOCKED: USER    Run = 15
+DOCKED: USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+DOCKED: USER  
+DOCKED: USER    Estimated Free Energy of Binding    =   -7.01 kcal/mol  [=(1)+(2)+(3)-(4)]
+DOCKED: USER    Estimated Inhibition Constant, Ki   =    7.27 uM (micromolar)  [Temperature = 298.15 K]
+DOCKED: USER    
+DOCKED: USER    (1) Final Intermolecular Energy     =   -7.01 kcal/mol
+DOCKED: USER        vdW + Hbond + desolv Energy     =   -7.01 kcal/mol
+DOCKED: USER        Electrostatic Energy            =   +0.00 kcal/mol
+DOCKED: USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+DOCKED: USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+DOCKED: USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+DOCKED: USER    
+DOCKED: USER    
+DOCKED: USER    NEWDPF move Ligands/ZnO_12_0.pdbqt
+DOCKED: USER    NEWDPF about 0.069000 0.032000 0.000000
+DOCKED: USER    NEWDPF tran0 56.328454 101.014299 102.643858
+DOCKED: USER    NEWDPF quaternion0 0.571402 0.539382 0.072246 0.614286
+DOCKED: USER    NEWDPF axisangle0 0.724134 0.683555 0.091557 104.199823
+DOCKED: USER    NEWDPF quat0 0.724134 0.683555 0.091557 104.199823
+DOCKED: USER  keepresnum = 1 
+DOCKED: USER  
+DOCKED: REMARK  Name = 
+DOCKED: REMARK                            x       y       z     vdW  Elec       q    Type
+DOCKED: REMARK                         _______ _______ _______ _____ _____    ______ ____
+DOCKED: USER                              x       y       z     vdW  Elec       q    Type
+DOCKED: USER                           _______ _______ _______ _____ _____    ______ ____
+DOCKED: ROOT
+DOCKED: ATOM      1 ZN   UNL     1      53.959 102.529 103.321 -0.33 -0.00    +0.000 Zn
+DOCKED: ATOM      2 ZN   UNL     1      56.397 103.713 101.736 -0.37 +0.00    +0.000 Zn
+DOCKED: ATOM      3 ZN   UNL     2      53.598  99.940 102.902 -0.08 +0.00    +0.000 Zn
+DOCKED: ATOM      4 ZN   UNL     3      58.957 101.995 102.323 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM      5 ZN   UNL     2      55.432 100.642 105.351 -0.17 -0.00    +0.000 Zn
+DOCKED: ATOM      6 ZN   UNL     4      57.124 101.292  99.874 -0.16 +0.00    +0.000 Zn
+DOCKED: ATOM      7 ZN   UNL     4      55.698  98.701 100.924 -0.02 +0.00    +0.000 Zn
+DOCKED: ATOM      8 ZN   UNL     3      56.857 103.233 104.300 -0.30 -0.00    +0.000 Zn
+DOCKED: ATOM      9 ZN   UNL     4      58.596  99.405 101.904 -0.10 +0.00    +0.000 Zn
+DOCKED: ATOM     10 ZN   UNL     1      54.541 101.569 100.390 -0.16 +0.00    +0.000 Zn
+DOCKED: ATOM     11 ZN   UNL     3      58.015 100.365 104.835 -0.29 +0.00    +0.000 Zn
+DOCKED: ATOM     12 ZN   UNL     2      56.159  98.222 103.489 -0.03 -0.00    +0.000 Zn
+DOCKED: ATOM     13  O   UNL     4      57.219  98.323 101.949 -0.08 +0.00    +0.000 OA
+DOCKED: ATOM     14  O   UNL     1      55.336 103.612 103.276 -0.60 +0.00    +0.000 OA
+DOCKED: ATOM     15  O   UNL     1      53.548 101.474 101.829 -0.42 +0.00    +0.000 OA
+DOCKED: ATOM     16  O   UNL     3      59.007 100.460 103.396 -0.43 -0.00    +0.000 OA
+DOCKED: ATOM     17  O   UNL     4      58.547 100.939 100.831 -0.35 +0.00    +0.000 OA
+DOCKED: ATOM     18  O   UNL     2      54.009 100.995 104.393 -0.24 +0.00    +0.000 OA
+DOCKED: ATOM     19  O   UNL     1      56.013 102.725 100.341 -0.79 +0.00    +0.000 OA
+DOCKED: ATOM     20  O   UNL     3      56.904 101.798 105.303 -0.73 -0.00    +0.000 OA
+DOCKED: ATOM     21  O   UNL     2      56.543  99.209 104.883 -0.34 -0.00    +0.000 OA
+DOCKED: ATOM     22  O   UNL     4      55.652 100.136  99.922 -0.12 +0.00    +0.000 OA
+DOCKED: ATOM     23  O   UNL     2      54.638  98.600 102.464 -0.06 +0.00    +0.000 OA
+DOCKED: ATOM     24  O   UNL     3      57.918 103.334 102.760 -0.54 +0.00    +0.000 OA
+DOCKED: ENDROOT
+DOCKED: TORSDOF 0
+DOCKED: TER
+DOCKED: ENDMDL
+________________________________________________________________________________
+
+DPF> analysis                             # perform a ranked cluster analysis
+
+
+		CLUSTER ANALYSIS OF CONFORMATIONS
+		_________________________________
+
+Number of conformations = 15
+
+RMSD cluster analysis will be performed using the ligand atoms only (24 / 24 total atoms).
+
+Outputting structurally similar clusters, ranked in order of increasing energy.
+
+
+________________________________________________________________________________
+
+Number of distinct conformational clusters found = 7,  out of 15 runs,
+Using an rmsd-tolerance of 2.0 A
+
+
+	CLUSTERING HISTOGRAM
+	____________________
+
+________________________________________________________________________________
+     |           |     |           |     |                                    
+Clus | Lowest    | Run | Mean      | Num | Histogram                          
+-ter | Binding   |     | Binding   | in  |                                    
+Rank | Energy    |     | Energy    | Clus|    5    10   15   20   25   30   35
+_____|___________|_____|___________|_____|____:____|____:____|____:____|____:___
+   1 |     -7.38 |   6 |     -7.27 |   5 |#####
+   2 |     -7.01 |  15 |     -6.96 |   3 |###
+   3 |     -6.99 |  14 |     -6.99 |   1 |#
+   4 |     -6.84 |   7 |     -6.84 |   2 |##
+   5 |     -6.73 |  11 |     -6.73 |   1 |#
+   6 |     -6.50 |  10 |     -6.50 |   1 |#
+   7 |     -6.36 |  12 |     -6.34 |   2 |##
+_____|___________|_____|___________|_____|______________________________________
+
+
+Number of multi-member conformational clusters found = 4, out of 15 runs.
+
+	RMSD TABLE
+	__________
+
+_____________________________________________________________________
+     |      |      |           |         |                 |
+Rank | Sub- | Run  | Binding   | Cluster | Reference       | Grep
+     | Rank |      | Energy    | RMSD    | RMSD            | Pattern
+_____|______|______|___________|_________|_________________|___________
+   1      1      6       -7.38      0.00    200.56           RANKING
+   1      2     13       -7.37      0.01    200.56           RANKING
+   1      3      5       -7.33      0.10    200.55           RANKING
+   1      4      9       -7.31      0.15    200.54           RANKING
+   1      5      8       -6.96      1.52    200.46           RANKING
+   2      1     15       -7.01      0.00    151.92           RANKING
+   2      2      1       -7.00      0.03    151.92           RANKING
+   2      3      4       -6.88      1.21    151.98           RANKING
+   3      1     14       -6.99      0.00    169.41           RANKING
+   4      1      7       -6.84      0.00    163.35           RANKING
+   4      2      2       -6.83      0.06    163.36           RANKING
+   5      1     11       -6.73      0.00    188.40           RANKING
+   6      1     10       -6.50      0.00    233.71           RANKING
+   7      1     12       -6.36      0.00    185.43           RANKING
+   7      2      3       -6.31      1.57    184.39           RANKING
+_______________________________________________________________________
+
+
+
+	INFORMATION ENTROPY ANALYSIS FOR THIS CLUSTERING
+	________________________________________________
+
+
+Information entropy for this clustering = 0.65  (rmstol = 2.00 Angstrom)
+
+_______________________________________________________________________
+
+
+	STATISTICAL MECHANICAL ANALYSIS
+	_______________________________
+
+
+Partition function, Q =    15.18            at Temperature, T = 298.15 K
+Free energy,        A ~ -1611.39 kcal/mol   at Temperature, T = 298.15 K
+Internal energy,    U =    -6.92 kcal/mol   at Temperature, T = 298.15 K
+Entropy,            S =     5.38 kcal/mol/K at Temperature, T = 298.15 K
+
+_______________________________________________________________________
+
+
+	LOWEST ENERGY DOCKED CONFORMATION from EACH CLUSTER
+	___________________________________________________
+
+
+
+Keeping original residue number (specified in the input PDBQ file) for outputting.
+
+MODEL        6
+USER    Run = 6
+USER    Cluster Rank = 1
+USER    Number of conformations in this cluster = 5
+USER  
+USER    RMSD from reference structure       = 200.561 A
+USER  
+USER    Estimated Free Energy of Binding    =   -7.38 kcal/mol  [=(1)+(2)+(3)-(4)]
+USER    Estimated Inhibition Constant, Ki   =    3.92 uM (micromolar)  [Temperature = 298.15 K]
+USER    
+USER    (1) Final Intermolecular Energy     =   -7.38 kcal/mol
+USER        vdW + Hbond + desolv Energy     =   -7.38 kcal/mol
+USER        Electrostatic Energy            =   +0.00 kcal/mol
+USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+USER    
+USER    
+USER  
+USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+USER    NEWDPF move	Ligands/ZnO_12_0.pdbqt
+USER    NEWDPF about	0.069000 0.032000 0.000000
+USER    NEWDPF tran0	78.755065 142.718190 121.310540
+USER    NEWDPF axisangle0	0.586805 -0.414487 0.695600 170.105769
+USER    NEWDPF quaternion0	0.584619 -0.412943 0.693009 0.086236
+USER  
+USER                              x       y       z    vdW   Elec        q     RMS 
+ATOM      1 ZN   UNL     1      81.341 142.404 122.567 -0.03 +0.00    +0.000    200.561
+ATOM      2 ZN   UNL     1      79.976 140.196 120.802 -0.29 +0.00    +0.000    200.561
+ATOM      3 ZN   UNL     2      80.697 144.868 121.842 -0.04 +0.00    +0.000    200.561
+ATOM      4 ZN   UNL     3      76.878 140.693 120.720 -0.38 +0.00    +0.000    200.561
+ATOM      5 ZN   UNL     2      78.847 143.609 124.043 -0.05 +0.00    +0.000    200.561
+ATOM      6 ZN   UNL     4      78.728 141.951 118.519 -0.29 -0.00    +0.000    200.561
+ATOM      7 ZN   UNL     4      78.729 144.965 119.398 -0.30 +0.00    +0.000    200.561
+ATOM      8 ZN   UNL     3      78.846 140.596 123.164 -0.12 +0.00    +0.000    200.561
+ATOM      9 ZN   UNL     4      76.234 143.157 119.995 -0.33 +0.00    +0.000    200.561
+ATOM     10 ZN   UNL     1      81.034 142.836 119.473 -0.11 +0.00    +0.000    200.561
+ATOM     11 ZN   UNL     3      76.541 142.725 123.089 -0.28 +0.00    +0.000    200.561
+ATOM     12 ZN   UNL     2      77.599 145.364 121.760 -0.22 -0.00    +0.000    200.561
+ATOM     13  O   UNL     4      77.011 144.723 120.102 -0.78 +0.00    +0.000    200.561
+ATOM     14  O   UNL     1      80.564 140.838 122.460 -0.20 +0.00    +0.000    200.561
+ATOM     15  O   UNL     1      81.585 143.436 121.023 -0.11 +0.00    +0.000    200.561
+ATOM     16  O   UNL     3      75.990 142.125 121.539 -0.57 +0.00    +0.000    200.561
+ATOM     17  O   UNL     4      77.121 141.725 119.177 -0.65 +0.00    +0.000    200.561
+ATOM     18  O   UNL     2      80.454 143.836 123.386 -0.05 +0.00    +0.000    200.561
+ATOM     19  O   UNL     1      80.203 141.162 119.359 -0.02 +0.00    +0.000    200.561
+ATOM     20  O   UNL     3      78.016 141.935 123.929 -0.64 +0.00    +0.000    200.561
+ATOM     21  O   UNL     2      77.372 144.398 123.203 -0.32 +0.00    +0.000    200.561
+ATOM     22  O   UNL     4      79.559 143.625 118.633 -0.35 +0.00    +0.000    200.561
+ATOM     23  O   UNL     2      79.317 145.606 121.056 -0.26 +0.00    +0.000    200.561
+ATOM     24  O   UNL     3      78.258 139.955 121.506 -0.97 +0.00    +0.000    200.561
+TER
+ENDMDL
+MODEL       15
+USER    Run = 15
+USER    Cluster Rank = 2
+USER    Number of conformations in this cluster = 3
+USER  
+USER    RMSD from reference structure       = 151.918 A
+USER  
+USER    Estimated Free Energy of Binding    =   -7.01 kcal/mol  [=(1)+(2)+(3)-(4)]
+USER    Estimated Inhibition Constant, Ki   =    7.27 uM (micromolar)  [Temperature = 298.15 K]
+USER    
+USER    (1) Final Intermolecular Energy     =   -7.01 kcal/mol
+USER        vdW + Hbond + desolv Energy     =   -7.01 kcal/mol
+USER        Electrostatic Energy            =   +0.00 kcal/mol
+USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+USER    
+USER    
+USER  
+USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+USER    NEWDPF move	Ligands/ZnO_12_0.pdbqt
+USER    NEWDPF about	0.069000 0.032000 0.000000
+USER    NEWDPF tran0	56.328454 101.014299 102.643858
+USER    NEWDPF axisangle0	0.724134 0.683555 0.091557 104.199823
+USER    NEWDPF quaternion0	0.571402 0.539382 0.072246 0.614286
+USER  
+USER                              x       y       z    vdW   Elec        q     RMS 
+ATOM      1 ZN   UNL     1      53.959 102.529 103.321 -0.33 -0.00    +0.000    151.918
+ATOM      2 ZN   UNL     1      56.397 103.713 101.736 -0.37 +0.00    +0.000    151.918
+ATOM      3 ZN   UNL     2      53.598  99.940 102.902 -0.08 +0.00    +0.000    151.918
+ATOM      4 ZN   UNL     3      58.957 101.995 102.323 -0.29 +0.00    +0.000    151.918
+ATOM      5 ZN   UNL     2      55.432 100.642 105.351 -0.17 -0.00    +0.000    151.918
+ATOM      6 ZN   UNL     4      57.124 101.292  99.874 -0.16 +0.00    +0.000    151.918
+ATOM      7 ZN   UNL     4      55.698  98.701 100.924 -0.02 +0.00    +0.000    151.918
+ATOM      8 ZN   UNL     3      56.857 103.233 104.300 -0.30 -0.00    +0.000    151.918
+ATOM      9 ZN   UNL     4      58.596  99.405 101.904 -0.10 +0.00    +0.000    151.918
+ATOM     10 ZN   UNL     1      54.541 101.569 100.390 -0.16 +0.00    +0.000    151.918
+ATOM     11 ZN   UNL     3      58.015 100.365 104.835 -0.29 +0.00    +0.000    151.918
+ATOM     12 ZN   UNL     2      56.159  98.222 103.489 -0.03 -0.00    +0.000    151.918
+ATOM     13  O   UNL     4      57.219  98.323 101.949 -0.08 +0.00    +0.000    151.918
+ATOM     14  O   UNL     1      55.336 103.612 103.276 -0.60 +0.00    +0.000    151.918
+ATOM     15  O   UNL     1      53.548 101.474 101.829 -0.42 +0.00    +0.000    151.918
+ATOM     16  O   UNL     3      59.007 100.460 103.396 -0.43 -0.00    +0.000    151.918
+ATOM     17  O   UNL     4      58.547 100.939 100.831 -0.35 +0.00    +0.000    151.918
+ATOM     18  O   UNL     2      54.009 100.995 104.393 -0.24 +0.00    +0.000    151.918
+ATOM     19  O   UNL     1      56.013 102.725 100.341 -0.79 +0.00    +0.000    151.918
+ATOM     20  O   UNL     3      56.904 101.798 105.303 -0.73 -0.00    +0.000    151.918
+ATOM     21  O   UNL     2      56.543  99.209 104.883 -0.34 -0.00    +0.000    151.918
+ATOM     22  O   UNL     4      55.652 100.136  99.922 -0.12 +0.00    +0.000    151.918
+ATOM     23  O   UNL     2      54.638  98.600 102.464 -0.06 +0.00    +0.000    151.918
+ATOM     24  O   UNL     3      57.918 103.334 102.760 -0.54 +0.00    +0.000    151.918
+TER
+ENDMDL
+MODEL       14
+USER    Run = 14
+USER    Cluster Rank = 3
+USER    Number of conformations in this cluster = 1
+USER  
+USER    RMSD from reference structure       = 169.407 A
+USER  
+USER    Estimated Free Energy of Binding    =   -6.99 kcal/mol  [=(1)+(2)+(3)-(4)]
+USER    Estimated Inhibition Constant, Ki   =    7.54 uM (micromolar)  [Temperature = 298.15 K]
+USER    
+USER    (1) Final Intermolecular Energy     =   -6.99 kcal/mol
+USER        vdW + Hbond + desolv Energy     =   -6.99 kcal/mol
+USER        Electrostatic Energy            =   +0.00 kcal/mol
+USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+USER    
+USER    
+USER  
+USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+USER    NEWDPF move	Ligands/ZnO_12_0.pdbqt
+USER    NEWDPF about	0.069000 0.032000 0.000000
+USER    NEWDPF tran0	37.312624 123.792783 113.438052
+USER    NEWDPF axisangle0	0.712002 0.287428 -0.640655 137.762137
+USER    NEWDPF quaternion0	0.664180 0.268122 -0.597625 0.360305
+USER  
+USER                              x       y       z    vdW   Elec        q     RMS 
+ATOM      1 ZN   UNL     1      35.112 125.382 114.438 -0.37 -0.00    +0.000    169.407
+ATOM      2 ZN   UNL     1      35.061 123.854 111.696 -0.15 +0.00    +0.000    169.407
+ATOM      3 ZN   UNL     2      36.608 124.191 116.270 -0.34 -0.00    +0.000    169.407
+ATOM      4 ZN   UNL     3      38.003 123.324 110.740 -0.03 +0.00    +0.000    169.407
+ATOM      5 ZN   UNL     2      38.102 126.333 114.530 -0.34 -0.00    +0.000    169.407
+ATOM      6 ZN   UNL     4      36.508 121.182 112.480 -0.12 +0.00    +0.000    169.407
+ATOM      7 ZN   UNL     4      37.954 121.548 115.242 -0.23 -0.00    +0.000    169.407
+ATOM      8 ZN   UNL     3      36.657 125.967 111.768 -0.19 -0.00    +0.000    169.407
+ATOM      9 ZN   UNL     4      39.498 122.133 112.573 -0.04 +0.00    +0.000    169.407
+ATOM     10 ZN   UNL     1      35.014 122.245 114.391 -0.43 +0.00    +0.000    169.407
+ATOM     11 ZN   UNL     3      39.596 125.270 112.619 -0.09 -0.00    +0.000    169.407
+ATOM     12 ZN   UNL     2      39.550 123.661 115.314 -0.12 -0.00    +0.000    169.407
+ATOM     13  O   UNL     4      39.499 122.073 114.323 -0.20 -0.00    +0.000    169.407
+ATOM     14  O   UNL     1      35.112 125.443 112.687 -0.55 -0.00    +0.000    169.407
+ATOM     15  O   UNL     1      35.062 123.730 115.318 -0.63 -0.00    +0.000    169.407
+ATOM     16  O   UNL     3      39.549 123.785 111.692 -0.07 +0.00    +0.000    169.407
+ATOM     17  O   UNL     4      37.953 121.672 111.620 -0.13 +0.00    +0.000    169.407
+ATOM     18  O   UNL     2      36.658 125.843 115.390 -0.58 -0.00    +0.000    169.407
+ATOM     19  O   UNL     1      35.014 122.309 112.520 -0.52 +0.00    +0.000    169.407
+ATOM     20  O   UNL     3      38.102 126.398 112.658 -0.43 -0.00    +0.000    169.407
+ATOM     21  O   UNL     2      39.596 125.206 114.490 -0.37 -0.00    +0.000    169.407
+ATOM     22  O   UNL     4      36.508 121.117 114.352 -0.35 -0.00    +0.000    169.407
+ATOM     23  O   UNL     2      38.005 123.136 116.233 -0.54 -0.00    +0.000    169.407
+ATOM     24  O   UNL     3      36.605 124.379 110.777 -0.18 +0.00    +0.000    169.407
+TER
+ENDMDL
+MODEL        7
+USER    Run = 7
+USER    Cluster Rank = 4
+USER    Number of conformations in this cluster = 2
+USER  
+USER    RMSD from reference structure       = 163.353 A
+USER  
+USER    Estimated Free Energy of Binding    =   -6.84 kcal/mol  [=(1)+(2)+(3)-(4)]
+USER    Estimated Inhibition Constant, Ki   =    9.61 uM (micromolar)  [Temperature = 298.15 K]
+USER    
+USER    (1) Final Intermolecular Energy     =   -6.84 kcal/mol
+USER        vdW + Hbond + desolv Energy     =   -6.84 kcal/mol
+USER        Electrostatic Energy            =   +0.00 kcal/mol
+USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+USER    
+USER    
+USER  
+USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+USER    NEWDPF move	Ligands/ZnO_12_0.pdbqt
+USER    NEWDPF about	0.069000 0.032000 0.000000
+USER    NEWDPF tran0	79.319621 91.624739 113.533492
+USER    NEWDPF axisangle0	0.680738 0.215383 0.700147 143.779899
+USER    NEWDPF quaternion0	0.647015 0.204713 0.665462 0.310843
+USER  
+USER                              x       y       z    vdW   Elec        q     RMS 
+ATOM      1 ZN   UNL     1      80.015  94.336 114.262 -0.34 -0.00    +0.000    163.353
+ATOM      2 ZN   UNL     1      82.049  91.945 114.282 -0.25 -0.00    +0.000    163.353
+ATOM      3 ZN   UNL     2      78.116  94.078 112.435 -0.38 -0.00    +0.000    163.353
+ATOM      4 ZN   UNL     3      80.476  89.238 114.504 -0.06 -0.00    +0.000    163.353
+ATOM      5 ZN   UNL     2      77.405  92.903 115.257 -0.20 -0.00    +0.000    163.353
+ATOM      6 ZN   UNL     4      81.186  90.413 111.682 -0.09 -0.00    +0.000    163.353
+ATOM      7 ZN   UNL     4      78.374  91.445 110.744 -0.16 -0.00    +0.000    163.353
+ATOM      8 ZN   UNL     3      80.217  91.871 116.195 -0.36 -0.00    +0.000    163.353
+ATOM      9 ZN   UNL     4      78.577  88.980 112.677 -0.02 -0.00    +0.000    163.353
+ATOM     10 ZN   UNL     1      80.948  93.048 111.557 -0.40 -0.00    +0.000    163.353
+ATOM     11 ZN   UNL     3      77.644  90.269 115.382 -0.07 -0.00    +0.000    163.353
+ATOM     12 ZN   UNL     2      76.543  91.371 112.657 -0.15 -0.00    +0.000    163.353
+ATOM     13  O   UNL     4      77.577  90.091 111.763 -0.15 -0.00    +0.000    163.353
+ATOM     14  O   UNL     1      81.014  93.225 115.176 -0.53 -0.00    +0.000    163.353
+ATOM     15  O   UNL     1      79.981  94.245 112.392 -0.62 -0.00    +0.000    163.353
+ATOM     16  O   UNL     3      78.610  89.072 114.547 -0.08 -0.00    +0.000    163.353
+ATOM     17  O   UNL     4      80.442  89.146 112.634 -0.08 -0.00    +0.000    163.353
+ATOM     18  O   UNL     2      78.150  94.170 114.305 -0.40 -0.00    +0.000    163.353
+ATOM     19  O   UNL     1      82.016  91.859 112.533 -0.65 -0.00    +0.000    163.353
+ATOM     20  O   UNL     3      78.473  91.715 116.234 -0.30 -0.00    +0.000    163.353
+ATOM     21  O   UNL     2      76.576  91.457 114.406 -0.20 -0.00    +0.000    163.353
+ATOM     22  O   UNL     4      80.118  91.601 110.705 -0.39 -0.00    +0.000    163.353
+ATOM     23  O   UNL     2      77.340  92.725 111.639 -0.48 -0.00    +0.000    163.353
+ATOM     24  O   UNL     3      81.252  90.591 115.300 -0.48 -0.00    +0.000    163.353
+TER
+ENDMDL
+MODEL       11
+USER    Run = 11
+USER    Cluster Rank = 5
+USER    Number of conformations in this cluster = 1
+USER  
+USER    RMSD from reference structure       = 188.400 A
+USER  
+USER    Estimated Free Energy of Binding    =   -6.73 kcal/mol  [=(1)+(2)+(3)-(4)]
+USER    Estimated Inhibition Constant, Ki   =   11.68 uM (micromolar)  [Temperature = 298.15 K]
+USER    
+USER    (1) Final Intermolecular Energy     =   -6.73 kcal/mol
+USER        vdW + Hbond + desolv Energy     =   -6.73 kcal/mol
+USER        Electrostatic Energy            =   +0.00 kcal/mol
+USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+USER    
+USER    
+USER  
+USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+USER    NEWDPF move	Ligands/ZnO_12_0.pdbqt
+USER    NEWDPF about	0.069000 0.032000 0.000000
+USER    NEWDPF tran0	47.860927 141.036067 119.635478
+USER    NEWDPF axisangle0	-0.933281 0.358662 -0.018690 39.520818
+USER    NEWDPF quaternion0	-0.315531 0.121259 -0.006319 0.941115
+USER  
+USER                              x       y       z    vdW   Elec        q     RMS 
+ATOM      1 ZN   UNL     1      47.791 138.319 120.625 -0.06 +0.00    +0.000    188.400
+ATOM      2 ZN   UNL     1      47.968 140.849 122.475 -0.04 +0.00    +0.000    188.400
+ATOM      3 ZN   UNL     2      46.480 138.764 118.368 -0.21 +0.00    +0.000    188.400
+ATOM      4 ZN   UNL     3      49.114 143.266 120.833 -0.09 +0.00    +0.000    188.400
+ATOM      5 ZN   UNL     2      49.580 139.224 118.211 -0.06 +0.00    +0.000    188.400
+ATOM      6 ZN   UNL     4      46.013 142.806 120.990 -0.26 +0.00    +0.000    188.400
+ATOM      7 ZN   UNL     4      45.429 141.711 118.107 -0.35 +0.00    +0.000    188.400
+ATOM      8 ZN   UNL     3      50.165 140.319 121.094 -0.03 +0.00    +0.000    188.400
+ATOM      9 ZN   UNL     4      47.802 143.711 118.576 -0.40 +0.00    +0.000    188.400
+ATOM     10 ZN   UNL     1      45.330 140.249 120.884 -0.26 +0.00    +0.000    188.400
+ATOM     11 ZN   UNL     3      50.264 141.781 118.317 -0.17 +0.00    +0.000    188.400
+ATOM     12 ZN   UNL     2      47.626 141.181 116.726 -0.27 -0.00    +0.000    188.400
+ATOM     13  O   UNL     4      46.869 142.723 117.470 -0.59 +0.00    +0.000    188.400
+ATOM     14  O   UNL     1      48.725 139.306 121.731 -0.06 +0.00    +0.000    188.400
+ATOM     15  O   UNL     1      46.037 138.806 120.188 -0.42 +0.00    +0.000    188.400
+ATOM     16  O   UNL     3      49.557 143.223 119.013 -0.41 +0.00    +0.000    188.400
+ATOM     17  O   UNL     4      47.359 143.753 120.394 -0.92 +0.00    +0.000    188.400
+ATOM     18  O   UNL     2      48.234 138.276 118.807 -0.18 +0.00    +0.000    188.400
+ATOM     19  O   UNL     1      46.327 141.305 122.065 -0.38 +0.00    +0.000    188.400
+ATOM     20  O   UNL     3      50.579 140.280 119.392 -0.14 +0.00    +0.000    188.400
+ATOM     21  O   UNL     2      49.267 140.725 117.136 -0.36 -0.00    +0.000    188.400
+ATOM     22  O   UNL     4      45.015 141.750 119.809 -0.46 +0.00    +0.000    188.400
+ATOM     23  O   UNL     2      46.186 140.168 117.364 -0.51 +0.00    +0.000    188.400
+ATOM     24  O   UNL     3      49.408 141.862 121.837 -0.09 +0.00    +0.000    188.400
+TER
+ENDMDL
+MODEL       10
+USER    Run = 10
+USER    Cluster Rank = 6
+USER    Number of conformations in this cluster = 1
+USER  
+USER    RMSD from reference structure       = 233.708 A
+USER  
+USER    Estimated Free Energy of Binding    =   -6.50 kcal/mol  [=(1)+(2)+(3)-(4)]
+USER    Estimated Inhibition Constant, Ki   =   17.20 uM (micromolar)  [Temperature = 298.15 K]
+USER    
+USER    (1) Final Intermolecular Energy     =   -6.50 kcal/mol
+USER        vdW + Hbond + desolv Energy     =   -6.50 kcal/mol
+USER        Electrostatic Energy            =   +0.00 kcal/mol
+USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+USER    
+USER    
+USER  
+USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+USER    NEWDPF move	Ligands/ZnO_12_0.pdbqt
+USER    NEWDPF about	0.069000 0.032000 0.000000
+USER    NEWDPF tran0	94.657882 120.193321 180.114280
+USER    NEWDPF axisangle0	-0.416477 0.032103 0.908579 72.661614
+USER    NEWDPF quaternion0	-0.246740 0.019020 0.538285 0.805610
+USER  
+USER                              x       y       z    vdW   Elec        q     RMS 
+ATOM      1 ZN   UNL     1      92.732 118.520 181.477 -0.27 -0.00    +0.000    233.708
+ATOM      2 ZN   UNL     1      95.615 119.110 182.568 -0.06 -0.00    +0.000    233.708
+ATOM      3 ZN   UNL     2      91.730 120.508 180.042 -0.19 -0.00    +0.000    233.708
+ATOM      4 ZN   UNL     3      97.473 119.980 180.193 -0.17 -0.00    +0.000    233.708
+ATOM      5 ZN   UNL     2      93.290 118.340 178.393 -0.28 -0.00    +0.000    233.708
+ATOM      6 ZN   UNL     4      95.913 122.149 181.841 -0.03 +0.00    +0.000    233.708
+ATOM      7 ZN   UNL     4      93.678 122.958 179.792 -0.05 +0.00    +0.000    233.708
+ATOM      8 ZN   UNL     3      95.525 117.531 180.443 -0.25 -0.00    +0.000    233.708
+ATOM      9 ZN   UNL     4      96.471 121.968 178.758 -0.24 +0.00    +0.000    233.708
+ATOM     10 ZN   UNL     1      93.463 121.394 182.505 -0.03 -0.00    +0.000    233.708
+ATOM     11 ZN   UNL     3      95.740 119.094 177.729 -0.38 -0.00    +0.000    233.708
+ATOM     12 ZN   UNL     2      93.588 121.379 177.666 -0.23 -0.00    +0.000    233.708
+ATOM     13  O   UNL     4      94.857 122.546 178.397 -0.29 -0.00    +0.000    233.708
+ATOM     14  O   UNL     1      94.346 117.943 181.837 -0.49 -0.00    +0.000    233.708
+ATOM     15  O   UNL     1      92.276 120.304 181.822 -0.22 -0.00    +0.000    233.708
+ATOM     16  O   UNL     3      96.927 120.185 178.412 -0.77 +0.00    +0.000    233.708
+ATOM     17  O   UNL     4      97.017 121.764 180.537 -0.19 +0.00    +0.000    233.708
+ATOM     18  O   UNL     2      92.186 118.725 179.697 -0.60 -0.00    +0.000    233.708
+ATOM     19  O   UNL     1      95.188 120.778 182.890 -0.06 -0.00    +0.000    233.708
+ATOM     20  O   UNL     3      95.015 117.723 178.778 -0.54 -0.00    +0.000    233.708
+ATOM     21  O   UNL     2      94.015 119.711 177.344 -0.57 -0.00    +0.000    233.708
+ATOM     22  O   UNL     4      94.188 122.766 181.456 -0.05 +0.00    +0.000    233.708
+ATOM     23  O   UNL     2      92.408 121.790 179.061 -0.27 +0.00    +0.000    233.708
+ATOM     24  O   UNL     3      96.795 118.698 181.173 -0.28 -0.00    +0.000    233.708
+TER
+ENDMDL
+MODEL       12
+USER    Run = 12
+USER    Cluster Rank = 7
+USER    Number of conformations in this cluster = 2
+USER  
+USER    RMSD from reference structure       = 185.427 A
+USER  
+USER    Estimated Free Energy of Binding    =   -6.36 kcal/mol  [=(1)+(2)+(3)-(4)]
+USER    Estimated Inhibition Constant, Ki   =   21.65 uM (micromolar)  [Temperature = 298.15 K]
+USER    
+USER    (1) Final Intermolecular Energy     =   -6.36 kcal/mol
+USER        vdW + Hbond + desolv Energy     =   -6.36 kcal/mol
+USER        Electrostatic Energy            =   +0.00 kcal/mol
+USER    (2) Final Total Internal Energy     =   +0.00 kcal/mol
+USER    (3) Torsional Free Energy           =   +0.00 kcal/mol
+USER    (4) Unbound System's Energy  [=(2)] =   +0.00 kcal/mol
+USER    
+USER    
+USER  
+USER    DPF = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dpf
+USER    NEWDPF move	Ligands/ZnO_12_0.pdbqt
+USER    NEWDPF about	0.069000 0.032000 0.000000
+USER    NEWDPF tran0	74.195787 103.194021 138.660753
+USER    NEWDPF axisangle0	0.467586 -0.792833 -0.390871 -91.704426
+USER    NEWDPF quaternion0	0.335514 -0.568894 -0.280467 -0.696512
+USER  
+USER                              x       y       z    vdW   Elec        q     RMS 
+ATOM      1 ZN   UNL     1      71.897 101.600 137.926 -0.11 -0.00    +0.000    185.427
+ATOM      2 ZN   UNL     1      72.127 103.198 140.618 -0.12 -0.00    +0.000    185.427
+ATOM      3 ZN   UNL     2      73.211 102.730 135.924 -0.24 -0.00    +0.000    185.427
+ATOM      4 ZN   UNL     3      75.153 103.725 141.264 -0.34 -0.00    +0.000    185.427
+ATOM      5 ZN   UNL     2      74.856 100.619 137.564 -0.32 +0.00    +0.000    185.427
+ATOM      6 ZN   UNL     4      73.508 105.836 139.624 -0.27 -0.00    +0.000    185.427
+ATOM      7 ZN   UNL     4      74.670 105.386 136.744 -0.13 -0.00    +0.000    185.427
+ATOM      8 ZN   UNL     3      73.694 101.069 140.444 -0.11 -0.00    +0.000    185.427
+ATOM      9 ZN   UNL     4      76.467 104.855 139.262 -0.18 -0.00    +0.000    185.427
+ATOM     10 ZN   UNL     1      71.825 104.738 137.899 -0.08 -0.00    +0.000    185.427
+ATOM     11 ZN   UNL     3      76.539 101.717 139.289 -0.15 -0.00    +0.000    185.427
+ATOM     12 ZN   UNL     2      76.237 103.257 136.570 -0.14 -0.00    +0.000    185.427
+ATOM     13  O   UNL     4      76.295 104.871 137.519 -0.26 -0.00    +0.000    185.427
+ATOM     14  O   UNL     1      72.069 101.584 139.669 -0.15 -0.00    +0.000    185.427
+ATOM     15  O   UNL     1      71.770 103.229 137.011 -0.22 -0.00    +0.000    185.427
+ATOM     16  O   UNL     3      76.594 103.226 140.176 -0.34 -0.00    +0.000    185.427
+ATOM     17  O   UNL     4      75.027 105.355 140.350 -0.53 -0.00    +0.000    185.427
+ATOM     18  O   UNL     2      73.337 101.100 136.838 -0.52 -0.00    +0.000    185.427
+ATOM     19  O   UNL     1      72.010 104.722 139.762 -0.70 -0.00    +0.000    185.427
+ATOM     20  O   UNL     3      75.041 100.603 139.427 -0.41 -0.00    +0.000    185.427
+ATOM     21  O   UNL     2      76.355 101.733 137.426 -0.21 -0.00    +0.000    185.427
+ATOM     22  O   UNL     4      73.323 105.853 137.761 -0.24 -0.00    +0.000    185.427
+ATOM     23  O   UNL     2      74.612 103.772 135.795 -0.31 -0.00    +0.000    185.427
+ATOM     24  O   UNL     3      73.752 102.683 141.393 -0.28 -0.00    +0.000    185.427
+TER
+ENDMDL
+
+
+AVSFLD: # AVS field file
+AVSFLD: #
+AVSFLD: # Created by AutoDock
+AVSFLD: #
+AVSFLD: ndim=2           # number of dimensions in the field
+AVSFLD: nspace=1         # number of physical coordinates
+AVSFLD: veclen=7         # vector size
+AVSFLD: dim1=24          # atoms
+AVSFLD: dim2=7           # conformations
+AVSFLD: data=Real       # data type (byte,integer,Real,double)
+AVSFLD: field=uniform    # field coordinate layout
+AVSFLD: label= x y z vdW Elec q RMS
+AVSFLD: variable 1 file = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dlg.pdb filetype = ascii offset = 5 stride = 12
+AVSFLD: variable 2 file = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dlg.pdb filetype = ascii offset = 6 stride = 12
+AVSFLD: variable 3 file = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dlg.pdb filetype = ascii offset = 7 stride = 12
+AVSFLD: variable 4 file = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dlg.pdb filetype = ascii offset = 8 stride = 12
+AVSFLD: variable 5 file = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dlg.pdb filetype = ascii offset = 9 stride = 12
+AVSFLD: variable 6 file = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dlg.pdb filetype = ascii offset = 10 stride = 12
+AVSFLD: variable 7 file = Results/ZnO_12_0_1hzh/ZnO_12_0_1hzh.dlg.pdb filetype = ascii offset = 11 stride = 12
+AVSFLD: # end of file
+
+>>> Closing the docking parameter file (DPF)...
+This docking finished at:			1:14 37" p.m., 06/25/2026
+
+
+________________________________________________________________________________
+
+autodock4: Successful Completion on "CIE-QF-254-P1"
+
+Real= 2m 30.10s,  CPU= 2m 29.58s,  System= 0.11s
+________________________________________________________________________________
+

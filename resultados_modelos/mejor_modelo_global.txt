@@ -1,0 +1,2 @@
+Mejor modelo por TEST_RMSE: PLSRegression
+TEST_RMSE: 0.2669

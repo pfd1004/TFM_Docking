@@ -1,0 +1,5 @@
+modelo,CV_RMSE,TEST_MAE,TEST_RMSE,TEST_R2,best_params
+Ridge,0.4444317872631558,0.2527382683083844,0.31256425285595457,0.9470671701805294,{'model__alpha': 0.1}
+PLSRegression,0.6580046572937107,0.22097218430319393,0.26687636696309924,0.9602459363978146,{'model__n_components': 6}
+RandomForest,0.6518564949709766,0.5070771647727264,0.642619916084701,0.7739476156744021,"{'model__max_depth': 10, 'model__max_features': 1.0, 'model__min_samples_leaf': 1, 'model__n_estimators': 600}"
+ExtraTrees,0.544830036118359,0.30193764646464516,0.3796800808163792,0.9203636283831893,"{'model__max_depth': 10, 'model__max_features': 0.5, 'model__min_samples_leaf': 1, 'model__n_estimators': 300}"
