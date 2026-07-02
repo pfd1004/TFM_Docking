@@ -1,0 +1,19 @@
+\capitulo{2}{Objetivos}
+
+El objetivo general de este Trabajo Fin de Máster es desarrollar y aplicar una metodología computacional reproducible para estudiar la interacción entre agentes de recubrimiento de nanopartículas metálicas y proteínas plasmáticas humanas, combinando acoplamiento molecular, descriptores moleculares, variables de membrana y aprendizaje automático.
+
+De forma específica, se plantean los siguientes objetivos:
+
+1. Seleccionar y preparar una biblioteca de agentes de recubrimiento representativos de nanopartículas metálicas y metal-óxido.
+2. Optimizar las estructuras moleculares de los ligandos y validar las geometrías mediante análisis de frecuencias vibracionales.
+3. Preparar las estructuras de las proteínas plasmáticas diana y organizar los cálculos de docking ligando-proteína.
+4. Construir una matriz de afinidades ligando-proteína para cuatro proteínas plasmáticas.
+5. Calcular descriptores moleculares 2D/3D mediante RDKit y combinarlos con los resultados de docking.
+6. Extraer variables de membrana procedentes de cálculos COSMOtherm/COSMOmic en DMPC y evaluar su utilidad como información complementaria.
+7. Desarrollar modelos de regresión multisalida para predecir afinidades de docking frente a las proteínas estudiadas.
+8. Comparar bloques de variables RDKit, membrana y combinaciones de ambos, incluyendo modelos lineales, PLS, métodos de árboles y reducción dimensional mediante PCA.
+9. Analizar los resultados de docking nanopartícula-proteína como una capa contextual independiente.
+10. Generar un ranking exploratorio de combinaciones ligando-nanopartícula-proteína mediante puntuaciones normalizadas.
+11. Automatizar la generación de tablas, figuras y una aplicación de visualización para facilitar la trazabilidad y reproducibilidad del flujo de trabajo.
+12. Discutir las limitaciones del enfoque y proponer líneas futuras orientadas a complejos ligando-nanopartícula-proteína completos.
+

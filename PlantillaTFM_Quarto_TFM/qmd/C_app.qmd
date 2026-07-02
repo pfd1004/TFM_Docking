@@ -1,0 +1,9 @@
+\apendice{Aplicación de visualización}
+
+La aplicación Streamlit permite explorar resultados de modelos, predicciones, variables de membrana, docking nanopartícula-proteína y ranking contextual. Se ejecuta desde la raíz del proyecto mediante:
+
+```cmd
+streamlit run app\app_tfm.py
+```
+
+La aplicación se considera una herramienta auxiliar de visualización y no sustituye los análisis reproducibles generados por los scripts.

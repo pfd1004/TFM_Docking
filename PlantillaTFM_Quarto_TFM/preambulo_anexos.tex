@@ -1,0 +1,132 @@
+%% ============================================================
+%%  Preámbulo LaTeX – Anexos TFM MUIB UBU
+%% ============================================================
+
+% Castellano
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice general}}
+\addto\captionsspanish{\renewcommand{\listfigurename}{Índice de figuras}}
+
+% Tipografía y maquetación
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{allcolors={blue}}
+
+\nonzeroparskip
+\widowpenalty100000
+\clubpenalty100000
+\nouppercaseheads
+
+% Imágenes
+\graphicspath{{./img/}{./figures/}{./resultados/figuras_generadas/}{./resultados/tablas_coloreadas/}}
+
+% Colores del TFM
+\definecolor{tfmBlue}{HTML}{12355B}
+\definecolor{tfmGold}{HTML}{D8AD6E}
+\definecolor{tfmSoft}{HTML}{F6F8FA}
+
+% Comandos útiles
+\newcommand{\ruta}[1]{{\sffamily #1}}
+\newcommand{\capitulo}[2]{%
+  \setcounter{chapter}{#1}%
+  \setcounter{section}{0}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \chapter*{#2}%
+  \addcontentsline{toc}{chapter}{#2}%
+  \markboth{#2}{#2}%
+}
+\newcommand{\apendice}[1]{\chapter{#1}}
+
+% Datos de portada
+\makeatletter
+\newcommand{\tutor}[1]{\def\@tutor{#1}}
+\newcommand{\tutorb}[1]{\def\@tutorb{#1}}
+\newcommand{\master}[1]{\def\@master{#1}}
+
+\newcommand{\nombre}{Pablo Fuentes de Mateo}
+\newcommand{\nombreTutor}{Santiago Aparicio}
+\newcommand{\nombreTutorb}{Pedro A. Marcos}
+\newcommand{\dni}{71566685T}
+
+\tutor{\nombreTutor}
+\tutorb{\nombreTutorb}
+\master{Máster universitario en Ingeniería Biomédica}
+
+\chapterstyle{bianchi}
+
+\def\maketitle{%
+  \null
+  \thispagestyle{empty}
+
+  \makepagestyle{mipc}
+  \makepsmarks{mipc}{%
+    \nouppercaseheads
+    \createmark{chapter}{both}{nonumber}{}{}
+  }
+  \makeevenhead{mipc}{\leftmark}{}{}
+  \makeoddhead{mipc}{}{}{\leftmark}
+  \makeevenfoot{mipc}{}{\thepage}{}
+  \makeoddfoot{mipc}{}{\thepage}{}
+  \makeheadrule{mipc}{\textwidth}{\normalrulethickness}
+  \pagestyle{mipc}
+
+  \makepagestyle{chapterfirst}
+  \makeevenhead{chapterfirst}{}{}{}
+  \makeoddhead{chapterfirst}{}{}{}
+  \makeevenfoot{chapterfirst}{}{\thepage}{}
+  \makeoddfoot{chapterfirst}{}{\thepage}{}
+  \aliaspagestyle{chapter}{chapterfirst}
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{CabeceraEPS.png}\vspace{1.0cm}
+  \end{center}
+
+  \begin{center}
+    \begin{minipage}[c][1.3cm][c]{.20\textwidth}
+      \includegraphics[width=\textwidth]{Logo_GIS.png}
+    \end{minipage}
+  \end{center}
+
+  \begin{center}
+    \colorbox{tfmGold}{%
+      \begin{minipage}{.86\textwidth}
+        \vspace{.45cm}\Large
+        \begin{center}
+          \textbf{Trabajo de Fin de Máster}\\[0.15cm]
+          \textbf{\@master}\\[0.55cm]
+          \textbf{\LARGE\@title{}}
+        \end{center}
+        \vspace{.25cm}
+      \end{minipage}
+    }
+  \end{center}
+
+  \begin{center}
+    \LARGE Presentado por \@author{}\\
+    \vspace{0.35cm}
+    \Large Universidad de Burgos\\
+    \vspace{0.35cm}
+    \@date{}\\
+    \vspace{0.55cm}
+    Tutores: \@tutor{} -- \@tutorb{}\\
+  \end{center}
+  \null
+  \cleardoublepage
+}
+\makeatother
+
+\renewcommand{\appendixname}{Apéndice}
+\renewcommand*\cftappendixname{\appendixname\ }

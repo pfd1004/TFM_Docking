@@ -1,0 +1,55 @@
+\capitulo{4}{Resultados}
+
+## Comparación de modelos predictivos
+
+La comparación de modelos permitió evaluar el efecto de distintos bloques de variables sobre la predicción de afinidades de docking. La Figura @fig-top-modelos muestra el ranking de modelos ordenado por RMSE en test.
+
+![Comparación de modelos por RMSE en test.](resultados/figuras_generadas/fig_01_top_modelos_rmse_test.png){#fig-top-modelos width=95%}
+
+La comparación por bloques de variables se resume en la Figura @fig-bloques. Este análisis permite valorar de forma directa si la inclusión de variables de membrana mejora el modelo frente al uso exclusivo de descriptores RDKit.
+
+![Mejor RMSE por bloque de variables.](resultados/figuras_generadas/fig_02_mejor_rmse_por_bloque_variables.png){#fig-bloques width=85%}
+
+## Rendimiento por proteína
+
+El rendimiento por proteína del mejor modelo se evaluó mediante RMSE y R². Las Figuras @fig-rmse-proteina y @fig-r2-proteina muestran la variabilidad de rendimiento entre las cuatro proteínas.
+
+![RMSE por proteína del mejor modelo.](resultados/figuras_generadas/fig_03_rmse_por_proteina_mejor_modelo.png){#fig-rmse-proteina width=80%}
+
+![R² por proteína del mejor modelo.](resultados/figuras_generadas/fig_04_r2_por_proteina_mejor_modelo.png){#fig-r2-proteina width=80%}
+
+## Predicción real frente a predicción estimada
+
+La concordancia entre valores reales de docking y valores predichos se inspeccionó mediante diagramas de dispersión proteína a proteína.
+
+![Real vs predicho para 1ao6.](resultados/figuras_generadas/fig_05_real_vs_predicho_y_1ao6.png){#fig-real-pred-1ao6 width=70%}
+
+![Real vs predicho para 1hzh.](resultados/figuras_generadas/fig_05_real_vs_predicho_y_1hzh.png){#fig-real-pred-1hzh width=70%}
+
+![Real vs predicho para 2hav.](resultados/figuras_generadas/fig_05_real_vs_predicho_y_2hav.png){#fig-real-pred-2hav width=70%}
+
+![Real vs predicho para 3ghg.](resultados/figuras_generadas/fig_05_real_vs_predicho_y_3ghg.png){#fig-real-pred-3ghg width=70%}
+
+## Variables relevantes
+
+La Figura @fig-correlaciones muestra las variables más correlacionadas con las afinidades de docking. Este análisis se utilizó como exploración descriptiva, no como criterio único de selección de variables.
+
+![Variables más correlacionadas con las afinidades.](resultados/figuras_generadas/fig_06_top_variables_correlacion_targets.png){#fig-correlaciones width=95%}
+
+## Docking nanopartícula-proteína
+
+Los resultados nanopartícula-proteína se resumen en la Figura @fig-heatmap-nano. Las energías más negativas indican interacciones más favorables dentro del protocolo de docking utilizado.
+
+![Mapa de calor de docking nanopartícula-proteína.](resultados/figuras_generadas/fig_07_heatmap_nano_proteina.png){#fig-heatmap-nano width=80%}
+
+## Ranking contextual
+
+El score contextual permitió combinar, de forma normalizada, la afinidad ligando-proteína y la afinidad nanopartícula-proteína. La Figura @fig-ranking-contextual muestra las combinaciones mejor posicionadas.
+
+![Top 20 combinaciones del ranking contextual.](resultados/figuras_generadas/fig_09_top20_ranking_contextual.png){#fig-ranking-contextual width=95%}
+
+## Propiedades de membrana
+
+Las variables de membrana se analizaron como información fisicoquímica complementaria. La Figura @fig-logp-logperm muestra la relación entre partición y permeabilidad derivadas de COSMOtherm.
+
+![Relación entre mem_logP y mem_logPerm.](resultados/figuras_generadas/fig_12_membrana_logp_vs_logperm.png){#fig-logp-logperm width=75%}

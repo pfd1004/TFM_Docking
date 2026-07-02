@@ -1,0 +1,94 @@
+---
+# ============================================================
+# memoria.qmd – Memoria TFM · Máster universitario en Ingeniería Biomédica
+# Universidad de Burgos · Escuela Politécnica Superior
+# ============================================================
+title: "Modelización computacional de la interacción de agentes de recubrimiento de nanopartículas metálicas (Au, Ag, ZnO) con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático"
+author: "Pablo Fuentes de Mateo"
+format:
+  pdf:
+    documentclass: memoir
+    classoption: [a4paper, 12pt, twoside]
+    pdf-engine: pdflatex
+    include-in-header: preambulo_memoria.tex
+    maketitle: false
+    keep-tex: false
+    number-sections: false
+    toc: false
+    toc-depth: 3
+    lof: false
+    lot: false
+    cite-method: natbib
+    biblio-style: apalike
+    bibliography: bibliografia.bib
+    lang: es
+knitr:
+  opts_chunk:
+    echo: false
+    warning: false
+    message: false
+    fig.pos: "!h"
+    out.width: "90%"
+    fig.align: "center"
+---
+
+```{=latex}
+\title{Modelización computacional de la interacción de agentes de recubrimiento de nanopartículas metálicas (Au, Ag, ZnO) con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático}
+\author{\nombre}
+\date{Julio de 2026}
+\maketitle
+```
+
+```{=latex}
+\frontmatter
+\pagestyle{chapterfirst}
+
+\renewcommand*\abstractname{Resumen}
+\begin{abstract}
+Este Trabajo de Fin de Máster desarrolla un flujo computacional para estudiar la interacción de agentes de recubrimiento de nanopartículas metálicas con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático. Se integraron resultados de docking ligando-proteína frente a cuatro proteínas, descriptores moleculares RDKit 2D/3D, variables de membrana procedentes de cálculos COSMOtherm y resultados de docking nanopartícula-proteína para sistemas de Au, Ag y ZnO. A partir de estos datos se entrenaron modelos de regresión multisalida para predecir afinidades de docking y se compararon distintos bloques de variables, incluyendo descriptores RDKit, propiedades de membrana y reducción dimensional mediante PCA.
+
+El mejor rendimiento predictivo se obtuvo con un modelo ExtraTrees usando descriptores RDKit, mientras que la incorporación de variables de membrana no produjo una mejora clara del error de predicción. Los resultados nanopartícula-proteína se analizaron como una capa contextual independiente, permitiendo construir un ranking integrado de combinaciones ligando-nanopartícula-proteína. Este enfoque permite separar el modelo predictivo principal, basado en ligandos, del análisis exploratorio de nanopartículas, manteniendo la trazabilidad de cada fuente de datos.
+\end{abstract}
+
+\renewcommand*\abstractname{Descriptores}
+\begin{abstract}
+Nanopartículas metálicas, oro, plata, óxido de zinc, agentes de recubrimiento, docking molecular, proteínas plasmáticas, COSMOtherm, membrana, aprendizaje automático, regresión multisalida.
+\end{abstract}
+
+\clearpage
+
+\renewcommand*\abstractname{Abstract}
+\begin{abstract}
+This Master's Thesis develops a computational workflow to study the interaction of nanoparticle coating agents with plasma proteins using molecular docking and machine learning. Ligand-protein docking results against four proteins were integrated with RDKit 2D/3D molecular descriptors, COSMOtherm-derived membrane variables and nanoparticle-protein docking results for Au, Ag and ZnO systems. Multi-output regression models were trained to predict docking affinities and different feature blocks were compared, including RDKit descriptors, membrane properties and PCA-based dimensionality reduction.
+
+The best predictive performance was obtained with an ExtraTrees model using RDKit descriptors, while the inclusion of membrane variables did not clearly improve the prediction error. Nanoparticle-protein docking results were analysed as an independent contextual layer, enabling an integrated ranking of ligand-nanoparticle-protein combinations. This approach separates the main ligand-based predictive model from the exploratory nanoparticle analysis while preserving data traceability.
+\end{abstract}
+
+\renewcommand*\abstractname{Keywords}
+\begin{abstract}
+Metallic nanoparticles, gold nanoparticles, silver nanoparticles, zinc oxide nanoparticles, coating agents, molecular docking, plasma proteins, COSMOtherm, membrane, machine learning, multi-output regression.
+\end{abstract}
+
+\clearpage
+\renewcommand{\contentsname}{Índice general}
+\renewcommand{\listfigurename}{Índice de figuras}
+\renewcommand{\listtablename}{Índice de tablas}
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+\mainmatter
+\pagestyle{mipc}
+```
+
+{{< include qmd/1_introduccion.qmd >}}
+{{< include qmd/2_objetivos.qmd >}}
+{{< include qmd/3_teoricos.qmd >}}
+{{< include qmd/4_metodologia.qmd >}}
+{{< include qmd/5_resultados.qmd >}}
+{{< include qmd/6_discusion.qmd >}}
+{{< include qmd/7_conclusiones.qmd >}}
+{{< include qmd/8_lineas_futuras.qmd >}}
+

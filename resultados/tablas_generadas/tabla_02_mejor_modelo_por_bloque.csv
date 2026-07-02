@@ -1,0 +1,5 @@
+"feature_set","modelo","n_ligandos","n_features","CV_RMSE","TEST_MAE","TEST_RMSE","TEST_R2","best_params"
+"RDKit_solo","ExtraTrees",52,26,0.5103,0.3188,0.4117,0.884,"{'model__max_depth': None, 'model__max_features': 0.5, 'model__min_samples_leaf': 1, 'model__n_estimators': 300}"
+"RDKit_membrana_seleccionada","ExtraTrees",52,49,0.5116,0.3389,0.4117,0.8862,"{'model__max_depth': 5, 'model__max_features': 1.0, 'model__min_samples_leaf': 2, 'model__n_estimators': 300}"
+"RDKit_membrana_filtrada_auto","ExtraTrees",52,49,0.5116,0.3389,0.4117,0.8862,"{'model__max_depth': 5, 'model__max_features': 1.0, 'model__min_samples_leaf': 2, 'model__n_estimators': 300}"
+"Membrana_solo","RandomForest",52,23,0.7946,0.621,0.7307,0.6499,"{'model__max_depth': 10, 'model__max_features': 'sqrt', 'model__min_samples_leaf': 1, 'model__n_estimators': 300}"

@@ -1,0 +1,5 @@
+"feature_set","modelo","salida","MAE","RMSE","R2"
+"RDKit_solo","ExtraTrees","y_1ao6",0.2939,0.3784,0.9167
+"RDKit_solo","ExtraTrees","y_1hzh",0.4085,0.5401,0.783
+"RDKit_solo","ExtraTrees","y_2hav",0.2409,0.2772,0.9586
+"RDKit_solo","ExtraTrees","y_3ghg",0.332,0.4077,0.8779

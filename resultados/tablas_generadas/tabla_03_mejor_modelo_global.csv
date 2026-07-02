@@ -1,0 +1,2 @@
+"feature_set","modelo","n_ligandos","n_features","CV_RMSE","TEST_MAE","TEST_RMSE","TEST_R2","best_params"
+"RDKit_solo","ExtraTrees",52,26,0.5103,0.3188,0.4117,0.884,"{'model__max_depth': None, 'model__max_features': 0.5, 'model__min_samples_leaf': 1, 'model__n_estimators': 300}"

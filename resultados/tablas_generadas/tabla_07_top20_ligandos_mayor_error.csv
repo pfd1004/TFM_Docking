@@ -1,0 +1,12 @@
+"feature_set","modelo","ligando","real_y_1ao6","pred_y_1ao6","error_y_1ao6","real_y_1hzh","pred_y_1hzh","error_y_1hzh","real_y_2hav","pred_y_2hav","error_y_2hav","real_y_3ghg","pred_y_3ghg","error_y_3ghg","error_abs_medio"
+"RDKit_solo","ExtraTrees","Thiomethyl_PEG_linker_2-_2-methoxyethoxy_ethanethiol",-3.279,-3.8236,-0.5446,-2.87,-3.7169,-0.8469,-3.527,-3.939,-0.412,-2.863,-3.4458,-0.5828,0.5966
+"RDKit_solo","ExtraTrees","TAT_peptide_fragment_YGRKKK_6_aa",-7.4,-7.749,-0.349,-6.133,-7.3911,-1.2581,-8.079,-8.5038,-0.4248,-6.552,-6.6754,-0.1234,0.5388
+"RDKit_solo","ExtraTrees","11-Mercaptoundecanesulfonic_acid_MUS",-5.275,-4.9567,0.3183,-5.009,-4.6466,0.3624,-5.483,-5.2288,0.2542,-5.2,-4.4652,0.7348,0.4174
+"RDKit_solo","ExtraTrees","Biotin",-6.604,-5.8583,0.7457,-6.402,-5.9442,0.4578,-6.587,-6.2184,0.3686,-5.403,-5.4268,-0.0238,0.399
+"RDKit_solo","ExtraTrees","PEG-thiol_n_6",-3.933,-4.4967,-0.5637,-3.894,-4.1786,-0.2846,-4.643,-4.8317,-0.1887,-3.392,-3.9104,-0.5184,0.3888
+"RDKit_solo","ExtraTrees","Arginine",-5.009,-4.7184,0.2906,-5.494,-4.9232,0.5708,-5.406,-5.1592,0.2468,-4.538,-4.3845,0.1535,0.3154
+"RDKit_solo","ExtraTrees","Mercaptoethanol_2-mercaptoethanol",-2.571,-2.8722,-0.3012,-2.626,-2.8028,-0.1768,-2.738,-2.8559,-0.1179,-2.187,-2.7662,-0.5792,0.2938
+"RDKit_solo","ExtraTrees","2-Mercaptosuccinic_acid",-4.27,-4.247,0.023,-3.997,-4.3239,-0.3269,-4.604,-4.5775,0.0265,-3.709,-4.0523,-0.3433,0.1799
+"RDKit_solo","ExtraTrees","PVP_monomer_N-vinyl-2-pyrrolidone",-4.441,-4.4631,-0.0221,-4.531,-4.388,0.143,-4.752,-4.4131,0.3389,-4.263,-4.0493,0.2137,0.1794
+"RDKit_solo","ExtraTrees","D-Galactose",-4.806,-4.8088,-0.0028,-5.085,-5.0463,0.0387,-5.792,-5.5298,0.2622,-4.424,-4.8006,-0.3766,0.1701
+"RDKit_solo","ExtraTrees","Dihydrolipoic_acid_DHLA",-5.228,-5.1566,0.0714,-5.111,-5.1383,-0.0273,-5.181,-5.1719,0.0091,-4.616,-4.613,0.003,0.0277

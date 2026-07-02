@@ -1,5 +1,0 @@
-feature_set,modelo,n_ligandos,n_features,CV_RMSE,TEST_MAE,TEST_RMSE,TEST_R2,best_params
-RDKit_solo,ExtraTrees,52,26,0.5102964832694344,0.3188171212121222,0.4116929200363795,0.8840432552183918,"{'model__max_depth': None, 'model__max_features': 0.5, 'model__min_samples_leaf': 1, 'model__n_estimators': 300}"
-RDKit_membrana_seleccionada,ExtraTrees,52,49,0.5115759246817488,0.3389415084580942,0.4117237206601575,0.8862422904179125,"{'model__max_depth': 5, 'model__max_features': 1.0, 'model__min_samples_leaf': 2, 'model__n_estimators': 300}"
-RDKit_membrana_filtrada_auto,ExtraTrees,52,49,0.5115759246817488,0.3389415084580942,0.4117237206601575,0.8862422904179125,"{'model__max_depth': 5, 'model__max_features': 1.0, 'model__min_samples_leaf': 2, 'model__n_estimators': 300}"
-Membrana_solo,RandomForest,52,23,0.7946104352997667,0.6209618320707074,0.7306759664039378,0.6499227063469709,"{'model__max_depth': 10, 'model__max_features': 'sqrt', 'model__min_samples_leaf': 1, 'model__n_estimators': 300}"

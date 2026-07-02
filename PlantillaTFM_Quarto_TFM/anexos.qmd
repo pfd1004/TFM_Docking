@@ -1,0 +1,51 @@
+---
+title: "Anexos · TFM"
+author: "Pablo Fuentes de Mateo"
+format:
+  pdf:
+    documentclass: memoir
+    classoption: [a4paper, 12pt, twoside]
+    pdf-engine: pdflatex
+    include-in-header: preambulo_anexos.tex
+    maketitle: false
+    keep-tex: false
+    number-sections: true
+    toc: false
+    toc-depth: 3
+    lof: false
+    lot: false
+    cite-method: natbib
+    biblio-style: apalike
+    bibliography: bibliografiaAnexos.bib
+    lang: es
+knitr:
+  opts_chunk:
+    echo: true
+    warning: false
+    message: false
+    fig.pos: "!h"
+    out.width: "90%"
+    fig.align: "center"
+---
+
+```{=latex}
+\title{Anexos del Trabajo de Fin de Máster}
+\author{\nombre}
+\date{Julio de 2026}
+\maketitle
+\frontmatter
+\tableofcontents
+\clearpage
+\mainmatter
+\pagestyle{mipc}
+\appendix
+```
+
+{{< include qmd/A_repositorio.qmd >}}
+{{< include qmd/B_scripts.qmd >}}
+{{< include qmd/C_app.qmd >}}
+{{< include qmd/D_tablas_figuras.qmd >}}
+
+```{=latex}
+ackmatter
+```

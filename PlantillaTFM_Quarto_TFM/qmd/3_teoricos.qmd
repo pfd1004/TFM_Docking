@@ -1,0 +1,105 @@
+# Conceptos teóricos
+
+## Nanomedicina y nanopartículas metálicas
+
+La nanomedicina aplica materiales y sistemas de tamaño nanométrico al diagnóstico, seguimiento y tratamiento de enfermedades. En esta escala, las propiedades fisicoquímicas de un material no dependen únicamente de su composición química, sino también de su tamaño, forma, curvatura, estado de agregación, carga superficial y química de superficie. Esto permite diseñar plataformas con comportamiento óptico, catalítico, antimicrobiano o de transporte distinto al del material macroscópico equivalente.
+
+En este trabajo se consideran tres familias de nanomateriales: nanopartículas de oro, nanopartículas de plata y nanopartículas de óxido de zinc. Las nanopartículas de oro presentan elevada estabilidad química, facilidad de funcionalización superficial y propiedades ópticas asociadas a la resonancia de plasmón superficial, lo que las convierte en sistemas relevantes para imagen, transporte de fármacos y terapia fototérmica [@Zahdeh2025]. Las nanopartículas de plata destacan por su actividad antimicrobiana, atribuida a mecanismos que incluyen liberación de iones Ag^+, generación de especies reactivas de oxígeno e interacción con membranas y biomoléculas celulares [@Jangid2024]. Por su parte, el óxido de zinc es un semiconductor con propiedades fotocatalíticas y capacidad para generar especies reactivas de oxígeno, por lo que se ha estudiado como fotosensibilizador y como plataforma de interés en terapia fotodinámica [@Fatima2022].
+
+No obstante, en un medio biológico el comportamiento de estas nanopartículas no viene determinado únicamente por el núcleo inorgánico. La superficie es el primer punto de contacto con proteínas, lípidos, sales y metabolitos, por lo que los grupos químicos presentes en ella condicionan la estabilidad coloidal, la adsorción de biomoléculas, el reconocimiento celular y la posible toxicidad. Por ello, el estudio de los agentes de recubrimiento resulta esencial para interpretar y modular las interacciones nano-bio.
+
+## Agentes de recubrimiento y funcionalización superficial
+
+Los agentes de recubrimiento, también denominados *capping agents* o ligandos superficiales, son moléculas empleadas para estabilizar nanopartículas y ajustar sus propiedades superficiales. Pueden evitar la agregación, modificar la solubilidad, controlar la carga superficial, aportar grupos funcionales reactivos o introducir motivos de reconocimiento biológico. Entre ellos se encuentran moléculas pequeñas, ligandos tiolados, ácidos orgánicos, surfactantes, polímeros, péptidos, biomoléculas y fármacos conjugables.
+
+Desde el punto de vista químico, pequeñas variaciones en polaridad, carga, aromaticidad, flexibilidad o número de grupos donadores y aceptores de enlaces de hidrógeno pueden modificar de forma relevante la interacción con proteínas plasmáticas. En nanopartículas metálicas, los grupos azufrados son especialmente importantes por su afinidad hacia superficies de oro y plata, mientras que grupos carboxilato, amino, fosfato o hidroxilo pueden alterar la hidratación, el estado de protonación y las interacciones electrostáticas con biomoléculas.
+
+En un enfoque computacional, estos recubrimientos pueden abordarse a diferentes niveles de aproximación. Una primera estrategia consiste en estudiarlos como ligandos moleculares individuales frente a proteínas plasmáticas. Este planteamiento permite analizar cómo la estructura química del recubrimiento se relaciona con su afinidad relativa por diferentes proteínas. Una segunda estrategia consiste en considerar modelos simplificados de nanopartícula-recubrimiento o nanopartícula-proteína. Este nivel incorpora parcialmente el efecto del núcleo inorgánico, aunque incrementa la complejidad del sistema y puede exigir parametrizaciones específicas.
+
+## Corona proteica e identidad biológica
+
+Cuando una nanopartícula entra en contacto con fluidos biológicos, su superficie se recubre rápidamente de proteínas y otras biomoléculas, formando una corona biomolecular. En plasma sanguíneo, esta corona está dominada por proteínas plasmáticas y se denomina habitualmente corona proteica. Este fenómeno es clave en nanomedicina, ya que las células no interaccionan únicamente con la nanopartícula sintética original, sino con una interfaz híbrida formada por el núcleo inorgánico, el recubrimiento superficial y las biomoléculas adsorbidas [@Monopoli2012].
+
+La corona proteica puede modificar el tamaño hidrodinámico, el potencial zeta, la estabilidad coloidal, la biodistribución, la captación celular, el aclaramiento por el sistema mononuclear fagocítico, la inmunogenicidad y la toxicidad. Por ello, se considera que la corona contribuye de manera decisiva a la identidad biológica de la nanopartícula [@Monopoli2012; @Walkey2012].
+
+La composición de la corona depende de múltiples factores: tamaño, forma, composición y curvatura de la nanopartícula; naturaleza del recubrimiento; concentración relativa de proteínas; afinidad de adsorción; pH; fuerza iónica; temperatura; y tiempo de exposición [@Walkey2012]. De forma conceptual puede distinguirse entre una corona blanda, formada por proteínas de interacción débil y recambio rápido, y una corona dura, compuesta por proteínas con mayor afinidad y mayor tiempo de residencia [@Monopoli2013]. Esta distinción es útil, aunque en sistemas reales la corona es dinámica y puede evolucionar por intercambio competitivo de proteínas.
+
+El diseño racional de nanopartículas biomédicas requiere, por tanto, comprender cómo la química superficial afecta a la adsorción proteica. Estudios recientes en nanopartículas de oro han mostrado que la química del recubrimiento influye de forma significativa en la formación de la corona y en la interacción con proteínas séricas [@Dridi2024]. Este punto justifica el estudio sistemático de recubrimientos mediante docking molecular, descriptores fisicoquímicos y modelos predictivos.
+
+## Proteínas plasmáticas consideradas
+
+En aplicaciones intravenosas, las proteínas plasmáticas son especialmente relevantes porque constituyen el primer entorno biomolecular que encuentra una nanopartícula. En este trabajo se consideran cuatro proteínas de interés: albúmina sérica humana, transferrina, fibrinógeno e inmunoglobulina G. Cada una representa un tipo de función biológica distinta y, por tanto, un posible efecto diferente sobre la identidad biológica de la nanopartícula.
+
+La albúmina sérica humana es la proteína más abundante del plasma y posee múltiples regiones de unión para moléculas endógenas y exógenas. Su capacidad de transporte y su elevada concentración hacen que pueda participar de forma importante en las etapas iniciales de adsorción sobre nanomateriales. La transferrina está implicada en el transporte de hierro y resulta relevante en estrategias de direccionamiento hacia células con elevada expresión del receptor de transferrina. El fibrinógeno participa en procesos de coagulación y activación plaquetaria, por lo que su adsorción sobre nanopartículas puede tener implicaciones hemocompatibles. Las inmunoglobulinas, especialmente IgG, están relacionadas con reconocimiento inmunitario, opsonización y eliminación por células fagocíticas.
+
+Desde el punto de vista del modelado, estudiar estas proteínas permite cubrir varios escenarios de interacción: transporte plasmático, coagulación, reconocimiento inmunitario y posible direccionamiento celular. Las afinidades calculadas por docking no deben interpretarse como una medida directa de la composición real de la corona, pero sí como una aproximación útil para comparar tendencias relativas entre ligandos, proteínas y recubrimientos.
+
+## Acoplamiento molecular
+
+El acoplamiento molecular o *molecular docking* es una técnica computacional utilizada para predecir orientaciones plausibles de unión entre un ligando y una macromolécula, generalmente una proteína. El método explora posiciones, orientaciones y conformaciones del ligando dentro de una región de búsqueda definida y las ordena mediante una función de puntuación. El resultado habitual es un conjunto de poses y una energía o puntuación de afinidad aproximada.
+
+AutoDock Vina es una de las herramientas más utilizadas para este propósito. Introdujo una función de puntuación empírica, un algoritmo de optimización eficiente y multihilo, permitiendo acelerar cálculos de docking frente a aproximaciones previas [@Trott2010]. La versión 1.2 amplió sus capacidades incorporando compatibilidad con la función de puntuación de AutoDock4, docking simultáneo de múltiples ligandos, modo *batch* y enlaces con Python, lo que facilita flujos de trabajo automatizados [@Eberhardt2021].
+
+La energía de docking debe interpretarse como una puntuación relativa, no como una energía libre de unión experimental exacta. Valores más negativos sugieren una interacción más favorable dentro del protocolo utilizado, pero la comparación debe realizarse con cautela cuando se emplean programas, funciones de puntuación o parametrizaciones diferentes. En este TFM, las energías ligando-proteína se emplean como variables objetivo para aprendizaje automático, mientras que los resultados nanopartícula-proteína se tratan como una capa contextual independiente.
+
+## Optimización geométrica y frecuencias vibracionales
+
+Antes de calcular descriptores moleculares o realizar docking, las estructuras de los ligandos deben presentar geometrías químicamente razonables. La optimización geométrica busca localizar un mínimo de energía en la superficie de energía potencial. Posteriormente, el cálculo de frecuencias vibracionales permite verificar la naturaleza del punto estacionario: una geometría optimizada como mínimo local no debe presentar frecuencias imaginarias.
+
+En este trabajo, las frecuencias se consideran principalmente una etapa de validación estructural. Es decir, su función principal es comprobar que las geometrías optimizadas son compatibles con mínimos de energía antes de utilizarlas para generar descriptores o archivos de entrada. Los archivos de tipo Molden contienen información de geometría, orbitales y modos vibracionales, pero no constituyen por sí mismos variables directas del modelo predictivo. En caso de ampliación futura, podrían extraerse descriptores cuánticos escalares, como energía total, frecuencias mínimas, número de frecuencias imaginarias, energías HOMO/LUMO o brecha HOMO-LUMO. ORCA proporciona un entorno general para cálculos de química cuántica, incluyendo optimizaciones y frecuencias, y es ampliamente utilizado en flujos de trabajo de química computacional [@Neese2020; @Neese2022].
+
+## Descriptores moleculares y quimioinformática
+
+Los descriptores moleculares son variables numéricas que codifican propiedades estructurales, topológicas o fisicoquímicas de una molécula. Permiten transformar una estructura química en una matriz de datos apta para análisis estadístico o aprendizaje automático. Entre los descriptores habituales se encuentran el peso molecular, LogP, área de superficie polar topológica, número de donadores y aceptores de enlaces de hidrógeno, número de enlaces rotables, número de anillos, carga formal, índices topológicos y descriptores geométricos tridimensionales.
+
+RDKit es una biblioteca de quimioinformática ampliamente utilizada para manipulación de estructuras, cálculo de propiedades moleculares, generación de fingerprints y análisis de datos químicos [@RDKit2026]. En este trabajo, los descriptores RDKit representan la base del dataset ligando-proteína. De forma complementaria, herramientas como Mordred permiten calcular un número muy elevado de descriptores moleculares, aunque en datasets pequeños un exceso de variables puede aumentar el riesgo de sobreajuste [@Moriwaki2018].
+
+La utilidad de los descriptores depende de su relación con el fenómeno que se desea modelar. En el contexto de este TFM, propiedades como tamaño, polaridad, flexibilidad o superficie molecular pueden influir en el modo de unión de los recubrimientos a proteínas plasmáticas. Sin embargo, un descriptor individual rara vez explica por completo la afinidad. Por ello, se emplean modelos multivariantes capaces de combinar información de múltiples variables.
+
+## Propiedades de membrana y modelo COSMOmic
+
+Además de la interacción con proteínas plasmáticas, el comportamiento de los recubrimientos en entornos lipídicos puede aportar información fisicoquímica complementaria. La permeabilidad, partición y distribución de moléculas en membranas dependen de su polaridad, hidrofobicidad, tamaño, capacidad de formar enlaces de hidrógeno y coste energético de transferencia entre agua y la fase lipídica.
+
+COSMO-RS es un modelo termodinámico basado en superficies de carga de apantallamiento obtenidas a partir de cálculos cuánticos en un conductor ideal. A partir de estas superficies, estima propiedades de solvatación y partición en fases líquidas [@Klamt1995]. COSMOmic extiende esta aproximación al estudio de micelas y biomembranas, permitiendo estimar coeficientes membrana/agua y distribuciones internas de solutos dentro de bicapas o sistemas micelares [@Klamt2008].
+
+En este TFM se utilizaron variables derivadas de perfiles en una bicapa modelo de DMPC. Entre ellas se incluyen descriptores como `mem_logP`, `mem_logPerm`, barreras de energía libre, distribución en función de la profundidad de la membrana, entropía media y difusión estimada. Estas variables no describen directamente la afinidad proteína-ligando, sino el comportamiento del recubrimiento en un entorno lipídico. Por tanto, su incorporación al aprendizaje automático permite evaluar si la información de membrana añade señal predictiva a los descriptores moleculares clásicos.
+
+## Aprendizaje automático aplicado a interacciones nano-bio
+
+El aprendizaje automático permite construir modelos que relacionan variables de entrada con una o varias salidas de interés. En química computacional, estas entradas suelen ser descriptores moleculares, fingerprints, propiedades fisicoquímicas o resultados de simulación. Las salidas pueden ser afinidades de unión, actividad biológica, toxicidad, permeabilidad o composición de corona proteica.
+
+En el contexto de la corona proteica, ya se han propuesto modelos de aprendizaje automático para predecir la formación o composición funcional de coronas a partir de propiedades de nanopartículas, recubrimientos y condiciones experimentales [@Findlay2018; @Ban2020]. En este TFM, el problema se plantea como una regresión multisalida: para cada ligando se predicen simultáneamente las afinidades de docking frente a varias proteínas plasmáticas.
+
+Scikit-learn proporciona implementaciones estandarizadas de numerosos algoritmos supervisados y no supervisados, junto con herramientas para validación cruzada, preprocesado, selección de variables y evaluación de modelos [@Pedregosa2011]. En este trabajo se comparan modelos lineales regularizados, PLSRegression, Random Forest, ExtraTrees y aproximaciones con reducción dimensional. Random Forest combina múltiples árboles de decisión entrenados con aleatoriedad para reducir varianza y mejorar generalización [@Breiman2001]. ExtraTrees incrementa la aleatorización en la selección de variables y puntos de corte, lo que puede resultar útil en problemas con relaciones no lineales y datasets de tamaño moderado [@Geurts2006].
+
+La regresión PLS (*partial least squares*) es especialmente habitual en quimiometría porque proyecta las variables de entrada y las salidas en componentes latentes que maximizan su covarianza, tolerando colinealidad entre descriptores [@Wold2001]. PCA, en cambio, reduce la dimensionalidad de las variables de entrada sin utilizar directamente la salida, conservando direcciones de máxima varianza [@Jolliffe2002]. Por ello, PCA puede ser útil para exploración o regularización, aunque no garantiza mejorar la predicción si la varianza principal no coincide con la información más relacionada con la afinidad.
+
+## Evaluación de modelos
+
+El rendimiento de los modelos de regresión se evalúa mediante métricas continuas. En este trabajo se emplean el error absoluto medio (MAE), la raíz del error cuadrático medio (RMSE) y el coeficiente de determinación ($R^2$). Para un conjunto de $n$ observaciones, con valores reales $y_i$ y predicciones $\hat{y}_i$, estas métricas se definen como:
+
+```{=latex}
+\[
+\mathrm{MAE} = \frac{1}{n}\sum_{i=1}^{n} \left| y_i - \hat{y}_i \right|
+\]
+```
+
+```{=latex}
+\[
+\mathrm{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n} \left( y_i - \hat{y}_i \right)^2}
+\]
+```
+
+```{=latex}
+\[
+R^2 = 1 - \frac{\sum_{i=1}^{n}\left( y_i - \hat{y}_i \right)^2}{\sum_{i=1}^{n}\left( y_i - \bar{y} \right)^2}
+\]
+```
+
+El MAE mide el error medio en las mismas unidades que la variable objetivo y es relativamente interpretable. El RMSE penaliza más los errores grandes, por lo que resulta útil para detectar modelos con desviaciones importantes en algunos ligandos. El $R^2$ expresa la proporción de variabilidad explicada por el modelo respecto a un predictor constante. En problemas con pocos datos, la validación cruzada y la separación de un conjunto de test son necesarias para reducir el riesgo de interpretar como generalización un ajuste específico del conjunto de entrenamiento.
+
+## Integración del flujo computacional
+
+La integración de preparación molecular, docking, cálculo de descriptores, variables de membrana, análisis nanopartícula-proteína y aprendizaje automático requiere un flujo de trabajo reproducible. En este TFM, cada etapa produce archivos intermedios y tablas finales que pueden regenerarse mediante scripts. Esta organización permite auditar el origen de cada variable, repetir análisis tras corregir datos de entrada y generar automáticamente figuras, tablas y visualizaciones.
+
+El resultado conceptual del flujo de trabajo es una separación clara entre tres capas de información. La primera corresponde al modelo principal ligando-proteína, basado en descriptores moleculares y afinidades de docking. La segunda corresponde a variables de membrana, utilizadas para comprobar si añaden información predictiva. La tercera corresponde al análisis nanopartícula-proteína, tratado como contexto adicional para priorizar combinaciones ligando-nanopartícula-proteína sin mezclar directamente energías procedentes de protocolos distintos. Esta separación evita sobreinterpretar los datos y facilita una discusión metodológicamente coherente.
