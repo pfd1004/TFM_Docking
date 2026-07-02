@@ -1,0 +1,8 @@
+Modelo final: ExtraTreesRegressor multisalida
+Entradas: descriptores RDKit 2D/3D
+Salidas: y_1ao6, y_1hzh, y_2hav, y_3ghg
+Hiperparámetros seleccionados:
+n_estimators=300
+max_depth=None
+max_features=0.5
+min_samples_leaf=1

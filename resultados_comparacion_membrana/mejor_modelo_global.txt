@@ -1,0 +1,3 @@
+Mejor feature_set: RDKit_solo
+Mejor modelo: ExtraTrees
+TEST_RMSE: 0.411693
