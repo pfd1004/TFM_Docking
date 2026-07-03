@@ -1,4 +1,4 @@
-\capitulo{3}{Metodología}
+\capitulo{4}{Metodología}
 
 ## Diseño general del flujo computacional
 
@@ -69,29 +69,37 @@ Los resultados de docking nanopartícula-proteína se obtuvieron a partir de arc
 
 La razón es que una energía nanopartícula-proteína no varía por ligando, sino por combinación nanopartícula-proteína. Incluirla directamente como descriptor en una tabla donde cada fila representa un ligando generaría una mezcla de unidades de análisis. Por ello, se utilizó como capa contextual para construir rankings exploratorios, pero no como variable del modelo principal.
 
-## Ranking contextual ligando-nanopartícula-proteína
+### Análisis estructural de complejos representativos
 
-Para integrar de forma exploratoria la información ligando-proteína y nanopartícula-proteína se construyó una tabla en formato largo con una fila por combinación ligando-nanopartícula-proteína. La afinidad ligando-proteína se denotó como \(E^{LP}_{i,p}\), donde \(i\) es el ligando y \(p\) la proteína. La afinidad nanopartícula-proteína se denotó como \(E^{NP}_{n,p}\), donde \(n\) es la nanopartícula.
+Como ampliación interpretativa del análisis de docking, se seleccionaron los complejos ligando-proteína mejor posicionados para cada proteína y se prepararon estructuras proteína-ligando en formato PDB. La selección se realizó tomando los tres ligandos con afinidad de docking más favorable frente a cada proteína, generando un conjunto de 12 complejos representativos.
 
-Como valores más negativos indican interacciones más favorables, se transformaron las energías en puntuaciones normalizadas por proteína:
+Los complejos seleccionados incluyeron principalmente ácido fólico, curcumina, el proxy de doxorrubicina/daunorrubicina aglicona y ácido tánico aproximado, que fueron los ligandos con mejores energías de docking en las proteínas estudiadas. Esta selección permitió definir un *case study* estructural centrado en los candidatos más relevantes del cribado ligando-proteína.
 
-```{=latex}
-\[
-S^{LP}_{i,p} = -z_p\left(E^{LP}_{i,p}\right)
-\]
-```
+El objetivo de esta etapa fue preparar los complejos para un análisis posterior de interacciones no covalentes mediante herramientas como PLIP (*Protein-Ligand Interaction Profiler*), que permite identificar de forma automática puentes de hidrógeno, contactos hidrofóbicos, puentes salinos, interacciones aromáticas y otros contactos proteína-ligando. En el presente flujo, esta etapa se consideró una ampliación estructural del docking, orientada a validar químicamente las poses mejor puntuadas y a interpretar si las afinidades más favorables se deben a interacciones específicas o a efectos más generales como tamaño, polaridad o superficie molecular.
 
-```{=latex}
-\[
-S^{NP}_{n,p} = -z_p\left(E^{NP}_{n,p}\right)
-\]
-```
+### Índice Contextual Nano-Bio
 
-donde \(z_p\) representa el z-score calculado dentro de cada proteína. A continuación, se definió un score contextual medio:
+Para integrar de forma exploratoria la información de docking ligando-proteína y nanopartícula-proteína se definió el Índice Contextual Nano-Bio (ICNB). Este índice no representa una energía física absoluta, sino una métrica de priorización comparativa que combina dos contribuciones normalizadas: la afinidad ligando-proteína y la interacción nanopartícula-proteína.
+
+En primer lugar, las energías de docking ligando-proteína y nanopartícula-proteína se transformaron en puntuaciones normalizadas dentro de cada proteína. Dado que valores más negativos indican interacciones más favorables, se invirtió el signo de las puntuaciones normalizadas:
+
+$$
+S^{LP}_{i,p} = -z_p(E^{LP}_{i,p})
+$$
+
+$$
+S^{NP}_{n,p} = -z_p(E^{NP}_{n,p})
+$$
+
+donde \(E^{LP}_{i,p}\) representa la energía de docking del ligando \(i\) frente a la proteína \(p\), \(E^{NP}_{n,p}\) la energía de docking de la nanopartícula \(n\) frente a la proteína \(p\), y \(z_p\) el z-score calculado dentro de cada proteína.
+
+A continuación, se calculó una puntuación contextual media:
 
 $$
 S^{contexto}_{i,n,p} = \frac{S^{LP}_{i,p} + S^{NP}_{n,p}}{2}
-$$Este score no representa una energía física total. Su función es ordenar combinaciones de forma comparativa, integrando dos tendencias: ligandos con afinidad favorable frente a una proteína y nanopartículas con interacción favorable frente a esa misma proteína.
+$$
+
+Finalmente, esta puntuación se reescaló a un intervalo 0--100 para facilitar su interpretación, obteniendo el ICNB. Valores altos de ICNB indican combinaciones ligando-nanopartícula-proteína más favorables dentro del conjunto analizado. Esta formulación permitió integrar la contribución del ligando y de la nanopartícula sin mezclar directamente energías procedentes de unidades de análisis distintas.
 
 ## Generación de tablas, figuras y aplicación de visualización
 

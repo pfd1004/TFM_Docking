@@ -5,6 +5,11 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from matplotlib import colormaps
 
+try:
+    import joblib
+except ImportError:
+    joblib = None
+
 # ============================================================
 # CONFIGURACIÓN
 # ============================================================
@@ -128,6 +133,16 @@ PATHS = {
     # Carpetas de figuras/tablas
     "figuras": ROOT / "resultados" / "figuras_generadas",
     "tablas": ROOT / "resultados" / "tablas_generadas",
+
+    # Modelo final para predicción desde SMILES
+    "modelo_final": first_existing([
+        Path("resultados/modelos/modelo_final_rdkit/modelo_final_extratrees_rdkit.joblib"),
+        Path("modelo_final_rdkit/modelo_final_extratrees_rdkit.joblib"),
+    ]),
+    "features_modelo_final": first_existing([
+        Path("resultados/modelos/modelo_final_rdkit/features_modelo_final.csv"),
+        Path("modelo_final_rdkit/features_modelo_final.csv"),
+    ]),
 }
 
 
@@ -274,6 +289,110 @@ def choose_existing_columns(df, preferred):
 
 
 # ============================================================
+# PREDICCIÓN DESDE SMILES
+# ============================================================
+
+@st.cache_resource(show_spinner=False)
+def load_final_model(model_path_str):
+    if joblib is None:
+        return None, "joblib no está instalado."
+
+    path = Path(model_path_str)
+    if not path.exists():
+        return None, f"No existe el modelo: {path}"
+
+    try:
+        return joblib.load(path), ""
+    except Exception as e:
+        return None, str(e)
+
+
+@st.cache_data(show_spinner=False)
+def load_final_features(features_path_str):
+    path = Path(features_path_str)
+    if not path.exists():
+        return None
+
+    df = pd.read_csv(path)
+    if "feature" in df.columns:
+        return df["feature"].astype(str).tolist()
+
+    return df.iloc[:, 0].astype(str).tolist()
+
+
+def calculate_rdkit_features_from_smiles(smiles, feature_cols):
+    try:
+        from rdkit import Chem
+        from rdkit.Chem import AllChem, Descriptors, rdMolDescriptors
+    except ImportError as e:
+        raise ImportError("RDKit no está instalado en este entorno.") from e
+
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        raise ValueError("SMILES no válido.")
+
+    mol_h = Chem.AddHs(mol)
+
+    # Generar conformación 3D para descriptores geométricos.
+    params = AllChem.ETKDGv3()
+    params.randomSeed = 42
+    status = AllChem.EmbedMolecule(mol_h, params)
+
+    if status == 0:
+        try:
+            AllChem.MMFFOptimizeMolecule(mol_h, maxIters=500)
+        except Exception:
+            try:
+                AllChem.UFFOptimizeMolecule(mol_h, maxIters=500)
+            except Exception:
+                pass
+
+    features = {}
+
+    # Descriptores 2D/topológicos
+    features["MolWt"] = Descriptors.MolWt(mol)
+    features["ExactMolWt"] = Descriptors.ExactMolWt(mol)
+    features["MolLogP"] = Descriptors.MolLogP(mol)
+    features["TPSA"] = rdMolDescriptors.CalcTPSA(mol)
+    features["NumHDonors"] = rdMolDescriptors.CalcNumHBD(mol)
+    features["NumHAcceptors"] = rdMolDescriptors.CalcNumHBA(mol)
+    features["NumRotatableBonds"] = rdMolDescriptors.CalcNumRotatableBonds(mol)
+    features["NumHeavyAtoms"] = mol.GetNumHeavyAtoms()
+    features["NumAtoms"] = mol_h.GetNumAtoms()
+    features["FractionCSP3"] = rdMolDescriptors.CalcFractionCSP3(mol)
+    features["NumRings"] = rdMolDescriptors.CalcNumRings(mol)
+    features["FormalCharge"] = Chem.GetFormalCharge(mol)
+    features["Chi0n"] = rdMolDescriptors.CalcChi0n(mol)
+    features["Chi1n"] = rdMolDescriptors.CalcChi1n(mol)
+    features["Kappa1"] = rdMolDescriptors.CalcKappa1(mol)
+    features["Kappa2"] = rdMolDescriptors.CalcKappa2(mol)
+    features["LabuteASA"] = rdMolDescriptors.CalcLabuteASA(mol_h)
+
+    # Descriptores 3D. Si falló la conformación, quedan NaN y el pipeline imputará.
+    three_d_funcs = {
+        "Asphericity": rdMolDescriptors.CalcAsphericity,
+        "Eccentricity": rdMolDescriptors.CalcEccentricity,
+        "InertialShapeFactor": rdMolDescriptors.CalcInertialShapeFactor,
+        "NPR1": rdMolDescriptors.CalcNPR1,
+        "NPR2": rdMolDescriptors.CalcNPR2,
+        "PMI1": rdMolDescriptors.CalcPMI1,
+        "PMI2": rdMolDescriptors.CalcPMI2,
+        "PMI3": rdMolDescriptors.CalcPMI3,
+        "RadiusOfGyration": rdMolDescriptors.CalcRadiusOfGyration,
+        "SpherocityIndex": rdMolDescriptors.CalcSpherocityIndex,
+    }
+
+    for name, func in three_d_funcs.items():
+        try:
+            features[name] = func(mol_h)
+        except Exception:
+            features[name] = np.nan
+
+    X = pd.DataFrame([{c: features.get(c, np.nan) for c in feature_cols}])
+    return X, features
+
+
+# ============================================================
 # SIDEBAR
 # ============================================================
 
@@ -289,6 +408,7 @@ with st.sidebar:
             "Membrana",
             "Nanopartículas",
             "Ranking contextual",
+            "Predicción nuevo ligando",
             "Figuras generadas",
             "Dataset",
             "Archivos y rutas",
@@ -664,6 +784,96 @@ elif section == "Ranking contextual":
                 )
             )
 
+
+
+elif section == "Predicción nuevo ligando":
+    st.header("Predicción de afinidad desde SMILES")
+
+    st.write(
+        "Esta pestaña convierte un SMILES en descriptores RDKit, carga el modelo final "
+        "ExtraTrees y predice las afinidades frente a las cuatro proteínas. "
+        "Es una extensión práctica de la app, útil como cribado preliminar."
+    )
+
+    if joblib is None:
+        st.error("Falta `joblib`. Instala con: `pip install joblib`.")
+    else:
+        model, model_error = load_final_model(str(PATHS["modelo_final"]))
+        feature_cols = load_final_features(str(PATHS["features_modelo_final"]))
+
+        c1, c2 = st.columns(2)
+        with c1:
+            st.caption("Modelo detectado")
+            st.code(str(PATHS["modelo_final"]), language="text")
+        with c2:
+            st.caption("Features detectadas")
+            st.code(str(PATHS["features_modelo_final"]), language="text")
+
+        if model is None:
+            st.error(model_error)
+            st.info("Primero ejecuta `python scripts\\modelos\\entrenar_modelo_final_rdkit.py`.")
+        elif feature_cols is None:
+            st.error("No encuentro `features_modelo_final.csv`.")
+        else:
+            smiles = st.text_input(
+                "Introduce un SMILES",
+                value="O=C(O)c1ccc(N)cc1",
+                help="Ejemplo: ácido p-aminobenzoico."
+            )
+
+            nombre = st.text_input("Nombre opcional", value="nuevo_ligando")
+
+            if st.button("Predecir afinidades"):
+                try:
+                    X, raw_features = calculate_rdkit_features_from_smiles(smiles, feature_cols)
+                    pred = model.predict(X)[0]
+
+                    targets = ["y_1ao6", "y_1hzh", "y_2hav", "y_3ghg"]
+
+                    pred_df = pd.DataFrame({
+                        "proteina": targets,
+                        "afinidad_predicha": pred,
+                    })
+
+                    pred_df["afinidad_predicha"] = pd.to_numeric(
+                        pred_df["afinidad_predicha"],
+                        errors="coerce"
+                    ).round(4)
+
+                    st.success("Predicción completada.")
+                    st.dataframe(pred_df, use_container_width=True)
+
+                    fig, ax = plt.subplots(figsize=(7, 4))
+                    ax.bar(pred_df["proteina"], pred_df["afinidad_predicha"], color=PALETTE["blue"])
+                    ax.set_ylabel("Afinidad predicha")
+                    ax.set_title(f"Perfil predicho · {nombre}")
+                    ax.grid(axis="y", alpha=0.25)
+                    fig.tight_layout()
+                    st.pyplot(fig)
+
+                    st.subheader("Descriptores calculados")
+                    X_show = X.T.reset_index()
+                    X_show.columns = ["descriptor", "valor"]
+                    st.dataframe(X_show, use_container_width=True)
+
+                    out = pred_df.copy()
+                    out.insert(0, "ligando", nombre)
+                    out.insert(1, "SMILES", smiles)
+
+                    st.download_button(
+                        "Descargar predicción CSV",
+                        out.to_csv(index=False).encode("utf-8"),
+                        f"prediccion_{nombre}.csv",
+                        "text/csv"
+                    )
+
+                    st.warning(
+                        "Estas predicciones son orientativas. El modelo se entrenó con el espacio químico "
+                        "del dataset del TFM; moléculas muy distintas pueden quedar fuera de su dominio de aplicabilidad."
+                    )
+
+                except Exception as e:
+                    st.error(str(e))
 
 elif section == "Figuras generadas":
     st.header("Figuras generadas para la memoria")

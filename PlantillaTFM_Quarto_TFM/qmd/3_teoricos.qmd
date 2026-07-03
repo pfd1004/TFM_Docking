@@ -1,4 +1,4 @@
-# Conceptos teóricos
+\capitulo{3}{Conceptos teóricos}
 
 ## Nanomedicina y nanopartículas metálicas
 

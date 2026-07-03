@@ -1,0 +1,277 @@
+Prediction of noncovalent interactions for PDB structure C:\USERS\PABLO\DESKTOP\UNI\TFM_DOCKING\RESULTADOS\PLIP\COMPLEJOS_PDB\3GHG_CURCUMIN_PROTEIN
+===================================================================================================================================================
+Created on 2026/07/03 using PLIP v3.0.0
+
+If you are using PLIP in your work, please cite:
+Schake,P. Bolz,SN. et al. PLIP 2025: introducing protein–protein interactions to the protein–ligand interaction profiler. Nucl. Acids Res. (10 May 2025), gkaf361. doi: 10.1093/nar/gkaf361
+Excluded molecules as ligands: NAG
+
+Analysis was done on model 1.
+
+BMA:U:3 (BMA) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+BMA:V:3 (BMA) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+BMA:W:3 (BMA) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+BMA:X:3 (BMA) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:B:501 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:C:601 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:E:501 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:F:601 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:H:501 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:I:601 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:K:501 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+CA:L:601 (CA) - ION
+-------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+GAL:U:10 (GAL) - SMALLMOLECULE
+------------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+GAL:U:6 (GAL) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+GAL:V:10 (GAL) - SMALLMOLECULE
+------------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+GAL:V:6 (GAL) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+GAL:X:10 (GAL) - SMALLMOLECULE
+------------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+GAL:X:6 (GAL) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+LIG:Z:1 (LIG) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): G,H,I
+
+
+**Hydrophobic Interactions**
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| RESNR | RESTYPE | RESCHAIN | RESNR_LIG | RESTYPE_LIG | RESCHAIN_LIG | DIST | LIGCARBONIDX | PROTCARBONIDX | LIGCOO                   | PROTCOO                  | 
++=======+=========+==========+===========+=============+==============+======+==============+===============+==========================+==========================+
+| 71    | ASP     | I        | 1         | LIG         | Z            | 3.69 | 39460        | 25501         | 14.489, -30.814, -85.425 | 15.860, -33.773, -83.705 | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 74    | SER     | I        | 1         | LIG         | Z            | 3.67 | 39663        | 25527         | 10.332, -34.056, -85.872 | 7.681, -36.337, -84.747  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 78    | MET     | I        | 1         | LIG         | Z            | 3.51 | 39580        | 25566         | 6.162, -27.111, -82.706  | 4.192, -30.014, -82.551  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 78    | MET     | I        | 1         | LIG         | Z            | 3.64 | 39681        | 25566         | 6.855, -27.548, -82.246  | 4.192, -30.014, -82.551  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 79    | ILE     | I        | 1         | LIG         | Z            | 3.37 | 39598        | 25576         | 5.742, -26.081, -82.615  | 3.999, -24.795, -85.197  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 79    | ILE     | I        | 1         | LIG         | Z            | 3.92 | 39493        | 25576         | 6.807, -27.195, -83.882  | 3.999, -24.795, -85.197  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 105   | ASP     | G        | 1         | LIG         | Z            | 3.71 | 39626        | 19844         | 8.842, -24.118, -80.888  | 7.596, -22.772, -84.113  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 129   | GLN     | H        | 1         | LIG         | Z            | 3.98 | 39651        | 21534         | 16.662, -27.047, -83.278 | 18.607, -29.123, -80.488 | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 132   | VAL     | H        | 1         | LIG         | Z            | 3.75 | 39669        | 21571         | 10.296, -27.573, -82.800 | 12.813, -27.001, -80.079 | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 136   | GLU     | H        | 1         | LIG         | Z            | 3.74 | 39594        | 21613         | 7.394, -27.990, -82.413  | 8.728, -30.810, -80.344  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 136   | GLU     | H        | 1         | LIG         | Z            | 3.84 | 39511        | 21614         | 10.096, -27.974, -82.589 | 9.528, -31.571, -81.384  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+| 139   | VAL     | H        | 1         | LIG         | Z            | 3.77 | 39593        | 21643         | 2.467, -25.355, -77.559  | 4.785, -28.283, -78.060  | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+--------------------------+--------------------------+
+
+
+
+MAN:U:4 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+MAN:U:8 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+MAN:V:4 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+MAN:V:8 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+MAN:W:4 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+MAN:W:5 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+MAN:X:4 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+MAN:X:8 (MAN) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+SIA:U:11 (SIA) - SMALLMOLECULE
+------------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+SIA:U:7 (SIA) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+SIA:V:11 (SIA) - SMALLMOLECULE
+------------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+SIA:V:7 (SIA) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): E
+
+
+**Hydrophobic Interactions**
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+---------------------------+---------------------------+
+| RESNR | RESTYPE | RESCHAIN | RESNR_LIG | RESTYPE_LIG | RESCHAIN_LIG | DIST | LIGCARBONIDX | PROTCARBONIDX | LIGCOO                    | PROTCOO                   | 
++=======+=========+==========+===========+=============+==============+======+==============+===============+===========================+===========================+
+| 424   | TRP     | E        | 7         | SIA         | V            | 3.90 | 39031        | 14929         | 189.416, -5.236, -105.698 | 192.087, -4.933, -102.875 | 
++-------+---------+----------+-----------+-------------+--------------+------+--------------+---------------+---------------------------+---------------------------+
+
+
+
+SIA:X:11 (SIA) - SMALLMOLECULE
+------------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
+SIA:X:7 (SIA) - SMALLMOLECULE
+-----------------------------
+Interacting chain(s): 
+
+
+
+No interactions detected.
