@@ -106,7 +106,3 @@ Finalmente, esta puntuación se reescaló a un intervalo 0--100 para facilitar s
 Los resultados finales se organizaron mediante scripts de R para generar tablas en CSV y figuras en PNG. Las figuras incluyeron comparación de modelos por RMSE, rendimiento por proteína, gráficos real-predicho, correlaciones de variables, mapas de calor nanopartícula-proteína, ranking contextual y relaciones entre variables de membrana.
 
 Además, se desarrolló una aplicación Streamlit para revisar de forma interactiva los CSV generados. La aplicación permite explorar modelos, métricas, predicciones, variables de membrana, docking nanopartícula-proteína y ranking contextual. Esta aplicación se considera una herramienta auxiliar de visualización, mientras que los análisis reproducibles quedan definidos por los scripts y los archivos CSV generados.
-
-## Reproducibilidad y trazabilidad
-
-La estructura final del proyecto separó datos, scripts, resultados, aplicación y documentación. Los datasets se almacenaron en `datasets/`; los scripts en `scripts/modelos`, `scripts/membrana`, `scripts/nanoparticulas` y `scripts/utilidades`; las salidas en `resultados/`; y la memoria en una plantilla Quarto. Esta organización permite regenerar tablas y figuras a partir de los CSV base y facilita la ampliación futura del flujo a nuevos ligandos, nuevas proteínas o complejos ligando-nanopartícula-proteína completos.

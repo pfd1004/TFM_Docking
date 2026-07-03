@@ -15,5 +15,4 @@ De forma específica, se plantean los siguientes objetivos:
 9. Analizar los resultados de docking nanopartícula-proteína como una capa contextual independiente.
 10. Generar un ranking exploratorio de combinaciones ligando-nanopartícula-proteína mediante puntuaciones normalizadas.
 11. Automatizar la generación de tablas, figuras y una aplicación de visualización para facilitar la trazabilidad y reproducibilidad del flujo de trabajo.
-12. Discutir las limitaciones del enfoque y proponer líneas futuras orientadas a complejos ligando-nanopartícula-proteína completos.
 

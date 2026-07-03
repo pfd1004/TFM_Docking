@@ -14,6 +14,7 @@
 \usepackage{placeins}
 \usepackage{caption}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{booktabs}
@@ -40,6 +41,7 @@
 % Comandos útiles
 \newcommand{\ruta}[1]{{\sffamily #1}}
 \newcommand{\capitulo}[2]{%
+  \clearpage
   \setcounter{chapter}{#1}%
   \setcounter{section}{0}%
   \setcounter{figure}{0}%
@@ -65,10 +67,36 @@
 \tutorb{\nombreTutorb}
 \master{Máster universitario en Ingeniería Biomédica}
 
-\chapterstyle{bianchi}
+% Estilo compacto de capítulos para evitar que empiecen a mitad de página
+\makechapterstyle{tfmcompact}{%
+  \renewcommand*{\chapterheadstart}{\vspace*{-1.2cm}}%
+  \renewcommand*{\printchaptername}{}%
+  \renewcommand*{\chapternamenum}{}%
+  \renewcommand*{\printchapternum}{}%
+  \renewcommand*{\afterchapternum}{}%
+  \renewcommand*{\printchaptertitle}[1]{%
+    \centering
+    {\Huge\bfseries ##1\par}%
+    \vspace{0.25cm}%
+    \hrule
+    \vspace{0.55cm}%
+  }%
+  \renewcommand*{\afterchaptertitle}{\vspace{0.2cm}}%
+}
+\chapterstyle{tfmcompact}
+
+% Evitar páginas en blanco por capítulos en páginas pares/impares
+\let\cleardoublepage\clearpage
+
+% Espaciado más compacto en apartados
+\setbeforesecskip{1.2ex plus .3ex minus .2ex}
+\setaftersecskip{0.8ex plus .2ex}
+\setbeforesubsecskip{1.0ex plus .2ex minus .2ex}
+\setaftersubsecskip{0.6ex plus .2ex}
 
 \def\maketitle{%
   \null
+  \vspace*{-1.5cm}
   \thispagestyle{empty}
 
   \makepagestyle{mipc}
@@ -91,43 +119,48 @@
   \aliaspagestyle{chapter}{chapterfirst}
 
   \begin{center}
-    \includegraphics[width=\textwidth]{CabeceraEPS.png}\vspace{1.0cm}
+    \includegraphics[width=.82\textwidth]{CabeceraEPS.png}
   \end{center}
 
+  \vspace{0.25cm}
+
   \begin{center}
-    \begin{minipage}[c][1cm][c]{.20\textwidth}
+    \begin{minipage}[c][0.75cm][c]{.13\textwidth}
       \includegraphics[width=\textwidth]{Logo_GIS.png}
     \end{minipage}
   \end{center}
 
+  \vspace{0.25cm}
+
   \begin{center}
     \colorbox{tfmGold}{%
-      \begin{minipage}{.86\textwidth}
-        \vspace{.45cm}
+      \begin{minipage}{.92\textwidth}
+        \vspace{.28cm}
         \centering
         {\Large\textbf{Trabajo de Fin de Máster}\par}
-        \vspace{0.15cm}
+        \vspace{0.10cm}
         {\Large\textbf{\@master}\par}
-        \vspace{0.45cm}
-        {\LARGE\textbf{\@title}\par}
-        \vspace{.20cm}
+        \vspace{0.30cm}
+        {\fontsize{15}{17}\selectfont\textbf{\@title}\par}
+        \vspace{.22cm}
       \end{minipage}
     }
   \end{center}
 
+  \vspace{0.35cm}
+
   \begin{center}
-    {\LARGE Presentado por \@author\par}
-    \vspace{0.25cm}
-    {\Large Universidad de Burgos\par}
-    \vspace{0.25cm}
-    {\Large \@date\par}
-    \vspace{0.40cm}
-    {\Large Tutores: \@tutor{} -- \@tutorb{}\par}
+    {\Large Presentado por \@author\par}
+    \vspace{0.20cm}
+    {\large Universidad de Burgos\par}
+    \vspace{0.20cm}
+    {\large \@date\par}
+    \vspace{0.30cm}
+    {\large Tutores: \@tutor{} -- \@tutorb{}\par}
   \end{center}
-  \null
-  \cleardoublepage
+
+  \clearpage
 }
-\makeatother
 
 \renewcommand{\appendixname}{Apéndice}
 \renewcommand*\cftappendixname{\appendixname\ }

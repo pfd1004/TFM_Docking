@@ -1,10 +1,10 @@
-\capitulo{5}{Resultados}
+\capitulo{4}{Resultados}
 
 ## Comparación de modelos predictivos
 
 La comparación de modelos permitió evaluar el efecto de distintos bloques de variables sobre la predicción de afinidades de docking. La Figura @fig-top-modelos muestra el ranking de modelos ordenado por RMSE en el conjunto de test. El mejor resultado global correspondió a ExtraTrees utilizando únicamente descriptores RDKit, con un RMSE de test de 0,4117, un MAE de 0,3188 y un $R^2$ medio de 0,8840. El modelo equivalente con descriptores RDKit y variables de membrana seleccionadas obtuvo un RMSE prácticamente idéntico, de 0,4117, aunque con un MAE ligeramente superior.
 
-![Comparación de modelos por RMSE en test.](resultados/figuras_generadas/fig_01_top_modelos_rmse_test.png){#fig-top-modelos width=92% fig-pos="H"}
+![Comparación de modelos por RMSE en test.](resultados/figuras_generadas/fig_01_top_modelos_rmse_test.png){#fig-top-modelos width=80%}
 
 \FloatBarrier
 
@@ -12,17 +12,19 @@ La comparación por bloques de variables se resume en la Figura @fig-bloques. Es
 
 ![Mejor RMSE por bloque de variables.](resultados/figuras_generadas/fig_02_mejor_rmse_por_bloque_variables.png){#fig-bloques width=78% fig-pos="H"}
 
-\FloatBarrier
-
 ## Rendimiento por proteína
 
-El rendimiento por proteína del mejor modelo se evaluó mediante RMSE y $R^2$. Las Figuras @fig-rmse-proteina y @fig-r2-proteina muestran la variabilidad de rendimiento entre las cuatro proteínas. El error no fue homogéneo en todas las salidas: `y_2hav` presentó el menor RMSE, mientras que `y_1hzh` mostró el mayor error relativo. Aun así, los valores de $R^2$ se mantuvieron elevados para las cuatro proteínas, lo que indica que el modelo capturó una parte importante de la variabilidad de las afinidades de docking.
+El rendimiento por proteína del mejor modelo se evaluó mediante RMSE y $R^2$. La figura @fig-rendimiento-proteina muestra la variabilidad de rendimiento entre las cuatro proteínas. El error no fue homogéneo en todas las salidas: `y_2hav` presentó el menor RMSE, mientras que `y_1hzh` mostró el mayor error relativo. Aun así, los valores de $R^2$ se mantuvieron elevados para las cuatro proteínas, lo que indica que el modelo capturó una parte importante de la variabilidad de las afinidades de docking.
 
-![RMSE por proteína del mejor modelo.](resultados/figuras_generadas/fig_03_rmse_por_proteina_mejor_modelo.png){#fig-rmse-proteina width=68% fig-pos="H"}
+::: {#fig-rendimiento-proteina layout-ncol=2}
 
-![R² por proteína del mejor modelo.](resultados/figuras_generadas/fig_04_r2_por_proteina_mejor_modelo.png){#fig-r2-proteina width=68% fig-pos="H"}
+![RMSE por proteína.](resultados/figuras_generadas/fig_03_rmse_por_proteina_mejor_modelo.png){width=100%}
 
-\FloatBarrier
+![R² por proteína.](resultados/figuras_generadas/fig_04_r2_por_proteina_mejor_modelo.png){width=100%}
+
+Rendimiento por proteína del mejor modelo: RMSE y R².
+
+:::
 
 ## Predicción real frente a predicción estimada
 
@@ -30,7 +32,7 @@ La concordancia entre valores reales de docking y valores predichos se inspeccio
 
 ![Comparación real vs predicho para las cuatro proteínas.](resultados/figuras_generadas/fig_05_real_vs_predicho_panel.png){#fig-real-pred-panel width=95% fig-pos="H"}
 
-\FloatBarrier
+
 
 ## Variables relevantes
 
@@ -56,22 +58,66 @@ Los resultados mostraron una dominancia clara de la nanopartícula `ZnO_12_0` en
 
 La mejor combinación global fue `Folic_acid`--`ZnO_12_0`--`2hav`, con un ICNB global de 100. También alcanzaron valores máximos dentro de cada proteína las combinaciones `Folic_acid`--`ZnO_12_0`--`1ao6` y `Folic_acid`--`ZnO_12_0`--`1hzh`. En conjunto, el ácido fólico apareció como el ligando mejor posicionado de forma consistente en las tres proteínas con datos nanopartícula-proteína.
 
-Las combinaciones mejor posicionadas fueron:
+Como se observa en la @tbl-icnb-top, las combinaciones con mayor ICNB estuvieron dominadas por `ZnO_12_0`, especialmente en combinación con ácido fólico.
 
-| Ligando | Nanopartícula | Proteína | ICNB global | ICNB por proteína | Energía ligando-proteína | Energía nanopartícula-proteína |
-|---|---|---|---:|---:|---:|---:|
-| `Folic_acid` | `ZnO_12_0` | `2hav` | 100.00 | 100.00 | -10.09 | -8.44 |
-| `Folic_acid` | `ZnO_12_0` | `1ao6` | 99.83 | 100.00 | -9.21 | -7.76 |
-| `Folic_acid` | `ZnO_12_0` | `1hzh` | 97.78 | 100.00 | -8.75 | -7.38 |
-| `Doxorubicin_proxy_daunorubicin_aglycone` | `ZnO_12_0` | `1ao6` | 91.22 | 91.36 | -8.36 | -7.76 |
-| `Curcumin` | `ZnO_12_0` | `2hav` | 89.46 | 89.44 | -8.93 | -8.44 |
-| `Doxorubicin_proxy_daunorubicin_aglycone` | `ZnO_12_0` | `1hzh` | 89.24 | 91.27 | -7.94 | -7.38 |
-| `Doxorubicin_proxy_daunorubicin_aglycone` | `ZnO_12_0` | `2hav` | 85.59 | 85.56 | -8.50 | -8.44 |
-| `Curcumin` | `ZnO_12_0` | `1ao6` | 84.96 | 85.08 | -7.74 | -7.76 |
-| `Tannic_acid_approx` | `ZnO_12_0` | `1hzh` | 84.86 | 86.79 | -7.52 | -7.38 |
-| `Tannic_acid_approx` | `ZnO_12_0` | `2hav` | 84.00 | 83.97 | -8.33 | -8.44 |
+```{r}
+#| label: tbl-icnb-top
+#| tbl-cap: "Top 10 combinaciones según el Índice Contextual Nano-Bio."
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
 
-![Top 20 combinaciones según el Índice Contextual Nano-Bio.](resultados/figuras_generadas/fig_13_top20_icnb.png){#fig-icnb width=90% fig-pos="H"}
+library(readr)
+library(dplyr)
+library(knitr)
+
+icnb <- read_csv("resultados/nanoparticulas/top30_indice_contextual_nanobio.csv",
+                 show_col_types = FALSE)
+
+tabla_icnb <- icnb %>%
+  mutate(
+    Ligando = case_when(
+      ligando == "Folic_acid" ~ "Ácido fólico",
+      ligando == "Curcumin" ~ "Curcumina",
+      ligando == "Tannic_acid_approx" ~ "Ácido tánico",
+      grepl("Doxorubicin", ligando) ~ "Doxorrubicina proxy",
+      TRUE ~ ligando
+    ),
+    NP = gsub("_", "-", nanoparticula),
+    Prot = proteina,
+    `ICNB global` = round(ICNB_global_0_100, 2),
+    `ICNB proteína` = round(ICNB_0_100, 2),
+    `E LP` = round(y_ligando_proteina, 2),
+    `E NP` = round(E_nano_proteina, 2)
+  ) %>%
+  select(
+    Ligando,
+    NP,
+    Prot,
+    `ICNB global`,
+    `ICNB proteína`,
+    `E LP`,
+    `E NP`
+  ) %>%
+  slice_head(n = 10)
+
+cat("\\begingroup\n")
+cat("\\scriptsize\n")
+cat("\\setlength{\\tabcolsep}{3pt}\n")
+cat("\\resizebox{\\textwidth}{!}{%\n")
+
+kable(
+  tabla_icnb,
+  format = "latex",
+  booktabs = TRUE,
+  align = c("l", "c", "c", "r", "r", "r", "r"),
+  escape = TRUE
+)
+
+cat("}\n")
+cat("\\endgroup\n")
+```
 
 Debe remarcarse que el ICNB no es una energía de unión total ni una magnitud termodinámica. Su utilidad es comparativa: permite priorizar combinaciones que reúnen simultáneamente ligandos con buena afinidad frente a proteínas plasmáticas y nanopartículas con interacción favorable frente a esas mismas proteínas.
 
@@ -85,20 +131,43 @@ El análisis PLIP permitió identificar contactos no covalentes entre ligando y 
 
 Para mantener una interpretación conservadora, la tabla resume los contactos hidrofóbicos y los puentes de hidrógeno, que fueron las categorías más robustas en los reportes. Las interacciones metálicas detectadas en algunos complejos con ácido fólico no se utilizaron para el recuento total, ya que pueden estar influenciadas por la preparación estructural y por la presencia de varias poses en el archivo de docking.
 
-| Proteína | Ligando | Contactos hidrofóbicos | Puentes de hidrógeno | Total considerado |
-|---|---|---:|---:|---:|
-| `1ao6` | `Curcumin` | 18 | 0 | 18 |
-| `1ao6` | `Doxorubicin_proxy_daunorubicin_aglycone` | 18 | 0 | 18 |
-| `1ao6` | `Folic_acid` | 19 | 7 | 26 |
-| `1hzh` | `Doxorubicin_proxy_daunorubicin_aglycone` | 12 | 0 | 12 |
-| `1hzh` | `Folic_acid` | 13 | 8 | 21 |
-| `1hzh` | `Tannic_acid_approx` | 0 | 0 | 0 |
-| `2hav` | `Curcumin` | 13 | 0 | 13 |
-| `2hav` | `Doxorubicin_proxy_daunorubicin_aglycone` | 10 | 0 | 10 |
-| `2hav` | `Folic_acid` | 18 | 4 | 22 |
-| `3ghg` | `Curcumin` | 12 | 0 | 12 |
-| `3ghg` | `Doxorubicin_proxy_daunorubicin_aglycone` | 9 | 0 | 9 |
-| `3ghg` | `Folic_acid` | 11 | 0 | 11 |
+La @tbl-plip-resumen resume los contactos detectados por PLIP en los complejos representativos.
+
+```{r}
+#| label: tbl-plip-resumen
+#| tbl-cap: "Resumen del análisis PLIP en complejos proteína-ligando representativos."
+#| echo: false
+#| warning: false
+#| message: false
+
+library(dplyr)
+library(knitr)
+library(tibble)
+
+tabla_plip <- tribble(
+  ~Proteína, ~Ligando, ~Hidrofóbicos, ~`Puentes H`, ~Total,
+  "1ao6", "Curcumina", 18, 0, 18,
+  "1ao6", "Doxorrubicina proxy", 18, 0, 18,
+  "1ao6", "Ácido fólico", 19, 7, 26,
+  "1hzh", "Doxorrubicina proxy", 12, 0, 12,
+  "1hzh", "Ácido fólico", 13, 8, 21,
+  "1hzh", "Ácido tánico", 0, 0, 0,
+  "2hav", "Curcumina", 13, 0, 13,
+  "2hav", "Doxorrubicina proxy", 10, 0, 10,
+  "2hav", "Ácido fólico", 18, 4, 22,
+  "3ghg", "Curcumina", 13, 0, 13,
+  "3ghg", "Doxorrubicina proxy", 10, 0, 10,
+  "3ghg", "Ácido fólico", 12, 0, 12
+)
+
+kable(
+  tabla_plip,
+  format = "latex",
+  booktabs = TRUE,
+  align = c("c", "l", "r", "r", "r"),
+  escape = TRUE
+)
+```
 
 El ácido fólico fue el ligando que presentó el patrón de interacción más completo. En `1ao6` mostró 26 interacciones consideradas, incluyendo 19 contactos hidrofóbicos y 7 puentes de hidrógeno. En `1hzh` presentó 21 interacciones, con 13 contactos hidrofóbicos y 8 puentes de hidrógeno, mientras que en `2hav` presentó 22 interacciones, con 18 contactos hidrofóbicos y 4 puentes de hidrógeno. Este comportamiento es coherente con su posición destacada en el ICNB.
 
