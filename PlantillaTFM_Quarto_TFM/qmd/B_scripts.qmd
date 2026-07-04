@@ -1,9 +1,0 @@
-\apendice{Scripts principales}
-
-Los scripts principales del flujo son:
-
-- `scripts/modelos/entrenar_comparativo_membrana.py`: compara modelos y bloques de variables.
-- `scripts/modelos/entrenar_modelo_final_rdkit.py`: entrena el modelo final con todos los ligandos disponibles.
-- `scripts/nanoparticulas/crear_dataset_contexto_nano.py`: genera el dataset contextual ligando-nanopartícula-proteína.
-- `scripts/utilidades/generar_tablas_tfm.R`: genera tablas en CSV.
-- `scripts/utilidades/generar_figuras_color_tfm.R`: genera figuras con color para la memoria.

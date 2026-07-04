@@ -1,0 +1,87 @@
+\apendice{Cálculos estructurales y variables de membrana}
+
+\section{Optimización geométrica y frecuencias}
+
+Las estructuras de los ligandos se prepararon antes de incorporarse al flujo de docking, cálculo de descriptores y análisis de membrana. La optimización geométrica permitió obtener conformaciones razonables para cada molécula, mientras que el cálculo de frecuencias se utilizó como control de estabilidad estructural. La ausencia de frecuencias imaginarias se interpretó como indicio de que la estructura optimizada correspondía a un mínimo local de la superficie de energía potencial.
+
+La optimización geométrica de los ligandos y el cálculo de frecuencias se realizaron mediante TURBOMOLE. Estos cálculos generaron las estructuras optimizadas empleadas como punto de partida para etapas posteriores del flujo. Cuando fue necesario, se generaron también archivos de visualización o formatos intermedios para comprobar la geometría y facilitar la conversión entre programas.
+
+Además, se iniciaron cálculos exploratorios de complejos nanopartícula-ligando mediante ORCA. Estos cálculos se plantearon como paso previo a la preparación de sistemas nanopartícula-ligando-proteína para docking. Para estos sistemas se empleó el mismo nivel teórico general descrito en la metodología: funcional B3LYP, corrección de dispersión DFT-D4 y base def2-TZVP. Debido al mayor coste computacional de estos complejos, esta parte se consideró una línea exploratoria y no se integró todavía como una capa completa dentro del modelo final.
+
+\section{Variables de membrana COSMOtherm/COSMOmic}
+
+Las variables de membrana se incorporaron como una capa fisicoquímica complementaria. Su objetivo no fue describir directamente la interacción ligando-proteína, sino caracterizar el comportamiento de los ligandos en un entorno de membrana simplificado. Para ello se empleó una bicapa modelo de DMPC y se extrajeron variables relacionadas con partición, permeabilidad, distribución, energía libre, entropía media y difusión.
+
+El archivo corregido de variables de membrana, \texttt{membrana\_features\_corregido.csv}, contiene 55 solutos con variables de membrana válidas. Tras cruzar esta información con el dataset de docking y descriptores moleculares, el archivo \texttt{dataset\_descriptores\_membrana.csv} contiene 53 ligandos. De ellos, 52 presentan variables de membrana asociadas en el dataset integrado. El caso que no quedó integrado con variables de membrana completas fue SDS, debido a que no se obtuvo una optimización convergida válida para el sistema empleado en el flujo final. Por este motivo, aunque el ligando se mantuvo en el dataset de docking y descriptores, sus variables de membrana no se utilizaron como información completa en el bloque de membrana.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Resumen de los archivos de variables de membrana.}
+\label{tbl-anexo-membrana-resumen}
+\begin{tabular}{p{0.42\textwidth}p{0.18\textwidth}p{0.30\textwidth}}
+\toprule
+Archivo & Número de entradas & Comentario \\
+\midrule
+\texttt{membrana\_features\_corregido.csv} & 55 & Archivo corregido con variables de membrana válidas para los solutos procesados. \\
+\texttt{dataset\_descriptores\_membrana.csv} & 53 & Dataset final cruzado con descriptores RDKit y energías de docking. \\
+\texttt{dataset\_descriptores\_membrana.csv} con variables de membrana no nulas & 52 & Ligandos del dataset final con información de membrana correctamente asociada. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Familias de variables de membrana utilizadas.}
+\label{tbl-anexo-membrana-variables}
+\begin{tabular}{p{0.34\textwidth}p{0.54\textwidth}}
+\toprule
+Variable o familia & Interpretación en el flujo \\
+\midrule
+\texttt{mem\_logP} & Partición micela/agua o membrana/agua según la salida procesada. \\
+\texttt{mem\_logP\_kg\_l} & Versión normalizada de la partición considerando unidades de masa/volumen. \\
+\texttt{mem\_logPerm} & Estimación de permeabilidad a través de la membrana modelo. \\
+\texttt{mem\_distribution} & Perfil de distribución del soluto a lo largo de la bicapa. \\
+\texttt{mem\_free\_energy} & Perfil de energía libre asociado a la posición del soluto en la membrana. \\
+\texttt{mem\_meanentropy} & Perfil de entropía media extraído del cálculo de membrana. \\
+\texttt{mem\_diffusion\_E9} & Variables relacionadas con difusión en la bicapa modelo. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Estas variables se integraron posteriormente en el dataset de modelización junto con los descriptores RDKit y las afinidades de docking ligando-proteína. En los modelos finales, el bloque de membrana aportó información complementaria, pero no mejoró claramente el rendimiento predictivo frente al uso exclusivo de descriptores RDKit.
+
+\section{Selección e integración de variables}
+
+Para evitar introducir en los modelos información redundante o difícil de interpretar, las salidas de COSMOtherm/COSMOmic no se utilizaron como perfiles completos punto a punto, sino como variables resumen. Los perfiles de distribución, energía libre, entropía media y difusión se resumieron mediante estadísticos como media, mínimo, máximo, valor en el centro de la bicapa, posición del máximo, posición del mínimo, suma o barrera energética, según el tipo de variable.
+
+La selección final mantuvo únicamente variables numéricas compatibles con el flujo de aprendizaje automático. Las variables de membrana se identificaron mediante el prefijo \texttt{mem\_}, lo que permitió separarlas de los descriptores moleculares RDKit y de las variables objetivo de docking. Esta organización permitió comparar tres situaciones: modelos entrenados solo con descriptores RDKit, modelos entrenados solo con variables de membrana y modelos entrenados con la combinación de ambos bloques.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Criterios aplicados para integrar las variables de membrana en el dataset final.}
+\label{tbl-anexo-seleccion-membrana}
+\begin{tabular}{p{0.36\textwidth}p{0.52\textwidth}}
+\toprule
+Criterio & Aplicación en el flujo \\
+\midrule
+Identificación por prefijo & Las variables procedentes de membrana se conservaron con el prefijo \texttt{mem\_}. \\
+Variables numéricas & Se mantuvieron únicamente variables numéricas utilizables por los modelos de regresión. \\
+Resumen de perfiles & Los perfiles de membrana se transformaron en estadísticos resumen para evitar usar directamente todos los puntos de profundidad. \\
+Separación de bloques & Las variables RDKit y las variables de membrana se analizaron por separado y también de forma combinada. \\
+Control de valores ausentes & Se revisaron los ligandos sin variables de membrana completas antes de construir los modelos. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Esta selección permitió estudiar si la información de membrana añadía capacidad predictiva frente a los descriptores moleculares convencionales. Los resultados mostraron que las variables de membrana describen propiedades fisicoquímicas relevantes, pero no mejoraron de forma clara la predicción de las afinidades ligando-proteína frente al bloque RDKit solo. Por ello, en la interpretación final se consideraron como una capa complementaria de caracterización, no como el bloque principal del modelo predictivo.
+
+\section{Tratamiento de archivos y control de calidad}
+
+El flujo de membrana requirió revisar nombres de solutos, rutas de archivos y etiquetas de salida para evitar errores de parseo. Los resultados se exportaron a archivos CSV para facilitar su integración con el resto del proyecto. Las variables finales se incorporaron con prefijo \texttt{mem\_}, lo que permitió distinguirlas de los descriptores RDKit y de las variables objetivo de docking.
+
+Durante el control de calidad se comprobó que las variables principales de membrana estuvieran disponibles en el archivo corregido. En particular, las variables \texttt{mem\_logP}, \texttt{mem\_logP\_kg\_l}, \texttt{mem\_logPerm}, \texttt{mem\_distribution}, \texttt{mem\_free\_energy} y \texttt{mem\_diffusion\_E9} se encontraron para los solutos del archivo de membrana corregido. La integración con el dataset de modelización redujo el número de ligandos con información completa de membrana a 52 debido a la falta de una optimización convergida válida para SDS en el flujo final.
+
+Esta comprobación permitió mantener separadas dos cifras: el número de solutos con variables de membrana calculadas y el número de ligandos finalmente cruzados con el dataset de docking y descriptores. Esta distinción es importante porque el modelo predictivo se entrenó sobre el dataset integrado, no directamente sobre el archivo aislado de membrana.

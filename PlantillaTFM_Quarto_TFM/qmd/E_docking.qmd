@@ -1,0 +1,98 @@
+\apendice{Docking nanopartícula-proteína e Índice Contextual Nano-Bio}
+
+\section{Docking nanopartícula-proteína}
+
+La interacción nanopartícula-proteína se analizó como una capa contextual independiente. Esta decisión metodológica evitó incorporar directamente información de nanopartículas como si fuera una propiedad intrínseca del ligando. En su lugar, las energías nanopartícula-proteína se combinaron posteriormente con las energías ligando-proteína mediante un índice normalizado.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Energías de docking nanopartícula-proteína utilizadas en la capa contextual.}
+\label{tbl-anexo-nano-proteina-icnb}
+\begin{tabular}{lrrr}
+\toprule
+Nanopartícula & 1ao6 & 1hzh & 2hav \\
+\midrule
+Ag\_13 & -2.24 & -2.13 & -2.17 \\
+Au\_13 & -2.34 & -2.12 & -2.34 \\
+ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Las energías más negativas corresponden a interacciones más favorables dentro del protocolo utilizado. En los tres casos evaluados, ZnO\_12\_0 presentó energías claramente más negativas que Ag\_13 y Au\_13, por lo que tuvo un peso importante en las combinaciones mejor posicionadas del análisis contextual. La proteína 3ghg no se incluyó en esta capa nanopartícula-proteína final por limitaciones técnicas asociadas al tamaño y preparación del sistema.
+
+\section{Cálculo del Índice Contextual Nano-Bio}
+
+El Índice Contextual Nano-Bio se definió como una métrica comparativa para priorizar combinaciones ligando-nanopartícula-proteína. Para evitar sumar energías de naturaleza distinta como si fuesen una magnitud física absoluta, se trabajó con puntuaciones normalizadas por proteína. La afinidad ligando-proteína y la energía nanopartícula-proteína se transformaron en puntuaciones donde valores mayores representan interacciones más favorables:
+
+La afinidad ligando-proteína y la energía nanopartícula-proteína se transformaron en puntuaciones donde valores mayores representan interacciones más favorables:
+
+```{=latex}
+\begin{equation*}
+S^{LP}_{i,p} = -z_p(E^{LP}_{i,p})
+\end{equation*}
+
+\begin{equation*}
+S^{NP}_{n,p} = -z_p(E^{NP}_{n,p})
+\end{equation*}
+```
+
+A partir de estas dos contribuciones se calculó una puntuación contextual media:
+
+```{=latex}
+\begin{equation*}
+S^{\mathrm{contexto}}_{i,n,p} =
+\frac{S^{LP}_{i,p} + S^{NP}_{n,p}}{2}
+\end{equation*}
+```
+
+Finalmente, las puntuaciones se reescalaron a una escala 0--100 para facilitar su interpretación como índice de priorización:
+
+```{=latex}
+\begin{equation*}
+ICNB_{i,n,p} =
+100 \cdot
+\frac{
+S^{\mathrm{contexto}}_{i,n,p} - S^{\mathrm{contexto}}_{\min}
+}{
+S^{\mathrm{contexto}}_{\max} - S^{\mathrm{contexto}}_{\min}
+}
+\end{equation*}
+```
+
+El ICNB no representa una energía física de un complejo completo, sino una métrica comparativa para ordenar candidatos dentro del conjunto estudiado.
+
+\section{Combinaciones mejor posicionadas}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Top 10 combinaciones según el Índice Contextual Nano-Bio.}
+\label{tbl-anexo-top-icnb}
+\begin{tabular}{llcrrrr}
+\toprule
+Ligando & NP & Prot & ICNB & ICNB prot. & E LP & E NP \\
+\midrule
+Ácido fólico & ZnO\_12\_0 & 2hav & 100.00 & 100.00 & -10.09 & -8.44 \\
+Ácido fólico & ZnO\_12\_0 & 1ao6 & 99.83 & 100.00 & -9.21 & -7.76 \\
+Ácido fólico & ZnO\_12\_0 & 1hzh & 97.78 & 100.00 & -8.75 & -7.38 \\
+Doxo. proxy & ZnO\_12\_0 & 1ao6 & 91.22 & 91.36 & -8.36 & -7.76 \\
+Curcumina & ZnO\_12\_0 & 2hav & 89.46 & 89.44 & -8.93 & -8.44 \\
+Doxo. proxy & ZnO\_12\_0 & 1hzh & 89.24 & 91.27 & -7.94 & -7.38 \\
+Doxo. proxy & ZnO\_12\_0 & 2hav & 85.59 & 85.56 & -8.50 & -8.44 \\
+Curcumina & ZnO\_12\_0 & 1ao6 & 84.96 & 85.08 & -7.74 & -7.76 \\
+Ácido tánico & ZnO\_12\_0 & 1hzh & 84.86 & 86.79 & -7.52 & -7.38 \\
+Ácido tánico & ZnO\_12\_0 & 2hav & 84.00 & 83.97 & -8.33 & -8.44 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+LP: ligando-proteína; NP: nanopartícula-proteína. Las mejores combinaciones estuvieron dominadas por ZnO\_12\_0 y ácido fólico. Este resultado se explica por la combinación de una afinidad ligando-proteína favorable y una contribución nanopartícula-proteína especialmente negativa para ZnO\_12\_0.
+
+\section{Interpretación del índice}
+
+El ICNB permitió integrar en una misma escala la información procedente del docking ligando-proteína y del docking nanopartícula-proteína. Esta integración fue útil para priorizar combinaciones, pero no debe interpretarse como una simulación explícita del complejo nanopartícula-ligando-proteína. En este trabajo, el índice se utilizó como una herramienta de cribado comparativo, orientada a identificar combinaciones prometedoras para estudios posteriores.
+
+La dominancia de ZnO\_12\_0 en las primeras posiciones se debe a sus energías nanopartícula-proteína más negativas frente a las proteínas evaluadas. Por otro lado, el ácido fólico destacó por sus afinidades ligando-proteína favorables, lo que explica que sus combinaciones con ZnO\_12\_0 ocupen las primeras posiciones del ranking. Este comportamiento sugiere que el ácido fólico es uno de los agentes de recubrimiento más interesantes dentro del conjunto estudiado, especialmente cuando se considera junto con el modelo de óxido de zinc.

@@ -1,14 +1,11 @@
 ---
-title: "Anexos · TFM"
-author: "Pablo Fuentes de Mateo"
 format:
   pdf:
     documentclass: memoir
-    classoption: [a4paper, 12pt, twoside]
+    classoption: [a4paper, 12pt, oneside, openany]
     pdf-engine: pdflatex
     include-in-header: preambulo_anexos.tex
-    maketitle: false
-    keep-tex: false
+    keep-tex: true
     number-sections: true
     toc: false
     toc-depth: 3
@@ -29,23 +26,67 @@ knitr:
 ---
 
 ```{=latex}
-\title{Anexos del Trabajo de Fin de Máster}
-\author{\nombre}
-\date{Julio de 2026}
-\maketitle
+\begin{titlingpage}
+\thispagestyle{empty}
+\centering
+
+\vspace*{-1.2cm}
+
+\includegraphics[width=.86\textwidth]{CabeceraEPS.png}
+
+\vspace{0.5cm}
+
+\includegraphics[width=.14\textwidth]{Logo_GIS.png}
+
+\vspace{0.6cm}
+
+\colorbox{tfmGold}{%
+  \begin{minipage}{.90\textwidth}
+    \centering
+    \vspace{0.35cm}
+    {\Large\textbf{Anexos del Trabajo de Fin de Máster}\par}
+    \vspace{0.18cm}
+    {\large\textbf{Máster Universitario en Ingeniería Biomédica}\par}
+    \vspace{0.30cm}
+    {\fontsize{14}{16}\selectfont\textbf{Modelización computacional de la interacción de agentes de recubrimiento de nanopartículas metálicas (Au, Ag, ZnO) con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático}\par}
+    \vspace{0.35cm}
+  \end{minipage}
+}
+
+\vspace{0.8cm}
+
+{\Large Presentado por Pablo Fuentes de Mateo\par}
+
+\vspace{0.35cm}
+
+{\large Universidad de Burgos\par}
+
+\vspace{0.35cm}
+
+{\large Julio de 2026\par}
+
+\vspace{0.5cm}
+
+{\large Tutores: Santiago Aparicio Martínez -- Pedro Ángel Marcos Villa\par}
+
+\end{titlingpage}
+
 \frontmatter
 \tableofcontents
 \clearpage
 \mainmatter
-\pagestyle{mipc}
+\pagestyle{plain}
 \appendix
 ```
 
-{{< include qmd/A_repositorio.qmd >}}
-{{< include qmd/B_scripts.qmd >}}
-{{< include qmd/C_app.qmd >}}
-{{< include qmd/D_tablas_figuras.qmd >}}
+{{< include qmd/A_planificacion.qmd >}}
+{{< include qmd/B_BBDD.qmd >}}
+{{< include qmd/C_calculos.qmd >}}
+{{< include qmd/D_docking_ligando-proteina.qmd >}}
+{{< include qmd/E_docking.qmd >}}
+{{< include qmd/F_descriptores.qmd >}}
+{{< include qmd/G_analisis.qmd >}}
+{{< include qmd/H_streamlit.qmd >}}
 
-```{=latex}
-ackmatter
-```
+
+

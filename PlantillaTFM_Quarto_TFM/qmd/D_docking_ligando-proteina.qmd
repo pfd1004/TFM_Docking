@@ -1,0 +1,127 @@
+\apendice{Docking ligando-proteína}
+
+\section{Preparación de proteínas y ligandos}
+
+El docking ligando-proteína se planteó como la fuente principal de las variables objetivo del modelo predictivo. Las proteínas se prepararon en formato compatible con AutoDock Vina y los ligandos se convirtieron a formato PDBQT. Para cada par ligando-proteína se conservó la mejor energía de docking obtenida en el cálculo, interpretada como una puntuación comparativa dentro del protocolo empleado.
+
+El resultado final de esta fase fue una tabla con una fila por ligando y cuatro variables objetivo: \texttt{y\_1ao6}, \texttt{y\_1hzh}, \texttt{y\_2hav} e \texttt{y\_3ghg}. Estas cuatro salidas se utilizaron posteriormente en el entrenamiento de modelos de regresión multisalida.
+
+\section{Parámetros generales del docking}
+
+El acoplamiento molecular se realizó con AutoDock Vina. Para cada proteína se empleó una caja de búsqueda específica, definida por su centro geométrico y por unas dimensiones de 28 × 28 × 28 Å. Las cajas finales se construyeron a partir de una pose de referencia, tomando las coordenadas del \texttt{MODEL 1} y calculando el centro medio de sus átomos. Esta estrategia permitió utilizar una región de búsqueda centrada en la zona de interés para cada proteína.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Centros y dimensiones de las cajas de docking ligando-proteína.}
+\label{tbl-anexo-cajas-docking}
+\begin{tabular}{lrrrrrr}
+\toprule
+Proteína & center\_x & center\_y & center\_z & size\_x & size\_y & size\_z \\
+\midrule
+1ao6 & 16.768 & 14.044 & -9.326 & 28 & 28 & 28 \\
+1hzh & 77.249 & 91.959 & 103.938 & 28 & 28 & 28 \\
+2hav & -35.939 & 2.393 & 2.218 & 28 & 28 & 28 \\
+3ghg & 4.438 & -25.182 & -78.548 & 28 & 28 & 28 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Los parámetros de ejecución fueron comunes para las cuatro proteínas. Se utilizó una exhaustividad de 16, se guardaron 10 modos de unión por cálculo, se fijó un rango de energía de 4 kcal/mol, se emplearon 6 CPUs y se estableció una semilla fija para favorecer la reproducibilidad del flujo.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Parámetros comunes de AutoDock Vina utilizados en el docking ligando-proteína.}
+\label{tbl-anexo-parametros-vina}
+\begin{tabular}{lr}
+\toprule
+Parámetro & Valor \\
+\midrule
+exhaustiveness & 16 \\
+num\_modes & 10 \\
+energy\_range & 4 \\
+cpu & 6 \\
+seed & 12345 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La mejor pose de cada cálculo se utilizó para construir el dataset final de afinidades ligando-proteína. Estas energías no deben interpretarse como afinidades experimentales absolutas, sino como puntuaciones computacionales dependientes del protocolo de docking.
+
+\section{Extracción de resultados y control de cálculos}
+
+Los resultados de AutoDock Vina se procesaron automáticamente a partir de los archivos de salida. Para cada cálculo se extrajo la afinidad correspondiente al primer modo de unión, es decir, la mejor energía reportada por Vina. Además, se registró el estado del cálculo para diferenciar dockings completados correctamente de cálculos fallidos o con errores de formato.
+
+Posteriormente, los resultados de docking se transformaron desde formato largo a formato ancho. En el formato largo cada fila correspondía a un par proteína-ligando; en el formato ancho cada fila correspondía a un ligando y las columnas \texttt{y\_1ao6}, \texttt{y\_1hzh}, \texttt{y\_2hav} e \texttt{y\_3ghg} contenían las afinidades frente a cada proteína. Los ligandos sin las cuatro salidas completas se descartaron antes de construir el dataset multisalida final.
+
+\section{Resumen de afinidades ligando-proteína}
+
+El resumen estadístico de las afinidades se genera automáticamente a partir del mismo dataset final empleado en el Anexo B. Esto permite comprobar rápidamente los rangos de energía utilizados para entrenar los modelos.
+
+```{r}
+#| label: tbl-anexo-docking-resumen
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
+
+rutas_dataset <- c(
+  "resultados/datasets/dataset_descriptores_membrana.csv"
+)
+
+ruta_dataset <- rutas_dataset[file.exists(rutas_dataset)][1]
+
+if (is.na(ruta_dataset)) {
+  cat("\\textit{No se encontró automáticamente el dataset final. La tabla resumen de docking puede generarse a partir de dataset\\_descriptores\\_membrana.csv o dataset\\_multisalida\\_docking\\_descriptores.csv.}\n")
+} else {
+  dat <- read.csv(ruta_dataset, check.names = FALSE)
+
+  targets <- intersect(c("y_1ao6", "y_1hzh", "y_2hav", "y_3ghg"), names(dat))
+
+  if (length(targets) == 0) {
+    cat("\\textit{El CSV encontrado no contiene las columnas objetivo y\\_1ao6, y\\_1hzh, y\\_2hav o y\\_3ghg.}\n")
+  } else {
+    nombres <- c(
+      "y_1ao6" = "1ao6",
+      "y_1hzh" = "1hzh",
+      "y_2hav" = "2hav",
+      "y_3ghg" = "3ghg"
+    )
+
+    cat("\\begin{table}[H]\n")
+    cat("\\centering\n")
+    cat("\\small\n")
+    cat("\\caption{Resumen estadístico de energías de docking ligando-proteína.}\\label{tbl-anexo-docking-estadisticos}\n")
+    cat("\\begin{tabular}{lrrrr}\n")
+    cat("\\toprule\n")
+    cat("Proteína & Media & Mín. & Máx. & DE\\\\\n")
+    cat("\\midrule\n")
+
+    for (t in targets) {
+      x <- suppressWarnings(as.numeric(dat[[t]]))
+      cat(
+        nombres[[t]], " & ",
+        sprintf("%.2f", mean(x, na.rm = TRUE)), " & ",
+        sprintf("%.2f", min(x, na.rm = TRUE)), " & ",
+        sprintf("%.2f", max(x, na.rm = TRUE)), " & ",
+        sprintf("%.2f", sd(x, na.rm = TRUE)),
+        "\\\\\n",
+        sep = ""
+      )
+    }
+
+    cat("\\bottomrule\n")
+    cat("\\end{tabular}\n")
+    cat("\\end{table}\n")
+  }
+}
+```
+
+Valores más negativos indican una interacción más favorable dentro del protocolo de docking. La tabla anterior resume la distribución de las energías utilizadas como variables objetivo en los modelos predictivos.
+
+\section{Uso de las afinidades en el modelo predictivo}
+
+Las energías de docking se organizaron en formato multisalida, con una única fila por ligando y una columna objetivo por proteína. Esta estructura permitió entrenar modelos capaces de predecir simultáneamente el perfil de afinidad de cada ligando frente a las cuatro proteínas plasmáticas consideradas.
+
+El uso de un único dataset integrado facilitó combinar las afinidades de docking con los descriptores moleculares RDKit y las variables de membrana. De esta forma se pudieron comparar distintos bloques de información: modelos entrenados solo con descriptores RDKit, modelos entrenados con variables de membrana, modelos combinados y modelos con reducción dimensional. Esta organización permitió evaluar qué tipo de información explicaba mejor la variabilidad observada en las puntuaciones de docking.

@@ -1,0 +1,1809 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  spanish,
+  a4paper,
+  12pt,
+  oneside,
+  openany]{memoir}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off]{babel}
+\else
+\usepackage[bidi=default,shorthands=off]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+
+%% ============================================================
+%%  Preámbulo LaTeX – Anexos TFM MUIB UBU
+%% ============================================================
+
+% Castellano
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice general}}
+\addto\captionsspanish{\renewcommand{\listfigurename}{Índice de figuras}}
+
+% Tipografía y maquetación
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks]{hyperref}
+\hypersetup{allcolors={blue}}
+
+\nonzeroparskip
+\widowpenalty100000
+\clubpenalty100000
+\nouppercaseheads
+
+% Imágenes
+\graphicspath{{./img/}{./figures/}{./resultados/figuras_generadas/}{./resultados/tablas_coloreadas/}}
+
+% Colores del TFM
+\definecolor{tfmBlue}{HTML}{12355B}
+\definecolor{tfmGold}{HTML}{D8AD6E}
+\definecolor{tfmSoft}{HTML}{F6F8FA}
+
+% Comandos útiles
+\newcommand{\ruta}[1]{{\sffamily #1}}
+\newcommand{\capitulo}[2]{%
+  \setcounter{chapter}{#1}%
+  \setcounter{section}{0}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \chapter*{#2}%
+  \addcontentsline{toc}{chapter}{#2}%
+  \markboth{#2}{#2}%
+}
+\newcommand{\apendice}[1]{\chapter{#1}}
+
+% Datos de portada
+\makeatletter
+\newcommand{\tutor}[1]{\def\@tutor{#1}}
+\newcommand{\tutorb}[1]{\def\@tutorb{#1}}
+\newcommand{\master}[1]{\def\@master{#1}}
+
+\newcommand{\nombre}{Pablo Fuentes de Mateo}
+\newcommand{\nombreTutor}{Santiago Aparicio}
+\newcommand{\nombreTutorb}{Pedro A. Marcos}
+\newcommand{\dni}{71566685T}
+
+\tutor{\nombreTutor}
+\tutorb{\nombreTutorb}
+\master{Máster universitario en Ingeniería Biomédica}
+
+\chapterstyle{bianchi}
+
+\def\maketitle{%
+  \null
+  \thispagestyle{empty}
+
+  \makepagestyle{mipc}
+  \makepsmarks{mipc}{%
+    \nouppercaseheads
+    \createmark{chapter}{both}{nonumber}{}{}
+  }
+  \makeevenhead{mipc}{\leftmark}{}{}
+  \makeoddhead{mipc}{}{}{\leftmark}
+  \makeevenfoot{mipc}{}{\thepage}{}
+  \makeoddfoot{mipc}{}{\thepage}{}
+  \makeheadrule{mipc}{\textwidth}{\normalrulethickness}
+  \pagestyle{mipc}
+
+  \makepagestyle{chapterfirst}
+  \makeevenhead{chapterfirst}{}{}{}
+  \makeoddhead{chapterfirst}{}{}{}
+  \makeevenfoot{chapterfirst}{}{\thepage}{}
+  \makeoddfoot{chapterfirst}{}{\thepage}{}
+  \aliaspagestyle{chapter}{chapterfirst}
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{CabeceraEPS.png}\vspace{1.0cm}
+  \end{center}
+
+  \begin{center}
+    \begin{minipage}[c][1.3cm][c]{.20\textwidth}
+      \includegraphics[width=\textwidth]{Logo_GIS.png}
+    \end{minipage}
+  \end{center}
+
+  \begin{center}
+    \colorbox{tfmGold}{%
+      \begin{minipage}{.86\textwidth}
+        \vspace{.45cm}\Large
+        \begin{center}
+          \textbf{Trabajo de Fin de Máster}\\[0.15cm]
+          \textbf{\@master}\\[0.55cm]
+          \textbf{\LARGE\@title{}}
+        \end{center}
+        \vspace{.25cm}
+      \end{minipage}
+    }
+  \end{center}
+
+  \begin{center}
+    \LARGE Presentado por \@author{}\\
+    \vspace{0.35cm}
+    \Large Universidad de Burgos\\
+    \vspace{0.35cm}
+    \@date{}\\
+    \vspace{0.55cm}
+    Tutores: \@tutor{} -- \@tutorb{}\\
+  \end{center}
+  \null
+  \cleardoublepage
+}
+\makeatother
+
+\renewcommand{\appendixname}{Apéndice}
+\renewcommand*\cftappendixname{\appendixname\ }
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\author{}
+\date{}
+\begin{document}
+\frontmatter
+
+
+\mainmatter
+\begin{titlingpage}
+\thispagestyle{empty}
+\centering
+
+\vspace*{-1.2cm}
+
+\includegraphics[width=.86\textwidth]{CabeceraEPS.png}
+
+\vspace{0.5cm}
+
+\includegraphics[width=.14\textwidth]{Logo_GIS.png}
+
+\vspace{0.6cm}
+
+\colorbox{tfmGold}{%
+  \begin{minipage}{.90\textwidth}
+    \centering
+    \vspace{0.35cm}
+    {\Large\textbf{Anexos del Trabajo de Fin de Máster}\par}
+    \vspace{0.18cm}
+    {\large\textbf{Máster Universitario en Ingeniería Biomédica}\par}
+    \vspace{0.30cm}
+    {\fontsize{14}{16}\selectfont\textbf{Modelización computacional de la interacción de agentes de recubrimiento de nanopartículas metálicas (Au, Ag, ZnO) con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático}\par}
+    \vspace{0.35cm}
+  \end{minipage}
+}
+
+\vspace{0.8cm}
+
+{\Large Presentado por Pablo Fuentes de Mateo\par}
+
+\vspace{0.35cm}
+
+{\large Universidad de Burgos\par}
+
+\vspace{0.35cm}
+
+{\large Julio de 2026\par}
+
+\vspace{0.5cm}
+
+{\large Tutores: Santiago Aparicio Martínez -- Pedro Ángel Marcos Villa\par}
+
+\end{titlingpage}
+
+\frontmatter
+\tableofcontents
+\clearpage
+\mainmatter
+\pagestyle{plain}
+\appendix
+
+\apendice{Planificación del proyecto}
+
+\section{Fases de desarrollo}
+
+El proyecto se organizó como un flujo computacional reproducible y
+modular. Varias fases se solaparon, ya que mientras algunos cálculos se
+ejecutaban en el entorno HPC se fueron preparando scripts de análisis,
+tablas, figuras y modelos predictivos. Esta organización permitió
+corregir errores de formato, completar cálculos pendientes y actualizar
+la memoria a medida que se generaban nuevos resultados.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-fases}Planificación general del proyecto.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.15\textwidth}p{0.22\textwidth}p{0.52\textwidth}}
+\toprule
+Fase & Periodo aproximado & Actividad principal \\
+\midrule
+Fase 1 & Inicio del trabajo & Revisión bibliográfica sobre nanopartículas metálicas, recubrimientos, proteínas plasmáticas, docking molecular, variables de membrana y aprendizaje automático. \\
+Fase 2 & Preparación inicial & Selección de ligandos, proteínas plasmáticas y modelos simplificados de nanopartículas. Organización de carpetas, formatos moleculares y scripts de trabajo. \\
+Fase 3 & Cálculos estructurales de ligandos & Optimización geométrica de ligandos y cálculo de frecuencias mediante TURBOMOLE. Preparación de archivos compatibles con los pasos posteriores del flujo. \\
+Fase 4 & Variables de membrana & Extracción y organización de variables procedentes de COSMOtherm/COSMOmic, incluyendo partición, permeabilidad, distribución, difusión y perfiles asociados a una bicapa modelo de DMPC. \\
+Fase 5 & Docking ligando-proteína & Preparación de proteínas y ligandos, ejecución de docking molecular y extracción de energías de unión para cuatro proteínas plasmáticas. \\
+Fase 6 & Modelos predictivos & Cálculo de descriptores RDKit, construcción del dataset final, comparación de modelos de regresión multisalida y selección del modelo ExtraTrees final. \\
+Fase 7 & Capa nanopartícula-proteína & Docking nanopartícula-proteína, construcción del Índice Contextual Nano-Bio y priorización de combinaciones ligando-nanopartícula-proteína. \\
+Fase 8 & Cálculos nanopartícula-ligando & Preparación y cálculo exploratorio de complejos nanopartícula-ligando mediante ORCA, planteados como paso previo al docking completo del complejo nanopartícula-ligando-proteína. \\
+Fase 9 & Análisis final & Análisis PLIP de complejos representativos, desarrollo de la aplicación Streamlit, generación de figuras y redacción de memoria y anexos. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+\section{Infraestructura computacional}
+
+Los cálculos y análisis se realizaron combinando recursos locales y
+recursos de computación de alto rendimiento. El entorno HPC se utilizó
+para las tareas de mayor coste computacional, mientras que el equipo
+local se empleó para análisis de datos, generación de figuras,
+entrenamiento de modelos, desarrollo de la aplicación y compilación de
+la memoria en Quarto.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-infraestructura}Infraestructura computacional empleada.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.32\textwidth}p{0.56\textwidth}}
+\toprule
+Recurso & Uso principal \\
+\midrule
+Clúster HPC & Ejecución de cálculos estructurales, frecuencias, cálculos asociados a solutos y procesos de docking con mayor coste computacional. \\
+Partición \texttt{lusi2} & Envío de cálculos con tiempos de ejecución prolongados, especialmente para sistemas más costosos o cálculos que no finalizaban correctamente en particiones de menor duración. \\
+SLURM & Gestión de colas, envío de trabajos, control de tiempos máximos de ejecución y seguimiento de cálculos pendientes, completados o cancelados. \\
+Equipo local & Análisis de datos, generación de tablas y figuras, entrenamiento de modelos, desarrollo de scripts, aplicación Streamlit y redacción en Quarto. \\
+Entorno conda \texttt{docking} & Ejecución local de Python, RDKit, scripts de análisis, modelos de aprendizaje automático, aplicación y renderizado de documentos. \\
+Quarto y LaTeX & Generación de la memoria y de los anexos en formato PDF a partir de archivos QMD. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+\section{Software utilizado}
+
+La tabla siguiente resume las herramientas principales empleadas durante
+el desarrollo del trabajo. Algunas se utilizaron directamente por línea
+de comandos y otras se integraron mediante scripts de Python, R o
+Quarto.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-software}Software utilizado en el proyecto.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.28\textwidth}p{0.60\textwidth}}
+\toprule
+Software & Uso principal \\
+\midrule
+TURBOMOLE & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
+ORCA & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
+COSMOtherm/COSMOmic & Obtención de variables de membrana, partición, permeabilidad, distribución y difusión en una bicapa modelo de DMPC. \\
+AutoDock Vina & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
+AutoDockTools/MGLTools & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
+OpenBabel & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
+RDKit & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
+Python & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
+scikit-learn & Entrenamiento y comparación de modelos de aprendizaje automático. \\
+R & Generación de tablas, figuras y análisis complementarios para la memoria. \\
+PLIP & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
+Streamlit & Desarrollo de la aplicación interactiva de visualización y predicción desde SMILES. \\
+Quarto & Redacción y compilación de la memoria y anexos en formato PDF. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+\apendice{Base de datos de ligandos, proteínas y nanopartículas}
+
+\section{Ligandos estudiados}
+
+La base de datos de ligandos incluyó agentes de recubrimiento y
+moléculas con interés biomédico. El conjunto recoge compuestos
+alifáticos, compuestos aromáticos, moléculas polares, moléculas con
+grupos tiol, ácidos carboxílicos y moléculas de mayor tamaño como ácido
+fólico, curcumina, ácido tánico aproximado y una aproximación
+estructural de doxorrubicina. Para cada ligando se calcularon
+descriptores moleculares RDKit y, cuando estaban disponibles, variables
+de membrana procedentes del análisis COSMOtherm/COSMOmic.
+
+La tabla completa de ligandos se genera automáticamente a partir del
+dataset final de descriptores utilizado en el flujo de modelización. De
+esta forma se evita copiar manualmente nombres y valores numéricos.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+
+\begin{longtable}{p{0.42\textwidth}rrrrrr}
+
+\caption{\label{tbl-anexo-ligandos-tabla}Ligandos incluidos en el
+dataset de trabajo.}
+
+\tabularnewline
+
+\\
+\toprule
+Ligando & MW & LogP & TPSA & HBD & HBA & Rot.\\
+\midrule
+\endfirsthead
+\toprule
+Ligando & MW & LogP & TPSA & HBD & HBA & Rot.\\
+\midrule
+\endhead
+1-Butanethiol & 90.2 & 1.72 & 0.0 & 1 & 1 & 3\\
+1-Dodecanethiol & 202.4 & 4.84 & 0.0 & 1 & 1 & 11\\
+1-Hexanethiol & 118.2 & 2.50 & 0.0 & 1 & 1 & 5\\
+11-Mercaptoundecanesulfonic acid MUS & 268.4 & 4.40 & 60.0 & 2 & 2 & 13\\
+11-Mercaptoundecanoic acid MUA & 218.4 & 3.51 & 37.3 & 2 & 3 & 11\\
+2-Mercaptosuccinic acid & 150.2 & -0.30 & 74.6 & 3 & 5 & 4\\
+3-Mercapto-1-propanesulfonic acid MPS & 156.2 & 1.27 & 60.0 & 2 & 2 & 5\\
+3-Mercaptopropionic acid & 106.1 & 0.39 & 37.3 & 2 & 3 & 3\\
+4-Aminothiophenol & 125.2 & 1.56 & 26.0 & 2 & 2 & 2\\
+4-Mercaptobenzoic acid & 154.2 & 1.67 & 37.3 & 2 & 3 & 2\\
+5-Fluorouracil & 146.1 & -1.03 & 75.1 & 2 & 3 & 1\\
+6-Mercaptohexanoic acid & 148.2 & 1.56 & 37.3 & 2 & 3 & 6\\
+Arginine & 174.2 & -1.34 & 125.2 & 5 & 4 & 6\\
+Biotin & 244.3 & 0.80 & 78.4 & 3 & 4 & 5\\
+Citric acid & 192.1 & -1.25 & 132.1 & 4 & 7 & 6\\
+Curcumin & 368.4 & 3.37 & 93.1 & 2 & 6 & 10\\
+Cysteamine 2-aminoethanethiol & 77.2 & -0.13 & 26.0 & 2 & 2 & 3\\
+D-Galactose & 180.2 & -3.22 & 110.4 & 5 & 6 & 6\\
+D-Glucose & 180.2 & -3.22 & 110.4 & 5 & 6 & 6\\
+Dihydrolipoic acid DHLA & 220.4 & 2.83 & 37.3 & 1 & 4 & 6\\
+Dithiothreitol DTT & 182.3 & -0.54 & 60.7 & 3 & 5 & 5\\
+Doxorubicin proxy daunorubicin aglycone & 356.3 & 0.70 & 124.3 & 4 & 7 & 5\\
+Folic acid & 586.5 & -1.49 & 288.8 & 8 & 13 & 14\\
+Gemcitabine & 281.2 & -1.15 & 110.6 & 3 & 6 & 5\\
+Glutathione GSH & 307.3 & -2.21 & 158.8 & 6 & 8 & 11\\
+HEPES & 250.4 & 1.37 & 66.5 & 1 & 3 & 7\\
+Histidine & 155.2 & -0.64 & 92.0 & 3 & 4 & 4\\
+L-Cysteine & 121.2 & -0.67 & 63.3 & 3 & 4 & 4\\
+L-Homocysteine & 149.2 & 0.11 & 63.3 & 3 & 4 & 6\\
+Lipoic acid thioctic acid & 220.4 & 3.18 & 37.3 & 1 & 4 & 6\\
+Lysine & 146.2 & -0.47 & 89.3 & 3 & 4 & 7\\
+Mannose & 180.2 & -3.22 & 110.4 & 5 & 6 & 6\\
+Mercaptoethanol 2-mercaptoethanol & 78.1 & -0.09 & 20.2 & 2 & 2 & 3\\
+Methionine & 149.2 & 0.15 & 63.3 & 2 & 4 & 5\\
+Methotrexate & 422.4 & -2.18 & 220.3 & 5 & 10 & 10\\
+mPEG-thiol n 3 methyl-capped & 180.3 & 0.60 & 27.7 & 1 & 4 & 9\\
+mPEG-thiol n 6 methyl-capped & 312.4 & 0.65 & 55.4 & 1 & 7 & 18\\
+PEG-amine n 3 proxy & 177.2 & 0.01 & 53.7 & 1 & 4 & 10\\
+PEG-dithiol n 3 & 226.4 & 0.90 & 27.7 & 2 & 5 & 12\\
+PEG-thiol n 3 & 166.2 & -0.06 & 38.7 & 2 & 4 & 9\\
+PEG-thiol n 4 & 210.3 & -0.04 & 47.9 & 2 & 5 & 12\\
+PEG-thiol n 6 & 298.4 & -0.01 & 66.4 & 2 & 7 & 18\\
+Polyethyleneimine fragment ethylenediamine & 60.1 & -1.10 & 52.0 & 2 & 2 & 3\\
+PVP monomer N-vinyl-2-pyrrolidone & 125.2 & 0.79 & 20.3 & 0 & 2 & 1\\
+RGD peptide Arg-Gly-Asp & 346.3 & -3.26 & 220.7 & 8 & 8 & 12\\
+SDS dodecyl sulfate anion & 265.4 & 4.68 & 68.9 & 0 & 1 & 12\\
+Sodium citrate citrate3- & 189.1 & -1.63 & 131.1 & 1 & 4 & 6\\
+Tannic acid approx & 280.1 & -0.03 & 151.3 & 3 & 9 & 3\\
+TAT peptide fragment YGRKKK 6 aa & 809.0 & -3.59 & 389.2 & 15 & 14 & 36\\
+Thioacetic acid & 76.1 & 0.46 & 17.1 & 1 & 2 & 0\\
+Thioglycolic acid mercaptoacetic acid & 92.1 & 0.00 & 37.3 & 2 & 3 & 2\\
+Thiomethyl PEG linker 2- 2-methoxyethoxy ethanethiol & 136.2 & 0.58 & 18.5 & 1 & 3 & 6\\
+Tris buffer Tris base & 121.1 & -2.34 & 86.7 & 4 & 4 & 7\\
+\bottomrule
+
+\end{longtable}
+
+\endgroup
+
+MW: peso molecular; LogP: coeficiente de partición calculado; TPSA:
+superficie polar topológica; HBD: donadores de enlace de hidrógeno; HBA:
+aceptores de enlace de hidrógeno; Rot.: enlaces rotables.
+
+\section{Proteínas plasmáticas utilizadas}
+
+El docking ligando-proteína se realizó frente a cuatro estructuras
+identificadas por su código PDB. En el dataset final, cada proteína se
+correspondió con una variable objetivo de docking. Valores más negativos
+indican una interacción más favorable dentro del protocolo de docking
+empleado.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-proteinas}Proteínas consideradas en el docking ligando-proteína.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.14\textwidth}p{0.52\textwidth}p{0.22\textwidth}}
+\toprule
+Código PDB & Proteína & Variable objetivo \\
+\midrule
+1ao6 & Albúmina sérica humana & y\_1ao6 \\
+1hzh & Anticuerpo monoclonal humano IgG1 b12 & y\_1hzh \\
+2hav & Transferrina sérica humana en forma apo & y\_2hav \\
+3ghg & Fibrinógeno humano & y\_3ghg \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+La albúmina sérica humana se consideró por su elevada abundancia en
+plasma y su papel en el transporte de sustancias como ácidos grasos y
+hormonas. La estructura 1hzh corresponde al anticuerpo monoclonal humano
+IgG1 b12, relacionado con la neutralización de cepas de VIH-1 mediante
+bloqueo del sitio de unión a CD4. La proteína 2hav corresponde a la
+forma apo de la transferrina sérica humana, principal proteína implicada
+en el transporte de hierro en sangre. La estructura 3ghg corresponde al
+fibrinógeno humano.
+
+\section{Modelos de nanopartículas metálicas}
+
+Además del docking ligando-proteína, se consideraron modelos
+simplificados de nanopartículas metálicas y de óxido metálico. Estos
+modelos se utilizaron para construir una capa contextual
+nanopartícula-proteína, separada del modelo principal de aprendizaje
+automático. Esta separación permitió integrar la afinidad
+ligando-proteína y la interacción nanopartícula-proteína sin tratarlas
+como una única energía física.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-nanoparticulas}Modelos de nanopartículas considerados en el trabajo.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.20\textwidth}p{0.32\textwidth}p{0.34\textwidth}}
+\toprule
+Modelo & Composición & Uso en el flujo \\
+\midrule
+Ag\_13 & Clúster de plata & Docking nanopartícula-proteína y comparación contextual. \\
+Au\_13 & Clúster de oro & Docking nanopartícula-proteína y comparación contextual. \\
+ZnO\_12\_0 & Modelo de óxido de zinc & Docking nanopartícula-proteína e Índice Contextual Nano-Bio. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+El docking nanopartícula-proteína se completó para 1ao6, 1hzh y 2hav. La
+proteína 3ghg se mantuvo en el análisis ligando-proteína y en el modelo
+predictivo, pero no se incluyó en la capa nanopartícula-proteína final
+por limitaciones técnicas asociadas al tamaño y preparación del sistema.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-nano-proteina}Energías de docking nanopartícula-proteína utilizadas en la capa contextual.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{lrrr}
+\toprule
+Nanopartícula & 1ao6 & 1hzh & 2hav \\
+\midrule
+Ag\_13 & -2.24 & -2.13 & -2.17 \\
+Au\_13 & -2.34 & -2.12 & -2.34 \\
+ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+Las energías más negativas indican interacciones más favorables dentro
+del protocolo de docking utilizado. Estos valores se emplearon
+posteriormente para construir el Índice Contextual Nano-Bio,
+combinándolos de forma normalizada con las afinidades ligando-proteína.
+
+\apendice{Cálculos estructurales y variables de membrana}
+
+\section{Optimización geométrica y frecuencias}
+
+Las estructuras de los ligandos se prepararon antes de incorporarse al
+flujo de docking, cálculo de descriptores y análisis de membrana. La
+optimización geométrica permitió obtener conformaciones razonables para
+cada molécula, mientras que el cálculo de frecuencias se utilizó como
+control de estabilidad estructural. La ausencia de frecuencias
+imaginarias se interpretó como indicio de que la estructura optimizada
+correspondía a un mínimo local de la superficie de energía potencial.
+
+La optimización geométrica de los ligandos y el cálculo de frecuencias
+se realizaron mediante TURBOMOLE. Estos cálculos generaron las
+estructuras optimizadas empleadas como punto de partida para etapas
+posteriores del flujo. Cuando fue necesario, se generaron también
+archivos de visualización o formatos intermedios para comprobar la
+geometría y facilitar la conversión entre programas.
+
+Además, se iniciaron cálculos exploratorios de complejos
+nanopartícula-ligando mediante ORCA. Estos cálculos se plantearon como
+paso previo a la preparación de sistemas nanopartícula-ligando-proteína
+para docking. Para estos sistemas se empleó el mismo nivel teórico
+general descrito en la metodología: funcional B3LYP, corrección de
+dispersión DFT-D4 y base def2-TZVP. Debido al mayor coste computacional
+de estos complejos, esta parte se consideró una línea exploratoria y no
+se integró todavía como una capa completa dentro del modelo final.
+
+\section{Variables de membrana COSMOtherm/COSMOmic}
+
+Las variables de membrana se incorporaron como una capa fisicoquímica
+complementaria. Su objetivo no fue describir directamente la interacción
+ligando-proteína, sino caracterizar el comportamiento de los ligandos en
+un entorno de membrana simplificado. Para ello se empleó una bicapa
+modelo de DMPC y se extrajeron variables relacionadas con partición,
+permeabilidad, distribución, energía libre, entropía media y difusión.
+
+El archivo corregido de variables de membrana,
+\texttt{membrana\_features\_corregido.csv}, contiene 55 solutos con
+variables de membrana válidas. Tras cruzar esta información con el
+dataset de docking y descriptores moleculares, el archivo
+\texttt{dataset\_descriptores\_membrana.csv} contiene 53 ligandos. De
+ellos, 52 presentan variables de membrana asociadas en el dataset
+integrado. El caso que no quedó integrado con variables de membrana
+completas fue SDS, debido a que no se obtuvo una optimización convergida
+válida para el sistema empleado en el flujo final. Por este motivo,
+aunque el ligando se mantuvo en el dataset de docking y descriptores,
+sus variables de membrana no se utilizaron como información completa en
+el bloque de membrana.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-membrana-resumen}Resumen de los archivos de variables de membrana.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.42\textwidth}p{0.18\textwidth}p{0.30\textwidth}}
+\toprule
+Archivo & Número de entradas & Comentario \\
+\midrule
+\texttt{membrana\_features\_corregido.csv} & 55 & Archivo corregido con variables de membrana válidas para los solutos procesados. \\
+\texttt{dataset\_descriptores\_membrana.csv} & 53 & Dataset final cruzado con descriptores RDKit y energías de docking. \\
+\texttt{dataset\_descriptores\_membrana.csv} con variables de membrana no nulas & 52 & Ligandos del dataset final con información de membrana correctamente asociada. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+\begin{table}
+
+\caption{\label{tbl-anexo-membrana-variables}Familias de variables de membrana utilizadas.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.34\textwidth}p{0.54\textwidth}}
+\toprule
+Variable o familia & Interpretación en el flujo \\
+\midrule
+\texttt{mem\_logP} & Partición micela/agua o membrana/agua según la salida procesada. \\
+\texttt{mem\_logP\_kg\_l} & Versión normalizada de la partición considerando unidades de masa/volumen. \\
+\texttt{mem\_logPerm} & Estimación de permeabilidad a través de la membrana modelo. \\
+\texttt{mem\_distribution} & Perfil de distribución del soluto a lo largo de la bicapa. \\
+\texttt{mem\_free\_energy} & Perfil de energía libre asociado a la posición del soluto en la membrana. \\
+\texttt{mem\_meanentropy} & Perfil de entropía media extraído del cálculo de membrana. \\
+\texttt{mem\_diffusion\_E9} & Variables relacionadas con difusión en la bicapa modelo. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+Estas variables se integraron posteriormente en el dataset de
+modelización junto con los descriptores RDKit y las afinidades de
+docking ligando-proteína. En los modelos finales, el bloque de membrana
+aportó información complementaria, pero no mejoró claramente el
+rendimiento predictivo frente al uso exclusivo de descriptores RDKit.
+
+\section{Selección e integración de variables}
+
+Para evitar introducir en los modelos información redundante o difícil
+de interpretar, las salidas de COSMOtherm/COSMOmic no se utilizaron como
+perfiles completos punto a punto, sino como variables resumen. Los
+perfiles de distribución, energía libre, entropía media y difusión se
+resumieron mediante estadísticos como media, mínimo, máximo, valor en el
+centro de la bicapa, posición del máximo, posición del mínimo, suma o
+barrera energética, según el tipo de variable.
+
+La selección final mantuvo únicamente variables numéricas compatibles
+con el flujo de aprendizaje automático. Las variables de membrana se
+identificaron mediante el prefijo \texttt{mem\_}, lo que permitió
+separarlas de los descriptores moleculares RDKit y de las variables
+objetivo de docking. Esta organización permitió comparar tres
+situaciones: modelos entrenados solo con descriptores RDKit, modelos
+entrenados solo con variables de membrana y modelos entrenados con la
+combinación de ambos bloques.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-seleccion-membrana}Criterios aplicados para integrar las variables de membrana en el dataset final.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.36\textwidth}p{0.52\textwidth}}
+\toprule
+Criterio & Aplicación en el flujo \\
+\midrule
+Identificación por prefijo & Las variables procedentes de membrana se conservaron con el prefijo \texttt{mem\_}. \\
+Variables numéricas & Se mantuvieron únicamente variables numéricas utilizables por los modelos de regresión. \\
+Resumen de perfiles & Los perfiles de membrana se transformaron en estadísticos resumen para evitar usar directamente todos los puntos de profundidad. \\
+Separación de bloques & Las variables RDKit y las variables de membrana se analizaron por separado y también de forma combinada. \\
+Control de valores ausentes & Se revisaron los ligandos sin variables de membrana completas antes de construir los modelos. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+Esta selección permitió estudiar si la información de membrana añadía
+capacidad predictiva frente a los descriptores moleculares
+convencionales. Los resultados mostraron que las variables de membrana
+describen propiedades fisicoquímicas relevantes, pero no mejoraron de
+forma clara la predicción de las afinidades ligando-proteína frente al
+bloque RDKit solo. Por ello, en la interpretación final se consideraron
+como una capa complementaria de caracterización, no como el bloque
+principal del modelo predictivo.
+
+\section{Tratamiento de archivos y control de calidad}
+
+El flujo de membrana requirió revisar nombres de solutos, rutas de
+archivos y etiquetas de salida para evitar errores de parseo. Los
+resultados se exportaron a archivos CSV para facilitar su integración
+con el resto del proyecto. Las variables finales se incorporaron con
+prefijo \texttt{mem\_}, lo que permitió distinguirlas de los
+descriptores RDKit y de las variables objetivo de docking.
+
+Durante el control de calidad se comprobó que las variables principales
+de membrana estuvieran disponibles en el archivo corregido. En
+particular, las variables \texttt{mem\_logP}, \texttt{mem\_logP\_kg\_l},
+\texttt{mem\_logPerm}, \texttt{mem\_distribution},
+\texttt{mem\_free\_energy} y \texttt{mem\_diffusion\_E9} se encontraron
+para los solutos del archivo de membrana corregido. La integración con
+el dataset de modelización redujo el número de ligandos con información
+completa de membrana a 52 debido a la falta de una optimización
+convergida válida para SDS en el flujo final.
+
+Esta comprobación permitió mantener separadas dos cifras: el número de
+solutos con variables de membrana calculadas y el número de ligandos
+finalmente cruzados con el dataset de docking y descriptores. Esta
+distinción es importante porque el modelo predictivo se entrenó sobre el
+dataset integrado, no directamente sobre el archivo aislado de membrana.
+
+\apendice{Docking ligando-proteína}
+
+\section{Preparación de proteínas y ligandos}
+
+El docking ligando-proteína se planteó como la fuente principal de las
+variables objetivo del modelo predictivo. Las proteínas se prepararon en
+formato compatible con AutoDock Vina y los ligandos se convirtieron a
+formato PDBQT. Para cada par ligando-proteína se conservó la mejor
+energía de docking obtenida en el cálculo, interpretada como una
+puntuación comparativa dentro del protocolo empleado.
+
+El resultado final de esta fase fue una tabla con una fila por ligando y
+cuatro variables objetivo: \texttt{y\_1ao6}, \texttt{y\_1hzh},
+\texttt{y\_2hav} e \texttt{y\_3ghg}. Estas cuatro salidas se utilizaron
+posteriormente en el entrenamiento de modelos de regresión multisalida.
+
+\section{Parámetros generales del docking}
+
+El acoplamiento molecular se realizó con AutoDock Vina. Para cada
+proteína se empleó una caja de búsqueda específica, definida por su
+centro geométrico y por unas dimensiones de 28 × 28 × 28 Å. Las cajas
+finales se construyeron a partir de una pose de referencia, tomando las
+coordenadas del \texttt{MODEL 1} y calculando el centro medio de sus
+átomos. Esta estrategia permitió utilizar una región de búsqueda
+centrada en la zona de interés para cada proteína.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-cajas-docking}Centros y dimensiones de las cajas de docking ligando-proteína.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{lrrrrrr}
+\toprule
+Proteína & center\_x & center\_y & center\_z & size\_x & size\_y & size\_z \\
+\midrule
+1ao6 & 16.768 & 14.044 & -9.326 & 28 & 28 & 28 \\
+1hzh & 77.249 & 91.959 & 103.938 & 28 & 28 & 28 \\
+2hav & -35.939 & 2.393 & 2.218 & 28 & 28 & 28 \\
+3ghg & 4.438 & -25.182 & -78.548 & 28 & 28 & 28 \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+Los parámetros de ejecución fueron comunes para las cuatro proteínas. Se
+utilizó una exhaustividad de 16, se guardaron 10 modos de unión por
+cálculo, se fijó un rango de energía de 4 kcal/mol, se emplearon 6 CPUs
+y se estableció una semilla fija para favorecer la reproducibilidad del
+flujo.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-parametros-vina}Parámetros comunes de AutoDock Vina utilizados en el docking ligando-proteína.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{lr}
+\toprule
+Parámetro & Valor \\
+\midrule
+exhaustiveness & 16 \\
+num\_modes & 10 \\
+energy\_range & 4 \\
+cpu & 6 \\
+seed & 12345 \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+La mejor pose de cada cálculo se utilizó para construir el dataset final
+de afinidades ligando-proteína. Estas energías no deben interpretarse
+como afinidades experimentales absolutas, sino como puntuaciones
+computacionales dependientes del protocolo de docking.
+
+\section{Extracción de resultados y control de cálculos}
+
+Los resultados de AutoDock Vina se procesaron automáticamente a partir
+de los archivos de salida. Para cada cálculo se extrajo la afinidad
+correspondiente al primer modo de unión, es decir, la mejor energía
+reportada por Vina. Además, se registró el estado del cálculo para
+diferenciar dockings completados correctamente de cálculos fallidos o
+con errores de formato.
+
+Posteriormente, los resultados de docking se transformaron desde formato
+largo a formato ancho. En el formato largo cada fila correspondía a un
+par proteína-ligando; en el formato ancho cada fila correspondía a un
+ligando y las columnas \texttt{y\_1ao6}, \texttt{y\_1hzh},
+\texttt{y\_2hav} e \texttt{y\_3ghg} contenían las afinidades frente a
+cada proteína. Los ligandos sin las cuatro salidas completas se
+descartaron antes de construir el dataset multisalida final.
+
+\section{Resumen de afinidades ligando-proteína}
+
+El resumen estadístico de las afinidades se genera automáticamente a
+partir del mismo dataset final empleado en el Anexo B. Esto permite
+comprobar rápidamente los rangos de energía utilizados para entrenar los
+modelos.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-docking-resumen}}
+
+\centering{
+
+\subcaption{\label{tbl-anexo-docking-estadisticos}Resumen estadístico de energías de docking ligando-proteína.}
+
+\centering{
+
+\centering
+\small
+
+\begin{tabular}{lrrrr}
+\toprule
+Proteína & Media & Mín. & Máx. & DE\\
+\midrule
+1ao6 & -4.80 & -9.21 & -2.57 & 1.51\\
+1hzh & -4.71 & -8.75 & -2.52 & 1.45\\
+2hav & -5.15 & -10.09 & -2.68 & 1.69\\
+3ghg & -4.42 & -7.96 & -2.19 & 1.39\\
+\bottomrule
+\end{tabular}
+
+}
+
+}
+
+\end{table}%
+
+Valores más negativos indican una interacción más favorable dentro del
+protocolo de docking. La tabla anterior resume la distribución de las
+energías utilizadas como variables objetivo en los modelos predictivos.
+
+\section{Uso de las afinidades en el modelo predictivo}
+
+Las energías de docking se organizaron en formato multisalida, con una
+única fila por ligando y una columna objetivo por proteína. Esta
+estructura permitió entrenar modelos capaces de predecir simultáneamente
+el perfil de afinidad de cada ligando frente a las cuatro proteínas
+plasmáticas consideradas.
+
+El uso de un único dataset integrado facilitó combinar las afinidades de
+docking con los descriptores moleculares RDKit y las variables de
+membrana. De esta forma se pudieron comparar distintos bloques de
+información: modelos entrenados solo con descriptores RDKit, modelos
+entrenados con variables de membrana, modelos combinados y modelos con
+reducción dimensional. Esta organización permitió evaluar qué tipo de
+información explicaba mejor la variabilidad observada en las
+puntuaciones de docking.
+
+\apendice{Docking nanopartícula-proteína e Índice Contextual Nano-Bio}
+
+\section{Docking nanopartícula-proteína}
+
+La interacción nanopartícula-proteína se analizó como una capa
+contextual independiente. Esta decisión metodológica evitó incorporar
+directamente información de nanopartículas como si fuera una propiedad
+intrínseca del ligando. En su lugar, las energías nanopartícula-proteína
+se combinaron posteriormente con las energías ligando-proteína mediante
+un índice normalizado.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-nano-proteina-icnb}Energías de docking nanopartícula-proteína utilizadas en la capa contextual.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{lrrr}
+\toprule
+Nanopartícula & 1ao6 & 1hzh & 2hav \\
+\midrule
+Ag\_13 & -2.24 & -2.13 & -2.17 \\
+Au\_13 & -2.34 & -2.12 & -2.34 \\
+ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+Las energías más negativas corresponden a interacciones más favorables
+dentro del protocolo utilizado. En los tres casos evaluados, ZnO\_12\_0
+presentó energías claramente más negativas que Ag\_13 y Au\_13, por lo
+que tuvo un peso importante en las combinaciones mejor posicionadas del
+análisis contextual. La proteína 3ghg no se incluyó en esta capa
+nanopartícula-proteína final por limitaciones técnicas asociadas al
+tamaño y preparación del sistema.
+
+\section{Cálculo del Índice Contextual Nano-Bio}
+
+El Índice Contextual Nano-Bio se definió como una métrica comparativa
+para priorizar combinaciones ligando-nanopartícula-proteína. Para evitar
+sumar energías de naturaleza distinta como si fuesen una magnitud física
+absoluta, se trabajó con puntuaciones normalizadas por proteína. La
+afinidad ligando-proteína y la energía nanopartícula-proteína se
+transformaron en puntuaciones donde valores mayores representan
+interacciones más favorables:
+
+La afinidad ligando-proteína y la energía nanopartícula-proteína se
+transformaron en puntuaciones donde valores mayores representan
+interacciones más favorables:
+
+\begin{equation*}
+S^{LP}_{i,p} = -z_p(E^{LP}_{i,p})
+\end{equation*}
+
+\begin{equation*}
+S^{NP}_{n,p} = -z_p(E^{NP}_{n,p})
+\end{equation*}
+
+A partir de estas dos contribuciones se calculó una puntuación
+contextual media:
+
+\begin{equation*}
+S^{\mathrm{contexto}}_{i,n,p} =
+\frac{S^{LP}_{i,p} + S^{NP}_{n,p}}{2}
+\end{equation*}
+
+Finalmente, las puntuaciones se reescalaron a una escala 0--100 para
+facilitar su interpretación como índice de priorización:
+
+\begin{equation*}
+ICNB_{i,n,p} =
+100 \cdot
+\frac{
+S^{\mathrm{contexto}}_{i,n,p} - S^{\mathrm{contexto}}_{\min}
+}{
+S^{\mathrm{contexto}}_{\max} - S^{\mathrm{contexto}}_{\min}
+}
+\end{equation*}
+
+El ICNB no representa una energía física de un complejo completo, sino
+una métrica comparativa para ordenar candidatos dentro del conjunto
+estudiado.
+
+\section{Combinaciones mejor posicionadas}
+
+\begin{table}
+
+\caption{\label{tbl-anexo-top-icnb}Top 10 combinaciones según el Índice Contextual Nano-Bio.}
+
+\centering{
+
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+
+
+\begin{tabular}{llcrrrr}
+\toprule
+Ligando & NP & Prot & ICNB & ICNB prot. & E LP & E NP \\
+\midrule
+Ácido fólico & ZnO\_12\_0 & 2hav & 100.00 & 100.00 & -10.09 & -8.44 \\
+Ácido fólico & ZnO\_12\_0 & 1ao6 & 99.83 & 100.00 & -9.21 & -7.76 \\
+Ácido fólico & ZnO\_12\_0 & 1hzh & 97.78 & 100.00 & -8.75 & -7.38 \\
+Doxo. proxy & ZnO\_12\_0 & 1ao6 & 91.22 & 91.36 & -8.36 & -7.76 \\
+Curcumina & ZnO\_12\_0 & 2hav & 89.46 & 89.44 & -8.93 & -8.44 \\
+Doxo. proxy & ZnO\_12\_0 & 1hzh & 89.24 & 91.27 & -7.94 & -7.38 \\
+Doxo. proxy & ZnO\_12\_0 & 2hav & 85.59 & 85.56 & -8.50 & -8.44 \\
+Curcumina & ZnO\_12\_0 & 1ao6 & 84.96 & 85.08 & -7.74 & -7.76 \\
+Ácido tánico & ZnO\_12\_0 & 1hzh & 84.86 & 86.79 & -7.52 & -7.38 \\
+Ácido tánico & ZnO\_12\_0 & 2hav & 84.00 & 83.97 & -8.33 & -8.44 \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+LP: ligando-proteína; NP: nanopartícula-proteína. Las mejores
+combinaciones estuvieron dominadas por ZnO\_12\_0 y ácido fólico. Este
+resultado se explica por la combinación de una afinidad ligando-proteína
+favorable y una contribución nanopartícula-proteína especialmente
+negativa para ZnO\_12\_0.
+
+\section{Interpretación del índice}
+
+El ICNB permitió integrar en una misma escala la información procedente
+del docking ligando-proteína y del docking nanopartícula-proteína. Esta
+integración fue útil para priorizar combinaciones, pero no debe
+interpretarse como una simulación explícita del complejo
+nanopartícula-ligando-proteína. En este trabajo, el índice se utilizó
+como una herramienta de cribado comparativo, orientada a identificar
+combinaciones prometedoras para estudios posteriores.
+
+La dominancia de ZnO\_12\_0 en las primeras posiciones se debe a sus
+energías nanopartícula-proteína más negativas frente a las proteínas
+evaluadas. Por otro lado, el ácido fólico destacó por sus afinidades
+ligando-proteína favorables, lo que explica que sus combinaciones con
+ZnO\_12\_0 ocupen las primeras posiciones del ranking. Este
+comportamiento sugiere que el ácido fólico es uno de los agentes de
+recubrimiento más interesantes dentro del conjunto estudiado,
+especialmente cuando se considera junto con el modelo de óxido de zinc.
+
+\apendice{Descriptores moleculares y modelos de aprendizaje automático}
+
+\section{Construcción del dataset predictivo}
+
+El dataset predictivo se construyó con una fila por ligando y cuatro
+salidas de docking ligando-proteína. Las variables de entrada incluyeron
+descriptores moleculares RDKit y variables de membrana. Las salidas del
+modelo fueron \texttt{y\_1ao6}, \texttt{y\_1hzh}, \texttt{y\_2hav} e
+\texttt{y\_3ghg}, correspondientes a las energías de docking frente a
+las cuatro proteínas plasmáticas consideradas.
+
+Los descriptores RDKit se calcularon a partir de las estructuras
+moleculares preparadas en formato SDF. El conjunto incluyó descriptores
+2D básicos, como peso molecular, LogP, TPSA, donadores y aceptores de
+enlace de hidrógeno, enlaces rotables, número de átomos pesados,
+fracción de carbonos sp3, número de anillos y carga formal. Además,
+cuando la estructura contenía conformación tridimensional, se calcularon
+descriptores 3D como asfericidad, excentricidad, factores de inercia,
+momentos principales de inercia, radio de giro e índice de esfericidad.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-bloques-variables}Bloques de variables evaluados en los modelos.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.24\textwidth}p{0.62\textwidth}}
+\toprule
+Bloque & Descripción \\
+\midrule
+RDKit\_solo & Descriptores moleculares 2D/3D calculados con RDKit. Incluye variables de tamaño, polaridad, lipofilia, flexibilidad, topología y geometría. \\
+Membrana\_solo & Variables COSMOtherm/COSMOmic relacionadas con partición, permeabilidad, distribución, energía libre y difusión en una bicapa modelo de DMPC. \\
+RDKit+membrana & Combinación de descriptores RDKit y variables de membrana. \\
+PCA & Representación reducida de los bloques de variables mediante componentes principales. \\
+PLSRegression & Modelo basado en variables latentes que combina reducción dimensional supervisada y regresión. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+\section{Comparación de modelos}
+
+Se evaluaron diferentes modelos de regresión multisalida para predecir
+simultáneamente las cuatro afinidades de docking. La comparación incluyó
+modelos lineales, modelos basados en árboles, reducción dimensional
+mediante PCA y regresión PLS. El objetivo fue comprobar si los
+descriptores RDKit eran suficientes para explicar las afinidades de
+docking o si la incorporación de variables de membrana mejoraba el
+rendimiento predictivo.
+
+La tabla completa de modelos se genera automáticamente a partir del CSV
+de métricas exportado durante el análisis.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+
+\begin{longtable}[t]{llrrrrrr}
+
+\caption{\label{tbl-anexo-modelos-completos}Resultados completos de la
+comparación de modelos de regresión multisalida.}
+
+\tabularnewline
+
+\\
+\toprule
+Bloque & Modelo & N & Variables & CV RMSE & MAE test & RMSE test & R2 test\\
+\midrule
+RDKit\_solo & ExtraTrees & 52 & 26 & 0.510 & 0.319 & 0.412 & 0.884\\
+RDKit\_membrana\_seleccionada & ExtraTrees & 52 & 49 & 0.512 & 0.339 & 0.412 & 0.886\\
+RDKit\_membrana\_filtrada\_auto & ExtraTrees & 52 & 49 & 0.512 & 0.339 & 0.412 & 0.886\\
+RDKit\_solo & PLSRegression & 52 & 26 & 0.400 & 0.317 & 0.426 & 0.886\\
+RDKit\_solo & PCA\_Ridge & 52 & 26 & 0.391 & 0.347 & 0.467 & 0.865\\
+\addlinespace
+RDKit\_membrana\_seleccionada & PLSRegression & 52 & 49 & 0.343 & 0.359 & 0.470 & 0.852\\
+RDKit\_membrana\_filtrada\_auto & PLSRegression & 52 & 49 & 0.343 & 0.359 & 0.470 & 0.852\\
+RDKit\_membrana\_seleccionada & Ridge & 52 & 49 & 0.337 & 0.374 & 0.486 & 0.844\\
+RDKit\_membrana\_filtrada\_auto & Ridge & 52 & 49 & 0.337 & 0.374 & 0.486 & 0.844\\
+RDKit\_membrana\_filtrada\_auto & PCA\_Ridge & 52 & 49 & 0.332 & 0.390 & 0.493 & 0.839\\
+\addlinespace
+RDKit\_membrana\_seleccionada & PCA\_Ridge & 52 & 49 & 0.332 & 0.390 & 0.493 & 0.839\\
+RDKit\_solo & Ridge & 52 & 26 & 0.420 & 0.348 & 0.539 & 0.816\\
+RDKit\_solo & RandomForest & 52 & 26 & 0.638 & 0.476 & 0.595 & 0.764\\
+RDKit\_membrana\_filtrada\_auto & RandomForest & 52 & 49 & 0.653 & 0.519 & 0.626 & 0.741\\
+RDKit\_membrana\_seleccionada & RandomForest & 52 & 49 & 0.653 & 0.519 & 0.626 & 0.741\\
+\addlinespace
+Membrana\_solo & RandomForest & 52 & 23 & 0.795 & 0.621 & 0.731 & 0.650\\
+Membrana\_solo & ExtraTrees & 52 & 23 & 0.767 & 0.620 & 0.744 & 0.641\\
+Membrana\_solo & Ridge & 52 & 23 & 0.825 & 0.693 & 0.860 & 0.521\\
+Membrana\_solo & PCA\_Ridge & 52 & 23 & 0.768 & 0.900 & 1.175 & 0.101\\
+Membrana\_solo & PLSRegression & 52 & 23 & 0.759 & 0.957 & 1.351 & -0.188\\
+\bottomrule
+
+\end{longtable}
+
+\endgroup
+
+El mejor rendimiento en test se obtuvo con ExtraTrees utilizando
+únicamente descriptores RDKit. PLSRegression presentó un comportamiento
+competitivo, especialmente en validación cruzada, mientras que las
+configuraciones con PCA no mejoraron el rendimiento final. La
+incorporación de variables de membrana produjo resultados muy similares
+al bloque RDKit\_solo, pero no redujo claramente el error de predicción.
+
+\section{Modelo final}
+
+El modelo seleccionado como modelo final fue ExtraTrees entrenado con el
+bloque RDKit\_solo. Este modelo obtuvo un RMSE test de aproximadamente
+0.412 kcal/mol, un MAE test de 0.319 kcal/mol y un R\textsuperscript{2}
+test de 0.884. Estos valores indican una buena concordancia entre las
+afinidades predichas y las afinidades de docking utilizadas como
+referencia.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-modelo-final}Resumen del modelo final seleccionado.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{lrrrrrr}
+\toprule
+Bloque & Modelo & N & Variables & MAE test & RMSE test & R\textsuperscript{2} test \\
+\midrule
+RDKit\_solo & ExtraTrees & 52 & 26 & 0.319 & 0.412 & 0.884 \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+Aunque el modelo RDKit+membrana obtuvo un R\textsuperscript{2} test
+ligeramente superior, su error no mejoró de forma clara frente al modelo
+RDKit\_solo. Por ello, se seleccionó el modelo RDKit\_solo + ExtraTrees
+como modelo final, al ser más simple y presentar un rendimiento
+equivalente o superior en términos de error.
+
+\section{Rendimiento por proteína}
+
+Además de las métricas globales, se evaluó el rendimiento del modelo
+final para cada una de las cuatro proteínas plasmáticas. Esta
+comparación permitió identificar si alguna proteína presentaba una
+predicción más difícil que las demás.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-metricas-proteina}}
+
+\centering{
+
+\caption{\label{tab:tbl-anexo-metricas-proteina}Métricas del modelo final por proteína.}
+\centering
+\begin{tabular}[t]{lrrr}
+\toprule
+Proteína & MAE & RMSE & R2\\
+\midrule
+1ao6 & 0.294 & 0.378 & 0.917\\
+1hzh & 0.408 & 0.540 & 0.783\\
+2hav & 0.241 & 0.277 & 0.959\\
+3ghg & 0.332 & 0.408 & 0.878\\
+media & 0.319 & 0.412 & 0.884\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+El rendimiento no fue idéntico para todas las proteínas. La salida
+asociada a 2hav presentó el menor RMSE, mientras que 1hzh mostró el
+mayor error relativo dentro del modelo final. Estas diferencias pueden
+deberse a la variabilidad de afinidades de cada proteína, a la forma de
+sus regiones de interacción o al tamaño limitado del dataset.
+
+\section{Interpretación del papel de las variables}
+
+El resultado principal de la comparación fue que los descriptores RDKit
+explicaron gran parte de la variabilidad de las afinidades de docking.
+Esto es coherente con la naturaleza del problema, ya que las energías
+ligando-proteína dependen en gran medida de características
+estructurales del ligando, como tamaño, polaridad, superficie,
+flexibilidad, geometría y capacidad de establecer interacciones no
+covalentes.
+
+Las variables de membrana aportaron información fisicoquímica
+complementaria, pero no mejoraron claramente el error de predicción.
+Esta observación no implica que sean irrelevantes, sino que describen un
+fenómeno distinto: el comportamiento del ligando en una bicapa modelo de
+DMPC, no la interacción directa con una proteína plasmática. Por ello,
+en el trabajo se interpretaron como una capa adicional de
+caracterización, no como el bloque principal para predecir afinidad de
+docking.
+
+\section{Uso predictivo del modelo}
+
+El modelo final se integró en la aplicación Streamlit para estimar
+afinidades de nuevos ligandos a partir de su SMILES. La aplicación
+calcula los descriptores RDKit necesarios, los organiza en el mismo
+formato que el dataset de entrenamiento y aplica el modelo ExtraTrees
+final para obtener las cuatro predicciones de afinidad.
+
+La predicción debe entenderse como un cribado preliminar dentro del
+dominio químico del dataset. No sustituye al docking explícito ni a la
+validación experimental, pero permite priorizar moléculas antes de
+realizar cálculos más costosos.
+
+\apendice{Análisis PLIP de complejos representativos}
+
+\section{Selección de complejos}
+
+Como análisis estructural complementario, se aplicó PLIP a complejos
+proteína-ligando representativos. La selección se realizó a partir de
+los mejores complejos de docking para cada proteína, tomando los
+ligandos con energías más favorables dentro del dataset final. El
+objetivo fue complementar la puntuación de docking con una descripción
+cualitativa de los contactos no covalentes presentes en las estructuras
+generadas.
+
+El flujo se automatizó mediante un script específico que seleccionó los
+tres mejores ligandos por proteína, localizó los archivos estructurales
+correspondientes, generó complejos proteína-ligando en formato PDB y
+preparó los comandos de ejecución de PLIP. Cuando PLIP estuvo disponible
+en el entorno, se generaron los reportes en formato TXT y XML dentro de
+la carpeta de resultados. De esta forma, el análisis PLIP quedó
+integrado como una capa estructural complementaria dentro del flujo del
+trabajo.
+
+\section{Interacciones detectadas}
+
+\begin{table}
+
+\caption{\label{tbl-anexo-plip-resumen}Resumen del análisis PLIP en complejos proteína-ligando representativos.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{llrrr}
+\toprule
+Proteína & Ligando & Hidrofóbicos & Puentes H & Total \\
+\midrule
+1ao6 & Curcumina & 18 & 0 & 18 \\
+1ao6 & Doxo. proxy & 18 & 0 & 18 \\
+1ao6 & Ácido fólico & 19 & 7 & 26 \\
+1hzh & Doxo. proxy & 12 & 0 & 12 \\
+1hzh & Ácido fólico & 13 & 8 & 21 \\
+1hzh & Ácido tánico & 0 & 0 & 0 \\
+2hav & Curcumina & 13 & 0 & 13 \\
+2hav & Doxo. proxy & 10 & 0 & 10 \\
+2hav & Ácido fólico & 18 & 4 & 22 \\
+3ghg & Curcumina & 13 & 0 & 13 \\
+3ghg & Doxo. proxy & 10 & 0 & 10 \\
+3ghg & Ácido fólico & 12 & 0 & 12 \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+En 11 de los 12 complejos se detectaron interacciones proteína-ligando.
+El único sistema sin interacciones detectadas fue ácido tánico
+aproximado frente a 1hzh. El ácido fólico presentó el patrón de
+interacción más completo, combinando contactos hidrofóbicos y puentes de
+hidrógeno frente a 1ao6, 1hzh y 2hav.
+
+\section{Residuos destacados}
+
+Los reportes PLIP permitieron identificar residuos recurrentes en los
+complejos representativos. Entre los residuos destacados se observaron
+LYS137, ARG186, LEU115 y LEU182 en 1ao6; GLN166, PHE83, GLU165 y LYS103
+en 1hzh; LYS591, ARG590, LEU228 y LEU134 en 2hav; y MET78, ILE79, VAL132
+y ALA101 en 3ghg.
+
+Estos residuos se interpretaron como una primera aproximación a las
+regiones de contacto proteína-ligando en los complejos mejor
+posicionados. En particular, la presencia de puentes de hidrógeno en los
+complejos con ácido fólico sugiere una interacción más específica que la
+observada en complejos dominados únicamente por contactos hidrofóbicos.
+
+\section{Limitaciones del análisis PLIP}
+
+El análisis PLIP debe considerarse preliminar. Aunque PLIP se ejecutó
+correctamente sobre los complejos representativos, los archivos PDB
+utilizados procedían de salidas de docking de Vina que contenían varios
+modos de unión. En la preparación de los complejos no se aisló
+explícitamente solo el \texttt{MODEL 1}; por ello, algunos archivos
+presentaron un número de átomos de ligando compatible con la inclusión
+de varias poses en un mismo complejo.
+
+Esta limitación afecta principalmente a la interpretación cuantitativa
+de los contactos. Por tanto, los recuentos de interacciones se
+interpretan de forma cualitativa, como apoyo estructural al docking y al
+Índice Contextual Nano-Bio, y no como una cuantificación definitiva de
+interacciones para una única conformación ligando-proteína.
+
+Una mejora directa del flujo consistiría en extraer exclusivamente el
+\texttt{MODEL 1} de cada salida de Vina, generar de nuevo los complejos
+PDB y repetir el análisis PLIP sobre esas estructuras depuradas. De esta
+forma se obtendrían recuentos de interacción asociados a una única pose
+de docking.
+
+\section{Interpretación general}
+
+El análisis PLIP aportó una lectura estructural complementaria a las
+puntuaciones de docking. Mientras que Vina proporciona una energía de
+unión estimada, PLIP permite identificar el tipo de contactos implicados
+en la estabilización de la pose. En este trabajo, los contactos
+hidrofóbicos fueron los más frecuentes, aunque los complejos con ácido
+fólico destacaron por combinar contactos hidrofóbicos y puentes de
+hidrógeno.
+
+Estos resultados son coherentes con la posición del ácido fólico entre
+los ligandos mejor clasificados en el análisis ICNB. Su comportamiento
+no parece depender únicamente de una energía de docking favorable, sino
+también de la presencia de interacciones específicas con varias
+proteínas plasmáticas. Aun así, debido a las limitaciones comentadas,
+esta interpretación debe entenderse como exploratoria y orientada a
+priorizar sistemas para análisis estructurales más detallados.
+
+\apendice{Aplicación Streamlit y código fuente}
+
+\section{Estructura del repositorio}
+
+El proyecto se organizó en carpetas separadas para datos, scripts,
+resultados, aplicación y documentos. Esta estructura facilita reproducir
+el flujo completo y localizar los archivos generados en cada etapa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TFM\_Docking/}
+\NormalTok{|{-}{-} datasets/}
+\NormalTok{|{-}{-} scripts/}
+\NormalTok{|   |{-}{-} modelos/}
+\NormalTok{|   |{-}{-} membrana/}
+\NormalTok{|   |{-}{-} nanoparticulas/}
+\NormalTok{|   |{-}{-} interacciones/}
+\NormalTok{|   |{-}{-} tablas/}
+\NormalTok{|{-}{-} resultados/}
+\NormalTok{|   |{-}{-} modelos/}
+\NormalTok{|   |{-}{-} nanoparticulas/}
+\NormalTok{|   |{-}{-} diagnosticos/}
+\NormalTok{|   |{-}{-} tablas\_generadas/}
+\NormalTok{|   |{-}{-} figuras\_generadas/}
+\NormalTok{|   |{-}{-} plip/}
+\NormalTok{|{-}{-} app/}
+\NormalTok{|{-}{-} qmd/}
+\NormalTok{|{-}{-} memoria.qmd}
+\NormalTok{|{-}{-} anexos.qmd}
+\end{Highlighting}
+\end{Shaded}
+
+La separación entre carpetas permitió mantener diferenciados los datos
+de entrada, los scripts de procesamiento, los resultados generados, la
+aplicación interactiva y los documentos Quarto. Esta organización
+también facilitó la actualización progresiva del trabajo a medida que se
+incorporaron nuevas capas de análisis, como el ICNB, PLIP y la
+predicción desde SMILES.
+
+\section{Scripts principales}
+
+El código del proyecto se organizó en módulos funcionales. En lugar de
+depender de un único script, el flujo se dividió en bloques dedicados a
+modelización, variables de membrana, análisis nanopartícula-proteína,
+PLIP y generación de resultados. Esta organización permitió ejecutar y
+depurar cada parte del trabajo de forma independiente.
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+
+\begin{longtable}{p{0.25\textwidth}p{0.63\textwidth}}
+
+\caption{\label{tbl-anexo-scripts}Módulos principales del código fuente.}
+
+\tabularnewline
+
+\\
+\toprule
+Módulo & Función principal \\
+\midrule
+\endfirsthead
+
+\caption[]{Módulos principales del código fuente. Continuación.}\\
+\toprule
+Módulo & Función principal \\
+\midrule
+\endhead
+
+\bottomrule
+\endlastfoot
+
+\texttt{scripts/modelos/} &
+Entrenamiento y comparación de modelos predictivos. Incluye el entrenamiento inicial, la comparación entre bloques RDKit, membrana, RDKit+membrana, PCA y PLS, y el entrenamiento del modelo final ExtraTrees con descriptores RDKit. \\
+
+\texttt{scripts/membrana/} &
+Extracción, corrección, diagnóstico e integración de variables de membrana procedentes de COSMOtherm/COSMOmic. Este módulo permitió generar el bloque de variables con prefijo \texttt{mem\_} e incorporarlo al dataset final. \\
+
+\texttt{scripts/nanoparticulas/} &
+Procesamiento de resultados de docking nanopartícula-proteína, construcción del dataset contextual ligando-nanopartícula-proteína y cálculo del Índice Contextual Nano-Bio. \\
+
+\texttt{scripts/interacciones/} &
+Selección de complejos proteína-ligando representativos, generación de complejos PDB y preparación de la ejecución de PLIP para analizar contactos no covalentes. \\
+
+\texttt{scripts/tablas/} &
+Generación de tablas, figuras y salidas gráficas utilizadas en la memoria y en los anexos. Incluye scripts de análisis en R y generación de figuras finales. \\
+
+\texttt{app/} &
+Aplicación Streamlit para visualizar resultados, explorar modelos y realizar predicciones de afinidad para nuevos ligandos introducidos mediante SMILES. \\
+
+\end{longtable}
+
+\endgroup
+
+Los scripts auxiliares de cada módulo se mantuvieron separados para
+facilitar la depuración. Por ejemplo, el bloque de membrana incluyó
+scripts específicos para extraer variables, corregir valores de
+partición y unir los resultados con el dataset final. De forma similar,
+el bloque de nanopartículas separó la extracción de resultados, la
+corrección de tablas y el cálculo del ICNB. Esta división permitió
+modificar una parte del flujo sin tener que rehacer todo el análisis.
+
+\section{Aplicación Streamlit}
+
+La aplicación Streamlit se desarrolló como herramienta auxiliar de
+visualización y exploración de resultados. Inicialmente permitió
+consultar el dataset, comparar modelos predictivos, revisar métricas por
+proteína, visualizar predicciones real-predicho, explorar variables de
+membrana, analizar resultados de docking nanopartícula-proteína y
+consultar el ranking contextual.
+
+Posteriormente se añadió una pestaña de predicción desde SMILES. Esta
+función permite introducir una nueva molécula, calcular sus descriptores
+RDKit y estimar su perfil de afinidad frente a las cuatro proteínas
+plasmáticas mediante el modelo ExtraTrees final. De esta forma, la
+aplicación no solo sirve como visor de resultados, sino también como
+herramienta de cribado preliminar de posibles agentes de recubrimiento.
+
+\begin{table}
+
+\caption{\label{tbl-anexo-streamlit-funciones}Funciones principales de la aplicación Streamlit.}
+
+\centering{
+
+\centering
+\small
+
+
+\begin{tabular}{p{0.34\textwidth}p{0.54\textwidth}}
+\toprule
+Sección de la aplicación & Función \\
+\midrule
+Resumen & Presentación general del proyecto, número de ligandos, variables, proteínas objetivo y mejor modelo detectado. \\
+Modelos & Visualización de la comparación de modelos y ranking por RMSE en test. \\
+Métricas por proteína & Consulta del rendimiento del modelo final para cada salida de docking. \\
+Predicciones & Comparación entre valores reales y predichos en el conjunto de test. \\
+Membrana & Exploración de variables COSMOtherm/COSMOmic y visualización de propiedades de membrana. \\
+Nanopartículas & Consulta de resultados de docking nanopartícula-proteína y mapas de calor. \\
+Ranking contextual & Filtrado y visualización del ranking ligando-nanopartícula-proteína. \\
+Predicción nuevo ligando & Introducción de un SMILES, cálculo de descriptores RDKit y predicción de afinidades. \\
+Figuras generadas & Visualización de figuras exportadas para memoria y anexos. \\
+Dataset & Consulta del dataset integrado completo. \\
+Archivos y rutas & Comprobación de rutas detectadas y disponibilidad de archivos necesarios. \\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+\section{Ejecución de la aplicación}
+
+Desde la raíz del proyecto, la aplicación puede ejecutarse con Streamlit
+dentro del entorno conda utilizado durante el trabajo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{conda activate docking}
+\NormalTok{streamlit run app\textbackslash{}app\_tfm\_con\_prediccion.py}
+\end{Highlighting}
+\end{Shaded}
+
+El archivo principal de la aplicación es:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{app/app\_tfm\_con\_prediccion.py}
+\end{Highlighting}
+\end{Shaded}
+
+La aplicación está preparada para detectar rutas de forma robusta. Para
+ello busca automáticamente la raíz del proyecto y localiza los archivos
+principales en carpetas como \texttt{datasets/},
+\texttt{resultados/modelos/}, \texttt{resultados/nanoparticulas/},
+\texttt{resultados/tablas\_generadas/} y
+\texttt{resultados/figuras\_generadas/}. Si algún archivo no se
+encuentra, la propia aplicación muestra un aviso para facilitar la
+depuración.
+
+\section{Archivos del modelo final}
+
+La pestaña de predicción desde SMILES requiere que estén disponibles el
+modelo entrenado y la lista de variables utilizadas durante el
+entrenamiento. En el flujo final, los archivos esperados son:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultados/modelos/modelo\_final\_rdkit/modelo\_final\_extratrees\_rdkit.joblib}
+\NormalTok{resultados/modelos/modelo\_final\_rdkit/features\_modelo\_final.csv}
+\end{Highlighting}
+\end{Shaded}
+
+El archivo \texttt{modelo\_final\_extratrees\_rdkit.joblib} contiene el
+modelo ExtraTrees entrenado con el bloque RDKit. El archivo
+\texttt{features\_modelo\_final.csv} contiene la lista de descriptores
+que deben calcularse para que una nueva molécula pueda introducirse en
+el modelo con el mismo formato que el dataset de entrenamiento.
+
+Si estos archivos no existen, debe ejecutarse de nuevo el script de
+entrenamiento del modelo final:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python scripts\textbackslash{}modelos\textbackslash{}entrenar\_modelo\_final.py}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Predicción desde SMILES}
+
+La predicción desde SMILES sigue un flujo interno sencillo. Primero, el
+usuario introduce una cadena SMILES y un nombre opcional para la
+molécula. Después, RDKit interpreta la estructura química y calcula los
+descriptores necesarios. A continuación, la aplicación ordena esos
+descriptores según la lista utilizada durante el entrenamiento y aplica
+el modelo ExtraTrees final para obtener cuatro afinidades predichas:
+\texttt{y\_1ao6}, \texttt{y\_1hzh}, \texttt{y\_2hav} e \texttt{y\_3ghg}.
+
+Los resultados se muestran en una tabla y en una gráfica de barras.
+Además, la aplicación permite descargar las predicciones en formato CSV.
+Esta funcionalidad permite utilizar el modelo como una herramienta de
+cribado preliminar, útil para comparar nuevas moléculas antes de
+realizar cálculos de docking explícitos.
+
+\section{Limitaciones de la aplicación}
+
+La aplicación no recalcula docking molecular ni sustituye a una
+simulación estructural completa. Las predicciones desde SMILES dependen
+del modelo entrenado y, por tanto, del dominio químico del dataset
+utilizado. Moléculas muy alejadas de los ligandos incluidos en el
+trabajo pueden quedar fuera del rango de aplicabilidad del modelo.
+
+Por este motivo, los resultados de la aplicación deben interpretarse
+como una ayuda para priorizar candidatos, no como afinidades
+experimentales ni como sustituto de validación mediante docking
+explícito, simulación molecular o ensayos experimentales.
+
+
+\backmatter
+\bibliography{bibliografiaAnexos.bib}
+
+
+
+\end{document}

@@ -1,0 +1,56 @@
+\apendice{Análisis PLIP de complejos representativos}
+
+\section{Selección de complejos}
+
+Como análisis estructural complementario, se aplicó PLIP a complejos proteína-ligando representativos. La selección se realizó a partir de los mejores complejos de docking para cada proteína, tomando los ligandos con energías más favorables dentro del dataset final. El objetivo fue complementar la puntuación de docking con una descripción cualitativa de los contactos no covalentes presentes en las estructuras generadas.
+
+El flujo se automatizó mediante un script específico que seleccionó los tres mejores ligandos por proteína, localizó los archivos estructurales correspondientes, generó complejos proteína-ligando en formato PDB y preparó los comandos de ejecución de PLIP. Cuando PLIP estuvo disponible en el entorno, se generaron los reportes en formato TXT y XML dentro de la carpeta de resultados. De esta forma, el análisis PLIP quedó integrado como una capa estructural complementaria dentro del flujo del trabajo.
+
+\section{Interacciones detectadas}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Resumen del análisis PLIP en complejos proteína-ligando representativos.}
+\label{tbl-anexo-plip-resumen}
+\begin{tabular}{llrrr}
+\toprule
+Proteína & Ligando & Hidrofóbicos & Puentes H & Total \\
+\midrule
+1ao6 & Curcumina & 18 & 0 & 18 \\
+1ao6 & Doxo. proxy & 18 & 0 & 18 \\
+1ao6 & Ácido fólico & 19 & 7 & 26 \\
+1hzh & Doxo. proxy & 12 & 0 & 12 \\
+1hzh & Ácido fólico & 13 & 8 & 21 \\
+1hzh & Ácido tánico & 0 & 0 & 0 \\
+2hav & Curcumina & 13 & 0 & 13 \\
+2hav & Doxo. proxy & 10 & 0 & 10 \\
+2hav & Ácido fólico & 18 & 4 & 22 \\
+3ghg & Curcumina & 13 & 0 & 13 \\
+3ghg & Doxo. proxy & 10 & 0 & 10 \\
+3ghg & Ácido fólico & 12 & 0 & 12 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+En 11 de los 12 complejos se detectaron interacciones proteína-ligando. El único sistema sin interacciones detectadas fue ácido tánico aproximado frente a 1hzh. El ácido fólico presentó el patrón de interacción más completo, combinando contactos hidrofóbicos y puentes de hidrógeno frente a 1ao6, 1hzh y 2hav.
+
+\section{Residuos destacados}
+
+Los reportes PLIP permitieron identificar residuos recurrentes en los complejos representativos. Entre los residuos destacados se observaron LYS137, ARG186, LEU115 y LEU182 en 1ao6; GLN166, PHE83, GLU165 y LYS103 en 1hzh; LYS591, ARG590, LEU228 y LEU134 en 2hav; y MET78, ILE79, VAL132 y ALA101 en 3ghg.
+
+Estos residuos se interpretaron como una primera aproximación a las regiones de contacto proteína-ligando en los complejos mejor posicionados. En particular, la presencia de puentes de hidrógeno en los complejos con ácido fólico sugiere una interacción más específica que la observada en complejos dominados únicamente por contactos hidrofóbicos.
+
+\section{Limitaciones del análisis PLIP}
+
+El análisis PLIP debe considerarse preliminar. Aunque PLIP se ejecutó correctamente sobre los complejos representativos, los archivos PDB utilizados procedían de salidas de docking de Vina que contenían varios modos de unión. En la preparación de los complejos no se aisló explícitamente solo el \texttt{MODEL 1}; por ello, algunos archivos presentaron un número de átomos de ligando compatible con la inclusión de varias poses en un mismo complejo.
+
+Esta limitación afecta principalmente a la interpretación cuantitativa de los contactos. Por tanto, los recuentos de interacciones se interpretan de forma cualitativa, como apoyo estructural al docking y al Índice Contextual Nano-Bio, y no como una cuantificación definitiva de interacciones para una única conformación ligando-proteína.
+
+Una mejora directa del flujo consistiría en extraer exclusivamente el \texttt{MODEL 1} de cada salida de Vina, generar de nuevo los complejos PDB y repetir el análisis PLIP sobre esas estructuras depuradas. De esta forma se obtendrían recuentos de interacción asociados a una única pose de docking.
+
+\section{Interpretación general}
+
+El análisis PLIP aportó una lectura estructural complementaria a las puntuaciones de docking. Mientras que Vina proporciona una energía de unión estimada, PLIP permite identificar el tipo de contactos implicados en la estabilización de la pose. En este trabajo, los contactos hidrofóbicos fueron los más frecuentes, aunque los complejos con ácido fólico destacaron por combinar contactos hidrofóbicos y puentes de hidrógeno.
+
+Estos resultados son coherentes con la posición del ácido fólico entre los ligandos mejor clasificados en el análisis ICNB. Su comportamiento no parece depender únicamente de una energía de docking favorable, sino también de la presencia de interacciones específicas con varias proteínas plasmáticas. Aun así, debido a las limitaciones comentadas, esta interpretación debe entenderse como exploratoria y orientada a priorizar sistemas para análisis estructurales más detallados.

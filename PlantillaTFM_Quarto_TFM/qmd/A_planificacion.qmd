@@ -1,0 +1,80 @@
+\apendice{Planificación del proyecto}
+
+\section{Fases de desarrollo}
+
+El proyecto se organizó como un flujo computacional reproducible y modular. Varias fases se solaparon, ya que mientras algunos cálculos se ejecutaban en el entorno HPC se fueron preparando scripts de análisis, tablas, figuras y modelos predictivos. Esta organización permitió corregir errores de formato, completar cálculos pendientes y actualizar la memoria a medida que se generaban nuevos resultados.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Planificación general del proyecto.}
+\label{tbl-anexo-fases}
+\begin{tabular}{p{0.15\textwidth}p{0.22\textwidth}p{0.52\textwidth}}
+\toprule
+Fase & Periodo aproximado & Actividad principal \\
+\midrule
+Fase 1 & Inicio del trabajo & Revisión bibliográfica sobre nanopartículas metálicas, recubrimientos, proteínas plasmáticas, docking molecular, variables de membrana y aprendizaje automático. \\
+Fase 2 & Preparación inicial & Selección de ligandos, proteínas plasmáticas y modelos simplificados de nanopartículas. Organización de carpetas, formatos moleculares y scripts de trabajo. \\
+Fase 3 & Cálculos estructurales de ligandos & Optimización geométrica de ligandos y cálculo de frecuencias mediante TURBOMOLE. Preparación de archivos compatibles con los pasos posteriores del flujo. \\
+Fase 4 & Variables de membrana & Extracción y organización de variables procedentes de COSMOtherm/COSMOmic, incluyendo partición, permeabilidad, distribución, difusión y perfiles asociados a una bicapa modelo de DMPC. \\
+Fase 5 & Docking ligando-proteína & Preparación de proteínas y ligandos, ejecución de docking molecular y extracción de energías de unión para cuatro proteínas plasmáticas. \\
+Fase 6 & Modelos predictivos & Cálculo de descriptores RDKit, construcción del dataset final, comparación de modelos de regresión multisalida y selección del modelo ExtraTrees final. \\
+Fase 7 & Capa nanopartícula-proteína & Docking nanopartícula-proteína, construcción del Índice Contextual Nano-Bio y priorización de combinaciones ligando-nanopartícula-proteína. \\
+Fase 8 & Cálculos nanopartícula-ligando & Preparación y cálculo exploratorio de complejos nanopartícula-ligando mediante ORCA, planteados como paso previo al docking completo del complejo nanopartícula-ligando-proteína. \\
+Fase 9 & Análisis final & Análisis PLIP de complejos representativos, desarrollo de la aplicación Streamlit, generación de figuras y redacción de memoria y anexos. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Infraestructura computacional}
+
+Los cálculos y análisis se realizaron combinando recursos locales y recursos de computación de alto rendimiento. El entorno HPC se utilizó para las tareas de mayor coste computacional, mientras que el equipo local se empleó para análisis de datos, generación de figuras, entrenamiento de modelos, desarrollo de la aplicación y compilación de la memoria en Quarto.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Infraestructura computacional empleada.}
+\label{tbl-anexo-infraestructura}
+\begin{tabular}{p{0.32\textwidth}p{0.56\textwidth}}
+\toprule
+Recurso & Uso principal \\
+\midrule
+Clúster HPC & Ejecución de cálculos estructurales, frecuencias, cálculos asociados a solutos y procesos de docking con mayor coste computacional. \\
+Partición \texttt{lusi2} & Envío de cálculos con tiempos de ejecución prolongados, especialmente para sistemas más costosos o cálculos que no finalizaban correctamente en particiones de menor duración. \\
+SLURM & Gestión de colas, envío de trabajos, control de tiempos máximos de ejecución y seguimiento de cálculos pendientes, completados o cancelados. \\
+Equipo local & Análisis de datos, generación de tablas y figuras, entrenamiento de modelos, desarrollo de scripts, aplicación Streamlit y redacción en Quarto. \\
+Entorno conda \texttt{docking} & Ejecución local de Python, RDKit, scripts de análisis, modelos de aprendizaje automático, aplicación y renderizado de documentos. \\
+Quarto y LaTeX & Generación de la memoria y de los anexos en formato PDF a partir de archivos QMD. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Software utilizado}
+
+La tabla siguiente resume las herramientas principales empleadas durante el desarrollo del trabajo. Algunas se utilizaron directamente por línea de comandos y otras se integraron mediante scripts de Python, R o Quarto.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Software utilizado en el proyecto.}
+\label{tbl-anexo-software}
+\begin{tabular}{p{0.28\textwidth}p{0.60\textwidth}}
+\toprule
+Software & Uso principal \\
+\midrule
+TURBOMOLE & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
+ORCA & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
+COSMOtherm/COSMOmic & Obtención de variables de membrana, partición, permeabilidad, distribución y difusión en una bicapa modelo de DMPC. \\
+AutoDock Vina & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
+AutoDockTools/MGLTools & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
+OpenBabel & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
+RDKit & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
+Python & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
+scikit-learn & Entrenamiento y comparación de modelos de aprendizaje automático. \\
+R & Generación de tablas, figuras y análisis complementarios para la memoria. \\
+PLIP & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
+Streamlit & Desarrollo de la aplicación interactiva de visualización y predicción desde SMILES. \\
+Quarto & Redacción y compilación de la memoria y anexos en formato PDF. \\
+\bottomrule
+\end{tabular}
+\end{table}

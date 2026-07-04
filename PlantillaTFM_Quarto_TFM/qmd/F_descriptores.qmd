@@ -1,0 +1,177 @@
+\apendice{Descriptores moleculares y modelos de aprendizaje automático}
+
+\section{Construcción del dataset predictivo}
+
+El dataset predictivo se construyó con una fila por ligando y cuatro salidas de docking ligando-proteína. Las variables de entrada incluyeron descriptores moleculares RDKit y variables de membrana. Las salidas del modelo fueron \texttt{y\_1ao6}, \texttt{y\_1hzh}, \texttt{y\_2hav} e \texttt{y\_3ghg}, correspondientes a las energías de docking frente a las cuatro proteínas plasmáticas consideradas.
+
+Los descriptores RDKit se calcularon a partir de las estructuras moleculares preparadas en formato SDF. El conjunto incluyó descriptores 2D básicos, como peso molecular, LogP, TPSA, donadores y aceptores de enlace de hidrógeno, enlaces rotables, número de átomos pesados, fracción de carbonos sp3, número de anillos y carga formal. Además, cuando la estructura contenía conformación tridimensional, se calcularon descriptores 3D como asfericidad, excentricidad, factores de inercia, momentos principales de inercia, radio de giro e índice de esfericidad.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Bloques de variables evaluados en los modelos.}
+\label{tbl-anexo-bloques-variables}
+\begin{tabular}{p{0.24\textwidth}p{0.62\textwidth}}
+\toprule
+Bloque & Descripción \\
+\midrule
+RDKit\_solo & Descriptores moleculares 2D/3D calculados con RDKit. Incluye variables de tamaño, polaridad, lipofilia, flexibilidad, topología y geometría. \\
+Membrana\_solo & Variables COSMOtherm/COSMOmic relacionadas con partición, permeabilidad, distribución, energía libre y difusión en una bicapa modelo de DMPC. \\
+RDKit+membrana & Combinación de descriptores RDKit y variables de membrana. \\
+PCA & Representación reducida de los bloques de variables mediante componentes principales. \\
+PLSRegression & Modelo basado en variables latentes que combina reducción dimensional supervisada y regresión. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Comparación de modelos}
+
+Se evaluaron diferentes modelos de regresión multisalida para predecir simultáneamente las cuatro afinidades de docking. La comparación incluyó modelos lineales, modelos basados en árboles, reducción dimensional mediante PCA y regresión PLS. El objetivo fue comprobar si los descriptores RDKit eran suficientes para explicar las afinidades de docking o si la incorporación de variables de membrana mejoraba el rendimiento predictivo.
+
+La tabla completa de modelos se genera automáticamente a partir del CSV de métricas exportado durante el análisis.
+
+```{r}
+#| label: tbl-anexo-modelos-completos
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
+
+rutas_modelos <- c(
+  "resultados/tablas_generadas/tabla_01_resultados_modelos_ordenada.csv"
+)
+
+ruta_modelos <- rutas_modelos[file.exists(rutas_modelos)][1]
+
+if (is.na(ruta_modelos)) {
+  cat("\\textit{No se encontró automáticamente la tabla de resultados de modelos.}\n")
+} else {
+  modelos <- read.csv(ruta_modelos, check.names = FALSE)
+
+  cols <- c(
+    "feature_set", "modelo", "n_ligandos", "n_features",
+    "CV_RMSE", "TEST_MAE", "TEST_RMSE", "TEST_R2"
+  )
+
+  cols <- cols[cols %in% names(modelos)]
+  modelos_tabla <- modelos[, cols, drop = FALSE]
+
+  nombres <- c(
+    feature_set = "Bloque",
+    modelo = "Modelo",
+    n_ligandos = "N",
+    n_features = "Variables",
+    CV_RMSE = "CV RMSE",
+    TEST_MAE = "MAE test",
+    TEST_RMSE = "RMSE test",
+    TEST_R2 = "R2 test"
+  )
+
+  colnames(modelos_tabla) <- nombres[colnames(modelos_tabla)]
+
+  for (cc in c("CV RMSE", "MAE test", "RMSE test", "R2 test")) {
+    if (cc %in% names(modelos_tabla)) {
+      modelos_tabla[[cc]] <- sprintf("%.3f", as.numeric(modelos_tabla[[cc]]))
+    }
+  }
+
+  cat("\\begingroup\n")
+  cat("\\scriptsize\n")
+  cat("\\setlength{\\tabcolsep}{3pt}\n")
+
+  print(knitr::kable(
+    modelos_tabla,
+    format = "latex",
+    booktabs = TRUE,
+    longtable = TRUE,
+    caption = "Resultados completos de la comparación de modelos de regresión multisalida.",
+    escape = TRUE,
+    align = c("l", "l", "r", "r", "r", "r", "r", "r")
+  ))
+
+  cat("\\endgroup\n")
+}
+```
+
+El mejor rendimiento en test se obtuvo con ExtraTrees utilizando únicamente descriptores RDKit. PLSRegression presentó un comportamiento competitivo, especialmente en validación cruzada, mientras que las configuraciones con PCA no mejoraron el rendimiento final. La incorporación de variables de membrana produjo resultados muy similares al bloque RDKit\_solo, pero no redujo claramente el error de predicción.
+
+\section{Modelo final}
+
+El modelo seleccionado como modelo final fue ExtraTrees entrenado con el bloque RDKit\_solo. Este modelo obtuvo un RMSE test de aproximadamente 0.412 kcal/mol, un MAE test de 0.319 kcal/mol y un R\textsuperscript{2} test de 0.884. Estos valores indican una buena concordancia entre las afinidades predichas y las afinidades de docking utilizadas como referencia.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Resumen del modelo final seleccionado.}
+\label{tbl-anexo-modelo-final}
+\begin{tabular}{lrrrrrr}
+\toprule
+Bloque & Modelo & N & Variables & MAE test & RMSE test & R\textsuperscript{2} test \\
+\midrule
+RDKit\_solo & ExtraTrees & 52 & 26 & 0.319 & 0.412 & 0.884 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Aunque el modelo RDKit+membrana obtuvo un R\textsuperscript{2} test ligeramente superior, su error no mejoró de forma clara frente al modelo RDKit\_solo. Por ello, se seleccionó el modelo RDKit\_solo + ExtraTrees como modelo final, al ser más simple y presentar un rendimiento equivalente o superior en términos de error.
+
+\section{Rendimiento por proteína}
+
+Además de las métricas globales, se evaluó el rendimiento del modelo final para cada una de las cuatro proteínas plasmáticas. Esta comparación permitió identificar si alguna proteína presentaba una predicción más difícil que las demás.
+
+```{r}
+#| label: tbl-anexo-metricas-proteina
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
+
+rutas_proteinas <- c(
+  "resultados/tablas_generadas/tabla_04_metricas_mejor_modelo_por_proteina.csv"
+)
+
+ruta_proteinas <- rutas_proteinas[file.exists(rutas_proteinas)][1]
+
+if (is.na(ruta_proteinas)) {
+  cat("\\textit{No se encontró automáticamente la tabla de métricas por proteína.}\n")
+} else {
+  met <- read.csv(ruta_proteinas, check.names = FALSE)
+
+  cols <- c("salida", "MAE", "RMSE", "R2")
+  cols <- cols[cols %in% names(met)]
+  met_tabla <- met[, cols, drop = FALSE]
+
+  if ("salida" %in% names(met_tabla)) {
+    met_tabla$salida <- gsub("y_", "", met_tabla$salida)
+  }
+
+  colnames(met_tabla) <- c("Proteína", "MAE", "RMSE", "R2")
+
+  for (cc in c("MAE", "RMSE", "R2")) {
+    met_tabla[[cc]] <- sprintf("%.3f", as.numeric(met_tabla[[cc]]))
+  }
+
+  print(knitr::kable(
+    met_tabla,
+    format = "latex",
+    booktabs = TRUE,
+    caption = "Métricas del modelo final por proteína.",
+    escape = TRUE,
+    align = c("l", "r", "r", "r")
+  ))
+}
+```
+
+El rendimiento no fue idéntico para todas las proteínas. La salida asociada a 2hav presentó el menor RMSE, mientras que 1hzh mostró el mayor error relativo dentro del modelo final. Estas diferencias pueden deberse a la variabilidad de afinidades de cada proteína, a la forma de sus regiones de interacción o al tamaño limitado del dataset.
+
+\section{Interpretación del papel de las variables}
+
+El resultado principal de la comparación fue que los descriptores RDKit explicaron gran parte de la variabilidad de las afinidades de docking. Esto es coherente con la naturaleza del problema, ya que las energías ligando-proteína dependen en gran medida de características estructurales del ligando, como tamaño, polaridad, superficie, flexibilidad, geometría y capacidad de establecer interacciones no covalentes.
+
+Las variables de membrana aportaron información fisicoquímica complementaria, pero no mejoraron claramente el error de predicción. Esta observación no implica que sean irrelevantes, sino que describen un fenómeno distinto: el comportamiento del ligando en una bicapa modelo de DMPC, no la interacción directa con una proteína plasmática. Por ello, en el trabajo se interpretaron como una capa adicional de caracterización, no como el bloque principal para predecir afinidad de docking.
+
+\section{Uso predictivo del modelo}
+
+El modelo final se integró en la aplicación Streamlit para estimar afinidades de nuevos ligandos a partir de su SMILES. La aplicación calcula los descriptores RDKit necesarios, los organiza en el mismo formato que el dataset de entrenamiento y aplica el modelo ExtraTrees final para obtener las cuatro predicciones de afinidad.
+
+La predicción debe entenderse como un cribado preliminar dentro del dominio químico del dataset. No sustituye al docking explícito ni a la validación experimental, pero permite priorizar moléculas antes de realizar cálculos más costosos.

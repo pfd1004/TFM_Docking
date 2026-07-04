@@ -1,0 +1,155 @@
+\apendice{Aplicación Streamlit y código fuente}
+
+\section{Estructura del repositorio}
+
+El proyecto se organizó en carpetas separadas para datos, scripts, resultados, aplicación y documentos. Esta estructura facilita reproducir el flujo completo y localizar los archivos generados en cada etapa.
+
+```text
+TFM_Docking/
+|-- datasets/
+|-- scripts/
+|   |-- modelos/
+|   |-- membrana/
+|   |-- nanoparticulas/
+|   |-- interacciones/
+|   |-- tablas/
+|-- resultados/
+|   |-- modelos/
+|   |-- nanoparticulas/
+|   |-- diagnosticos/
+|   |-- tablas_generadas/
+|   |-- figuras_generadas/
+|   |-- plip/
+|-- app/
+|-- qmd/
+|-- memoria.qmd
+|-- anexos.qmd
+```
+
+La separación entre carpetas permitió mantener diferenciados los datos de entrada, los scripts de procesamiento, los resultados generados, la aplicación interactiva y los documentos Quarto. Esta organización también facilitó la actualización progresiva del trabajo a medida que se incorporaron nuevas capas de análisis, como el ICNB, PLIP y la predicción desde SMILES.
+
+\section{Scripts principales}
+
+El código del proyecto se organizó en módulos funcionales. En lugar de depender de un único script, el flujo se dividió en bloques dedicados a modelización, variables de membrana, análisis nanopartícula-proteína, PLIP y generación de resultados. Esta organización permitió ejecutar y depurar cada parte del trabajo de forma independiente.
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+
+\begin{longtable}{p{0.25\textwidth}p{0.63\textwidth}}
+\caption{Módulos principales del código fuente.}
+\label{tbl-anexo-scripts}\\
+\toprule
+Módulo & Función principal \\
+\midrule
+\endfirsthead
+
+\caption[]{Módulos principales del código fuente. Continuación.}\\
+\toprule
+Módulo & Función principal \\
+\midrule
+\endhead
+
+\bottomrule
+\endlastfoot
+
+\texttt{scripts/modelos/} &
+Entrenamiento y comparación de modelos predictivos. Incluye el entrenamiento inicial, la comparación entre bloques RDKit, membrana, RDKit+membrana, PCA y PLS, y el entrenamiento del modelo final ExtraTrees con descriptores RDKit. \\
+
+\texttt{scripts/membrana/} &
+Extracción, corrección, diagnóstico e integración de variables de membrana procedentes de COSMOtherm/COSMOmic. Este módulo permitió generar el bloque de variables con prefijo \texttt{mem\_} e incorporarlo al dataset final. \\
+
+\texttt{scripts/nanoparticulas/} &
+Procesamiento de resultados de docking nanopartícula-proteína, construcción del dataset contextual ligando-nanopartícula-proteína y cálculo del Índice Contextual Nano-Bio. \\
+
+\texttt{scripts/interacciones/} &
+Selección de complejos proteína-ligando representativos, generación de complejos PDB y preparación de la ejecución de PLIP para analizar contactos no covalentes. \\
+
+\texttt{scripts/tablas/} &
+Generación de tablas, figuras y salidas gráficas utilizadas en la memoria y en los anexos. Incluye scripts de análisis en R y generación de figuras finales. \\
+
+\texttt{app/} &
+Aplicación Streamlit para visualizar resultados, explorar modelos y realizar predicciones de afinidad para nuevos ligandos introducidos mediante SMILES. \\
+
+\end{longtable}
+
+\endgroup
+
+Los scripts auxiliares de cada módulo se mantuvieron separados para facilitar la depuración. Por ejemplo, el bloque de membrana incluyó scripts específicos para extraer variables, corregir valores de partición y unir los resultados con el dataset final. De forma similar, el bloque de nanopartículas separó la extracción de resultados, la corrección de tablas y el cálculo del ICNB. Esta división permitió modificar una parte del flujo sin tener que rehacer todo el análisis.
+
+\section{Aplicación Streamlit}
+
+La aplicación Streamlit se desarrolló como herramienta auxiliar de visualización y exploración de resultados. Inicialmente permitió consultar el dataset, comparar modelos predictivos, revisar métricas por proteína, visualizar predicciones real-predicho, explorar variables de membrana, analizar resultados de docking nanopartícula-proteína y consultar el ranking contextual.
+
+Posteriormente se añadió una pestaña de predicción desde SMILES. Esta función permite introducir una nueva molécula, calcular sus descriptores RDKit y estimar su perfil de afinidad frente a las cuatro proteínas plasmáticas mediante el modelo ExtraTrees final. De esta forma, la aplicación no solo sirve como visor de resultados, sino también como herramienta de cribado preliminar de posibles agentes de recubrimiento.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Funciones principales de la aplicación Streamlit.}
+\label{tbl-anexo-streamlit-funciones}
+\begin{tabular}{p{0.34\textwidth}p{0.54\textwidth}}
+\toprule
+Sección de la aplicación & Función \\
+\midrule
+Resumen & Presentación general del proyecto, número de ligandos, variables, proteínas objetivo y mejor modelo detectado. \\
+Modelos & Visualización de la comparación de modelos y ranking por RMSE en test. \\
+Métricas por proteína & Consulta del rendimiento del modelo final para cada salida de docking. \\
+Predicciones & Comparación entre valores reales y predichos en el conjunto de test. \\
+Membrana & Exploración de variables COSMOtherm/COSMOmic y visualización de propiedades de membrana. \\
+Nanopartículas & Consulta de resultados de docking nanopartícula-proteína y mapas de calor. \\
+Ranking contextual & Filtrado y visualización del ranking ligando-nanopartícula-proteína. \\
+Predicción nuevo ligando & Introducción de un SMILES, cálculo de descriptores RDKit y predicción de afinidades. \\
+Figuras generadas & Visualización de figuras exportadas para memoria y anexos. \\
+Dataset & Consulta del dataset integrado completo. \\
+Archivos y rutas & Comprobación de rutas detectadas y disponibilidad de archivos necesarios. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Ejecución de la aplicación}
+
+Desde la raíz del proyecto, la aplicación puede ejecutarse con Streamlit dentro del entorno conda utilizado durante el trabajo:
+
+```cmd
+conda activate docking
+streamlit run app\app_tfm_con_prediccion.py
+```
+
+El archivo principal de la aplicación es:
+
+```text
+app/app_tfm_con_prediccion.py
+```
+
+La aplicación está preparada para detectar rutas de forma robusta. Para ello busca automáticamente la raíz del proyecto y localiza los archivos principales en carpetas como \texttt{datasets/}, \texttt{resultados/modelos/}, \texttt{resultados/nanoparticulas/}, \texttt{resultados/tablas\_generadas/} y \texttt{resultados/figuras\_generadas/}. Si algún archivo no se encuentra, la propia aplicación muestra un aviso para facilitar la depuración.
+
+\section{Archivos del modelo final}
+
+La pestaña de predicción desde SMILES requiere que estén disponibles el modelo entrenado y la lista de variables utilizadas durante el entrenamiento. En el flujo final, los archivos esperados son:
+
+```text
+resultados/modelos/modelo_final_rdkit/modelo_final_extratrees_rdkit.joblib
+resultados/modelos/modelo_final_rdkit/features_modelo_final.csv
+```
+
+El archivo \texttt{modelo\_final\_extratrees\_rdkit.joblib} contiene el modelo ExtraTrees entrenado con el bloque RDKit. El archivo \texttt{features\_modelo\_final.csv} contiene la lista de descriptores que deben calcularse para que una nueva molécula pueda introducirse en el modelo con el mismo formato que el dataset de entrenamiento.
+
+Si estos archivos no existen, debe ejecutarse de nuevo el script de entrenamiento del modelo final:
+
+```cmd
+python scripts\modelos\entrenar_modelo_final.py
+```
+
+\section{Predicción desde SMILES}
+
+La predicción desde SMILES sigue un flujo interno sencillo. Primero, el usuario introduce una cadena SMILES y un nombre opcional para la molécula. Después, RDKit interpreta la estructura química y calcula los descriptores necesarios. A continuación, la aplicación ordena esos descriptores según la lista utilizada durante el entrenamiento y aplica el modelo ExtraTrees final para obtener cuatro afinidades predichas: \texttt{y\_1ao6}, \texttt{y\_1hzh}, \texttt{y\_2hav} e \texttt{y\_3ghg}.
+
+Los resultados se muestran en una tabla y en una gráfica de barras. Además, la aplicación permite descargar las predicciones en formato CSV. Esta funcionalidad permite utilizar el modelo como una herramienta de cribado preliminar, útil para comparar nuevas moléculas antes de realizar cálculos de docking explícitos.
+
+\section{Limitaciones de la aplicación}
+
+La aplicación no recalcula docking molecular ni sustituye a una simulación estructural completa. Las predicciones desde SMILES dependen del modelo entrenado y, por tanto, del dominio químico del dataset utilizado. Moléculas muy alejadas de los ligandos incluidos en el trabajo pueden quedar fuera del rango de aplicabilidad del modelo.
+
+Por este motivo, los resultados de la aplicación deben interpretarse como una ayuda para priorizar candidatos, no como afinidades experimentales ni como sustituto de validación mediante docking explícito, simulación molecular o ensayos experimentales.

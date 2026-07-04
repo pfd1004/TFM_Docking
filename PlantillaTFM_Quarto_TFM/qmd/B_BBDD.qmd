@@ -1,0 +1,160 @@
+\apendice{Base de datos de ligandos, proteínas y nanopartículas}
+
+\section{Ligandos estudiados}
+
+La base de datos de ligandos incluyó agentes de recubrimiento y moléculas con interés biomédico. El conjunto recoge compuestos alifáticos, compuestos aromáticos, moléculas polares, moléculas con grupos tiol, ácidos carboxílicos y moléculas de mayor tamaño como ácido fólico, curcumina, ácido tánico aproximado y una aproximación estructural de doxorrubicina. Para cada ligando se calcularon descriptores moleculares RDKit y, cuando estaban disponibles, variables de membrana procedentes del análisis COSMOtherm/COSMOmic.
+
+La tabla completa de ligandos se genera automáticamente a partir del dataset final de descriptores utilizado en el flujo de modelización. De esta forma se evita copiar manualmente nombres y valores numéricos.
+
+```{r}
+#| label: tbl-anexo-ligandos
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
+
+rutas_dataset <- c(
+  "resultados/datasets/dataset_descriptores_membrana.csv"
+)
+
+ruta_dataset <- rutas_dataset[file.exists(rutas_dataset)][1]
+
+tex_escape <- function(x) {
+  x <- as.character(x)
+  x <- gsub("_", " ", x)
+  x <- gsub("\\\\", "\\\\textbackslash{}", x)
+  x <- gsub("([#$%&{}])", "\\\\\\1", x, perl = TRUE)
+  x <- gsub("\\^", "\\\\textasciicircum{}", x)
+  x <- gsub("~", "\\\\textasciitilde{}", x)
+  x
+}
+
+fmt <- function(x, n = 2) {
+  x <- suppressWarnings(as.numeric(x))
+  ifelse(is.na(x), "", sprintf(paste0("%.", n, "f"), x))
+}
+
+if (is.na(ruta_dataset)) {
+  cat("\\textit{No se encontró automáticamente el dataset final de ligandos. La tabla completa puede añadirse a partir del archivo dataset\\_descriptores\\_membrana.csv.}\n")
+} else {
+  lig <- read.csv(ruta_dataset, check.names = FALSE)
+
+  posibles_nombre <- c("ligando", "Ligando", "nombre", "Nombre", "molecula", "Molecula", "mol", "Mol")
+  col_nombre <- posibles_nombre[posibles_nombre %in% names(lig)][1]
+
+  if (is.na(col_nombre)) {
+    cat("\\textit{El dataset fue encontrado, pero no se localizó una columna de nombre de ligando.}\n")
+  } else {
+    lig$ligando_anexo <- lig[[col_nombre]]
+
+    cols <- c("ligando_anexo", "MolWt", "MolLogP", "TPSA", "NumHDonors", "NumHAcceptors", "NumRotatableBonds")
+
+    for (cc in cols) {
+      if (!cc %in% names(lig)) {
+        lig[[cc]] <- NA
+      }
+    }
+
+    lig <- lig[!duplicated(lig$ligando_anexo), cols]
+    lig$Nombre <- tex_escape(lig$ligando_anexo)
+    lig <- lig[order(lig$Nombre), ]
+
+    cat("\\begingroup\n")
+    cat("\\scriptsize\n")
+    cat("\\setlength{\\tabcolsep}{3pt}\n")
+    cat("\\begin{longtable}{p{0.42\\textwidth}rrrrrr}\n")
+    cat("\\caption{Ligandos incluidos en el dataset de trabajo.}\\label{tbl-anexo-ligandos-tabla}\\\\\n")
+    cat("\\toprule\n")
+    cat("Ligando & MW & LogP & TPSA & HBD & HBA & Rot.\\\\\n")
+    cat("\\midrule\n")
+    cat("\\endfirsthead\n")
+    cat("\\toprule\n")
+    cat("Ligando & MW & LogP & TPSA & HBD & HBA & Rot.\\\\\n")
+    cat("\\midrule\n")
+    cat("\\endhead\n")
+
+    for (i in seq_len(nrow(lig))) {
+      cat(
+        lig$Nombre[i], " & ",
+        fmt(lig$MolWt[i], 1), " & ",
+        fmt(lig$MolLogP[i], 2), " & ",
+        fmt(lig$TPSA[i], 1), " & ",
+        fmt(lig$NumHDonors[i], 0), " & ",
+        fmt(lig$NumHAcceptors[i], 0), " & ",
+        fmt(lig$NumRotatableBonds[i], 0),
+        "\\\\\n",
+        sep = ""
+      )
+    }
+
+    cat("\\bottomrule\n")
+    cat("\\end{longtable}\n")
+    cat("\\endgroup\n")
+  }
+}
+```
+
+MW: peso molecular; LogP: coeficiente de partición calculado; TPSA: superficie polar topológica; HBD: donadores de enlace de hidrógeno; HBA: aceptores de enlace de hidrógeno; Rot.: enlaces rotables.
+
+\section{Proteínas plasmáticas utilizadas}
+
+El docking ligando-proteína se realizó frente a cuatro estructuras identificadas por su código PDB. En el dataset final, cada proteína se correspondió con una variable objetivo de docking. Valores más negativos indican una interacción más favorable dentro del protocolo de docking empleado.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Proteínas consideradas en el docking ligando-proteína.}
+\label{tbl-anexo-proteinas}
+\begin{tabular}{p{0.14\textwidth}p{0.52\textwidth}p{0.22\textwidth}}
+\toprule
+Código PDB & Proteína & Variable objetivo \\
+\midrule
+1ao6 & Albúmina sérica humana & y\_1ao6 \\
+1hzh & Anticuerpo monoclonal humano IgG1 b12 & y\_1hzh \\
+2hav & Transferrina sérica humana en forma apo & y\_2hav \\
+3ghg & Fibrinógeno humano & y\_3ghg \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La albúmina sérica humana se consideró por su elevada abundancia en plasma y su papel en el transporte de sustancias como ácidos grasos y hormonas. La estructura 1hzh corresponde al anticuerpo monoclonal humano IgG1 b12, relacionado con la neutralización de cepas de VIH-1 mediante bloqueo del sitio de unión a CD4. La proteína 2hav corresponde a la forma apo de la transferrina sérica humana, principal proteína implicada en el transporte de hierro en sangre. La estructura 3ghg corresponde al fibrinógeno humano.
+
+\section{Modelos de nanopartículas metálicas}
+
+Además del docking ligando-proteína, se consideraron modelos simplificados de nanopartículas metálicas y de óxido metálico. Estos modelos se utilizaron para construir una capa contextual nanopartícula-proteína, separada del modelo principal de aprendizaje automático. Esta separación permitió integrar la afinidad ligando-proteína y la interacción nanopartícula-proteína sin tratarlas como una única energía física.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Modelos de nanopartículas considerados en el trabajo.}
+\label{tbl-anexo-nanoparticulas}
+\begin{tabular}{p{0.20\textwidth}p{0.32\textwidth}p{0.34\textwidth}}
+\toprule
+Modelo & Composición & Uso en el flujo \\
+\midrule
+Ag\_13 & Clúster de plata & Docking nanopartícula-proteína y comparación contextual. \\
+Au\_13 & Clúster de oro & Docking nanopartícula-proteína y comparación contextual. \\
+ZnO\_12\_0 & Modelo de óxido de zinc & Docking nanopartícula-proteína e Índice Contextual Nano-Bio. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El docking nanopartícula-proteína se completó para 1ao6, 1hzh y 2hav. La proteína 3ghg se mantuvo en el análisis ligando-proteína y en el modelo predictivo, pero no se incluyó en la capa nanopartícula-proteína final por limitaciones técnicas asociadas al tamaño y preparación del sistema.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Energías de docking nanopartícula-proteína utilizadas en la capa contextual.}
+\label{tbl-anexo-nano-proteina}
+\begin{tabular}{lrrr}
+\toprule
+Nanopartícula & 1ao6 & 1hzh & 2hav \\
+\midrule
+Ag\_13 & -2.24 & -2.13 & -2.17 \\
+Au\_13 & -2.34 & -2.12 & -2.34 \\
+ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Las energías más negativas indican interacciones más favorables dentro del protocolo de docking utilizado. Estos valores se emplearon posteriormente para construir el Índice Contextual Nano-Bio, combinándolos de forma normalizada con las afinidades ligando-proteína.
