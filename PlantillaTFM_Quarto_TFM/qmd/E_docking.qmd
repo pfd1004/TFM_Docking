@@ -26,8 +26,6 @@ Las energías más negativas corresponden a interacciones más favorables dentro
 
 El Índice Contextual Nano-Bio se definió como una métrica comparativa para priorizar combinaciones ligando-nanopartícula-proteína. Para evitar sumar energías de naturaleza distinta como si fuesen una magnitud física absoluta, se trabajó con puntuaciones normalizadas por proteína. La afinidad ligando-proteína y la energía nanopartícula-proteína se transformaron en puntuaciones donde valores mayores representan interacciones más favorables:
 
-La afinidad ligando-proteína y la energía nanopartícula-proteína se transformaron en puntuaciones donde valores mayores representan interacciones más favorables:
-
 ```{=latex}
 \begin{equation*}
 S^{LP}_{i,p} = -z_p(E^{LP}_{i,p})

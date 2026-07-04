@@ -33,10 +33,43 @@ knitr:
 ---
 
 ```{=latex}
-\title{Modelización computacional de la interacción de agentes de recubrimiento de nanopartículas metálicas (Au, Ag, ZnO) con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático}
-\author{\nombre}
-\date{Julio de 2026}
-\maketitle
+%% ── Página de autorización (Vº Bº tutores) ─────────────────
+\newpage\null\thispagestyle{empty}\newpage
+\thispagestyle{empty}
+
+\noindent\includegraphics[width=\textwidth]{CabeceraEPS.png}\vspace{1cm}
+
+\noindent D. \nombreTutor,  profesor/a del departamento de física y química
+\noindent D. \nombreTutorb, profesor/a del departamento de física y química
+
+\noindent Expone/n:
+
+\noindent Que el/la alumno/a D. \nombre, con DNI \dni, ha realizado el Trabajo
+final del Master en Ingeniería Biomédica titulado \textit{Modelización computacional de la interacción de agentes de recubrimiento de nanopartículas metálicas (Au, Ag, ZnO) con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático}.
+
+\noindent Y que dicho trabajo ha sido realizado por el/la alumno/a bajo la
+dirección del/los que suscribe/n.
+
+\begin{center}
+  En Burgos, a {\large \today}
+\end{center}
+
+\vfill\vfill\vfill
+
+\begin{minipage}{0.45\textwidth}
+  \begin{flushleft}
+    D. \nombreTutor
+  \end{flushleft}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+  \begin{flushleft}
+    D. \nombreTutorb
+  \end{flushleft}
+\end{minipage}
+
+\vfill
+\newpage\null\thispagestyle{empty}\newpage
 ```
 
 ```{=latex}
@@ -68,7 +101,7 @@ The best predictive performance was obtained with an ExtraTrees model using RDKi
 
 \renewcommand*\abstractname{Keywords}
 \begin{abstract}
-etallic nanoparticles, gold nanoparticles, silver nanoparticles, zinc oxide nanoparticles, coating agents, molecular docking, plasma proteins, COSMOtherm, membrane, machine learning, multi-output regression, NBCI, PLIP.
+Metallic nanoparticles, gold nanoparticles, silver nanoparticles, zinc oxide nanoparticles, coating agents, molecular docking, plasma proteins, COSMOtherm, membrane, machine learning, multi-output regression, NBCI, PLIP.
 \end{abstract}
 
 \clearpage

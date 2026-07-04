@@ -31,7 +31,7 @@ Se evaluaron diferentes modelos de regresión multisalida para predecir simultá
 La tabla completa de modelos se genera automáticamente a partir del CSV de métricas exportado durante el análisis.
 
 ```{r}
-#| label: tbl-anexo-modelos-completos
+#| label: code-anexo-modelos-completos
 #| echo: false
 #| warning: false
 #| message: false
@@ -120,7 +120,7 @@ Aunque el modelo RDKit+membrana obtuvo un R\textsuperscript{2} test ligeramente 
 Además de las métricas globales, se evaluó el rendimiento del modelo final para cada una de las cuatro proteínas plasmáticas. Esta comparación permitió identificar si alguna proteína presentaba una predicción más difícil que las demás.
 
 ```{r}
-#| label: tbl-anexo-metricas-proteina
+#| label: code-anexo-metricas-proteina
 #| echo: false
 #| warning: false
 #| message: false

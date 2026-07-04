@@ -1,4 +1,4 @@
-\capitulo{4}{Metodología}
+\capitulo{3}{Metodología}
 
 ## Diseño general del flujo computacional
 
@@ -16,7 +16,9 @@ Las nanopartículas se consideraron mediante modelos simplificados de oro, plata
 
 Las estructuras moleculares de los ligandos fueron preparadas y optimizadas antes de su uso en el flujo de docking y cálculo de descriptores. La optimización geométrica se complementó con cálculos de frecuencias vibracionales. La ausencia de frecuencias imaginarias se utilizó como criterio de validación de mínimo local, de forma que las frecuencias actuaron como control de estabilidad estructural y no como variables principales del modelo predictivo.
 
-Los cálculos cuánticos se organizaron para generar estructuras compatibles con los pasos posteriores y, cuando fue necesario, archivos de tipo Molden para inspección estructural. El programa ORCA se utilizó como herramienta de química cuántica para la generación de estructuras optimizadas y archivos compatibles con COSMO-RS/COSMOtherm [@Neese2022]. En el flujo de membrana se partió de archivos COSMO/ORCACOSMO asociados a los solutos, necesarios para el cálculo posterior de propiedades termodinámicas mediante COSMO-RS [@Klamt1995].
+La optimización geométrica de los ligandos y el cálculo de frecuencias se realizaron mediante TURBOMOLE [@TURBOMOLE2023], empleando el funcional híbrido B3LYP con corrección de dispersión DFT-D4 [@Grimme2010] y la base def2-TZVP [@Weigend2005]. Estos cálculos generaron estructuras optimizadas compatibles con los pasos posteriores del flujo y, cuando fue necesario, archivos de tipo Molden para inspección estructural y conversión de formatos.
+
+De forma complementaria, se iniciaron cálculos exploratorios de complejos nanopartícula-ligando mediante ORCA [@Neese2022], empleando el mismo nivel teórico general. Estos cálculos se plantearon como paso previo a la preparación de sistemas nanopartícula-ligando-proteína para docking, pero no se integraron todavía como una capa completa dentro del modelo final.
 
 ## Preparación de receptores y docking ligando-proteína
 
@@ -69,7 +71,7 @@ Los resultados de docking nanopartícula-proteína se obtuvieron a partir de arc
 
 La razón es que una energía nanopartícula-proteína no varía por ligando, sino por combinación nanopartícula-proteína. Incluirla directamente como descriptor en una tabla donde cada fila representa un ligando generaría una mezcla de unidades de análisis. Por ello, se utilizó como capa contextual para construir rankings exploratorios, pero no como variable del modelo principal.
 
-### Análisis estructural de complejos representativos
+## Análisis estructural de complejos representativos
 
 Como ampliación interpretativa del análisis de docking, se seleccionaron los complejos ligando-proteína mejor posicionados para cada proteína y se prepararon estructuras proteína-ligando en formato PDB. La selección se realizó tomando los tres ligandos con afinidad de docking más favorable frente a cada proteína, generando un conjunto de 12 complejos representativos.
 
@@ -77,7 +79,7 @@ Los complejos seleccionados incluyeron principalmente ácido fólico, curcumina,
 
 El objetivo de esta etapa fue preparar los complejos para un análisis posterior de interacciones no covalentes mediante herramientas como PLIP (*Protein-Ligand Interaction Profiler*), que permite identificar de forma automática puentes de hidrógeno, contactos hidrofóbicos, puentes salinos, interacciones aromáticas y otros contactos proteína-ligando. En el presente flujo, esta etapa se consideró una ampliación estructural del docking, orientada a validar químicamente las poses mejor puntuadas y a interpretar si las afinidades más favorables se deben a interacciones específicas o a efectos más generales como tamaño, polaridad o superficie molecular.
 
-### Índice Contextual Nano-Bio
+## Índice Contextual Nano-Bio
 
 Para integrar de forma exploratoria la información de docking ligando-proteína y nanopartícula-proteína se definió el Índice Contextual Nano-Bio (ICNB). Este índice no representa una energía física absoluta, sino una métrica de priorización comparativa que combina dos contribuciones normalizadas: la afinidad ligando-proteína y la interacción nanopartícula-proteína.
 

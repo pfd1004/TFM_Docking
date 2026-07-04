@@ -23,9 +23,9 @@ El archivo corregido de variables de membrana, \texttt{membrana\_features\_corre
 \toprule
 Archivo & Número de entradas & Comentario \\
 \midrule
-\texttt{membrana\_features\_corregido.csv} & 55 & Archivo corregido con variables de membrana válidas para los solutos procesados. \\
-\texttt{dataset\_descriptores\_membrana.csv} & 53 & Dataset final cruzado con descriptores RDKit y energías de docking. \\
-\texttt{dataset\_descriptores\_membrana.csv} con variables de membrana no nulas & 52 & Ligandos del dataset final con información de membrana correctamente asociada. \\
+\texttt{membrana\_features\_corregido} & 55 & Archivo corregido con variables de membrana válidas para los solutos procesados. \\
+\texttt{dataset\_descriptores\_membrana} & 53 & Dataset final cruzado con descriptores RDKit y energías de docking. \\
+\texttt{dataset\_descriptores\_membrana} con variables de membrana no nulas & 52 & Ligandos del dataset final con información de membrana correctamente asociada. \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -11,9 +11,6 @@ format:
     toc-depth: 3
     lof: false
     lot: false
-    cite-method: natbib
-    biblio-style: apalike
-    bibliography: bibliografiaAnexos.bib
     lang: es
 knitr:
   opts_chunk:

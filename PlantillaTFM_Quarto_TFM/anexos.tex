@@ -155,8 +155,6 @@
 
 
  
-\usepackage[]{natbib}
-\bibliographystyle{apalike}
 
 
 %% ============================================================
@@ -488,39 +486,61 @@ el desarrollo del trabajo. Algunas se utilizaron directamente por línea
 de comandos y otras se integraron mediante scripts de Python, R o
 Quarto.
 
-\begin{table}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.63\textwidth}}
 
 \caption{\label{tbl-anexo-software}Software utilizado en el proyecto.}
 
-\centering{
+\tabularnewline
 
-\centering
-\small
-
-
-\begin{tabular}{p{0.28\textwidth}p{0.60\textwidth}}
+\\
 \toprule
 Software & Uso principal \\
 \midrule
-TURBOMOLE & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
-ORCA & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
-COSMOtherm/COSMOmic & Obtención de variables de membrana, partición, permeabilidad, distribución y difusión en una bicapa modelo de DMPC. \\
-AutoDock Vina & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
-AutoDockTools/MGLTools & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
-OpenBabel & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
-RDKit & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
-Python & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
-scikit-learn & Entrenamiento y comparación de modelos de aprendizaje automático. \\
-R & Generación de tablas, figuras y análisis complementarios para la memoria. \\
-PLIP & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
-Streamlit & Desarrollo de la aplicación interactiva de visualización y predicción desde SMILES. \\
-Quarto & Redacción y compilación de la memoria y anexos en formato PDF. \\
+\endfirsthead
+
+\caption[]{Software utilizado en el proyecto. Continuación.}\\
+\toprule
+Software & Uso principal \\
+\midrule
+\endhead
+
 \bottomrule
-\end{tabular}
+\endlastfoot
 
-}
+TURBOMOLE & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
 
-\end{table}%
+ORCA & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
+
+COSMOtherm / COSMOmic & Obtención de variables de membrana, partición, permeabilidad, distribución y difusión en una bicapa modelo de DMPC. \\
+
+AutoDock Vina & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
+
+AutoDockTools / MGLTools & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
+
+OpenBabel & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
+
+RDKit & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
+
+Python & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
+
+scikit-learn & Entrenamiento y comparación de modelos de aprendizaje automático. \\
+
+R & Generación de tablas, figuras y análisis complementarios para la memoria. \\
+
+PLIP & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
+
+Streamlit & Desarrollo de la aplicación interactiva de visualización y predicción desde SMILES. \\
+
+Quarto & Redacción y compilación de la memoria y anexos en formato PDF. \\
+
+\end{longtable}
+
+\endgroup
 
 \apendice{Base de datos de ligandos, proteínas y nanopartículas}
 
@@ -703,35 +723,6 @@ proteína 3ghg se mantuvo en el análisis ligando-proteína y en el modelo
 predictivo, pero no se incluyó en la capa nanopartícula-proteína final
 por limitaciones técnicas asociadas al tamaño y preparación del sistema.
 
-\begin{table}
-
-\caption{\label{tbl-anexo-nano-proteina}Energías de docking nanopartícula-proteína utilizadas en la capa contextual.}
-
-\centering{
-
-\centering
-\small
-
-
-\begin{tabular}{lrrr}
-\toprule
-Nanopartícula & 1ao6 & 1hzh & 2hav \\
-\midrule
-Ag\_13 & -2.24 & -2.13 & -2.17 \\
-Au\_13 & -2.34 & -2.12 & -2.34 \\
-ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
-\bottomrule
-\end{tabular}
-
-}
-
-\end{table}%
-
-Las energías más negativas indican interacciones más favorables dentro
-del protocolo de docking utilizado. Estos valores se emplearon
-posteriormente para construir el Índice Contextual Nano-Bio,
-combinándolos de forma normalizada con las afinidades ligando-proteína.
-
 \apendice{Cálculos estructurales y variables de membrana}
 
 \section{Optimización geométrica y frecuencias}
@@ -796,9 +787,9 @@ el bloque de membrana.
 \toprule
 Archivo & Número de entradas & Comentario \\
 \midrule
-\texttt{membrana\_features\_corregido.csv} & 55 & Archivo corregido con variables de membrana válidas para los solutos procesados. \\
-\texttt{dataset\_descriptores\_membrana.csv} & 53 & Dataset final cruzado con descriptores RDKit y energías de docking. \\
-\texttt{dataset\_descriptores\_membrana.csv} con variables de membrana no nulas & 52 & Ligandos del dataset final con información de membrana correctamente asociada. \\
+\texttt{membrana\_features\_corregido} & 55 & Archivo corregido con variables de membrana válidas para los solutos procesados. \\
+\texttt{dataset\_descriptores\_membrana} & 53 & Dataset final cruzado con descriptores RDKit y energías de docking. \\
+\texttt{dataset\_descriptores\_membrana} con variables de membrana no nulas & 52 & Ligandos del dataset final con información de membrana correctamente asociada. \\
 \bottomrule
 \end{tabular}
 
@@ -1033,11 +1024,7 @@ modelos.
 
 \begin{table}
 
-\caption{\label{tbl-anexo-docking-resumen}}
-
-\centering{
-
-\subcaption{\label{tbl-anexo-docking-estadisticos}Resumen estadístico de energías de docking ligando-proteína.}
+\caption{\label{tbl-anexo-docking-estadisticos}Resumen estadístico de energías de docking ligando-proteína.}
 
 \centering{
 
@@ -1054,8 +1041,6 @@ Proteína & Media & Mín. & Máx. & DE\\
 3ghg & -4.42 & -7.96 & -2.19 & 1.39\\
 \bottomrule
 \end{tabular}
-
-}
 
 }
 
@@ -1132,10 +1117,6 @@ para priorizar combinaciones ligando-nanopartícula-proteína. Para evitar
 sumar energías de naturaleza distinta como si fuesen una magnitud física
 absoluta, se trabajó con puntuaciones normalizadas por proteína. La
 afinidad ligando-proteína y la energía nanopartícula-proteína se
-transformaron en puntuaciones donde valores mayores representan
-interacciones más favorables:
-
-La afinidad ligando-proteína y la energía nanopartícula-proteína se
 transformaron en puntuaciones donde valores mayores representan
 interacciones más favorables:
 
@@ -1295,13 +1276,7 @@ de métricas exportado durante el análisis.
 \setlength{\tabcolsep}{3pt}
 
 \begin{longtable}[t]{llrrrrrr}
-
-\caption{\label{tbl-anexo-modelos-completos}Resultados completos de la
-comparación de modelos de regresión multisalida.}
-
-\tabularnewline
-
-\\
+\caption{\label{tab:code-anexo-modelos-completos}Resultados completos de la comparación de modelos de regresión multisalida.}\\
 \toprule
 Bloque & Modelo & N & Variables & CV RMSE & MAE test & RMSE test & R2 test\\
 \midrule
@@ -1329,9 +1304,7 @@ Membrana\_solo & Ridge & 52 & 23 & 0.825 & 0.693 & 0.860 & 0.521\\
 Membrana\_solo & PCA\_Ridge & 52 & 23 & 0.768 & 0.900 & 1.175 & 0.101\\
 Membrana\_solo & PLSRegression & 52 & 23 & 0.759 & 0.957 & 1.351 & -0.188\\
 \bottomrule
-
 \end{longtable}
-
 \endgroup
 
 El mejor rendimiento en test se obtuvo con ExtraTrees utilizando
@@ -1387,11 +1360,7 @@ predicción más difícil que las demás.
 
 \begin{table}
 
-\caption{\label{tbl-anexo-metricas-proteina}}
-
-\centering{
-
-\caption{\label{tab:tbl-anexo-metricas-proteina}Métricas del modelo final por proteína.}
+\caption{\label{tab:code-anexo-metricas-proteina}Métricas del modelo final por proteína.}
 \centering
 \begin{tabular}[t]{lrrr}
 \toprule
@@ -1404,10 +1373,7 @@ Proteína & MAE & RMSE & R2\\
 media & 0.319 & 0.412 & 0.884\\
 \bottomrule
 \end{tabular}
-
-}
-
-\end{table}%
+\end{table}
 
 El rendimiento no fue idéntico para todas las proteínas. La salida
 asociada a 2hav presentó el menor RMSE, mientras que 1hzh mostró el
@@ -1802,8 +1768,6 @@ explícito, simulación molecular o ensayos experimentales.
 
 
 \backmatter
-\bibliography{bibliografiaAnexos.bib}
-
 
 
 \end{document}

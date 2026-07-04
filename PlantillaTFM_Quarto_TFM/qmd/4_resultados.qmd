@@ -2,19 +2,19 @@
 
 ## Comparación de modelos predictivos
 
-La comparación de modelos permitió evaluar el efecto de distintos bloques de variables sobre la predicción de afinidades de docking. La Figura @fig-top-modelos muestra el ranking de modelos ordenado por RMSE en el conjunto de test. El mejor resultado global correspondió a ExtraTrees utilizando únicamente descriptores RDKit, con un RMSE de test de 0,4117, un MAE de 0,3188 y un $R^2$ medio de 0,8840. El modelo equivalente con descriptores RDKit y variables de membrana seleccionadas obtuvo un RMSE prácticamente idéntico, de 0,4117, aunque con un MAE ligeramente superior.
+La comparación de modelos permitió evaluar el efecto de distintos bloques de variables sobre la predicción de afinidades de docking. La @fig-top-modelos muestra el ranking de modelos ordenado por RMSE en el conjunto de test. El mejor resultado global correspondió a ExtraTrees utilizando únicamente descriptores RDKit, con un RMSE de test de 0,4117, un MAE de 0,3188 y un $R^2$ medio de 0,8840. El modelo equivalente con descriptores RDKit y variables de membrana seleccionadas obtuvo un RMSE prácticamente idéntico, de 0,4117, aunque con un MAE ligeramente superior.
 
 ![Comparación de modelos por RMSE en test.](resultados/figuras_generadas/fig_01_top_modelos_rmse_test.png){#fig-top-modelos width=80%}
 
 \FloatBarrier
 
-La comparación por bloques de variables se resume en la Figura @fig-bloques. Este análisis permite valorar de forma directa si la inclusión de variables de membrana mejora el modelo frente al uso exclusivo de descriptores RDKit. La diferencia entre `RDKit_solo` y `RDKit+membrana` fue mínima, mientras que el bloque `Membrana_solo` presentó un error claramente superior. Por tanto, las variables de membrana contienen información fisicoquímica útil, pero no suficiente para sustituir a los descriptores moleculares estructurales en la predicción de afinidades proteína-ligando.
+La comparación por bloques de variables se resume en la @fig-bloques. Este análisis permite valorar de forma directa si la inclusión de variables de membrana mejora el modelo frente al uso exclusivo de descriptores RDKit. La diferencia entre `RDKit_solo` y `RDKit+membrana` fue mínima, mientras que el bloque `Membrana_solo` presentó un error claramente superior. Por tanto, las variables de membrana contienen información fisicoquímica útil, pero no suficiente para sustituir a los descriptores moleculares estructurales en la predicción de afinidades proteína-ligando.
 
 ![Mejor RMSE por bloque de variables.](resultados/figuras_generadas/fig_02_mejor_rmse_por_bloque_variables.png){#fig-bloques width=78% fig-pos="H"}
 
 ## Rendimiento por proteína
 
-El rendimiento por proteína del mejor modelo se evaluó mediante RMSE y $R^2$. La figura @fig-rendimiento-proteina muestra la variabilidad de rendimiento entre las cuatro proteínas. El error no fue homogéneo en todas las salidas: `y_2hav` presentó el menor RMSE, mientras que `y_1hzh` mostró el mayor error relativo. Aun así, los valores de $R^2$ se mantuvieron elevados para las cuatro proteínas, lo que indica que el modelo capturó una parte importante de la variabilidad de las afinidades de docking.
+El rendimiento por proteína del mejor modelo se evaluó mediante RMSE y $R^2$. La @fig-rendimiento-proteina muestra la variabilidad de rendimiento entre las cuatro proteínas. El error no fue homogéneo en todas las salidas: `y_2hav` presentó el menor RMSE, mientras que `y_1hzh` mostró el mayor error relativo. Aun así, los valores de $R^2$ se mantuvieron elevados para las cuatro proteínas, lo que indica que el modelo capturó una parte importante de la variabilidad de las afinidades de docking.
 
 ::: {#fig-rendimiento-proteina layout-ncol=2}
 
@@ -28,15 +28,13 @@ Rendimiento por proteína del mejor modelo: RMSE y R².
 
 ## Predicción real frente a predicción estimada
 
-La concordancia entre valores reales de docking y valores predichos se inspeccionó mediante diagramas de dispersión proteína a proteína. La Figura @fig-real-pred-panel reúne las cuatro salidas en una única representación para facilitar la comparación visual. En general, los puntos se distribuyen próximos a la diagonal, especialmente para y_2hav y y_1ao6. Las desviaciones observadas en algunos ligandos indican que el modelo mantiene limitaciones para casos concretos, previsiblemente asociados a moléculas con tamaños, polaridades o geometrías menos representadas en el conjunto de entrenamiento.
+La concordancia entre valores reales de docking y valores predichos se inspeccionó mediante diagramas de dispersión proteína a proteína. La @fig-real-pred-panel reúne las cuatro salidas en una única representación para facilitar la comparación visual. En general, los puntos se distribuyen próximos a la diagonal, especialmente para y_2hav y y_1ao6. Las desviaciones observadas en algunos ligandos indican que el modelo mantiene limitaciones para casos concretos, previsiblemente asociados a moléculas con tamaños, polaridades o geometrías menos representadas en el conjunto de entrenamiento.
 
 ![Comparación real vs predicho para las cuatro proteínas.](resultados/figuras_generadas/fig_05_real_vs_predicho_panel.png){#fig-real-pred-panel width=95% fig-pos="H"}
 
-
-
 ## Variables relevantes
 
-La Figura @fig-correlaciones muestra las variables más correlacionadas con las afinidades de docking. Este análisis se utilizó como exploración descriptiva, no como criterio único de selección de variables. Las variables más correlacionadas fueron principalmente descriptores RDKit relacionados con tamaño molecular, número de átomos pesados, peso molecular, superficie y forma molecular. También aparecieron variables de membrana, especialmente relacionadas con difusión y entropía, lo que indica que estas propiedades contienen señal asociada a características fisicoquímicas generales de los ligandos.
+La @fig-correlaciones muestra las variables más correlacionadas con las afinidades de docking. Este análisis se utilizó como exploración descriptiva, no como criterio único de selección de variables. Las variables más correlacionadas fueron principalmente descriptores RDKit relacionados con tamaño molecular, número de átomos pesados, peso molecular, superficie y forma molecular. También aparecieron variables de membrana, especialmente relacionadas con difusión y entropía, lo que indica que estas propiedades contienen señal asociada a características fisicoquímicas generales de los ligandos.
 
 ![Variables más correlacionadas con las afinidades.](resultados/figuras_generadas/fig_06_top_variables_correlacion_targets.png){#fig-correlaciones width=92% fig-pos="H"}
 
@@ -44,7 +42,7 @@ La Figura @fig-correlaciones muestra las variables más correlacionadas con las 
 
 ## Docking nanopartícula-proteína
 
-Los resultados nanopartícula-proteína se resumen en la Figura @fig-heatmap-nano. Las energías más negativas indican interacciones más favorables dentro del protocolo de docking utilizado. `ZnO_12_0` presentó energías de interacción mucho más negativas que `Ag_13` y `Au_13` frente a las tres proteínas evaluadas, especialmente frente a `2hav`. Esta diferencia sugiere que, dentro de los modelos simplificados considerados, la nanopartícula de óxido de zinc muestra una mayor tendencia a interaccionar con las proteínas plasmáticas analizadas.
+Los resultados nanopartícula-proteína se resumen en la @fig-heatmap-nano. Las energías más negativas indican interacciones más favorables dentro del protocolo de docking utilizado. `ZnO_12_0` presentó energías de interacción mucho más negativas que `Ag_13` y `Au_13` frente a las tres proteínas evaluadas, especialmente frente a `2hav`. Esta diferencia sugiere que, dentro de los modelos simplificados considerados, la nanopartícula de óxido de zinc muestra una mayor tendencia a interaccionar con las proteínas plasmáticas analizadas.
 
 ![Mapa de calor de docking nanopartícula-proteína.](resultados/figuras_generadas/fig_07_heatmap_nano_proteina.png){#fig-heatmap-nano width=72% fig-pos="H"}
 
@@ -179,7 +177,7 @@ Debe señalarse que este análisis PLIP se considera preliminar, ya que los comp
 
 ## Propiedades de membrana
 
-Las variables de membrana se analizaron como información fisicoquímica complementaria. La Figura @fig-logp-logperm muestra la relación entre partición y permeabilidad derivadas de COSMOtherm/COSMOmic. Se observó una relación positiva general entre `mem_logP` y `mem_logPerm`, aunque con dispersión considerable. Esto indica que la partición en el entorno lipídico contribuye a la permeabilidad estimada, pero no la determina de forma exclusiva. La información de membrana resultó útil para caracterizar el comportamiento de los ligandos en un entorno lipídico modelo, aunque no produjo una mejora clara del modelo predictivo de afinidad proteína-ligando.
+Las variables de membrana se analizaron como información fisicoquímica complementaria. La @fig-logp-logperm muestra la relación entre partición y permeabilidad derivadas de COSMOtherm/COSMOmic. Se observó una relación positiva general entre `mem_logP` y `mem_logPerm`, aunque con dispersión considerable. Esto indica que la partición en el entorno lipídico contribuye a la permeabilidad estimada, pero no la determina de forma exclusiva. La información de membrana resultó útil para caracterizar el comportamiento de los ligandos en un entorno lipídico modelo, aunque no produjo una mejora clara del modelo predictivo de afinidad proteína-ligando.
 
 ![Relación entre mem_logP y mem_logPerm.](resultados/figuras_generadas/fig_12_membrana_logp_vs_logperm.png){#fig-logp-logperm width=72% fig-pos="H"}
 

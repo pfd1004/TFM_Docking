@@ -60,7 +60,7 @@ Posteriormente, los resultados de docking se transformaron desde formato largo a
 El resumen estadístico de las afinidades se genera automáticamente a partir del mismo dataset final empleado en el Anexo B. Esto permite comprobar rápidamente los rangos de energía utilizados para entrenar los modelos.
 
 ```{r}
-#| label: tbl-anexo-docking-resumen
+#| label: code-anexo-docking-resumen
 #| echo: false
 #| warning: false
 #| message: false
