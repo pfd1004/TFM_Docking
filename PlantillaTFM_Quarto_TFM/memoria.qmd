@@ -39,8 +39,8 @@ knitr:
 
 \noindent\includegraphics[width=\textwidth]{CabeceraEPS.png}\vspace{1cm}
 
-\noindent D. \nombreTutor,  profesor/a del departamento de física y química
-\noindent D. \nombreTutorb, profesor/a del departamento de física y química
+\noindent D. \nombreTutor,  profesor del departamento de química
+\noindent D. \nombreTutorb, profesor del departamento de física 
 
 \noindent Expone/n:
 
@@ -71,6 +71,25 @@ dirección del/los que suscribe/n.
 \vfill
 \newpage\null\thispagestyle{empty}\newpage
 ```
+\clearpage
+
+\chapter*{Agradecimientos}
+\addcontentsline{toc}{chapter}{Agradecimientos}
+
+Quiero agradecer a mis tutores, Santiago Aparicio Martínez y Pedro A. Marcos Villa, su orientación, seguimiento y ayuda durante el desarrollo de este Trabajo de Fin de Máster.
+
+También quiero agradecer a Sergio de la Huerta Sainz, investigador del Departamento de Química, su ayuda desinteresada durante distintas etapas del trabajo. Su disponibilidad, apoyo y colaboración han sido muy importantes para poder avanzar y resolver varias partes del proyecto.
+
+Agradezco al CENITS, Centro Extremeño de Investigación, Innovación Tecnológica y Supercomputación, el acceso a los recursos de supercomputación utilizados durante el desarrollo de parte de los cálculos de este trabajo.
+
+Agradezco igualmente a la Universidad de Burgos y al Máster Universitario en Ingeniería Biomédica la formación recibida y los recursos puestos a disposición para la realización del trabajo.
+
+Por último, quiero agradecer especialmente a mi familia su apoyo incondicional, su paciencia y su confianza. Les debo todo lo que soy y lo que he conseguido; sin ellos, nada de esto habría sido posible.
+
+\clearpage
+
+
+\renewcommand{\contentsname}{Índice general}
 
 ```{=latex}
 \frontmatter
@@ -80,7 +99,7 @@ dirección del/los que suscribe/n.
 \begin{abstract}
 Este Trabajo de Fin de Máster desarrolla un flujo computacional para estudiar la interacción de agentes de recubrimiento de nanopartículas metálicas con proteínas plasmáticas mediante acoplamiento molecular y aprendizaje automático. Se integraron resultados de docking ligando-proteína frente a cuatro proteínas plasmáticas, descriptores moleculares RDKit 2D/3D, variables de membrana procedentes de cálculos COSMOtherm/COSMOmic y resultados de docking nanopartícula-proteína para sistemas de Au, Ag y ZnO. A partir de estos datos se entrenaron modelos de regresión multisalida para predecir afinidades de docking y se compararon distintos bloques de variables, incluyendo descriptores RDKit, propiedades de membrana y reducción dimensional mediante PCA.
 
-El mejor rendimiento predictivo se obtuvo con un modelo ExtraTrees utilizando descriptores RDKit, mientras que la incorporación de variables de membrana no produjo una mejora clara del error de predicción. Los resultados nanopartícula-proteína se analizaron como una capa contextual independiente y se reformularon mediante el Índice Contextual Nano-Bio (ICNB), que permitió priorizar combinaciones ligando-nanopartícula-proteína. Las mejores combinaciones estuvieron dominadas por ZnO\_12\_0 y ácido fólico. Además, se realizó un análisis estructural preliminar mediante PLIP sobre complejos representativos, observándose contactos hidrofóbicos y puentes de hidrógeno en los sistemas mejor posicionados. Finalmente, se desarrolló una aplicación Streamlit para visualizar resultados y predecir afinidades de nuevos ligandos a partir de SMILES.
+El mejor rendimiento predictivo se obtuvo con un modelo ExtraTrees utilizando descriptores RDKit, mientras que la incorporación de variables de membrana no produjo una mejora clara del error de predicción. Los resultados nanopartícula-proteína se analizaron como una capa contextual independiente y se reformularon mediante el Índice Contextual Nano-Bio (ICNB), que permitió priorizar combinaciones ligando-nanopartícula-proteína. Las mejores combinaciones estuvieron dominadas por (ZnO)$_{12}$ y ácido fólico. Además, se realizó un análisis estructural preliminar mediante PLIP sobre complejos representativos, observándose contactos hidrofóbicos y puentes de hidrógeno en los sistemas mejor posicionados. Finalmente, se desarrolló una aplicación Streamlit para visualizar resultados y predecir afinidades de nuevos ligandos a partir de SMILES.
 
 \end{abstract}
 
@@ -95,7 +114,7 @@ Nanopartículas metálicas, oro, plata, óxido de zinc, agentes de recubrimiento
 \begin{abstract}
 This Master’s Thesis develops a computational workflow to study the interaction of nanoparticle coating agents with plasma proteins using molecular docking and machine learning. Ligand-protein docking results against four plasma proteins were integrated with RDKit 2D/3D molecular descriptors, COSMOtherm/COSMOmic-derived membrane variables and nanoparticle-protein docking results for Au, Ag and ZnO systems. Multi-output regression models were trained to predict docking affinities and different feature blocks were compared, including RDKit descriptors, membrane properties and PCA-based dimensionality reduction.
 
-The best predictive performance was obtained with an ExtraTrees model using RDKit descriptors, whereas the inclusion of membrane variables did not clearly improve the prediction error. Nanoparticle-protein docking results were analysed as an independent contextual layer and reformulated through the Nano-Bio Contextual Index (NBCI), enabling the prioritisation of ligand-nanoparticle-protein combinations. The highest-ranked combinations were dominated by ZnO\_12\_0 and folic acid. In addition, a preliminary PLIP structural analysis was performed on representative complexes, revealing hydrophobic contacts and hydrogen bonds in the best-ranked systems. Finally, a Streamlit application was developed to visualise results and predict affinities for new ligands from SMILES.
+The best predictive performance was obtained with an ExtraTrees model using RDKit descriptors, whereas the inclusion of membrane variables did not clearly improve the prediction error. Nanoparticle-protein docking results were analysed as an independent contextual layer and reformulated through the Nano-Bio Contextual Index (NBCI), enabling the prioritisation of ligand-nanoparticle-protein combinations. The highest-ranked combinations were dominated by (ZnO)$_{12}$ and folic acid. In addition, a preliminary PLIP structural analysis was performed on representative complexes, revealing hydrophobic contacts and hydrogen bonds in the best-ranked systems. Finally, a Streamlit application was developed to visualise results and predict affinities for new ligands from SMILES.
 
 \end{abstract}
 
@@ -112,8 +131,8 @@ Metallic nanoparticles, gold nanoparticles, silver nanoparticles, zinc oxide nan
 \clearpage
 \listoffigures
 \clearpage
-% \listoftables
-% \clearpage
+\listoftables
+\clearpage
 \mainmatter
 ```
 

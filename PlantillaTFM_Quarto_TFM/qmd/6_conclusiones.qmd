@@ -6,9 +6,9 @@
 
 3. La incorporación de variables de membrana no produjo una mejora clara del rendimiento predictivo frente al uso exclusivo de descriptores RDKit. No obstante, estas variables aportaron información fisicoquímica complementaria sobre partición, permeabilidad y comportamiento de los ligandos en una bicapa modelo de DMPC.
 
-4. Los resultados nanopartícula-proteína mostraron que `ZnO_12_0` presentó energías de interacción más negativas que `Ag_13` y `Au_13` frente a las proteínas evaluadas. Por ello, `ZnO_12_0` tuvo un peso dominante en las combinaciones mejor posicionadas del análisis contextual.
+4. Los resultados nanopartícula-proteína mostraron que (ZnO)$_{12}$ presentó energías de interacción más negativas que (Ag)$_{13}$ y (Au)$_{13}$ frente a las proteínas evaluadas. Por ello, (ZnO)$_{12}$ tuvo un peso dominante en las combinaciones mejor posicionadas del análisis contextual.
 
-5. El ácido fólico es el ligando con comportamiento más consistente dentro del análisis contextual, y `ZnO_12_0` es la nanopartícula que más favorece el índice en el conjunto estudiado.
+5. El ácido fólico es el ligando con comportamiento más consistente dentro del análisis contextual, y (ZnO)$_{12}$ es la nanopartícula que más favorece el índice en el conjunto estudiado.
 
 6. El análisis estructural mediante PLIP aporta una interpretación estructural complementaria al docking y reforzó la relevancia del ácido fólico como ligando destacado.
 

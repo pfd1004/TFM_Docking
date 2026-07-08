@@ -8,17 +8,17 @@ El flujo se dividió en seis bloques: preparación y validación estructural de 
 
 ## Sistemas estudiados
 
-La biblioteca de trabajo incluyó agentes de recubrimiento y moléculas con interés biomédico, abarcando compuestos pequeños, grupos con afinidad por superficies metálicas, moléculas polares, moléculas aromáticas y algunos fármacos o aproximaciones estructurales de fármacos. Las proteínas plasmáticas se identificaron mediante sus códigos estructurales: `1ao6`, `1hzh`, `2hav` y `3ghg`. Los resultados de docking ligando-proteína se almacenaron como cuatro variables objetivo: `y_1ao6`, `y_1hzh`, `y_2hav` y `y_3ghg`.
+La biblioteca de trabajo incluyó agentes de recubrimiento y moléculas con interés biomédico, abarcando compuestos pequeños, grupos con afinidad por superficies metálicas, moléculas polares, moléculas aromáticas y algunos fármacos o aproximaciones estructurales de fármacos. Las proteínas plasmáticas se identificaron mediante sus códigos estructurales: 1AO6 (sérum albúmina humana), 1HZH (anticuerpo humano intacto IgG1 b12), 2HAV (Apo-humana de la transferrina) y 3GHG (fibrinógeno humano).
 
-Las nanopartículas se consideraron mediante modelos simplificados de oro, plata y óxido de zinc. Para el análisis nanopartícula-proteína se emplearon los sistemas `Ag_13`, `Au_13` y `ZnO_12_0`. Estos resultados no se añadieron al dataset de ligandos como variables ordinarias, ya que representan interacciones nanopartícula-proteína y no propiedades intrínsecas del ligando.
+Las nanopartículas se consideraron mediante modelos simplificados de oro, plata y óxido de zinc. Para el análisis nanopartícula-proteína se emplearon los sistemas (Ag)$_{13}$, (Au)$_{13}$ y (ZnO)$_{12}$.
 
-## Preparación y validación estructural de ligandos
+## Preparación y validación estructural de ligandos y nanopartículas
 
 Las estructuras moleculares de los ligandos fueron preparadas y optimizadas antes de su uso en el flujo de docking y cálculo de descriptores. La optimización geométrica se complementó con cálculos de frecuencias vibracionales. La ausencia de frecuencias imaginarias se utilizó como criterio de validación de mínimo local, de forma que las frecuencias actuaron como control de estabilidad estructural y no como variables principales del modelo predictivo.
 
 La optimización geométrica de los ligandos y el cálculo de frecuencias se realizaron mediante TURBOMOLE [@TURBOMOLE2023], empleando el funcional híbrido B3LYP con corrección de dispersión DFT-D4 [@Grimme2010] y la base def2-TZVP [@Weigend2005]. Estos cálculos generaron estructuras optimizadas compatibles con los pasos posteriores del flujo y, cuando fue necesario, archivos de tipo Molden para inspección estructural y conversión de formatos.
 
-De forma complementaria, se iniciaron cálculos exploratorios de complejos nanopartícula-ligando mediante ORCA [@Neese2022], empleando el mismo nivel teórico general. Estos cálculos se plantearon como paso previo a la preparación de sistemas nanopartícula-ligando-proteína para docking, pero no se integraron todavía como una capa completa dentro del modelo final.
+De forma complementaria, se iniciaron cálculos exploratorios de complejos nanopartícula-ligando mediante ORCA [@Neese2022], empleando el mismo nivel teórico general. Estos cálculos se plantearon como paso previo a la preparación de sistemas nanopartícula-ligando-proteína para docking, pero no se llegaron a incluir como una capa completa dentro del modelo final debido a problemas técnicos ajenos a nuestra responsabilidad.
 
 ## Preparación de receptores y docking ligando-proteína
 
@@ -28,21 +28,21 @@ Para cada combinación ligando-proteína se conservó la mejor afinidad calculad
 
 ## Cálculo de descriptores moleculares RDKit
 
-A partir de las estructuras optimizadas se calcularon descriptores moleculares con RDKit [@RDKit2026]. El bloque RDKit incluyó variables de tamaño y composición, como `MolWt`, `ExactMolWt`, `NumHeavyAtoms` y `NumAtoms`; variables de polaridad y capacidad de interacción, como `TPSA`, `NumHDonors` y `NumHAcceptors`; variables de lipofilia, como `MolLogP`; variables de flexibilidad, como `NumRotatableBonds`; y descriptores topológicos y geométricos, como `Chi0n`, `Chi1n`, `Kappa1`, `Kappa2`, `LabuteASA`, momentos principales de inercia, radio de giro y esfericidad.
+A partir de las estructuras moleculares de los ligandos se calcularon descriptores con RDKit [@RDKit2026]. Esta herramienta permite, a partir de una representación molecular como SMILES o de una estructura química, obtener variables numéricas asociadas a distinas propiedades fisicoquímicas.
 
-Estos descriptores permitieron transformar cada ligando en un vector numérico comparable. El uso de variables interpretables facilita relacionar propiedades como tamaño, polaridad, hidrofobicidad o forma molecular con las afinidades calculadas por docking.
+Estos descriptores se incorporaron al dataset como variables de entrada del modelo predictivo. De esta forma, cada ligando quedó representado por un vector numérico comparable, que posteriormente se relacionó con las afinidades calculadas mediante docking.
 
 ## Variables de membrana COSMOtherm/COSMOmic
 
 Las variables de membrana se extrajeron a partir de cálculos en una bicapa de dimiristoilfosfatidilcolina (DMPC) en agua a 37 °C. El fundamento teórico se basa en COSMO-RS, que utiliza densidades de carga de apantallamiento obtenidas a partir de cálculos cuánticos para predecir propiedades termodinámicas en fase líquida [@Klamt1995]. Para entornos anisótropos como micelas y biomembranas, COSMOmic permite describir perfiles dependientes de la profundidad en la membrana y calcular propiedades como partición membrana/agua y distribuciones internas [@Klamt2008; @Jakobtorweihen2013; @Ingram2013].
 
-Del archivo de permeabilidad se extrajeron variables globales y estadísticos resumen. Entre las variables globales se incluyeron `mem_logP`, correspondiente al logaritmo de partición micela/agua; `mem_logP_kg_l`, versión ajustada en unidades kg/L; y `mem_logPerm`, asociado a la permeabilidad de membrana. Además, se resumieron perfiles dependientes de la profundidad para energía libre, distribución, entropía media y difusión. Para cada perfil se calcularon estadísticos como media, mínimo, máximo, valor en la zona central de la membrana y, cuando procedía, profundidad asociada a máximos o mínimos.
+El análisis permitió reducir datos complejos de membrana a un conjunto de indicadores clave, como coeficientes de partición y permeabilidad, junto con resúmenes estadísticos de cómo varían propiedades energéticas, distribución y difusión desde la superficie hasta el centro de la bicapa.
 
-Las variables de membrana se incorporaron como bloque complementario al dataset de ligandos. Su objetivo fue evaluar si la información de partición y permeabilidad aportaba mejora predictiva frente a los descriptores RDKit. Metodológicamente, se mantuvieron separadas para poder comparar modelos RDKit-solo, membrana-solo y RDKit+membrana.
+Las variables de membrana se incorporaron como bloque complementario al dataset de ligandos. Su objetivo fue evaluar si la información relacionada con partición, permeabilidad y comportamiento en membrana aportaba mejora predictiva frente a los descriptores RDKit. Metodológicamente, se mantuvieron separadas para poder comparar modelos entrenados solo con RDKit, solo con variables de membrana y con la combinación de ambos bloques.
 
 ## Construcción del dataset final
 
-El dataset final se construyó mediante la unión de tres fuentes: descriptores RDKit, variables de membrana y afinidades de docking ligando-proteína. La tabla principal mantuvo una fila por ligando. Las columnas objetivo fueron `y_1ao6`, `y_1hzh`, `y_2hav` y `y_3ghg`.
+El dataset final se construyó mediante la unión de tres fuentes de información: descriptores moleculares RDKit, variables de membrana y afinidades de docking ligando-proteína. La tabla principal mantuvo una fila por ligando. Las columnas `y_1ao6`, `y_1hzh`, `y_2hav` y `y_3ghg` se definieron como variables objetivo del modelo y representan la mejor energía de docking obtenida para cada ligando frente a las proteínas 1ao6, 1hzh, 2hav y 3ghg, respectivamente.
 
 Antes del entrenamiento se sustituyeron valores infinitos por valores perdidos y se aplicó imputación por la mediana dentro del flujo de modelado. Las variables de varianza nula se eliminaron mediante un filtro de varianza. En los modelos lineales y en PCA se aplicó escalado estándar para evitar que variables con distinta magnitud dominaran el ajuste. En los modelos basados en árboles no fue necesario escalar las variables, aunque se mantuvo un flujo homogéneo de preprocesado para asegurar comparaciones reproducibles.
 
@@ -52,7 +52,7 @@ Se compararon distintos modelos de regresión multisalida usando scikit-learn [@
 
 El modelo ExtraTrees se basa en árboles extremadamente aleatorizados, que incrementan la aleatoriedad tanto en la selección de variables como en los puntos de corte, pudiendo reducir varianza y mejorar generalización en problemas tabulares [@Geurts2006]. Random Forest se incluyó como referencia de ensamblado basado en árboles de decisión entrenados sobre subconjuntos y agregados por promediado [@Breiman2001].
 
-La evaluación se realizó mediante partición entrenamiento-test y validación cruzada en el conjunto de entrenamiento. Para comparar de forma justa los bloques de variables, se mantuvieron la misma partición, las mismas salidas y las mismas métricas entre modelos. Las métricas principales fueron el error absoluto medio (MAE), la raíz del error cuadrático medio (RMSE) y el coeficiente de determinación R². Estas métricas se calcularon de forma global y por proteína.
+La evaluación se realizó mediante partición entrenamiento-test y validación cruzada en el conjunto de entrenamiento. Para comparar de forma justa los bloques de variables, se mantuvieron la misma partición, las mismas salidas y las mismas métricas entre modelos. Las métricas principales fueron el error absoluto medio (MAE), la raíz del error cuadrático medio (RMSE) y el coeficiente de determinación  \textit{R²}. Estas métricas se calcularon de forma global y por proteína.
 
 ## Comparación de bloques de variables
 
@@ -67,17 +67,13 @@ Esta organización permitió responder a una pregunta metodológica central: si 
 
 ## Docking nanopartícula-proteína
 
-Los resultados de docking nanopartícula-proteína se obtuvieron a partir de archivos DLG. Para cada archivo se extrajeron las energías detectadas y se generó una tabla con nanopartícula, proteína, energía mínima y número de energías identificadas. Estos cálculos se trataron como un análisis independiente del modelo ligando-proteína.
-
-La razón es que una energía nanopartícula-proteína no varía por ligando, sino por combinación nanopartícula-proteína. Incluirla directamente como descriptor en una tabla donde cada fila representa un ligando generaría una mezcla de unidades de análisis. Por ello, se utilizó como capa contextual para construir rankings exploratorios, pero no como variable del modelo principal.
+Los resultados de docking nanopartícula-proteína se obtuvieron mediante AutoDock 4.2.6, empleando archivos de salida DLG generados por el programa y herramientas de preparación compatibles con AutoDockTools/MGLTools [@Morris2009; @MGLTools2011]. Para cada archivo se extrajeron las energías detectadas y se generó una tabla con nanopartícula, proteína, energía mínima y número de energías identificadas. Estos cálculos se trataron como un análisis independiente del modelo ligando-proteína, considerándolos como capa contextual para construir rankings exploratorios, pero no como variable del modelo principal.
 
 ## Análisis estructural de complejos representativos
 
-Como ampliación interpretativa del análisis de docking, se seleccionaron los complejos ligando-proteína mejor posicionados para cada proteína y se prepararon estructuras proteína-ligando en formato PDB. La selección se realizó tomando los tres ligandos con afinidad de docking más favorable frente a cada proteína, generando un conjunto de 12 complejos representativos.
+Como complemento al docking ligando-proteína, se seleccionaron complejos representativos para su análisis estructural mediante PLIP. La selección se realizó tomando los tres ligandos con mejor energía de docking para cada una de las cuatro proteínas, generando un conjunto de 12 complejos proteína-ligando.
 
-Los complejos seleccionados incluyeron principalmente ácido fólico, curcumina, el proxy de doxorrubicina/daunorrubicina aglicona y ácido tánico aproximado, que fueron los ligandos con mejores energías de docking en las proteínas estudiadas. Esta selección permitió definir un *case study* estructural centrado en los candidatos más relevantes del cribado ligando-proteína.
-
-El objetivo de esta etapa fue preparar los complejos para un análisis posterior de interacciones no covalentes mediante herramientas como PLIP (*Protein-Ligand Interaction Profiler*), que permite identificar de forma automática puentes de hidrógeno, contactos hidrofóbicos, puentes salinos, interacciones aromáticas y otros contactos proteína-ligando. En el presente flujo, esta etapa se consideró una ampliación estructural del docking, orientada a validar químicamente las poses mejor puntuadas y a interpretar si las afinidades más favorables se deben a interacciones específicas o a efectos más generales como tamaño, polaridad o superficie molecular.
+Para cada complejo seleccionado se preparó una estructura proteína-ligando en formato PDB compatible con PLIP. Posteriormente, se analizaron las interacciones no covalentes detectadas por el programa, principalmente contactos hidrofóbicos y puentes de hidrógeno. Este análisis se planteó como una descripción cualitativa de las poses mejor puntuadas, no como una cuantificación definitiva de una única conformación.
 
 ## Índice Contextual Nano-Bio
 
@@ -85,23 +81,17 @@ Para integrar de forma exploratoria la información de docking ligando-proteína
 
 En primer lugar, las energías de docking ligando-proteína y nanopartícula-proteína se transformaron en puntuaciones normalizadas dentro de cada proteína. Dado que valores más negativos indican interacciones más favorables, se invirtió el signo de las puntuaciones normalizadas:
 
-$$
-S^{LP}_{i,p} = -z_p(E^{LP}_{i,p})
-$$
+```{=latex}
+\begin{equation*}
+S^{\mathrm{LP}}_{i,p} = -z_p\left(E^{\mathrm{LP}}_{i,p}\right),
+\qquad
+S^{\mathrm{NP}}_{n,p} = -z_p\left(E^{\mathrm{NP}}_{n,p}\right)
+\end{equation*}
+```
 
-$$
-S^{NP}_{n,p} = -z_p(E^{NP}_{n,p})
-$$
+donde LP corresponde a la contribución ligando-proteína, NP a la contribución nanopartícula-proteína, \textit{i} al ligando,  \textit{n} a la nanopartícula y  \textit{p} a la proteína considerada.
 
-donde \(E^{LP}_{i,p}\) representa la energía de docking del ligando \(i\) frente a la proteína \(p\), \(E^{NP}_{n,p}\) la energía de docking de la nanopartícula \(n\) frente a la proteína \(p\), y \(z_p\) el z-score calculado dentro de cada proteína.
-
-A continuación, se calculó una puntuación contextual media:
-
-$$
-S^{contexto}_{i,n,p} = \frac{S^{LP}_{i,p} + S^{NP}_{n,p}}{2}
-$$
-
-Finalmente, esta puntuación se reescaló a un intervalo 0--100 para facilitar su interpretación, obteniendo el ICNB. Valores altos de ICNB indican combinaciones ligando-nanopartícula-proteína más favorables dentro del conjunto analizado. Esta formulación permitió integrar la contribución del ligando y de la nanopartícula sin mezclar directamente energías procedentes de unidades de análisis distintas.
+El ICNB se obtuvo promediando ambas puntuaciones normalizadas y reescalando el resultado final a un intervalo 0--100. Valores altos de ICNB indican combinaciones ligando-nanopartícula-proteína más favorables dentro del conjunto analizado.
 
 ## Generación de tablas, figuras y aplicación de visualización
 

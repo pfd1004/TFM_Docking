@@ -13,14 +13,14 @@ La interacción nanopartícula-proteína se analizó como una capa contextual in
 \toprule
 Nanopartícula & 1ao6 & 1hzh & 2hav \\
 \midrule
-Ag\_13 & -2.24 & -2.13 & -2.17 \\
-Au\_13 & -2.34 & -2.12 & -2.34 \\
-ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
+$(\mathrm{Ag})_{13}$ & -2.24 & -2.13 & -2.17 \\
+$(\mathrm{Au})_{13}$ & -2.34 & -2.12 & -2.34 \\
+$(\mathrm{ZnO})_{12}$ & -7.76 & -7.38 & -8.44 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Las energías más negativas corresponden a interacciones más favorables dentro del protocolo utilizado. En los tres casos evaluados, ZnO\_12\_0 presentó energías claramente más negativas que Ag\_13 y Au\_13, por lo que tuvo un peso importante en las combinaciones mejor posicionadas del análisis contextual. La proteína 3ghg no se incluyó en esta capa nanopartícula-proteína final por limitaciones técnicas asociadas al tamaño y preparación del sistema.
+Las energías más negativas corresponden a interacciones más favorables dentro del protocolo utilizado. En los tres casos evaluados, $(\mathrm{ZnO})_{12}$ presentó energías claramente más negativas que $(\mathrm{Ag})_{13}$ y $(\mathrm{Au})_{13}$, por lo que tuvo un peso importante en las combinaciones mejor posicionadas del análisis contextual. La proteína 3ghg no se incluyó en esta capa nanopartícula-proteína final por limitaciones técnicas asociadas al tamaño y preparación del sistema.
 
 \section{Cálculo del Índice Contextual Nano-Bio}
 
@@ -63,34 +63,85 @@ El ICNB no representa una energía física de un complejo completo, sino una mé
 
 \section{Combinaciones mejor posicionadas}
 
-\begin{table}[H]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\caption{Top 10 combinaciones según el Índice Contextual Nano-Bio.}
-\label{tbl-anexo-top-icnb}
-\begin{tabular}{llcrrrr}
-\toprule
-Ligando & NP & Prot & ICNB & ICNB prot. & E LP & E NP \\
-\midrule
-Ácido fólico & ZnO\_12\_0 & 2hav & 100.00 & 100.00 & -10.09 & -8.44 \\
-Ácido fólico & ZnO\_12\_0 & 1ao6 & 99.83 & 100.00 & -9.21 & -7.76 \\
-Ácido fólico & ZnO\_12\_0 & 1hzh & 97.78 & 100.00 & -8.75 & -7.38 \\
-Doxo. proxy & ZnO\_12\_0 & 1ao6 & 91.22 & 91.36 & -8.36 & -7.76 \\
-Curcumina & ZnO\_12\_0 & 2hav & 89.46 & 89.44 & -8.93 & -8.44 \\
-Doxo. proxy & ZnO\_12\_0 & 1hzh & 89.24 & 91.27 & -7.94 & -7.38 \\
-Doxo. proxy & ZnO\_12\_0 & 2hav & 85.59 & 85.56 & -8.50 & -8.44 \\
-Curcumina & ZnO\_12\_0 & 1ao6 & 84.96 & 85.08 & -7.74 & -7.76 \\
-Ácido tánico & ZnO\_12\_0 & 1hzh & 84.86 & 86.79 & -7.52 & -7.38 \\
-Ácido tánico & ZnO\_12\_0 & 2hav & 84.00 & 83.97 & -8.33 & -8.44 \\
-\bottomrule
-\end{tabular}
-\end{table}
+```{r}
+#| label: tbl-icnb-top
+#| tbl-cap: "Top 10 combinaciones según el Índice Contextual Nano-Bio."
+#| echo: false
+#| warning: false
+#| message: false
+#| results: asis
 
-LP: ligando-proteína; NP: nanopartícula-proteína. Las mejores combinaciones estuvieron dominadas por ZnO\_12\_0 y ácido fólico. Este resultado se explica por la combinación de una afinidad ligando-proteína favorable y una contribución nanopartícula-proteína especialmente negativa para ZnO\_12\_0.
+library(readr)
+library(dplyr)
+library(knitr)
+
+icnb <- read_csv("resultados/nanoparticulas/top30_indice_contextual_nanobio.csv",
+                 show_col_types = FALSE)
+
+tabla_icnb <- icnb %>%
+  mutate(
+    Ligando = case_when(
+      ligando == "Folic_acid" ~ "Ácido fólico",
+      ligando == "Curcumin" ~ "Curcumina",
+      ligando == "Tannic_acid_approx" ~ "Ácido tánico",
+      grepl("Doxorubicin", ligando) ~ "Doxorrubicina proxy",
+      TRUE ~ ligando
+    ),
+    NP = case_when(
+      nanoparticula == "ZnO_12_0" ~ "$(\\mathrm{ZnO})_{12}$",
+      nanoparticula == "Ag_13" ~ "$\\mathrm{Ag}_{13}$",
+      nanoparticula == "Au_13" ~ "$\\mathrm{Au}_{13}$",
+      TRUE ~ nanoparticula
+    ),
+    Prot = proteina,
+    ICNB_global = round(ICNB_global_0_100, 2),
+    ICNB_proteina = round(ICNB_0_100, 2),
+    E_LP = round(y_ligando_proteina, 2),
+    E_NP = round(E_nano_proteina, 2)
+  ) %>%
+  select(
+    Ligando,
+    NP,
+    Prot,
+    ICNB_global,
+    ICNB_proteina,
+    E_LP,
+    E_NP
+  ) %>%
+  slice_head(n = 10)
+
+colnames(tabla_icnb) <- c(
+  "Ligando",
+  "NP",
+  "Prot",
+  "ICNB global",
+  "ICNB proteína",
+  "$E_{\\mathrm{LP}}$ (kcal/mol)",
+  "$E_{\\mathrm{NP}}$ (kcal/mol)"
+)
+
+cat("\\begingroup\n")
+cat("\\scriptsize\n")
+cat("\\setlength{\\tabcolsep}{3pt}\n")
+cat("\\resizebox{\\textwidth}{!}{%\n")
+
+kable(
+  tabla_icnb,
+  format = "latex",
+  booktabs = TRUE,
+  align = c("l", "c", "c", "r", "r", "r", "r"),
+  escape = FALSE
+)
+
+cat("}\n")
+cat("\\endgroup\n")
+```
+
+
+LP: ligando-proteína; NP: nanopartícula-proteína. Las mejores combinaciones estuvieron dominadas por $(\mathrm{ZnO})_{12}$ y ácido fólico. Este resultado se explica por la combinación de una afinidad ligando-proteína favorable y una contribución nanopartícula-proteína especialmente negativa para $(\mathrm{ZnO})_{12}$.
 
 \section{Interpretación del índice}
 
 El ICNB permitió integrar en una misma escala la información procedente del docking ligando-proteína y del docking nanopartícula-proteína. Esta integración fue útil para priorizar combinaciones, pero no debe interpretarse como una simulación explícita del complejo nanopartícula-ligando-proteína. En este trabajo, el índice se utilizó como una herramienta de cribado comparativo, orientada a identificar combinaciones prometedoras para estudios posteriores.
 
-La dominancia de ZnO\_12\_0 en las primeras posiciones se debe a sus energías nanopartícula-proteína más negativas frente a las proteínas evaluadas. Por otro lado, el ácido fólico destacó por sus afinidades ligando-proteína favorables, lo que explica que sus combinaciones con ZnO\_12\_0 ocupen las primeras posiciones del ranking. Este comportamiento sugiere que el ácido fólico es uno de los agentes de recubrimiento más interesantes dentro del conjunto estudiado, especialmente cuando se considera junto con el modelo de óxido de zinc.
+La dominancia de $(\mathrm{ZnO})_{12}$ en las primeras posiciones se debe a sus energías nanopartícula-proteína más negativas frente a las proteínas evaluadas. Por otro lado, el ácido fólico destacó por sus afinidades ligando-proteína favorables, lo que explica que sus combinaciones con $(\mathrm{ZnO})_{12}$ ocupen las primeras posiciones del ranking. Este comportamiento sugiere que el ácido fólico es uno de los agentes de recubrimiento más interesantes dentro del conjunto estudiado, especialmente cuando se considera junto con el modelo de óxido de zinc.

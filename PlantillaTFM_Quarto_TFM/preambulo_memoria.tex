@@ -24,6 +24,10 @@
 \PassOptionsToPackage{hyphens}{url}
 \usepackage[colorlinks]{hyperref}
 \hypersetup{allcolors={blue}}
+% Márgenes más compactos para ahorrar espacio
+\setlrmarginsandblock{2.2cm}{2.2cm}{*}
+\setulmarginsandblock{2.0cm}{2.3cm}{*}
+\checkandfixthelayout
 
 \nonzeroparskip
 \widowpenalty100000
@@ -134,15 +138,15 @@
 
   \begin{center}
     \colorbox{tfmGold}{%
-      \begin{minipage}{.92\textwidth}
-        \vspace{.28cm}
+      \begin{minipage}{.96\textwidth}
+        \vspace{.45cm}
         \centering
-        {\Large\textbf{Trabajo de Fin de Máster}\par}
-        \vspace{0.10cm}
+        {\LARGE\textbf{Trabajo de Fin de Máster}\par}
+        \vspace{0.18cm}
         {\Large\textbf{\@master}\par}
-        \vspace{0.30cm}
-        {\fontsize{15}{17}\selectfont\textbf{\@title}\par}
-        \vspace{.22cm}
+        \vspace{0.45cm}
+        {\fontsize{20}{24}\selectfont\textbf{\@title}\par}
+        \vspace{.45cm}
       \end{minipage}
     }
   \end{center}
@@ -150,17 +154,23 @@
   \vspace{0.35cm}
 
   \begin{center}
-    {\Large Presentado por \@author\par}
-    \vspace{0.20cm}
-    {\large Universidad de Burgos\par}
-    \vspace{0.20cm}
-    {\large \@date\par}
-    \vspace{0.30cm}
-    {\large Tutores: \@tutor{} -- \@tutorb{}\par}
-  \end{center}
+      {\Large Presentado por \@author\par}
+      \vspace{0.30cm}
+      {\large Tutores: \@tutor{} -- \@tutorb{}\par}
+    \end{center}
 
-  \clearpage
+    \vfill
+
+    \begin{center}
+      \rule{0.55\textwidth}{0.4pt}\\[0.25cm]
+      {\large Universidad de Burgos\par}
+      \vspace{0.15cm}
+      {\large Burgos, julio de 2026\par}
+    \end{center}
+
+    \clearpage
 }
+
 
 \renewcommand{\appendixname}{Apéndice}
 \renewcommand*\cftappendixname{\appendixname\ }

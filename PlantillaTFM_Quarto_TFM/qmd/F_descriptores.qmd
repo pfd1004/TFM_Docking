@@ -28,7 +28,6 @@ PLSRegression & Modelo basado en variables latentes que combina reducción dimen
 
 Se evaluaron diferentes modelos de regresión multisalida para predecir simultáneamente las cuatro afinidades de docking. La comparación incluyó modelos lineales, modelos basados en árboles, reducción dimensional mediante PCA y regresión PLS. El objetivo fue comprobar si los descriptores RDKit eran suficientes para explicar las afinidades de docking o si la incorporación de variables de membrana mejoraba el rendimiento predictivo.
 
-La tabla completa de modelos se genera automáticamente a partir del CSV de métricas exportado durante el análisis.
 
 ```{r}
 #| label: code-anexo-modelos-completos
@@ -93,6 +92,7 @@ if (is.na(ruta_modelos)) {
 }
 ```
 
+
 El mejor rendimiento en test se obtuvo con ExtraTrees utilizando únicamente descriptores RDKit. PLSRegression presentó un comportamiento competitivo, especialmente en validación cruzada, mientras que las configuraciones con PCA no mejoraron el rendimiento final. La incorporación de variables de membrana produjo resultados muy similares al bloque RDKit\_solo, pero no redujo claramente el error de predicción.
 
 \section{Modelo final}
@@ -103,10 +103,10 @@ El modelo seleccionado como modelo final fue ExtraTrees entrenado con el bloque 
 \centering
 \small
 \caption{Resumen del modelo final seleccionado.}
-\label{tbl-anexo-modelo-final}
-\begin{tabular}{lrrrrrr}
+\label{tbl-modelo-final}
+\begin{tabular}{llrrrrr}
 \toprule
-Bloque & Modelo & N & Variables & MAE test & RMSE test & R\textsuperscript{2} test \\
+Bloque & Modelo & N & Variables & MAE test & RMSE test & $R^{2}_{\mathrm{test}}$ \\
 \midrule
 RDKit\_solo & ExtraTrees & 52 & 26 & 0.319 & 0.412 & 0.884 \\
 \bottomrule
@@ -118,7 +118,6 @@ Aunque el modelo RDKit+membrana obtuvo un R\textsuperscript{2} test ligeramente 
 \section{Rendimiento por proteína}
 
 Además de las métricas globales, se evaluó el rendimiento del modelo final para cada una de las cuatro proteínas plasmáticas. Esta comparación permitió identificar si alguna proteína presentaba una predicción más difícil que las demás.
-
 ```{r}
 #| label: code-anexo-metricas-proteina
 #| echo: false
@@ -137,26 +136,32 @@ if (is.na(ruta_proteinas)) {
 } else {
   met <- read.csv(ruta_proteinas, check.names = FALSE)
 
+  # Selección de columnas reales del CSV
   cols <- c("salida", "MAE", "RMSE", "R2")
   cols <- cols[cols %in% names(met)]
   met_tabla <- met[, cols, drop = FALSE]
 
+  # Etiquetas de proteína
   if ("salida" %in% names(met_tabla)) {
     met_tabla$salida <- gsub("y_", "", met_tabla$salida)
   }
 
-  colnames(met_tabla) <- c("Proteína", "MAE", "RMSE", "R2")
-
+  # Redondeo antes de cambiar nombres de columnas
   for (cc in c("MAE", "RMSE", "R2")) {
-    met_tabla[[cc]] <- sprintf("%.3f", as.numeric(met_tabla[[cc]]))
+    if (cc %in% names(met_tabla)) {
+      met_tabla[[cc]] <- sprintf("%.3f", as.numeric(met_tabla[[cc]]))
+    }
   }
+
+  # Nombres finales para LaTeX
+  colnames(met_tabla) <- c("Proteína", "MAE", "RMSE", "$R^{2}$")
 
   print(knitr::kable(
     met_tabla,
     format = "latex",
     booktabs = TRUE,
     caption = "Métricas del modelo final por proteína.",
-    escape = TRUE,
+    escape = FALSE,
     align = c("l", "r", "r", "r")
   ))
 }

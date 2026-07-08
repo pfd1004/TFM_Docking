@@ -47,6 +47,74 @@ short <- function(x, n = 36) {
   ifelse(nchar(x) > n, paste0(substr(x, 1, n - 3), "..."), x)
 }
 
+# Etiquetas más legibles para figuras de la memoria
+label_bloque <- function(x) {
+  x <- as.character(x)
+  d <- c(
+    "RDKit_solo" = "RDKit solo",
+    "RDKit_membrana_seleccionada" = "RDKit + membrana",
+    "RDKit_membrana_filtrada_auto" = "RDKit + membrana filtrada",
+    "Membrana_solo" = "Membrana solo"
+  )
+  out <- x
+  m <- x %in% names(d)
+  out[m] <- d[x[m]]
+  out
+}
+
+label_bloque_eje <- function(x) {
+  x <- as.character(x)
+  d <- c(
+    "RDKit_solo" = "RDKit\nsolo",
+    "RDKit_membrana_seleccionada" = "RDKit +\nmembrana",
+    "RDKit_membrana_filtrada_auto" = "RDKit +\nmembrana filtrada",
+    "Membrana_solo" = "Membrana\nsolo"
+  )
+  out <- x
+  m <- x %in% names(d)
+  out[m] <- d[x[m]]
+  out
+}
+
+label_bloque_corto <- function(x) {
+  x <- as.character(x)
+  d <- c(
+    "RDKit_solo" = "RDKit",
+    "RDKit_membrana_seleccionada" = "RDKit+mem",
+    "RDKit_membrana_filtrada_auto" = "RDKit+mem filt.",
+    "Membrana_solo" = "Membrana"
+  )
+  out <- x
+  m <- x %in% names(d)
+  out[m] <- d[x[m]]
+  out
+}
+
+label_variable_corto <- function(x) {
+  x <- as.character(x)
+  x <- gsub("^mem_", "mem_", x)
+  x <- gsub("diffusion_E9", "diff_E9", x)
+  x <- gsub("meanentropy", "entropy", x)
+  x <- gsub("free_energy", "free_E", x)
+  x <- gsub("distribution", "distrib", x)
+  x <- gsub("InertialShapeFactor", "InertialShape", x)
+  x
+}
+
+label_np_plotmath <- function(x) {
+  labs <- lapply(as.character(x), function(v) {
+    if (v == "Ag_13") {
+      quote((plain(Ag))[13])
+    } else if (v == "Au_13") {
+      quote((plain(Au))[13])
+    } else if (v == "ZnO_12_0") {
+      quote((plain(ZnO))[12])
+    } else {
+      as.character(v)
+    }
+  })
+  as.expression(labs)
+}
 num <- function(x) as.numeric(as.character(x))
 
 # -------------------------------------------------------------------------
@@ -110,14 +178,25 @@ if (!is.null(resumen) && all(c("feature_set", "modelo", "TEST_RMSE") %in% names(
 # -------------------------------------------------------------------------
 
 if (!is.null(resumen_ord)) {
-  top <- head(resumen_ord, 15)
-  labels <- short(paste(top$feature_set, top$modelo, sep = " + "), 52)
+  # Se muestran menos modelos y con etiquetas más grandes para que el eje Y
+  # sea legible al insertar la figura en el PDF de la memoria.
+  top <- head(resumen_ord, 12)
+  labels <- paste(label_bloque_corto(top$feature_set), top$modelo, sep = " + ")
+  labels <- short(labels, 34)
 
   grupos <- as.factor(top$feature_set)
   cols <- PALETTE[as.integer(grupos)]
 
   path <- file.path(OUT_FIGS, "fig_01_top_modelos_rmse_test.png")
-  png_open(path, width = 2800, height = 1800)
+  png_open(path, width = 3600, height = 2300)
+  par(
+    mar = c(5.8, 20.0, 4.8, 2.2) + 0.1,
+    xaxs = "i",
+    yaxs = "i",
+    cex.axis = 1.15,
+    cex.lab = 1.25,
+    cex.main = 1.30
+  )
 
   barplot(
     rev(top$TEST_RMSE),
@@ -128,10 +207,20 @@ if (!is.null(resumen_ord)) {
     border = NA,
     xlab = "RMSE en test",
     main = "Comparación de modelos por RMSE en test",
-    cex.names = 0.72
+    cex.names = 1.15,
+    xlim = c(0, max(top$TEST_RMSE, na.rm = TRUE) * 1.26)
   )
+
   grid(nx = NA, ny = NULL, col = "#DDDDDD", lty = 3)
-  legend("bottomright", legend = levels(grupos), fill = PALETTE[seq_along(levels(grupos))], bty = "n", cex = 0.75)
+  legend(
+    "topright",
+    legend = label_bloque(levels(grupos)),
+    fill = PALETTE[seq_along(levels(grupos))],
+    bty = "n",
+    bg = "white",
+    cex = 1.05,
+    inset = 0.02
+  )
 
   png_close(path)
 }
@@ -149,17 +238,19 @@ if (!is.null(resumen_ord)) {
   best <- best[order(best$TEST_RMSE), ]
 
   path <- file.path(OUT_FIGS, "fig_02_mejor_rmse_por_bloque_variables.png")
-  png_open(path, width = 2400, height = 1700)
+  png_open(path, width = 2000, height = 1450)
+  par(mar = c(6.2, 5.2, 4.0, 1.5) + 0.1)
 
   barplot(
     best$TEST_RMSE,
-    names.arg = short(best$feature_set, 28),
-    las = 2,
+    names.arg = label_bloque_eje(best$feature_set),
+    las = 1,
     col = PALETTE[seq_len(nrow(best))],
     border = NA,
     ylab = "RMSE en test",
     main = "Mejor RMSE por bloque de variables",
-    cex.names = 0.82
+    cex.names = 0.78,
+    ylim = c(0, max(best$TEST_RMSE, na.rm = TRUE) * 1.15)
   )
   grid(nx = NA, ny = NULL, col = "#DDDDDD", lty = 3)
 
@@ -232,23 +323,52 @@ if (!is.null(predicciones) && !is.na(mejor_feature_set)) {
 # -------------------------------------------------------------------------
 # 6. Variables más correlacionadas
 # -------------------------------------------------------------------------
+# 6. Top variables correlacionadas con las afinidades
+# -------------------------------------------------------------------------
 
 if (!is.null(correlaciones) && "abs_spearman_media_y" %in% names(correlaciones)) {
   correlaciones$abs_spearman_media_y <- num(correlaciones$abs_spearman_media_y)
   corr <- correlaciones[order(-correlaciones$abs_spearman_media_y), ]
-  top <- head(corr, 20)
+  # Menos variables y texto más grande para que las etiquetas del eje Y
+  # sean legibles en la memoria.
+  top <- head(corr, 14)
   name_col <- if ("columna" %in% names(top)) "columna" else names(top)[1]
 
   is_mem <- if ("es_membrana" %in% names(top)) as.integer(top$es_membrana) == 1 else grepl("^mem_", top[[name_col]])
   cols <- ifelse(is_mem, COL_GOLD, COL_BLUE)
 
   path <- file.path(OUT_FIGS, "fig_06_top_variables_correlacion_targets.png")
-  png_open(path, width = 2700, height = 1800)
-  barplot(rev(top$abs_spearman_media_y), names.arg = rev(short(top[[name_col]], 40)),
-          horiz = TRUE, las = 1, col = rev(cols), border = NA,
-          xlab = "|Spearman| medio", main = "Variables más correlacionadas con las afinidades",
-          cex.names = 0.75)
-  legend("bottomright", legend = c("RDKit/geométricas", "Membrana"), fill = c(COL_BLUE, COL_GOLD), bty = "n")
+  png_open(path, width = 3600, height = 2300)
+  par(
+    mar = c(5.8, 18.5, 4.8, 2.5) + 0.1,
+    xaxs = "i",
+    yaxs = "i",
+    cex.axis = 1.15,
+    cex.lab = 1.25,
+    cex.main = 1.30
+  )
+
+  barplot(
+    rev(top$abs_spearman_media_y),
+    names.arg = rev(short(label_variable_corto(top[[name_col]]), 28)),
+    horiz = TRUE,
+    las = 1,
+    col = rev(cols),
+    border = NA,
+    xlab = "|Spearman| medio",
+    main = "Variables más correlacionadas con las afinidades",
+    cex.names = 1.15,
+    xlim = c(0, max(top$abs_spearman_media_y, na.rm = TRUE) * 1.25)
+  )
+
+  legend(
+    "bottomright",
+    legend = c("RDKit/geométricas", "Membrana"),
+    fill = c(COL_BLUE, COL_GOLD),
+    bty = "n",
+    bg = "white",
+    cex = 1.05
+  )
   grid(nx = NA, ny = NULL, col = "#DDDDDD", lty = 3)
   png_close(path)
 }
@@ -273,14 +393,20 @@ if (!is.null(nano)) {
     for (i in seq_len(nrow(nano_long))) mat[nano_long$nanoparticula[i], nano_long$proteina[i]] <- nano_long$E[i]
 
     path <- file.path(OUT_FIGS, "fig_07_heatmap_nano_proteina.png")
-    png_open(path, width = 1900, height = 1500)
-    par(mar = c(5,8,4,5)+0.1)
+    png_open(path, width = 1700, height = 1300)
+    par(mar = c(4.8, 7.2, 3.8, 4.2) + 0.1)
     pal <- colorRampPalette(c(COL_BLUE, "white", COL_GOLD))(80)
     image(seq_len(ncol(mat)), seq_len(nrow(mat)), t(mat[nrow(mat):1,,drop=FALSE]),
           axes = FALSE, col = pal, xlab = "Proteína", ylab = "", main = "Docking nanopartícula-proteína")
-    axis(1, at = seq_len(ncol(mat)), labels = colnames(mat))
-    axis(2, at = seq_len(nrow(mat)), labels = rev(rownames(mat)), las = 1)
-    for (i in seq_len(nrow(mat))) for (j in seq_len(ncol(mat))) text(j, nrow(mat)-i+1, round(mat[i,j],2), cex=.9)
+    axis(1, at = seq_len(ncol(mat)), labels = colnames(mat), cex.axis = 0.85)
+    axis(
+      2,
+      at = seq_len(nrow(mat)),
+      labels = label_np_plotmath(rev(rownames(mat))),
+      las = 1,
+      cex.axis = 1.05
+    )    
+    for (i in seq_len(nrow(mat))) for (j in seq_len(ncol(mat))) text(j, nrow(mat)-i+1, round(mat[i,j],2), cex=.85)
     png_close(path)
 
     for (p in prot) {
@@ -350,7 +476,7 @@ if (!is.null(dataset) && all(c("mem_logP", "mem_logPerm") %in% names(dataset))) 
   ok <- is.finite(x) & is.finite(y)
   if (sum(ok) >= 3) {
     path <- file.path(OUT_FIGS, "fig_12_membrana_logp_vs_logperm.png")
-    png_open(path, width = 1900, height = 1750)
+    png_open(path, width = 1650, height = 1500)
     par(mar = c(5,5,4,2)+0.1)
     plot(x[ok], y[ok], pch = 19, col = COL_GOLD, xlab = "mem_logP", ylab = "mem_logPerm", main = "Relación entre logP de membrana y permeabilidad")
     grid(col = "#DDDDDD", lty = 3)

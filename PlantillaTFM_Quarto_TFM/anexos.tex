@@ -446,9 +446,10 @@ Fase 9 & Análisis final & Análisis PLIP de complejos representativos, desarrol
 \section{Infraestructura computacional}
 
 Los cálculos y análisis se realizaron combinando recursos locales y
-recursos de computación de alto rendimiento. El entorno HPC se utilizó
-para las tareas de mayor coste computacional, mientras que el equipo
-local se empleó para análisis de datos, generación de figuras,
+recursos de computación de alto rendimiento. La ejecución de los
+cálculos de mayor coste computacional se realizó en CENITS, Centro
+Extremeño de Investigación, Innovación Tecnológica y Supercomputación.
+El equipo local se empleó para análisis de datos, generación de figuras,
 entrenamiento de modelos, desarrollo de la aplicación y compilación de
 la memoria en Quarto.
 
@@ -466,7 +467,7 @@ la memoria en Quarto.
 \toprule
 Recurso & Uso principal \\
 \midrule
-Clúster HPC & Ejecución de cálculos estructurales, frecuencias, cálculos asociados a solutos y procesos de docking con mayor coste computacional. \\
+CENITS & Ejecución de cálculos estructurales, frecuencias, cálculos asociados a solutos y procesos de docking con mayor coste computacional. \\
 Partición \texttt{lusi2} & Envío de cálculos con tiempos de ejecución prolongados, especialmente para sistemas más costosos o cálculos que no finalizaban correctamente en particiones de menor duración. \\
 SLURM & Gestión de colas, envío de trabajos, control de tiempos máximos de ejecución y seguimiento de cálculos pendientes, completados o cancelados. \\
 Equipo local & Análisis de datos, generación de tablas y figuras, entrenamiento de modelos, desarrollo de scripts, aplicación Streamlit y redacción en Quarto. \\
@@ -512,27 +513,27 @@ Software & Uso principal \\
 \bottomrule
 \endlastfoot
 
-TURBOMOLE & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
+TURBOMOLE v7.8.1 & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
 
-ORCA & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
+ORCA 5.0 & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
 
 COSMOtherm / COSMOmic & Obtención de variables de membrana, partición, permeabilidad, distribución y difusión en una bicapa modelo de DMPC. \\
 
-AutoDock Vina & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
+AutoDock Vina 1.2.0 & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
 
-AutoDockTools / MGLTools & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
+AutoDockTools 4.2.6 / MGLTools 2011 & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
 
-OpenBabel & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
+OpenBabel 3.1.0 & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
 
-RDKit & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
+RDKit 2026.03.3 & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
 
-Python & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
+Python 3.10.20 & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
 
-scikit-learn & Entrenamiento y comparación de modelos de aprendizaje automático. \\
+scikit-learn 1.7.2 & Entrenamiento y comparación de modelos de aprendizaje automático. \\
 
 R & Generación de tablas, figuras y análisis complementarios para la memoria. \\
 
-PLIP & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
+PLIP 3.0.0 & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
 
 Streamlit & Desarrollo de la aplicación interactiva de visualización y predicción desde SMILES. \\
 
@@ -664,10 +665,10 @@ empleado.
 \toprule
 Código PDB & Proteína & Variable objetivo \\
 \midrule
-1ao6 & Albúmina sérica humana & y\_1ao6 \\
-1hzh & Anticuerpo monoclonal humano IgG1 b12 & y\_1hzh \\
-2hav & Transferrina sérica humana en forma apo & y\_2hav \\
-3ghg & Fibrinógeno humano & y\_3ghg \\
+1ao6 & Albúmina sérica humana & $y_{1ao6}$ \\
+1hzh & Anticuerpo monoclonal humano IgG1 b12 & $y_{1ao6}$ \\
+2hav & Transferrina sérica humana en forma apo & $y_{1ao6}$ \\
+3ghg & Fibrinógeno humano & $y_{1ao6}$ \\
 \bottomrule
 \end{tabular}
 
@@ -704,13 +705,17 @@ como una única energía física.
 \small
 
 
-\begin{tabular}{p{0.20\textwidth}p{0.32\textwidth}p{0.34\textwidth}}
+\begin{tabular}{
+>{\raggedright\arraybackslash}p{0.18\textwidth}
+>{\raggedright\arraybackslash}p{0.28\textwidth}
+>{\raggedright\arraybackslash}p{0.42\textwidth}
+}
 \toprule
 Modelo & Composición & Uso en el flujo \\
 \midrule
-Ag\_13 & Clúster de plata & Docking nanopartícula-proteína y comparación contextual. \\
-Au\_13 & Clúster de oro & Docking nanopartícula-proteína y comparación contextual. \\
-ZnO\_12\_0 & Modelo de óxido de zinc & Docking nanopartícula-proteína e Índice Contextual Nano-Bio. \\
+$(\mathrm{Ag})_{13}$ & Clúster de plata & Docking nanopartícula-proteína y comparación contextual. \\
+$(\mathrm{Au})_{13}$ & Clúster de oro & Docking nanopartícula-proteína y comparación contextual. \\
+$(\mathrm{ZnO})_{12}$ & Modelo de óxido de zinc & Docking nanopartícula-proteína e Índice Contextual Nano-Bio. \\
 \bottomrule
 \end{tabular}
 
@@ -760,10 +765,10 @@ un entorno de membrana simplificado. Para ello se empleó una bicapa
 modelo de DMPC y se extrajeron variables relacionadas con partición,
 permeabilidad, distribución, energía libre, entropía media y difusión.
 
-El archivo corregido de variables de membrana,
-\texttt{membrana\_features\_corregido.csv}, contiene 55 solutos con
-variables de membrana válidas. Tras cruzar esta información con el
-dataset de docking y descriptores moleculares, el archivo
+\texttt{membrana\_features\_corregido.csv} es el archivo corregido de
+variables de membrana, contiene 55 solutos con variables de membrana
+válidas. Tras cruzar esta información con el dataset de docking y
+descriptores moleculares, el archivo
 \texttt{dataset\_descriptores\_membrana.csv} contiene 53 ligandos. De
 ellos, 52 presentan variables de membrana asociadas en el dataset
 integrado. El caso que no quedó integrado con variables de membrana
@@ -1024,7 +1029,7 @@ modelos.
 
 \begin{table}
 
-\caption{\label{tbl-anexo-docking-estadisticos}Resumen estadístico de energías de docking ligando-proteína.}
+\caption{\label{tbl-anexo-docking-estadisticos}Resumen estadístico de energías de docking ligando-proteína. Los valores se expresan en kcal/mol.}
 
 \centering{
 
@@ -1092,9 +1097,9 @@ un índice normalizado.
 \toprule
 Nanopartícula & 1ao6 & 1hzh & 2hav \\
 \midrule
-Ag\_13 & -2.24 & -2.13 & -2.17 \\
-Au\_13 & -2.34 & -2.12 & -2.34 \\
-ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
+$(\mathrm{Ag})_{13}$ & -2.24 & -2.13 & -2.17 \\
+$(\mathrm{Au})_{13}$ & -2.34 & -2.12 & -2.34 \\
+$(\mathrm{ZnO})_{12}$ & -7.76 & -7.38 & -8.44 \\
 \bottomrule
 \end{tabular}
 
@@ -1103,10 +1108,11 @@ ZnO\_12\_0 & -7.76 & -7.38 & -8.44 \\
 \end{table}%
 
 Las energías más negativas corresponden a interacciones más favorables
-dentro del protocolo utilizado. En los tres casos evaluados, ZnO\_12\_0
-presentó energías claramente más negativas que Ag\_13 y Au\_13, por lo
-que tuvo un peso importante en las combinaciones mejor posicionadas del
-análisis contextual. La proteína 3ghg no se incluyó en esta capa
+dentro del protocolo utilizado. En los tres casos evaluados,
+\((\mathrm{ZnO})_{12}\) presentó energías claramente más negativas que
+\((\mathrm{Ag})_{13}\) y \((\mathrm{Au})_{13}\), por lo que tuvo un peso
+importante en las combinaciones mejor posicionadas del análisis
+contextual. La proteína 3ghg no se incluyó en esta capa
 nanopartícula-proteína final por limitaciones técnicas asociadas al
 tamaño y preparación del sistema.
 
@@ -1157,41 +1163,46 @@ estudiado.
 
 \begin{table}
 
-\caption{\label{tbl-anexo-top-icnb}Top 10 combinaciones según el Índice Contextual Nano-Bio.}
+\caption{\label{tbl-icnb-top}Top 10 combinaciones según el Índice
+Contextual Nano-Bio.}
 
 \centering{
 
-\centering
+\begingroup
 \scriptsize
 \setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{%
 
-
-\begin{tabular}{llcrrrr}
+\begin{tabular}{lccrrrr}
 \toprule
-Ligando & NP & Prot & ICNB & ICNB prot. & E LP & E NP \\
+Ligando & NP & Prot & ICNB global & ICNB proteína & $E_{\mathrm{LP}}$ (kcal/mol) & $E_{\mathrm{NP}}$ (kcal/mol)\\
 \midrule
-Ácido fólico & ZnO\_12\_0 & 2hav & 100.00 & 100.00 & -10.09 & -8.44 \\
-Ácido fólico & ZnO\_12\_0 & 1ao6 & 99.83 & 100.00 & -9.21 & -7.76 \\
-Ácido fólico & ZnO\_12\_0 & 1hzh & 97.78 & 100.00 & -8.75 & -7.38 \\
-Doxo. proxy & ZnO\_12\_0 & 1ao6 & 91.22 & 91.36 & -8.36 & -7.76 \\
-Curcumina & ZnO\_12\_0 & 2hav & 89.46 & 89.44 & -8.93 & -8.44 \\
-Doxo. proxy & ZnO\_12\_0 & 1hzh & 89.24 & 91.27 & -7.94 & -7.38 \\
-Doxo. proxy & ZnO\_12\_0 & 2hav & 85.59 & 85.56 & -8.50 & -8.44 \\
-Curcumina & ZnO\_12\_0 & 1ao6 & 84.96 & 85.08 & -7.74 & -7.76 \\
-Ácido tánico & ZnO\_12\_0 & 1hzh & 84.86 & 86.79 & -7.52 & -7.38 \\
-Ácido tánico & ZnO\_12\_0 & 2hav & 84.00 & 83.97 & -8.33 & -8.44 \\
+Ácido fólico & $(\mathrm{ZnO})_{12}$ & 2hav & 100.00 & 100.00 & -10.09 & -8.44\\
+Ácido fólico & $(\mathrm{ZnO})_{12}$ & 1ao6 & 99.83 & 100.00 & -9.21 & -7.76\\
+Ácido fólico & $(\mathrm{ZnO})_{12}$ & 1hzh & 97.78 & 100.00 & -8.75 & -7.38\\
+Doxorrubicina proxy & $(\mathrm{ZnO})_{12}$ & 1ao6 & 91.22 & 91.36 & -8.36 & -7.76\\
+Curcumina & $(\mathrm{ZnO})_{12}$ & 2hav & 89.46 & 89.44 & -8.93 & -8.44\\
+\addlinespace
+Doxorrubicina proxy & $(\mathrm{ZnO})_{12}$ & 1hzh & 89.24 & 91.27 & -7.94 & -7.38\\
+Doxorrubicina proxy & $(\mathrm{ZnO})_{12}$ & 2hav & 85.59 & 85.56 & -8.50 & -8.44\\
+Curcumina & $(\mathrm{ZnO})_{12}$ & 1ao6 & 84.96 & 85.08 & -7.74 & -7.76\\
+Ácido tánico & $(\mathrm{ZnO})_{12}$ & 1hzh & 84.86 & 86.79 & -7.52 & -7.38\\
+Ácido tánico & $(\mathrm{ZnO})_{12}$ & 2hav & 84.00 & 83.97 & -8.33 & -8.44\\
 \bottomrule
 \end{tabular}
+
+}
+\endgroup
 
 }
 
 \end{table}%
 
 LP: ligando-proteína; NP: nanopartícula-proteína. Las mejores
-combinaciones estuvieron dominadas por ZnO\_12\_0 y ácido fólico. Este
-resultado se explica por la combinación de una afinidad ligando-proteína
-favorable y una contribución nanopartícula-proteína especialmente
-negativa para ZnO\_12\_0.
+combinaciones estuvieron dominadas por \((\mathrm{ZnO})_{12}\) y ácido
+fólico. Este resultado se explica por la combinación de una afinidad
+ligando-proteína favorable y una contribución nanopartícula-proteína
+especialmente negativa para \((\mathrm{ZnO})_{12}\).
 
 \section{Interpretación del índice}
 
@@ -1203,14 +1214,15 @@ nanopartícula-ligando-proteína. En este trabajo, el índice se utilizó
 como una herramienta de cribado comparativo, orientada a identificar
 combinaciones prometedoras para estudios posteriores.
 
-La dominancia de ZnO\_12\_0 en las primeras posiciones se debe a sus
-energías nanopartícula-proteína más negativas frente a las proteínas
-evaluadas. Por otro lado, el ácido fólico destacó por sus afinidades
-ligando-proteína favorables, lo que explica que sus combinaciones con
-ZnO\_12\_0 ocupen las primeras posiciones del ranking. Este
-comportamiento sugiere que el ácido fólico es uno de los agentes de
-recubrimiento más interesantes dentro del conjunto estudiado,
-especialmente cuando se considera junto con el modelo de óxido de zinc.
+La dominancia de \((\mathrm{ZnO})_{12}\) en las primeras posiciones se
+debe a sus energías nanopartícula-proteína más negativas frente a las
+proteínas evaluadas. Por otro lado, el ácido fólico destacó por sus
+afinidades ligando-proteína favorables, lo que explica que sus
+combinaciones con \((\mathrm{ZnO})_{12}\) ocupen las primeras posiciones
+del ranking. Este comportamiento sugiere que el ácido fólico es uno de
+los agentes de recubrimiento más interesantes dentro del conjunto
+estudiado, especialmente cuando se considera junto con el modelo de
+óxido de zinc.
 
 \apendice{Descriptores moleculares y modelos de aprendizaje automático}
 
@@ -1268,9 +1280,6 @@ descriptores RDKit eran suficientes para explicar las afinidades de
 docking o si la incorporación de variables de membrana mejoraba el
 rendimiento predictivo.
 
-La tabla completa de modelos se genera automáticamente a partir del CSV
-de métricas exportado durante el análisis.
-
 \begingroup
 \scriptsize
 \setlength{\tabcolsep}{3pt}
@@ -1325,7 +1334,7 @@ referencia.
 
 \begin{table}
 
-\caption{\label{tbl-anexo-modelo-final}Resumen del modelo final seleccionado.}
+\caption{\label{tbl-modelo-final}Resumen del modelo final seleccionado.}
 
 \centering{
 
@@ -1333,9 +1342,9 @@ referencia.
 \small
 
 
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{llrrrrr}
 \toprule
-Bloque & Modelo & N & Variables & MAE test & RMSE test & R\textsuperscript{2} test \\
+Bloque & Modelo & N & Variables & MAE test & RMSE test & $R^{2}_{\mathrm{test}}$ \\
 \midrule
 RDKit\_solo & ExtraTrees & 52 & 26 & 0.319 & 0.412 & 0.884 \\
 \bottomrule
@@ -1364,7 +1373,7 @@ predicción más difícil que las demás.
 \centering
 \begin{tabular}[t]{lrrr}
 \toprule
-Proteína & MAE & RMSE & R2\\
+Proteína & MAE & RMSE & $R^{2}$\\
 \midrule
 1ao6 & 0.294 & 0.378 & 0.917\\
 1hzh & 0.408 & 0.540 & 0.783\\
@@ -1568,6 +1577,23 @@ también facilitó la actualización progresiva del trabajo a medida que se
 incorporaron nuevas capas de análisis, como el ICNB, PLIP y la
 predicción desde SMILES.
 
+\section{Repositorio de GitHub}
+
+El código fuente del proyecto, junto con los scripts utilizados para el
+procesamiento de datos, generación de figuras, entrenamiento de modelos
+y ejecución de la aplicación Streamlit, se encuentra disponible en el
+siguiente repositorio de GitHub:
+
+\begin{center}
+\url{https://github.com/pfd1004/TFM_Docking}
+\end{center}
+
+El repositorio se organizó siguiendo la misma estructura descrita en
+este anexo, separando los datos de entrada, scripts de análisis,
+resultados generados, aplicación interactiva y documentos Quarto. Esta
+organización facilita la trazabilidad del flujo computacional y permite
+reproducir o ampliar las distintas etapas del trabajo.
+
 \section{Scripts principales}
 
 El código del proyecto se organizó en módulos funcionales. En lugar de
@@ -1602,19 +1628,19 @@ Módulo & Función principal \\
 \bottomrule
 \endlastfoot
 
-\texttt{scripts/modelos/} &
+\texttt{/modelos/} &
 Entrenamiento y comparación de modelos predictivos. Incluye el entrenamiento inicial, la comparación entre bloques RDKit, membrana, RDKit+membrana, PCA y PLS, y el entrenamiento del modelo final ExtraTrees con descriptores RDKit. \\
 
-\texttt{scripts/membrana/} &
+\texttt{/membrana/} &
 Extracción, corrección, diagnóstico e integración de variables de membrana procedentes de COSMOtherm/COSMOmic. Este módulo permitió generar el bloque de variables con prefijo \texttt{mem\_} e incorporarlo al dataset final. \\
 
-\texttt{scripts/nanoparticulas/} &
+\texttt{/nanoparticulas/} &
 Procesamiento de resultados de docking nanopartícula-proteína, construcción del dataset contextual ligando-nanopartícula-proteína y cálculo del Índice Contextual Nano-Bio. \\
 
-\texttt{scripts/interacciones/} &
+\texttt{/interacciones/} &
 Selección de complejos proteína-ligando representativos, generación de complejos PDB y preparación de la ejecución de PLIP para analizar contactos no covalentes. \\
 
-\texttt{scripts/tablas/} &
+\texttt{/tablas/} &
 Generación de tablas, figuras y salidas gráficas utilizadas en la memoria y en los anexos. Incluye scripts de análisis en R y generación de figuras finales. \\
 
 \texttt{app/} &
@@ -1715,12 +1741,11 @@ La pestaña de predicción desde SMILES requiere que estén disponibles el
 modelo entrenado y la lista de variables utilizadas durante el
 entrenamiento. En el flujo final, los archivos esperados son:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{resultados/modelos/modelo\_final\_rdkit/modelo\_final\_extratrees\_rdkit.joblib}
-\NormalTok{resultados/modelos/modelo\_final\_rdkit/features\_modelo\_final.csv}
-\end{Highlighting}
-\end{Shaded}
+\begin{sloppypar}
+\footnotesize
+\noindent\path{resultados/modelos/modelo_final_rdkit/modelo_final_extratrees_rdkit.joblib}\\[0.10cm]
+\path{resultados/modelos/modelo_final_rdkit/features_modelo_final.csv}
+\end{sloppypar}
 
 El archivo \texttt{modelo\_final\_extratrees\_rdkit.joblib} contiene el
 modelo ExtraTrees entrenado con el bloque RDKit. El archivo
@@ -1731,11 +1756,10 @@ el modelo con el mismo formato que el dataset de entrenamiento.
 Si estos archivos no existen, debe ejecutarse de nuevo el script de
 entrenamiento del modelo final:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{python scripts\textbackslash{}modelos\textbackslash{}entrenar\_modelo\_final.py}
-\end{Highlighting}
-\end{Shaded}
+\begin{sloppypar}
+\footnotesize
+\noindent\path{python scripts/modelos/entrenar_modelo_final.py}
+\end{sloppypar}
 
 \section{Predicción desde SMILES}
 

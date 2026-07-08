@@ -28,7 +28,8 @@ Fase 9 & Análisis final & Análisis PLIP de complejos representativos, desarrol
 
 \section{Infraestructura computacional}
 
-Los cálculos y análisis se realizaron combinando recursos locales y recursos de computación de alto rendimiento. El entorno HPC se utilizó para las tareas de mayor coste computacional, mientras que el equipo local se empleó para análisis de datos, generación de figuras, entrenamiento de modelos, desarrollo de la aplicación y compilación de la memoria en Quarto.
+Los cálculos y análisis se realizaron combinando recursos locales y recursos de computación de alto rendimiento. La ejecución de los cálculos de mayor coste computacional se realizó en CENITS, Centro Extremeño de Investigación, Innovación Tecnológica y Supercomputación. El equipo local se empleó para análisis de datos, generación de figuras, entrenamiento de modelos, desarrollo de la aplicación y compilación de la memoria en Quarto.
+
 
 \begin{table}[H]
 \centering
@@ -39,7 +40,7 @@ Los cálculos y análisis se realizaron combinando recursos locales y recursos d
 \toprule
 Recurso & Uso principal \\
 \midrule
-Clúster HPC & Ejecución de cálculos estructurales, frecuencias, cálculos asociados a solutos y procesos de docking con mayor coste computacional. \\
+CENITS & Ejecución de cálculos estructurales, frecuencias, cálculos asociados a solutos y procesos de docking con mayor coste computacional. \\
 Partición \texttt{lusi2} & Envío de cálculos con tiempos de ejecución prolongados, especialmente para sistemas más costosos o cálculos que no finalizaban correctamente en particiones de menor duración. \\
 SLURM & Gestión de colas, envío de trabajos, control de tiempos máximos de ejecución y seguimiento de cálculos pendientes, completados o cancelados. \\
 Equipo local & Análisis de datos, generación de tablas y figuras, entrenamiento de modelos, desarrollo de scripts, aplicación Streamlit y redacción en Quarto. \\
@@ -75,27 +76,27 @@ Software & Uso principal \\
 \bottomrule
 \endlastfoot
 
-TURBOMOLE & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
+TURBOMOLE v7.8.1 & Optimización geométrica de ligandos y cálculo de frecuencias vibracionales. \\
 
-ORCA & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
+ORCA 5.0 & Cálculos exploratorios de sistemas nanopartícula-ligando, planteados como paso previo a la preparación del docking del complejo nanopartícula-ligando-proteína. \\
 
 COSMOtherm / COSMOmic & Obtención de variables de membrana, partición, permeabilidad, distribución y difusión en una bicapa modelo de DMPC. \\
 
-AutoDock Vina & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
+AutoDock Vina 1.2.0 & Acoplamiento molecular ligando-proteína y obtención de energías de docking. \\
 
-AutoDockTools / MGLTools & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
+AutoDockTools 4.2.6 / MGLTools 2011 & Preparación de estructuras, conversión a formatos compatibles y asignación de parámetros para docking. \\
 
-OpenBabel & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
+OpenBabel 3.1.0 & Conversión entre formatos moleculares y preparación auxiliar de estructuras. \\
 
-RDKit & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
+RDKit 2026.03.3 & Cálculo de descriptores moleculares y procesamiento de estructuras químicas. \\
 
-Python & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
+Python 3.10.20 & Automatización de cálculos, análisis de resultados, entrenamiento de modelos y desarrollo de la aplicación. \\
 
-scikit-learn & Entrenamiento y comparación de modelos de aprendizaje automático. \\
+scikit-learn 1.7.2 & Entrenamiento y comparación de modelos de aprendizaje automático. \\
 
 R & Generación de tablas, figuras y análisis complementarios para la memoria. \\
 
-PLIP & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
+PLIP 3.0.0 & Identificación preliminar de interacciones proteína-ligando en complejos representativos. \\
 
 Streamlit & Desarrollo de la aplicación interactiva de visualización y predicción desde SMILES. \\
 

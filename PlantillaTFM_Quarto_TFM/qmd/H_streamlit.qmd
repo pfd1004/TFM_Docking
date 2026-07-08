@@ -28,6 +28,16 @@ TFM_Docking/
 
 La separación entre carpetas permitió mantener diferenciados los datos de entrada, los scripts de procesamiento, los resultados generados, la aplicación interactiva y los documentos Quarto. Esta organización también facilitó la actualización progresiva del trabajo a medida que se incorporaron nuevas capas de análisis, como el ICNB, PLIP y la predicción desde SMILES.
 
+\section{Repositorio de GitHub}
+
+El código fuente del proyecto, junto con los scripts utilizados para el procesamiento de datos, generación de figuras, entrenamiento de modelos y ejecución de la aplicación Streamlit, se encuentra disponible en el siguiente repositorio de GitHub:
+
+\begin{center}
+\url{https://github.com/pfd1004/TFM_Docking}
+\end{center}
+
+El repositorio se organizó siguiendo la misma estructura descrita en este anexo, separando los datos de entrada, scripts de análisis, resultados generados, aplicación interactiva y documentos Quarto. Esta organización facilita la trazabilidad del flujo computacional y permite reproducir o ampliar las distintas etapas del trabajo.
+
 \section{Scripts principales}
 
 El código del proyecto se organizó en módulos funcionales. En lugar de depender de un único script, el flujo se dividió en bloques dedicados a modelización, variables de membrana, análisis nanopartícula-proteína, PLIP y generación de resultados. Esta organización permitió ejecutar y depurar cada parte del trabajo de forma independiente.
@@ -54,19 +64,19 @@ Módulo & Función principal \\
 \bottomrule
 \endlastfoot
 
-\texttt{scripts/modelos/} &
+\texttt{/modelos/} &
 Entrenamiento y comparación de modelos predictivos. Incluye el entrenamiento inicial, la comparación entre bloques RDKit, membrana, RDKit+membrana, PCA y PLS, y el entrenamiento del modelo final ExtraTrees con descriptores RDKit. \\
 
-\texttt{scripts/membrana/} &
+\texttt{/membrana/} &
 Extracción, corrección, diagnóstico e integración de variables de membrana procedentes de COSMOtherm/COSMOmic. Este módulo permitió generar el bloque de variables con prefijo \texttt{mem\_} e incorporarlo al dataset final. \\
 
-\texttt{scripts/nanoparticulas/} &
+\texttt{/nanoparticulas/} &
 Procesamiento de resultados de docking nanopartícula-proteína, construcción del dataset contextual ligando-nanopartícula-proteína y cálculo del Índice Contextual Nano-Bio. \\
 
-\texttt{scripts/interacciones/} &
+\texttt{/interacciones/} &
 Selección de complejos proteína-ligando representativos, generación de complejos PDB y preparación de la ejecución de PLIP para analizar contactos no covalentes. \\
 
-\texttt{scripts/tablas/} &
+\texttt{/tablas/} &
 Generación de tablas, figuras y salidas gráficas utilizadas en la memoria y en los anexos. Incluye scripts de análisis en R y generación de figuras finales. \\
 
 \texttt{app/} &
@@ -129,18 +139,24 @@ La aplicación está preparada para detectar rutas de forma robusta. Para ello b
 
 La pestaña de predicción desde SMILES requiere que estén disponibles el modelo entrenado y la lista de variables utilizadas durante el entrenamiento. En el flujo final, los archivos esperados son:
 
-```text
-resultados/modelos/modelo_final_rdkit/modelo_final_extratrees_rdkit.joblib
-resultados/modelos/modelo_final_rdkit/features_modelo_final.csv
-```
+
+\begin{sloppypar}
+\footnotesize
+\noindent\path{resultados/modelos/modelo_final_rdkit/modelo_final_extratrees_rdkit.joblib}\\[0.10cm]
+\path{resultados/modelos/modelo_final_rdkit/features_modelo_final.csv}
+\end{sloppypar}
+
 
 El archivo \texttt{modelo\_final\_extratrees\_rdkit.joblib} contiene el modelo ExtraTrees entrenado con el bloque RDKit. El archivo \texttt{features\_modelo\_final.csv} contiene la lista de descriptores que deben calcularse para que una nueva molécula pueda introducirse en el modelo con el mismo formato que el dataset de entrenamiento.
 
 Si estos archivos no existen, debe ejecutarse de nuevo el script de entrenamiento del modelo final:
 
-```cmd
-python scripts\modelos\entrenar_modelo_final.py
-```
+
+\begin{sloppypar}
+\footnotesize
+\noindent\path{python scripts/modelos/entrenar_modelo_final.py}
+\end{sloppypar}
+
 
 \section{Predicción desde SMILES}
 

@@ -109,10 +109,10 @@ El docking ligando-proteína se realizó frente a cuatro estructuras identificad
 \toprule
 Código PDB & Proteína & Variable objetivo \\
 \midrule
-1ao6 & Albúmina sérica humana & y\_1ao6 \\
-1hzh & Anticuerpo monoclonal humano IgG1 b12 & y\_1hzh \\
-2hav & Transferrina sérica humana en forma apo & y\_2hav \\
-3ghg & Fibrinógeno humano & y\_3ghg \\
+1ao6 & Albúmina sérica humana & $y_{1ao6}$ \\
+1hzh & Anticuerpo monoclonal humano IgG1 b12 & $y_{1ao6}$ \\
+2hav & Transferrina sérica humana en forma apo & $y_{1ao6}$ \\
+3ghg & Fibrinógeno humano & $y_{1ao6}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -128,13 +128,17 @@ Además del docking ligando-proteína, se consideraron modelos simplificados de 
 \small
 \caption{Modelos de nanopartículas considerados en el trabajo.}
 \label{tbl-anexo-nanoparticulas}
-\begin{tabular}{p{0.20\textwidth}p{0.32\textwidth}p{0.34\textwidth}}
+\begin{tabular}{
+>{\raggedright\arraybackslash}p{0.18\textwidth}
+>{\raggedright\arraybackslash}p{0.28\textwidth}
+>{\raggedright\arraybackslash}p{0.42\textwidth}
+}
 \toprule
 Modelo & Composición & Uso en el flujo \\
 \midrule
-Ag\_13 & Clúster de plata & Docking nanopartícula-proteína y comparación contextual. \\
-Au\_13 & Clúster de oro & Docking nanopartícula-proteína y comparación contextual. \\
-ZnO\_12\_0 & Modelo de óxido de zinc & Docking nanopartícula-proteína e Índice Contextual Nano-Bio. \\
+$(\mathrm{Ag})_{13}$ & Clúster de plata & Docking nanopartícula-proteína y comparación contextual. \\
+$(\mathrm{Au})_{13}$ & Clúster de oro & Docking nanopartícula-proteína y comparación contextual. \\
+$(\mathrm{ZnO})_{12}$ & Modelo de óxido de zinc & Docking nanopartícula-proteína e Índice Contextual Nano-Bio. \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -92,7 +92,7 @@ if (is.na(ruta_dataset)) {
     cat("\\begin{table}[H]\n")
     cat("\\centering\n")
     cat("\\small\n")
-    cat("\\caption{Resumen estadístico de energías de docking ligando-proteína.}\\label{tbl-anexo-docking-estadisticos}\n")
+    cat("\\caption{Resumen estadístico de energías de docking ligando-proteína. Los valores se expresan en kcal/mol.}\\label{tbl-anexo-docking-estadisticos}\n")
     cat("\\begin{tabular}{lrrrr}\n")
     cat("\\toprule\n")
     cat("Proteína & Media & Mín. & Máx. & DE\\\\\n")
